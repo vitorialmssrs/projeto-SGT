@@ -54,11 +54,11 @@ public class FuncionalidadeFuncionario extends JFrame {
 		
 		JLabel lblImagemHotel = new JLabel("");
 		lblImagemHotel.setBounds(0, 0, 952, 1042);
-		lblImagemHotel.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\projeto-SGT\\SGTProject\\src\\main\\resources\\Hotel 2.png"));
+		lblImagemHotel.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\projeto-SGT\\SGTProject\\src\\main\\resources\\img\\Hotel 2.png"));
 		contentPane.add(lblImagemHotel);
 		
 		JButton btnCheckin = new JButton("Solicitar Limpeza");
-		btnCheckin.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\projeto-SGT\\SGTProject\\src\\main\\resources\\Icons limpeza.png"));
+		btnCheckin.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\projeto-SGT\\SGTProject\\src\\main\\resources\\img\\Icons limpeza.png"));
 		btnCheckin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -70,7 +70,7 @@ public class FuncionalidadeFuncionario extends JFrame {
 		contentPane.add(btnCheckin);
 		
 		JButton btnCheckout = new JButton("Solicitar Conserto");
-		btnCheckout.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\projeto-SGT\\SGTProject\\src\\main\\resources\\Icons conserto.png"));
+		btnCheckout.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\projeto-SGT\\SGTProject\\src\\main\\resources\\img\\Icons conserto.png"));
 		btnCheckout.setForeground(new Color(255, 255, 255));
 		btnCheckout.setFont(new Font("Tahoma", Font.BOLD, 60));
 		btnCheckout.setBackground(new Color(66, 142, 66));
@@ -78,7 +78,7 @@ public class FuncionalidadeFuncionario extends JFrame {
 		contentPane.add(btnCheckout);
 		
 		JButton btnReservarEspaco = new JButton("Atualizar Espaço");
-		btnReservarEspaco.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\projeto-SGT\\SGTProject\\src\\main\\resources\\Icons atualizacao espaco.png"));
+		btnReservarEspaco.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\projeto-SGT\\SGTProject\\src\\main\\resources\\img\\Icons atualizacao espaco.png"));
 		btnReservarEspaco.setForeground(new Color(255, 255, 255));
 		btnReservarEspaco.setFont(new Font("Tahoma", Font.BOLD, 60));
 		btnReservarEspaco.addActionListener(new ActionListener() {
@@ -100,7 +100,7 @@ public class FuncionalidadeFuncionario extends JFrame {
 		btnSair.setBackground(new Color(227, 236, 226));
 		btnSair.setForeground(new Color(1, 50, 1));
 		btnSair.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnSair.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\projeto-SGT\\SGTProject\\src\\main\\resources\\Vector sair.png"));
+		btnSair.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\projeto-SGT\\SGTProject\\src\\main\\resources\\img\\Vector sair.png"));
 		btnSair.setBounds(1716, 968, 151, 39);
 		btnSair.setBorder(new LineBorder(new Color(36, 169, 36)));
 		contentPane.add(btnSair);

@@ -54,7 +54,7 @@ public class FuncionalidadeCliente extends JFrame {
 		
 		JLabel lblImagemHotel = new JLabel("");
 		lblImagemHotel.setBounds(0, 0, 952, 1042);
-		lblImagemHotel.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\projeto-SGT\\SGTProject\\src\\main\\resources\\Hotel 2.png"));
+		lblImagemHotel.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\projeto-SGT\\SGTProject\\src\\main\\resources\\img\\Hotel 2.png"));
 		contentPane.add(lblImagemHotel);
 		
 		JButton btnCheckin = new JButton("Check-in");
@@ -97,7 +97,7 @@ public class FuncionalidadeCliente extends JFrame {
 		btnSair.setBackground(new Color(227, 236, 226));
 		btnSair.setForeground(new Color(1, 50, 1));
 		btnSair.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnSair.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\projeto-SGT\\SGTProject\\src\\main\\resources\\Vector sair.png"));
+		btnSair.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\projeto-SGT\\SGTProject\\src\\main\\resources\\img\\Vector sair.png"));
 		btnSair.setBounds(1716, 968, 151, 39);
 		btnSair.setBorder(new LineBorder(new Color(36, 169, 36)));
 		contentPane.add(btnSair);
