@@ -25,6 +25,7 @@ public class HospedeDAO {
 	
 	public int insertEndereco(Hospede end) {
 		String SQL = "INSERT INTO hospede (cpf,idade) VALUES (?, ?)";
+<<<<<<< HEAD
 		
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
@@ -48,6 +49,8 @@ public class HospedeDAO {
 			con.fecharConexao();
 		}
 		
+=======
+>>>>>>> master
 		return 0;
 	}
 	public ArrayList<Hospede> listarHospede(){
@@ -67,10 +70,17 @@ public class HospedeDAO {
 			while(rs.next()) {
 				Hospede end = new Hospede();
 				String cpf = rs.getString("cpf");
+<<<<<<< HEAD
 				String nome = rs.getString("nome");
 				
 				/*end.setCpf(cpf);
 				end.setNome(nome);
+=======
+				String idade = rs.getString("idade");
+				
+				/*end.setCpf(cpf);
+				end.setIdade(idade);
+>>>>>>> master
 				hospede.add(end);*/ //retirar do comentario quando criar a tela hospede
 			}
 		} catch (SQLException e) {
