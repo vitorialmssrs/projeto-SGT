@@ -13,6 +13,7 @@ public class Conexao {
 	private static final String USERNAME = "aluno";
 	private static final String SENHA = "aluno";
 	private static final String BD = "SGT";
+	
 
 	private Connection con; // jdbc
 	private static Conexao instancia; // singleton
@@ -26,7 +27,7 @@ public class Conexao {
 	 */ 
 		
 	//metodo de aplicação de projeto singleton torna a classe privade que n pode ser usado mais normal 
-	public static Conexao getConexao() {
+	public static Conexao getInstancia() {
 		
 		//verifica se a instancia é nula se n for instanciada ela instancia 
 		
