@@ -1,8 +1,6 @@
 package controle;
 
 import java.util.ArrayList;
-
-public class ControleFuncionario {
 	
 	
 	public interface IFuncionarioDAO {
@@ -16,15 +14,6 @@ public class ControleFuncionario {
 		
 		public boolean removerFuncionario(Funcionario end);
 		
-		public Funcionario buscarFuncionarioPorCPF(int CPF);
-		
-		public Funcionario buscarFuncionarioPorID(int ID);
-		
-		
-		
-		
-
-	}
-
+	
 
 }
