@@ -25,6 +25,29 @@ public class HospedeDAO {
 	
 	public int insertEndereco(Hospede end) {
 		String SQL = "INSERT INTO hospede (cpf,idade) VALUES (?, ?)";
+		
+		Conexao con = Conexao.getInstancia();
+		Connection conBD = con.conectar();
+		
+		try {
+			PreparedStatement ps = conBD.prepareStatement(SQL);
+			
+			ps.setString(1, end.getNome());
+			ps.setString(2, end.getSobrenome());
+			ps.setString(3, end.getCpf());
+			ps.setString(4, end.getNascimento);
+			ps.setString(5, end.getCheckin());
+			ps.setString(6, end.getCheckout());
+
+			return ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}finally {
+			con.fecharConexao();
+		}
+		
 		return 0;
 	}
 	public ArrayList<Hospede> listarHospede(){
@@ -44,10 +67,10 @@ public class HospedeDAO {
 			while(rs.next()) {
 				Hospede end = new Hospede();
 				String cpf = rs.getString("cpf");
-				String idade = rs.getString("idade");
+				String nome = rs.getString("nome");
 				
 				/*end.setCpf(cpf);
-				end.setIdade(idade);
+				end.setNome(nome);
 				hospede.add(end);*/ //retirar do comentario quando criar a tela hospede
 			}
 		} catch (SQLException e) {
