@@ -72,7 +72,7 @@ public class LoginFuncionario extends JFrame {
 		panelVerde.add(lblRealizeSeuLogin);
 		
 		JLabel lblLogo = new JLabel("");
-		lblLogo.setIcon(new ImageIcon("C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\git\\Projeto\\projeto-SGT\\SGTProject\\src\\main\\java\\Châteu_Imperial-removebg-preview 4.png"));
+		lblLogo.setIcon(new ImageIcon("C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\git\\Projeto\\projeto-SGT\\SGTProject\\src\\main\\resources\\img\\Châteu_Imperial-removebg-preview 4.png"));
 		lblLogo.setBounds(276, 420, 218, 169);
 		panelVerde.add(lblLogo);
 		
