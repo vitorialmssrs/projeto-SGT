@@ -6,6 +6,8 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -13,8 +15,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class TelaInicial extends JFrame {
 
@@ -29,7 +29,7 @@ public class TelaInicial extends JFrame {
 			public void run() {
 				try {
 					TelaInicial frame = new TelaInicial();
-					frame.setExtendedState(frame.getExtendedState()|JFrame.MAXIMIZED_BOTH);
+					frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,12 +50,12 @@ public class TelaInicial extends JFrame {
 
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{84, 0, 374, 0, 0};
-		gbl_contentPane.rowHeights = new int[]{139, 77, 49, 77, 85, 85, 0};
-		gbl_contentPane.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.columnWidths = new int[] { 84, 0, 374, 0, 0 };
+		gbl_contentPane.rowHeights = new int[] { 139, 77, 49, 77, 85, 85, 0 };
+		gbl_contentPane.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_contentPane.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		contentPane.setLayout(gbl_contentPane);
-		
+
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setIcon(new ImageIcon("C:\\Users\\vivis\\OneDrive\\Área de Trabalho\\IMG PI\\LogoPI.png"));
 		GridBagConstraints gbc_lblLogo = new GridBagConstraints();
@@ -64,7 +64,7 @@ public class TelaInicial extends JFrame {
 		gbc_lblLogo.gridx = 3;
 		gbc_lblLogo.gridy = 1;
 		contentPane.add(lblLogo, gbc_lblLogo);
-		
+
 		JLabel lblBemVindos = new JLabel("Bem-vindo ao Chateau Imperial");
 		lblBemVindos.setForeground(new Color(1, 50, 1));
 		lblBemVindos.setFont(new Font("Tahoma", Font.BOLD, 40));
@@ -75,7 +75,7 @@ public class TelaInicial extends JFrame {
 		gbc_lblBemVindos.gridx = 3;
 		gbc_lblBemVindos.gridy = 2;
 		contentPane.add(lblBemVindos, gbc_lblBemVindos);
-		
+
 		JLabel lblNewLabel = new JLabel("Escolha uma das opções:");
 		lblNewLabel.setForeground(new Color(1, 50, 1));
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 25));
@@ -85,14 +85,17 @@ public class TelaInicial extends JFrame {
 		gbc_lblNewLabel.gridx = 3;
 		gbc_lblNewLabel.gridy = 3;
 		contentPane.add(lblNewLabel, gbc_lblNewLabel);
-		
+
 		JButton btnCliente = new JButton("Cliente");
-		btnCliente.addActionListener(new ActionListener(){
-			      public void actionPerformed(ActionEvent evento){  
-			    	
-			      }  
-			   });
-			   
+		btnCliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evento) {
+				FuncionalidadeCliente funcionalidadeCliente = new FuncionalidadeCliente();
+				funcionalidadeCliente.setExtendedState(funcionalidadeCliente.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+				funcionalidadeCliente.setVisible(true);
+				funcionalidadeCliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			}
+		});
+
 		btnCliente.setForeground(new Color(255, 255, 255));
 		btnCliente.setBackground(new Color(1, 50, 1));
 		btnCliente.setFont(new Font("Tahoma", Font.PLAIN, 25));
@@ -102,14 +105,14 @@ public class TelaInicial extends JFrame {
 		gbc_btnCliente.gridx = 3;
 		gbc_btnCliente.gridy = 4;
 		contentPane.add(btnCliente, gbc_btnCliente);
-		
+
 		JButton btnNewButton = new JButton("Funcionário ");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				  JFrame funcionalidadefuncionario = new JFrame();
-				  funcionalidadefuncionario.setExtendedState(funcionalidadefuncionario.getExtendedState()|JFrame.MAXIMIZED_BOTH);
-					funcionalidadefuncionario.setVisible(true);
-					funcionalidadefuncionario.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				LoginFuncionario loginfuncionario = new LoginFuncionario();
+				loginfuncionario.setExtendedState(loginfuncionario.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+				loginfuncionario.setVisible(true);
+				loginfuncionario.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}
 		});
 		btnNewButton.setBackground(new Color(1, 50, 1));
