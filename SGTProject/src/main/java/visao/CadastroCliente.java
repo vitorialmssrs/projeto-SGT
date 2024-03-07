@@ -21,13 +21,13 @@ public class CadastroCliente extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textDataEntrada;
-	private JTextField textEmail_Cliente;
-	private JTextField textTelefone_Cliente;
-	private JTextField textCep_Cliente;
+	private JTextField TextDataNascimento;
+	private JTextField textCPF;
+	private JTextField textPrimeiroNome;
 	private JTextField textHoraEntrada;
 	private JTextField textHoraSaida;
 	private JTextField textDataSaida;
-	private JTextField textCPF_Cliente;
+	private JTextField textSobrenome;
 	private JTextField txtSenha;
 	private JTextField txtHoraSaida;
 
@@ -100,14 +100,14 @@ public class CadastroCliente extends JFrame {
 		lblSobrenomeCliente.setBounds(194, 363, 165, 22);
 		contentPane.add(lblSobrenomeCliente);
 		
-		textEmail_Cliente = new JTextField();
-		textEmail_Cliente.setForeground(new Color(1, 50, 1));
-		textEmail_Cliente.setText(" dd/mm/aaaa");
-		textEmail_Cliente.setBackground(new Color(252, 251, 244));
-		textEmail_Cliente.setBounds(194, 522, 404, 29);
-		contentPane.add(textEmail_Cliente);
-		textEmail_Cliente.setBorder(new LineBorder(new Color(1, 50, 1)));
-		textEmail_Cliente.setColumns(10);
+		TextDataNascimento = new JTextField();
+		TextDataNascimento.setForeground(new Color(1, 50, 1));
+		TextDataNascimento.setText(" dd/mm/aaaa");
+		TextDataNascimento.setBackground(new Color(252, 251, 244));
+		TextDataNascimento.setBounds(194, 522, 404, 29);
+		contentPane.add(TextDataNascimento);
+		TextDataNascimento.setBorder(new LineBorder(new Color(1, 50, 1)));
+		TextDataNascimento.setColumns(10);
 		
 		JLabel lblDataNascimento = new JLabel("* Data de nascimento:");
 		lblDataNascimento.setBackground(new Color(1, 50, 1));
@@ -116,14 +116,14 @@ public class CadastroCliente extends JFrame {
 		lblDataNascimento.setBounds(194, 489, 236, 21);
 		contentPane.add(lblDataNascimento);
 		
-		textTelefone_Cliente = new JTextField();
-		textTelefone_Cliente.setForeground(new Color(1, 50, 1));
-		textTelefone_Cliente.setText(" 11111111111");
-		textTelefone_Cliente.setBackground(new Color(252, 251, 244));
-		textTelefone_Cliente.setBounds(194, 455, 404, 29);
-		contentPane.add(textTelefone_Cliente);
-		textTelefone_Cliente.setBorder(new LineBorder(new Color(1, 50, 1)));
-		textTelefone_Cliente.setColumns(10);
+		textCPF = new JTextField();
+		textCPF.setForeground(new Color(1, 50, 1));
+		textCPF.setText(" 11111111111");
+		textCPF.setBackground(new Color(252, 251, 244));
+		textCPF.setBounds(194, 455, 404, 29);
+		contentPane.add(textCPF);
+		textCPF.setBorder(new LineBorder(new Color(1, 50, 1)));
+		textCPF.setColumns(10);
 		
 		JLabel lblDataEntrada = new JLabel("* Data e hora de entrada: ");
 		lblDataEntrada.setForeground(new Color(1, 50, 1));
@@ -132,13 +132,13 @@ public class CadastroCliente extends JFrame {
 		lblDataEntrada.setBounds(811, 341, 255, 21);
 		contentPane.add(lblDataEntrada);
 		
-		textCep_Cliente = new JTextField();
-		textCep_Cliente.setForeground(new Color(252, 251, 244));
-		textCep_Cliente.setBackground(new Color(252, 251, 244));
-		textCep_Cliente.setBounds(194, 329, 404, 29);
-		contentPane.add(textCep_Cliente);
-		textCep_Cliente.setBorder(new LineBorder(new Color(1, 50, 1)));
-		textCep_Cliente.setColumns(10);
+		textPrimeiroNome = new JTextField();
+		textPrimeiroNome.setForeground(new Color(1, 50, 1));
+		textPrimeiroNome.setBackground(new Color(252, 251, 244));
+		textPrimeiroNome.setBounds(194, 329, 404, 29);
+		contentPane.add(textPrimeiroNome);
+		textPrimeiroNome.setBorder(new LineBorder(new Color(1, 50, 1)));
+		textPrimeiroNome.setColumns(10);
 		
 		JLabel lblDataSaida = new JLabel("* Data e hora de saída:");
 		lblDataSaida.setBackground(new Color(1, 50, 1));
@@ -180,15 +180,33 @@ public class CadastroCliente extends JFrame {
 		lblCPFCliente.setBounds(194, 425, 300, 18);
 		contentPane.add(lblCPFCliente);
 		
-		textCPF_Cliente = new JTextField();
-		textCPF_Cliente.setForeground(new Color(252, 251, 244));
-		textCPF_Cliente.setBackground(new Color(252, 251, 244));
-		textCPF_Cliente.setBounds(194, 389, 404, 29);
-		textCPF_Cliente.setBorder(new LineBorder(new Color(1, 50, 1)));
-		contentPane.add(textCPF_Cliente);
-		textCPF_Cliente.setColumns(10);
+		textSobrenome = new JTextField();
+		textSobrenome.setForeground(new Color(1, 50, 1));
+		textSobrenome.setBackground(new Color(252, 251, 244));
+		textSobrenome.setBounds(194, 389, 404, 29);
+		textSobrenome.setBorder(new LineBorder(new Color(1, 50, 1)));
+		contentPane.add(textSobrenome);
+		textSobrenome.setColumns(10);
 		
 		JButton btnLimpar_info_cliente = new JButton("Limpar");
+		btnLimpar_info_cliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//Comando para limpar os campos de textos 
+				
+				textPrimeiroNome.setText(" ");
+				textSobrenome.setText(" ");
+				textCPF.setText(" ");
+				TextDataNascimento.setText(" ");
+				
+				textDataEntrada.setText(" ");
+				textHoraEntrada.setText(" ");
+				textDataSaida.setText(" ");
+				txtHoraSaida.setText(" ");
+				txtSenha.setText(" ");
+						
+
+			}
+		});
 		btnLimpar_info_cliente.setForeground(new Color(252, 251, 244));
 		btnLimpar_info_cliente.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnLimpar_info_cliente.setBackground(new Color(109, 164, 109));
@@ -202,7 +220,7 @@ public class CadastroCliente extends JFrame {
 		btnCadastro_Cliente.setBounds(813, 638, 176, 39);
 		contentPane.add(btnCadastro_Cliente);
 		
-		JButton btnSair_tela_cad_Cliente = new JButton("Sair");
+		JButton btnSair_tela_cad_Cliente = new JButton("<- | Sair");
 		btnSair_tela_cad_Cliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
