@@ -13,6 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaInicial extends JFrame {
 
@@ -27,6 +29,7 @@ public class TelaInicial extends JFrame {
 			public void run() {
 				try {
 					TelaInicial frame = new TelaInicial();
+					frame.setExtendedState(frame.getExtendedState()|JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -84,6 +87,12 @@ public class TelaInicial extends JFrame {
 		contentPane.add(lblNewLabel, gbc_lblNewLabel);
 		
 		JButton btnCliente = new JButton("Cliente");
+		btnCliente.addActionListener(new ActionListener(){
+			      public void actionPerformed(ActionEvent evento){  
+			    	
+			      }  
+			   });
+			   
 		btnCliente.setForeground(new Color(255, 255, 255));
 		btnCliente.setBackground(new Color(1, 50, 1));
 		btnCliente.setFont(new Font("Tahoma", Font.PLAIN, 25));
@@ -95,6 +104,14 @@ public class TelaInicial extends JFrame {
 		contentPane.add(btnCliente, gbc_btnCliente);
 		
 		JButton btnNewButton = new JButton("Funcionário ");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				  JFrame funcionalidadefuncionario = new JFrame();
+				  funcionalidadefuncionario.setExtendedState(funcionalidadefuncionario.getExtendedState()|JFrame.MAXIMIZED_BOTH);
+					funcionalidadefuncionario.setVisible(true);
+					funcionalidadefuncionario.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			}
+		});
 		btnNewButton.setBackground(new Color(1, 50, 1));
 		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 25));
