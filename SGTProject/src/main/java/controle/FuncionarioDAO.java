@@ -15,7 +15,6 @@ public class FuncionarioDAO {
 	private FuncionarioDAO() {
 	}
 	
-		
 		public static FuncionarioDAO getInstancia() {
 		
 		if(instancia == null) {
@@ -26,8 +25,21 @@ public class FuncionarioDAO {
 		return instancia;
 		}
 		
+		
+		
 		public int inserirFuncionario(Funcionario end) {
-			String SQL = "INSERT INTO funcionarios (CPF, PrimeiroNome, Sobrenome, data_de_nascimento, email, telefone, cep, numero, usuario_id_usuario) VALUES (?, ?)";
+			String SQL = "INSERT INTO funcionarios (CPF, PrimeiroNome, Sobrenome, data_de_nascimento, email, telefone, cep, numero, usuario_id_usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			
+			Conexao con = Conexao.getInstancia();
+			Connection conBD = con.conectar();
+			
+			try {
+				PreparedStatement ps = conBD.prepareStatement(SQL);
+				
+				ps.setString(1, end.getPrimeiroNome());
+				ps.setString(2, end.getSobrenome);
+			}
+			
 			
 			return 0;
 			
@@ -39,11 +51,25 @@ public class FuncionarioDAO {
 			
 			String SQL = "SELECT * FROM funcionario";
 			
+			
+			public boolean atualizarFuncionario(Funcionario end){}
+				
+			
+			
+			//Comando SQL a ser executado
+			String SQL = "UPTADE funcionario Set PrimeiroNome = ?";
+			
+			
 			Conexao con = Conexao.getInstancia();
 			Connection conBD = con.conectar();
 			
+			int retorno = 0;
+			
 			try {
 				PreparedStatement ps = conBD.prepareStatement(SQL);
+				//ps.setString((1, end.getPrimeiroNome());
+				
+				retorno = ps.executeUpdate();
 				
 				ResultSet rs = ps.executeQuery();
 				
@@ -71,7 +97,7 @@ public class FuncionarioDAO {
 			
 			
 			 
-	        return funcionario;	
+			 return funcionario;	
 		}
 		
 		
