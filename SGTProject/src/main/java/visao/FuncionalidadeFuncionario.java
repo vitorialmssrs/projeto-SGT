@@ -64,10 +64,12 @@ public class FuncionalidadeFuncionario extends JFrame {
 		panelOpcoes.setLayout(new MigLayout("", "[150][300][150]", "[200][][100][50][200][50][200][50][200][50][100]"));
 		
 		JLabel lblCaro = new JLabel("Caro Funcionario");
+		lblCaro.setForeground(new Color(1, 50, 1));
 		lblCaro.setFont(new Font("Tahoma", Font.BOLD, 40));
 		panelOpcoes.add(lblCaro, "cell 1 0,alignx center");
 		
 		JLabel lblEscolha = new JLabel("Escolha uma opção de operação");
+		lblEscolha.setForeground(new Color(1, 50, 1));
 		lblEscolha.setFont(new Font("Tahoma", Font.BOLD, 30));
 		panelOpcoes.add(lblEscolha, "cell 1 2,alignx center");
 		
