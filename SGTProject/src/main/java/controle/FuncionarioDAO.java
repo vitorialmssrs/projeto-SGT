@@ -36,10 +36,22 @@ public class FuncionarioDAO {
 			try {
 				PreparedStatement ps = conBD.prepareStatement(SQL);
 				
-				ps.setString(1, end.getPrimeiroNome());
-				ps.setString(2, end.getSobrenome);
+				ps.setInt(1, end.getCPF());
+				ps.setString(2, end.getPrimeiroNome());
+				ps.setString(3, end.getSobrenome());
+				ps.setInt(4, end.getData_nascimento());
+				ps.setString(5, end.getEmail());
+				ps.setInt(6, end.getTelefone());
+				ps.setInt(7, end.getCep());
+				ps.setInt(8, end.getNumero());
+				ps.setInt(9, end.getUsuario_id_usuario());
+				
+				return ps.executeUpdate();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}finally {
+				con.fecharConexao();
 			}
-			
 			
 			return 0;
 			
@@ -51,26 +63,12 @@ public class FuncionarioDAO {
 			
 			String SQL = "SELECT * FROM funcionario";
 			
-			
-			public boolean atualizarFuncionario(Funcionario end){}
-				
-			
-			
-			//Comando SQL a ser executado
-			String SQL = "UPTADE funcionario Set PrimeiroNome = ?";
-			
-			
 			Conexao con = Conexao.getInstancia();
 			Connection conBD = con.conectar();
 			
-			int retorno = 0;
-			
 			try {
 				PreparedStatement ps = conBD.prepareStatement(SQL);
-				//ps.setString((1, end.getPrimeiroNome());
-				
-				retorno = ps.executeUpdate();
-				
+			
 				ResultSet rs = ps.executeQuery();
 				
 				while(rs.next()) {
@@ -100,5 +98,27 @@ public class FuncionarioDAO {
 			 return funcionario;	
 		}
 		
+		
+			public boolean atualizarFuncionario(Funcionario end){
+				
+			
+			String SQL = "UPTADE funcionario Set PrimeiroNome = ?";
+			Conexao con = Conexao.getInstancia();
+			Connection conBD = con.conectar();
+			int retorno = 0;
+			
+			try {
+				PreparedStatement ps = conBD.prepareStatement(SQL);
+				ps.setString(1, end.getPrimeiroNome());
+				ps.setString(2, end.getSobrenome());
+				retorno = ps.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				con.fecharConexao();
+			}
+			return retorno;
+			
+			}
 		
 }
