@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< Updated upstream
-Build-Jdk-Spec: 17
-=======
 Built-By: vivis
 Build-Jdk: 17.0.6
->>>>>>> Stashed changes
 Created-By: Maven Integration for Eclipse
 

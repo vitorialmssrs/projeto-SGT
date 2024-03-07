@@ -33,6 +33,7 @@ public class HospedeDAO {
 		try {
 			PreparedStatement ps = conBD.prepareStatement(SQL);
 			
+			// da erro por que não possui ainda os get e sets
 			ps.setString(1, end.getNome());
 			ps.setString(2, end.getSobrenome());
 			ps.setString(3, end.getCpf());
@@ -52,6 +53,7 @@ public class HospedeDAO {
 
 		return 0;
 	}
+	
 	public ArrayList<Hospede> listarHospede(){
 		
 		ArrayList<Hospede> hospedes = new ArrayList<Hospede>();
