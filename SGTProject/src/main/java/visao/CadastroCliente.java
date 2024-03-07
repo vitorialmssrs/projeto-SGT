@@ -25,7 +25,6 @@ public class CadastroCliente extends JFrame {
 	private JTextField textCPF;
 	private JTextField textPrimeiroNome;
 	private JTextField textHoraEntrada;
-	private JTextField textHoraSaida;
 	private JTextField textDataSaida;
 	private JTextField textSobrenome;
 	private JTextField txtSenha;
@@ -214,6 +213,12 @@ public class CadastroCliente extends JFrame {
 		contentPane.add(btnLimpar_info_cliente);
 		
 		JButton btnCadastro_Cliente = new JButton("Cadastrar");
+		btnCadastro_Cliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//precisa adicionar um comando que mostre a tela de confirmação de cadastro realizado ou não 
+				// caso de certo precisa perguntar se deseja fazer mais alguma coisa ou se pode sair 
+			}
+		});
 		btnCadastro_Cliente.setBackground(new Color(66, 142, 66));
 		btnCadastro_Cliente.setForeground(new Color(252, 251, 244));
 		btnCadastro_Cliente.setFont(new Font("Tahoma", Font.BOLD, 17));

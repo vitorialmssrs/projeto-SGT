@@ -36,6 +36,7 @@ public class CadastroFuncionario extends JFrame {
 			public void run() {
 				try {
 					CadastroFuncionario frame = new CadastroFuncionario();
+					frame.setExtendedState(frame.getExtendedState()|JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -108,6 +109,7 @@ public class CadastroFuncionario extends JFrame {
 		contentPane.add(lblEmail_Funcionario);
 		
 		textEmail_Funcionario = new JTextField();
+		textEmail_Funcionario.setForeground(new Color(1, 50, 1));
 		textEmail_Funcionario.setBackground(new Color(252, 251, 244));
 		textEmail_Funcionario.setBounds(739, 329, 644, 21);
 		contentPane.add(textEmail_Funcionario);
@@ -122,6 +124,7 @@ public class CadastroFuncionario extends JFrame {
 		contentPane.add(lblTelefone_Funcionario);
 		
 		textTelefone_Funcionario = new JTextField();
+		textTelefone_Funcionario.setForeground(new Color(1, 50, 1));
 		textTelefone_Funcionario.setBackground(new Color(252, 251, 244));
 		textTelefone_Funcionario.setBounds(642, 365, 192, 21);
 		contentPane.add(textTelefone_Funcionario);
@@ -132,20 +135,20 @@ public class CadastroFuncionario extends JFrame {
 		lblEndereco.setBackground(new Color(1, 50, 1));
 		lblEndereco.setForeground(new Color(1, 50, 1));
 		lblEndereco.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblEndereco.setBounds(553, 403, 87, 21);
+		lblEndereco.setBounds(553, 435, 87, 21);
 		contentPane.add(lblEndereco);
 		
 		JLabel lblCep_Funcionario = new JLabel("Cep:");
 		lblCep_Funcionario.setForeground(new Color(1, 50, 1));
 		lblCep_Funcionario.setBackground(new Color(1, 50, 1));
 		lblCep_Funcionario.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblCep_Funcionario.setBounds(553, 440, 45, 21);
+		lblCep_Funcionario.setBounds(553, 472, 45, 21);
 		contentPane.add(lblCep_Funcionario);
 		
 		textCep_Funcionario = new JTextField();
-		textCep_Funcionario.setForeground(new Color(252, 251, 244));
+		textCep_Funcionario.setForeground(new Color(1, 50, 1));
 		textCep_Funcionario.setBackground(new Color(252, 251, 244));
-		textCep_Funcionario.setBounds(608, 440, 129, 21);
+		textCep_Funcionario.setBounds(608, 472, 129, 21);
 		contentPane.add(textCep_Funcionario);
 		textCep_Funcionario.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textCep_Funcionario.setColumns(10);
@@ -154,13 +157,13 @@ public class CadastroFuncionario extends JFrame {
 		lblRua_Funcionario.setBackground(new Color(1, 50, 1));
 		lblRua_Funcionario.setForeground(new Color(1, 50, 1));
 		lblRua_Funcionario.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblRua_Funcionario.setBounds(756, 437, 45, 21);
+		lblRua_Funcionario.setBounds(756, 469, 45, 21);
 		contentPane.add(lblRua_Funcionario);
 		
 		textRua_Funcionario = new JTextField();
-		textRua_Funcionario.setForeground(new Color(252, 251, 244));
+		textRua_Funcionario.setForeground(new Color(1, 50, 1));
 		textRua_Funcionario.setBackground(new Color(252, 251, 244));
-		textRua_Funcionario.setBounds(811, 440, 370, 21);
+		textRua_Funcionario.setBounds(811, 472, 370, 21);
 		textRua_Funcionario.setBorder(new LineBorder(new Color(1, 50, 1)));
 		contentPane.add(textRua_Funcionario);
 		
@@ -170,13 +173,13 @@ public class CadastroFuncionario extends JFrame {
 		lblNumero_Funcionario.setForeground(new Color(1, 50, 1));
 		lblNumero_Funcionario.setBackground(new Color(1, 50, 1));
 		lblNumero_Funcionario.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNumero_Funcionario.setBounds(1204, 441, 72, 17);
+		lblNumero_Funcionario.setBounds(1204, 473, 72, 17);
 		contentPane.add(lblNumero_Funcionario);
 		
 		textNumero_Funcionario = new JTextField();
-		textNumero_Funcionario.setForeground(new Color(252, 251, 244));
+		textNumero_Funcionario.setForeground(new Color(1, 50, 1));
 		textNumero_Funcionario.setBackground(new Color(252, 251, 244));
-		textNumero_Funcionario.setBounds(1286, 441, 97, 19);
+		textNumero_Funcionario.setBounds(1286, 473, 97, 19);
 		contentPane.add(textNumero_Funcionario);
 		textNumero_Funcionario.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textNumero_Funcionario.setColumns(10);
@@ -185,12 +188,13 @@ public class CadastroFuncionario extends JFrame {
 		lblBairro_Funcionario.setBackground(new Color(1, 50, 1));
 		lblBairro_Funcionario.setForeground(new Color(1, 50, 1));
 		lblBairro_Funcionario.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblBairro_Funcionario.setBounds(553, 485, 59, 13);
+		lblBairro_Funcionario.setBounds(553, 517, 59, 13);
 		contentPane.add(lblBairro_Funcionario);
 		
 		textBairro_Funcionario = new JTextField();
+		textBairro_Funcionario.setForeground(new Color(1, 50, 1));
 		textBairro_Funcionario.setBackground(new Color(252, 251, 244));
-		textBairro_Funcionario.setBounds(622, 483, 347, 23);
+		textBairro_Funcionario.setBounds(622, 515, 347, 23);
 		contentPane.add(textBairro_Funcionario);
 		textBairro_Funcionario.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textBairro_Funcionario.setColumns(10);
@@ -199,18 +203,32 @@ public class CadastroFuncionario extends JFrame {
 		lblCPF_Funcionario.setForeground(new Color(1, 50, 1));
 		lblCPF_Funcionario.setBackground(new Color(1, 50, 1));
 		lblCPF_Funcionario.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblCPF_Funcionario.setBounds(553, 525, 214, 13);
+		lblCPF_Funcionario.setBounds(553, 397, 214, 13);
 		contentPane.add(lblCPF_Funcionario);
 		
 		textCPF_Funcionario = new JTextField();
-		textCPF_Funcionario.setForeground(new Color(252, 251, 244));
+		textCPF_Funcionario.setForeground(new Color(1, 50, 1));
 		textCPF_Funcionario.setBackground(new Color(252, 251, 244));
-		textCPF_Funcionario.setBounds(777, 524, 606, 21);
+		textCPF_Funcionario.setBounds(777, 396, 606, 21);
 		textCPF_Funcionario.setBorder(new LineBorder(new Color(1, 50, 1)));
 		contentPane.add(textCPF_Funcionario);
 		textCPF_Funcionario.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Limpar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//comando para limpar os campos 
+				
+				 textNome_Funcionario.setText(" ");
+				 textEmail_Funcionario.setText(" ");
+				 textTelefone_Funcionario.setText(" ");
+				 textCep_Funcionario.setText(" ");
+				 textRua_Funcionario.setText(" ");
+				 textNumero_Funcionario.setText(" ");
+				 textBairro_Funcionario.setText(" ");
+				 textCPF_Funcionario.setText(" ");
+			}
+		});
 		btnNewButton.setForeground(new Color(252, 251, 244));
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnNewButton.setBackground(new Color(109, 164, 109));
@@ -224,7 +242,7 @@ public class CadastroFuncionario extends JFrame {
 		btnNewButton_1.setBounds(843, 623, 176, 39);
 		contentPane.add(btnNewButton_1);
 		
-		JButton btnNewButton_2 = new JButton("Sair");
+		JButton btnNewButton_2 = new JButton("<- | Sair");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -232,7 +250,7 @@ public class CadastroFuncionario extends JFrame {
 		btnNewButton_2.setForeground(new Color(252, 251, 244));
 		btnNewButton_2.setBackground(new Color(1, 50, 1));
 		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 17));
-		btnNewButton_2.setBounds(1204, 714, 126, 39);
+		btnNewButton_2.setBounds(1204, 714, 176, 39);
 		contentPane.add(btnNewButton_2);
 	}
 }
