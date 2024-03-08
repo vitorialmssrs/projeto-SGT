@@ -14,6 +14,8 @@ import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 
@@ -33,6 +35,7 @@ public class LoginFuncionario extends JFrame {
 			public void run() {
 				try {
 					LoginFuncionario frame = new LoginFuncionario();
+					frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -101,6 +104,7 @@ public class LoginFuncionario extends JFrame {
 		panelCinza.add(lblAtencao);
 		
 		textSenha = new JTextField();
+		textSenha.setForeground(new Color(1, 50, 1));
 		textSenha.setBackground(new Color(252, 251, 244));
 		textSenha.setBounds(70, 422, 633, 32);
 		panelCinza.add(textSenha);
@@ -126,6 +130,12 @@ public class LoginFuncionario extends JFrame {
 		panelCinza.add(lblRecadoSenha);
 		
 		JButton btnLimpar = new JButton("Limpar");
+		btnLimpar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textCPF.setText(" ");
+				textSenha.setText(" ");
+			}
+		});
 		btnLimpar.setBackground(new Color(255, 255, 245));
 		btnLimpar.setForeground(new Color(36, 169, 36));
 		btnLimpar.setFont(new Font("Tahoma", Font.PLAIN, 15));

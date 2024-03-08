@@ -13,6 +13,8 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class FuncionalidadeFuncionario extends JFrame {
 
@@ -27,6 +29,7 @@ public class FuncionalidadeFuncionario extends JFrame {
 			public void run() {
 				try {
 					FuncionalidadeFuncionario frame = new FuncionalidadeFuncionario();
+					frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -78,23 +81,27 @@ public class FuncionalidadeFuncionario extends JFrame {
 		btnSolicitarLimpeza.setBackground(new Color(81, 108, 81));
 		btnSolicitarLimpeza.setForeground(new Color(255, 255, 255));
 		btnSolicitarLimpeza.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\projeto-SGT\\SGTProject\\src\\main\\resources\\img\\Icons limpeza.png"));
-		panelOpcoes.add(btnSolicitarLimpeza, "cell 1 4,grow");
+		panelOpcoes.add(btnSolicitarLimpeza, "cell 1 4 2 1,grow");
 		
 		JButton btnSolicitarConcerto = new JButton("Solicitar Conserto");
 		btnSolicitarConcerto.setFont(new Font("Tahoma", Font.BOLD, 50));
 		btnSolicitarConcerto.setForeground(new Color(255, 255, 255));
 		btnSolicitarConcerto.setBackground(new Color(66, 142, 66));
 		btnSolicitarConcerto.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\projeto-SGT\\SGTProject\\src\\main\\resources\\img\\Icons conserto.png"));
-		panelOpcoes.add(btnSolicitarConcerto, "cell 1 6,grow");
+		panelOpcoes.add(btnSolicitarConcerto, "cell 1 6 2 1,grow");
 		
 		JButton btnAtualizarEspaco = new JButton("Atualizar Espaço");
 		btnAtualizarEspaco.setFont(new Font("Tahoma", Font.BOLD, 60));
 		btnAtualizarEspaco.setBackground(new Color(109, 164, 109));
 		btnAtualizarEspaco.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\projeto-SGT\\SGTProject\\src\\main\\resources\\img\\Icons atualizacao espaco.png"));
 		btnAtualizarEspaco.setForeground(new Color(255, 255, 255));
-		panelOpcoes.add(btnAtualizarEspaco, "cell 1 8,grow");
+		panelOpcoes.add(btnAtualizarEspaco, "cell 1 8 2 1,grow");
 		
 		JButton btnSair = new JButton("Sair");
+		btnSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnSair.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\projeto-SGT\\SGTProject\\src\\main\\resources\\img\\Vector sair.png"));
 		btnSair.setBackground(new Color(227, 236, 226));
 		btnSair.setForeground(new Color(1, 50, 1));

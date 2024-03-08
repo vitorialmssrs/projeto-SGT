@@ -65,14 +65,14 @@ public class FuncionalidadeCliente extends JFrame {
 		btnCheckin.setForeground(new Color(255, 255, 255));
 		btnCheckin.setFont(new Font("Tahoma", Font.BOLD, 60));
 		btnCheckin.setBackground(new Color(81, 108, 81));
-		btnCheckin.setBounds(944, 284, 923, 147);
+		btnCheckin.setBounds(327, 293, 923, 147);
 		contentPane.add(btnCheckin);
 		
 		JButton btnCheckout = new JButton("Check-out");
 		btnCheckout.setForeground(new Color(255, 255, 255));
 		btnCheckout.setFont(new Font("Tahoma", Font.BOLD, 60));
 		btnCheckout.setBackground(new Color(66, 142, 66));
-		btnCheckout.setBounds(944, 512, 923, 147);
+		btnCheckout.setBounds(327, 521, 923, 147);
 		contentPane.add(btnCheckout);
 		
 		JButton btnReservarEspaco = new JButton("Reservar Espaço");
@@ -83,14 +83,14 @@ public class FuncionalidadeCliente extends JFrame {
 			}
 		});
 		btnReservarEspaco.setBackground(new Color(109, 164, 109));
-		btnReservarEspaco.setBounds(944, 740, 923, 147);
+		btnReservarEspaco.setBounds(327, 749, 923, 147);
 		contentPane.add(btnReservarEspaco);
 		
 		JLabel lblInstrucaoCliente = new JLabel("Caro Cliente");
 		lblInstrucaoCliente.setHorizontalAlignment(SwingConstants.CENTER);
 		lblInstrucaoCliente.setForeground(new Color(1, 50, 1));
 		lblInstrucaoCliente.setFont(new Font("Tahoma", Font.BOLD, 40));
-		lblInstrucaoCliente.setBounds(1254, 35, 326, 65);
+		lblInstrucaoCliente.setBounds(637, 44, 326, 65);
 		contentPane.add(lblInstrucaoCliente);
 		
 		JButton btnSair = new JButton("Sair");
@@ -105,7 +105,7 @@ public class FuncionalidadeCliente extends JFrame {
 		JLabel lblNewLabel = new JLabel("Escolha uma opção de atendimento");
 		lblNewLabel.setForeground(new Color(1, 50, 1));
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 30));
-		lblNewLabel.setBounds(1173, 125, 536, 80);
+		lblNewLabel.setBounds(556, 134, 582, 80);
 		contentPane.add(lblNewLabel);
 	}
 }
