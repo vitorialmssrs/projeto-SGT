@@ -7,15 +7,17 @@ import modelo.EspacoHotel;
 //criação dos esqueletos 
 public interface IEspacosDAO {
 	
-	public int inserirEspacos (EspacoHotel end);
+	public int inserirEspacos (EspacoHotel end); //código feito
 	
-	public ArrayList<EspacoHotel> listarEnderecos();
+	public ArrayList<EspacoHotel> insertEspacos2(); // código feito
+	
+	public ArrayList<EspacoHotel> listarEspacos();
 
-	public boolean atualizarEndereco(EspacoHotel end);
+	public boolean atualizarEspaco(EspacoHotel end);
 
-	public boolean removerEndereco(EspacoHotel end);
+	public boolean removerEspaco(EspacoHotel end);
 
-	public EspacoHotel buscarEnderecoPorCep(int cep);
+
 	
 
 

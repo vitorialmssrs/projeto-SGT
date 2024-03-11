@@ -4,9 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
-import com.mysql.cj.xdevapi.Statement;
 
 import modelo.EspacoHotel;
 
@@ -151,6 +151,79 @@ import modelo.EspacoHotel;
 
 			return espacos;
 		}
+		
+		public ArrayList<EspacoHotel> listarEspacos() {
+
+			// Arraylist para armazenar resultado do select
+			ArrayList<EspacoHotel> espacos = new ArrayList<EspacoHotel>();
+
+			// Comando SQL a ser executado
+			String SQL = "SELECT * FROM enderecos";
+
+			// Cria a "ponte de conexao" com MYSQL
+			Conexao con = Conexao.getInstancia();
+			Connection conBD = con.conectar();
+
+			try {
+				PreparedStatement ps = conBD.prepareStatement(SQL);
+
+				ResultSet rs = ps.executeQuery();
+
+				while (rs.next()) {
+					// Criar objeto
+					EspacoHotel end = new EspacoHotel();
+
+					// Pega os valores de cada coluna do registro
+					
+					String academia = rs.getString("Academia");
+					String brinquedoteca = rs.getString("brinquedoteca");
+					String piscina = rs.getString("Piscina");
+					String quadra_Futebol = rs.getString("Quadra de Futebol");
+					String quadra_volei = rs.getString("Quadra de vôlei");
+					String quiosque = rs.getString("Quiosque");
+					String sala_jogos = rs.getString("Sala de jogos");
+					String salao_festa = rs.getString("Salão de festas");
+					String spa = rs.getString("SPA");
+
+					// Seta os valores no obj java
+					
+					end.setAcademia(academia);
+					end.setBrinquedoteca(brinquedoteca);
+					end.setPiscina(piscina);
+					end.setQuadra_futebol(quadra_Futebol);
+					end.setQuadra_volei(quadra_volei);
+					end.setQuiosque(quiosque);
+					end.setSala_jogos(sala_jogos);
+					end.setSalao_festa(salao_festa);
+					end.setSPA(spa);
+
+					// Adiciona obj no arraylist
+					espacos.add(end);
+
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				con.fecharConexao();
+			}
+
+			return espacos;
+		}
+
+		@Override
+		public boolean atualizarEspaco(EspacoHotel end) {
+			
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public boolean removerEspaco(EspacoHotel end) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
 
 		
 	}
