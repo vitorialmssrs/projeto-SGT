@@ -1,2 +1,2 @@
-# Sistema de Gerenciamento de Hotel
-> **INTRODUÇÃO**
+# Sistema de Gerenciamento de Totem
+ **INTRODUÇÃO**
