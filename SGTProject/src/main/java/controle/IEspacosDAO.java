@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import modelo.EspacoHotel;
 
+//criação dos esqueletos 
 public interface IEspacosDAO {
 	
 	public int inserirEspacos (EspacoHotel end);

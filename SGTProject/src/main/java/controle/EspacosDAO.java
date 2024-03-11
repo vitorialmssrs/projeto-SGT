@@ -46,7 +46,7 @@ import modelo.EspacoHotel;
 		 * AUTO_INCREMENT no BD
 		 * 
 		 */
-		public int insertEspacos2(EspacoHotel end) {
+		public int inserirEspacos(EspacoHotel end) {
 
 			String SQL = "INSERT INTO EspacoHotel (academia, quiosque, salao_festa, quadra_futebol, sala_jogos, quadra_volei, SPA, brinquedoteca, piscina ) VALUES (?)";
 
@@ -151,22 +151,6 @@ import modelo.EspacoHotel;
 
 			return espacos;
 		}
-
-		public boolean atualizarEspacos(EspacoHotel end) {
-			// TODO Auto-generated method stub
-			return false;
-		}
-
-		public boolean removerEspacos(EspacoHotel end) {
-			// TODO Auto-generated method stub
-			return false;
-		}
-
-		public EspacoHotel buscarEspaco(int ps) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
 
 		
 	}

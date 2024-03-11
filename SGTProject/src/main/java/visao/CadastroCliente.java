@@ -13,6 +13,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+
+import modelo.Hospede;
+
 import javax.swing.ImageIcon;
 
 
@@ -261,5 +264,14 @@ public class CadastroCliente extends JFrame {
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\vivis\\OneDrive\\Área de Trabalho\\IMG PI\\LogoPI.png"));
 		lblNewLabel.setBounds(437, 62, 145, 128);
 		contentPane.add(lblNewLabel);
+	}
+
+	/**criado para ser adicionado em hospede
+	 * 
+	 * @param end
+	 */
+	public static void add(Hospede end) {
+		// TODO Auto-generated method stub
+		
 	}
 }
