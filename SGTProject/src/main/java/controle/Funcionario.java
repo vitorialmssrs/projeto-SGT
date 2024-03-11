@@ -2,6 +2,7 @@ package controle;
 
 public class Funcionario{
 	
+	
 	public int CPF;
 	public String PrimeiroNome;
 	public String Sobrenome;
@@ -10,7 +11,8 @@ public class Funcionario{
 	public int telefone;
 	public int cep;
 	public int numero;
-	public int  usuario_id_usuario;
+	private int  usuario_id_usuario;
+	
 	public int getCPF() {
 		return CPF;
 	}
@@ -62,7 +64,7 @@ public class Funcionario{
 	public int getUsuario_id_usuario() {
 		return usuario_id_usuario;
 	}
-	public void setUsuario_id_usuario(int usuario_id_usuario) {
+	private void setUsuario_id_usuario(int usuario_id_usuario) {
 		this.usuario_id_usuario = usuario_id_usuario;
 	}
 	

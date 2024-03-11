@@ -144,6 +144,15 @@ public class LoginFuncionario extends JFrame {
 		panelCinza.add(btnLimpar);
 		
 		JButton btnEntrar = new JButton("Entrar");
+		btnEntrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String cpf = textCPF.getText();
+				String senha = textSenha.getText();
+			
+				
+			}
+		});
 		btnEntrar.setForeground(new Color(255, 255, 245));
 		btnEntrar.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnEntrar.setBackground(new Color(1, 50, 1));

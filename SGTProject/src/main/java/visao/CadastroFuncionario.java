@@ -6,6 +6,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+
+import controle.Funcionario;
+import controle.FuncionarioDAO;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
@@ -214,8 +218,8 @@ public class CadastroFuncionario extends JFrame {
 		contentPane.add(textCPF_Funcionario);
 		textCPF_Funcionario.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Limpar");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnLimpar = new JButton("Limpar");
+		btnLimpar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//comando para limpar os campos 
 				
@@ -229,28 +233,63 @@ public class CadastroFuncionario extends JFrame {
 				 textCPF_Funcionario.setText(" ");
 			}
 		});
-		btnNewButton.setForeground(new Color(252, 251, 244));
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 17));
-		btnNewButton.setBackground(new Color(109, 164, 109));
-		btnNewButton.setBounds(608, 623, 176, 39);
-		contentPane.add(btnNewButton);
+		btnLimpar.setForeground(new Color(252, 251, 244));
+		btnLimpar.setFont(new Font("Tahoma", Font.BOLD, 17));
+		btnLimpar.setBackground(new Color(109, 164, 109));
+		btnLimpar.setBounds(608, 623, 176, 39);
+		contentPane.add(btnLimpar);
 		
-		JButton btnNewButton_1 = new JButton("Cadastrar");
-		btnNewButton_1.setBackground(new Color(66, 142, 66));
-		btnNewButton_1.setForeground(new Color(252, 251, 244));
-		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 17));
-		btnNewButton_1.setBounds(843, 623, 176, 39);
-		contentPane.add(btnNewButton_1);
-		
-		JButton btnNewButton_2 = new JButton("<- | Sair");
-		btnNewButton_2.addActionListener(new ActionListener() {
+		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				String nome = textNome_Funcionario.getText();
+				String email = textEmail_Funcionario.getText();
+				String telefone = textTelefone_Funcionario.getText();
+				String cpf = textCPF_Funcionario.getText();
+				String cep = textCep_Funcionario.getText();
+				String rua = textRua_Funcionario.getText();
+				String  numero = textNumero_Funcionario.getText();
+				String  bairro = textBairro_Funcionario.getText();
+				
+				//Verifica se tem alguma coisa
+				if(nome.isEmpty()) {
+					// exibir uma mensagem de erro
+				}else {
+					
+				//Instanciar o OBJETO do cadastro
+				Funcionario f = new Funcionario();
+				
+				//Setar valores digitados nos atributos do OBJETO
+				f.setPrimeiroNome(nome);
+				
+				//Instanciar o DAO
+				FuncionarioDAO dao = FuncionarioDAO.getInstancia();
+				
+				//Fazer a INSERÇÃO
+			    boolean valida = dao.inserirFuncionario(f);
+					
+				}
+				
 			}
 		});
-		btnNewButton_2.setForeground(new Color(252, 251, 244));
-		btnNewButton_2.setBackground(new Color(1, 50, 1));
-		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 17));
-		btnNewButton_2.setBounds(1204, 714, 176, 39);
-		contentPane.add(btnNewButton_2);
+		btnCadastrar.setBackground(new Color(66, 142, 66));
+		btnCadastrar.setForeground(new Color(252, 251, 244));
+		btnCadastrar.setFont(new Font("Tahoma", Font.BOLD, 17));
+		btnCadastrar.setBounds(843, 623, 176, 39);
+		contentPane.add(btnCadastrar);
+		
+		JButton btnSair = new JButton("<- | Sair");
+		btnSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+		});
+		btnSair.setForeground(new Color(252, 251, 244));
+		btnSair.setBackground(new Color(1, 50, 1));
+		btnSair.setFont(new Font("Tahoma", Font.BOLD, 17));
+		btnSair.setBounds(1204, 714, 176, 39);
+		contentPane.add(btnSair);
 	}
 }
