@@ -13,6 +13,8 @@ import net.miginfocom.swing.MigLayout;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class FuncionalidadeCliente extends JFrame {
 
@@ -75,6 +77,14 @@ public class FuncionalidadeCliente extends JFrame {
 		panelOpcoes.add(lblNewLabel_2, "cell 1 2,alignx center");
 		
 		JButton btnNewButton = new JButton("Check-in");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CadastroCliente cadastrocliente = new CadastroCliente();
+				cadastrocliente.setExtendedState(cadastrocliente.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+				cadastrocliente.setVisible(true);
+				cadastrocliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);				
+			}
+		});
 		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.setBackground(new Color(81, 108, 81));
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 60));
