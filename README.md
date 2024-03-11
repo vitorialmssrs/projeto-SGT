@@ -1,1 +1,1 @@
-# projeto-SGT
+# Sistema de Gerenciamento de Hotel
