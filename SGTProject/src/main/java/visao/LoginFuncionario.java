@@ -147,6 +147,11 @@ public class LoginFuncionario extends JFrame {
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				FuncionalidadeFuncionario funcionalidadefuncionario = new FuncionalidadeFuncionario();
+				funcionalidadefuncionario.setExtendedState(funcionalidadefuncionario.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+				funcionalidadefuncionario.setVisible(true);
+				funcionalidadefuncionario.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				
 				String cpf = textCPF.getText();
 				String senha = textSenha.getText();
 			
