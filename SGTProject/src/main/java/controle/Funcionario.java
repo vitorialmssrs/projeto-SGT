@@ -1,12 +1,14 @@
 package controle;
 
+import java.sql.Date;
+
 public class Funcionario{
 	
 	
 	public int CPF;
 	public String PrimeiroNome;
 	public String Sobrenome;
-	public  int data_nascimento;
+	public Date data_nascimento;
 	public String email;
 	public int telefone;
 	public int cep;
@@ -30,12 +32,6 @@ public class Funcionario{
 	}
 	public void setSobrenome(String sobrenome) {
 		Sobrenome = sobrenome;
-	}
-	public int getData_nascimento() {
-		return data_nascimento;
-	}
-	public void setData_nascimento(int data_nascimento) {
-		this.data_nascimento = data_nascimento;
 	}
 	public String getEmail() {
 		return email;
@@ -64,9 +60,18 @@ public class Funcionario{
 	public int getUsuario_id_usuario() {
 		return usuario_id_usuario;
 	}
-	private void setUsuario_id_usuario(int usuario_id_usuario) {
-		this.usuario_id_usuario = usuario_id_usuario;
+	public void setUsuario_id_usuario(int usuario_id_usuario) {
+	    this.usuario_id_usuario = usuario_id_usuario;
 	}
+	public void setData_nascimento(Date date) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public Date getData_nascimento() {
+        return this.data_nascimento;
+    }
+	
 	
 
 	

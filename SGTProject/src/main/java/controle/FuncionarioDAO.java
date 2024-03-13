@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
 //import controle.ControleFuncionario.IFuncionarioDAO;
 
 public class FuncionarioDAO {
@@ -25,8 +26,6 @@ public class FuncionarioDAO {
 		return instancia;
 		}
 		
-		
-		
 		public int inserirFuncionario(Funcionario end) {
 			String SQL = "INSERT INTO funcionarios (CPF, PrimeiroNome, Sobrenome, data_de_nascimento, email, telefone, cep, numero, usuario_id_usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			
@@ -39,7 +38,7 @@ public class FuncionarioDAO {
 				ps.setInt(1, end.getCPF());
 				ps.setString(2, end.getPrimeiroNome());
 				ps.setString(3, end.getSobrenome());
-				ps.setInt(4, end.getData_nascimento());
+				ps.setDate(4, end.getData_nascimento());
 				ps.setString(5, end.getEmail());
 				ps.setInt(6, end.getTelefone());
 				ps.setInt(7, end.getCep());
@@ -53,15 +52,14 @@ public class FuncionarioDAO {
 				con.fecharConexao();
 			}
 			
-			return 0;
-			
+			return 0;	
 		}
 		
 		public ArrayList <Funcionario> listarFuncionario(){
 			
 			ArrayList<Funcionario> funcionario = new ArrayList<Funcionario>();
 			
-			String SQL = "SELECT * FROM funcionario";
+			String SQL = "SELECT * FROM funcionarios";
 			
 			Conexao con = Conexao.getInstancia();
 			Connection conBD = con.conectar();
@@ -73,18 +71,19 @@ public class FuncionarioDAO {
 				
 				while(rs.next()) {
 					
-					Funcionario end = new Funcionario();
+					Funcionario f = new Funcionario();
 					
-					String CPF = rs.getString("CPF");
-					String ID = rs.getString("ID");
+					f.setCPF(rs.getInt("CPF"));
+					f.setPrimeiroNome(rs.getString("PrimeiroNome"));
+					f.setSobrenome(rs.getString("Sobrenome"));
+					f.setData_nascimento(rs.getDate("data_de_nascimento"));
+					f.setEmail(rs.getString("Email"));
+					f.setTelefone(rs.getInt("Telefone"));
+					f.setCep(rs.getInt("Cep"));
+					f.setNumero(rs.getInt("Numero"));
+					f.setUsuario_id_usuario(rs.getInt("Usuario_id_usuario"));
 				
-
-					//end.setCPF(CPF);
-					//end.setID(ID);
-					
-					
-					funcionario.add(end);
-					
+					funcionario.add(f);
 				}
 				
 			} catch (SQLException e) {
@@ -117,7 +116,7 @@ public class FuncionarioDAO {
 			}finally {
 				con.fecharConexao();
 			}
-			return retorno;
+			return retorno != 0;
 			
 			}
 		
