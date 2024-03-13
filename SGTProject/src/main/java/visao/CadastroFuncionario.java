@@ -267,7 +267,7 @@ public class CadastroFuncionario extends JFrame {
 				FuncionarioDAO dao = FuncionarioDAO.getInstancia();
 				
 				//Fazer a INSERÇÃO
-			    boolean valida = dao.inserirFuncionario(f);
+				int valida = dao.inserirFuncionario(f);
 					
 				}
 				
