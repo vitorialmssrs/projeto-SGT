@@ -9,7 +9,7 @@ public class Hospede {
 	public String primeiro_nome;
 	public String sobrenome;
 	public int cpfClientes;
-	public Date dataNascimento;
+	public Date datanascimento;
 	public Date checkin;
 	public Date checkout;
 	
@@ -25,17 +25,17 @@ public class Hospede {
 	public void setSobrenome(String sobrenome) {
 		this.sobrenome = sobrenome;
 	}
-	public int getCpf_clientes() {
+	public int getCpfclientes() {
 		return cpfClientes;
 	}
-	public void setCpf_clientes(int cpf_clientes) {
-		this.cpfClientes = cpf_clientes;
+	public void setCpfclientes(int cpfclientes) {
+		this.cpfClientes = cpfclientes;
 	}
-	public Date getData_de_nascimento() {
-		return dataNascimento;
+	public Date getDatanascimento() {
+		return datanascimento;
 	}
-	public void setData_de_nascimento(Date i) {
-		this.dataNascimento = i;
+	public void setDatanascimento(Date i) {
+		this.datanascimento = i;
 	}
 	public Date getCheckin() {
 		return  checkin;
@@ -48,10 +48,6 @@ public class Hospede {
 	}
 	public void setCheckout(Date checkout) {
 		this.checkout = checkout;
-	}
-	public void checkin(Date date) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 

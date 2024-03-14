@@ -13,6 +13,21 @@ public class Funcionario{
 	public int telefone;
 	public int cep;
 	public int numero;
+	public String rua;
+	public String bairro;
+	
+	public String getBairro() {
+		return bairro;
+	}
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+	public String getRua() {
+		return rua;
+	}
+	public void setRua(String rua) {
+		this.rua = rua;
+	}
 	private int  usuario_id_usuario;
 	
 	public int getCPF() {
@@ -63,9 +78,8 @@ public class Funcionario{
 	public void setUsuario_id_usuario(int usuario_id_usuario) {
 	    this.usuario_id_usuario = usuario_id_usuario;
 	}
-	public void setData_nascimento(Date date) {
-		// TODO Auto-generated method stub
-		
+	public void setData_nascimento(Date date){
+		this.data_nascimento = date;
 	}
 	
 	public Date getData_nascimento() {

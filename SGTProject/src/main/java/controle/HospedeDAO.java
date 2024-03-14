@@ -7,14 +7,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 
-import com.mysql.cj.xdevapi.PreparableStatement;
-
 import modelo.Hospede;
 import visao.CadastroCliente;
 
 public class HospedeDAO {
 
-	private static final Date Date = null;
 	private static HospedeDAO instancia;
 	
 	private HospedeDAO() {}
@@ -38,8 +35,8 @@ public class HospedeDAO {
 			
 			ps.setString(1, end.getPrimeiro_nome());
 			ps.setString(2, end.getSobrenome());
-			ps.setInt(3, end.getCpf_clientes());
-			ps.setDate(4, (java.sql.Date) end.getData_de_nascimento());
+			ps.setInt(3, end.getCpfclientes());
+			ps.setDate(4, (java.sql.Date) end.getDatanascimento());
 			ps.setDate(5, (java.sql.Date) end.getCheckin());
 			ps.setDate(6, (java.sql.Date) end.getCheckout());
 
@@ -77,28 +74,28 @@ public class HospedeDAO {
 				
 				String Sobrenome = rs.getString("sobrenome");
 				
-				String dataNascimento = rs.getString("dataNascimento");
+				Date Datanascimento = rs.getDate("dataNascimento");
 								
-				String cpf = rs.getString("cpf");
+				int cpf = rs.getInt("cpf");
 				
-				String dataCheckIn = rs.getString("DataCheckIn");
+				Date Checkin = rs.getDate("DataCheckIn");
 				
-				String dataCheckOut = rs.getString("DataCheckOut");
+				Date dataCheckOut = rs.getDate("DataCheckOut");
 				
 				end.setPrimeiro_nome(PrimeiroNome);
 				end.setSobrenome(Sobrenome);
-				end.setCpf_clientes(0);
-				end.setData_de_nascimento(Date);
-				end.setCheckin(Date);
-				end.setCheckout(Date);
+				end.setCpfclientes(cpf);
+				end.setDatanascimento(Datanascimento);
+				end.setCheckin(Checkin);
+				end.setCheckout(dataCheckOut);
 				
 				
-				String primeiroNome = rs.getString("Primeiro Nome");
+				/*String primeiroNome = rs.getString("Primeiro Nome");
 				String sobrenome = rs.getString("Sobrenome");
-				String CPF = rs.getNString("CPF");
-				String DataNascimento = rs.getNString("Data de Nascimento");
-				String checkIn = rs.getString("Check-in");
-				String checkOut = rs.getString("Check-out");
+				String CPF = rs.getString("CPF");
+				Date DataNascimento = rs.getDate("Data de Nascimento");
+				Date checkIn = rs.getDate("Check-in");
+				Date checkOut = rs.getDate("Check-out");*/
 				
 				CadastroCliente.add(end);		
 			//precisa acrescentar a tela de confimação 
@@ -123,8 +120,8 @@ public class HospedeDAO {
 			PreparedStatement ps = conBD.prepareStatement(SQL);
 			ps.setString(1, end.getPrimeiro_nome());
 			ps.setString(2, end.getSobrenome());
-			ps.setInt(3, end.getCpf_clientes());
-			ps.setDate(4, (java.sql.Date) end.getData_de_nascimento());
+			ps.setInt(3, end.getCpfclientes());
+			ps.setDate(4, (java.sql.Date) end.getDatanascimento());
 			ps.setDate(5, (java.sql.Date) end.getCheckin());
 			ps.setDate(6, (java.sql.Date) end.getCheckout());
 			retorno = ps.executeUpdate();
@@ -133,6 +130,6 @@ public class HospedeDAO {
 		} finally {
 			con.fecharConexao();
 		}
-		return retorno;
+		return retorno != 0;
 	}
 }
