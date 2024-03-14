@@ -57,7 +57,7 @@ public class TelaInicial extends JFrame {
 		contentPane.setLayout(gbl_contentPane);
 
 		JLabel lblLogo = new JLabel("");
-		lblLogo.setIcon(new ImageIcon("C:\\Users\\vivis\\OneDrive\\Área de Trabalho\\IMG PI\\LogoPI.png"));
+		lblLogo.setIcon(new ImageIcon("C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\git\\Projeto\\projeto-SGT\\SGTProject\\src\\main\\java\\imgs\\LogoPI.png"));
 		GridBagConstraints gbc_lblLogo = new GridBagConstraints();
 		gbc_lblLogo.fill = GridBagConstraints.VERTICAL;
 		gbc_lblLogo.insets = new Insets(0, 0, 5, 0);
@@ -106,9 +106,9 @@ public class TelaInicial extends JFrame {
 		gbc_btnCliente.gridy = 4;
 		contentPane.add(btnCliente, gbc_btnCliente);
 
-		JButton btnNewButton = new JButton("Funcionário ");
+		JButton btnNewButton = new JButton("Funcionário");
 		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent event) {
 				LoginFuncionario loginfuncionario = new LoginFuncionario();
 				loginfuncionario.setExtendedState(loginfuncionario.getExtendedState() | JFrame.MAXIMIZED_BOTH);
 				loginfuncionario.setVisible(true);

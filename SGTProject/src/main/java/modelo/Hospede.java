@@ -30,6 +30,7 @@ public class Hospede {
 	public String getSobrenome() {
 		return sobrenome;
 	}
+
 	public void setSobrenome(String sobrenome) {
 		this.sobrenome = sobrenome;
 	}
@@ -39,21 +40,26 @@ public class Hospede {
 	public void setCpfClientes(int cpfClientes) {
 		this.cpfClientes = cpfClientes;
 	}
+
 	public Date getDatanascimento() {
 		return datanascimento;
 	}
 	public void setDatanascimento(Date datanascimento) {
 		this.datanascimento = datanascimento;
 	}
+
 	public Date getCheckin() {
 		return checkin;
 	}
+
 	public void setCheckin(Date checkin) {
 		this.checkin = checkin;
 	}
+
 	public Date getCheckout() {
 		return checkout;
 	}
+
 	public void setCheckout(Date checkout) {
 		this.checkout = checkout;
 	}
