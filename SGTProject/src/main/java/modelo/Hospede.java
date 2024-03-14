@@ -6,13 +6,21 @@ public class Hospede {
 	
 	//alt shift r muda todas as variaveis 
 	
-	public String primeiro_nome;
-	public String sobrenome;
-	public int cpfClientes;
-	public Date datanascimento;
-	public Date checkin;
-	public Date checkout;
+	private Integer id; 	
+	private String primeiro_nome;
+	private String sobrenome;
+	private int cpfClientes;
+	private Date datanascimento;
+	private Date checkin;
+	private Date checkout;
 	
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	public String getPrimeiro_nome() {
 		return primeiro_nome;
 	}
@@ -25,20 +33,20 @@ public class Hospede {
 	public void setSobrenome(String sobrenome) {
 		this.sobrenome = sobrenome;
 	}
-	public int getCpfclientes() {
+	public int getCpfClientes() {
 		return cpfClientes;
 	}
-	public void setCpfclientes(int cpfclientes) {
-		this.cpfClientes = cpfclientes;
+	public void setCpfClientes(int cpfClientes) {
+		this.cpfClientes = cpfClientes;
 	}
 	public Date getDatanascimento() {
 		return datanascimento;
 	}
-	public void setDatanascimento(Date i) {
-		this.datanascimento = i;
+	public void setDatanascimento(Date datanascimento) {
+		this.datanascimento = datanascimento;
 	}
 	public Date getCheckin() {
-		return  checkin;
+		return checkin;
 	}
 	public void setCheckin(Date checkin) {
 		this.checkin = checkin;
@@ -49,6 +57,8 @@ public class Hospede {
 	public void setCheckout(Date checkout) {
 		this.checkout = checkout;
 	}
+
+	
 	
 
 }

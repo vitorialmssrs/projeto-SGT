@@ -11,4 +11,6 @@ public interface IHospedeDao {
 	public boolean atualizarHospede(Hospede end);
 	
 	public Hospede buscarHospedePorCpf(int cpf);
+	
+	public boolean removerHospede (Hospede via);
 }

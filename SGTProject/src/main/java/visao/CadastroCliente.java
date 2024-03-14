@@ -218,6 +218,7 @@ public class CadastroCliente extends JFrame {
 		JButton btnCadastro_Cliente = new JButton("Cadastrar");
 		btnCadastro_Cliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				//precisa adicionar um comando que mostre a tela de confirmação de cadastro realizado ou não 
 				// caso de certo precisa perguntar se deseja fazer mais alguma coisa ou se pode sair 
 			}
