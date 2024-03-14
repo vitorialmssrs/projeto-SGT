@@ -119,8 +119,9 @@ public class CadastroCliente extends JFrame {
 		contentPane.add(lblDataNascimento);
 		
 		textCPF = new JTextField();
+		textCPF.setText("11111111111");
+		textCPF.setToolTipText("");
 		textCPF.setForeground(new Color(1, 50, 1));
-		textCPF.setText(" 11111111111");
 		textCPF.setBackground(new Color(252, 251, 244));
 		textCPF.setBounds(194, 455, 404, 29);
 		contentPane.add(textCPF);
@@ -232,6 +233,10 @@ public class CadastroCliente extends JFrame {
 		JButton btnSair_tela_cad_Cliente = new JButton("<- | Sair");
 		btnSair_tela_cad_Cliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				
+				/*CadastroCliente cadastrocliente = new CadastroCliente();
+				cadastrocliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);*/
 			}
 		});
 		btnSair_tela_cad_Cliente.setForeground(new Color(252, 251, 244));
@@ -262,7 +267,7 @@ public class CadastroCliente extends JFrame {
 		txtHoraSaida.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\vivis\\OneDrive\\Área de Trabalho\\IMG PI\\LogoPI.png"));
+		lblNewLabel.setIcon(new ImageIcon(CadastroCliente.class.getResource("/imagens/LogoPI.png")));
 		lblNewLabel.setBounds(437, 62, 145, 128);
 		contentPane.add(lblNewLabel);
 	}

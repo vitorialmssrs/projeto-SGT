@@ -57,7 +57,7 @@ public class TelaInicial extends JFrame {
 		contentPane.setLayout(gbl_contentPane);
 
 		JLabel lblLogo = new JLabel("");
-		lblLogo.setIcon(new ImageIcon("C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\git\\Projeto\\projeto-SGT\\SGTProject\\src\\main\\java\\imgs\\LogoPI.png"));
+		lblLogo.setIcon(new ImageIcon(TelaInicial.class.getResource("/imagens/Châteu_Imperial-removebg-preview 4.png")));
 		GridBagConstraints gbc_lblLogo = new GridBagConstraints();
 		gbc_lblLogo.fill = GridBagConstraints.VERTICAL;
 		gbc_lblLogo.insets = new Insets(0, 0, 5, 0);

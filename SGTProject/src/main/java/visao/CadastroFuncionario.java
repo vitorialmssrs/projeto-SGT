@@ -78,7 +78,7 @@ public class CadastroFuncionario extends JFrame {
 		contentPane.add(lbl_Insira_Informacoes_Cadastro);
 		
 		JLabel lblLogo = new JLabel("");
-		lblLogo.setIcon(new ImageIcon("C:\\Users\\vitor\\Downloads\\Châteu_Imperial-removebg-preview 1.png"));
+		lblLogo.setIcon(new ImageIcon(CadastroFuncionario.class.getResource("/imagens/Châteu_Imperial-removebg-preview 1.png")));
 		lblLogo.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblLogo.setBounds(33, 185, 486, 451);
 		contentPane.add(lblLogo);

@@ -58,7 +58,7 @@ public class FuncionalidadeFuncionario extends JFrame {
 		
 		JLabel lblFTHotel = new JLabel("");
 		lblFTHotel.setBounds(0, 0, 911, 1080);
-		lblFTHotel.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\projeto-SGT\\SGTProject\\src\\main\\resources\\img\\Hotel 2.png"));
+		lblFTHotel.setIcon(new ImageIcon(FuncionalidadeFuncionario.class.getResource("/imagens/Hotel 2.png")));
 		panelFt.add(lblFTHotel);
 		
 		JPanel panelOpcoes = new JPanel();

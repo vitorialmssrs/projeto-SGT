@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 
 
@@ -62,21 +63,24 @@ public class LoginFuncionario extends JFrame {
 		panelVerde.setLayout(null);
 		
 		JLabel lblSejaBemVindo = new JLabel("Seja bem-vindo!");
+		lblSejaBemVindo.setBounds(218, 219, 449, 82);
+		lblSejaBemVindo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSejaBemVindo.setForeground(new Color(66, 142, 66));
 		lblSejaBemVindo.setBackground(new Color(66, 142, 66));
 		lblSejaBemVindo.setFont(new Font("Tahoma", Font.BOLD, 54));
-		lblSejaBemVindo.setBounds(176, 219, 449, 82);
 		panelVerde.add(lblSejaBemVindo);
 		
 		JLabel lblRealizeSeuLogin = new JLabel("Realize o seu Login");
+		lblRealizeSeuLogin.setBounds(316, 312, 244, 31);
+		lblRealizeSeuLogin.setHorizontalAlignment(SwingConstants.CENTER);
 		lblRealizeSeuLogin.setForeground(new Color(66, 142, 66));
 		lblRealizeSeuLogin.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		lblRealizeSeuLogin.setBounds(276, 311, 244, 31);
 		panelVerde.add(lblRealizeSeuLogin);
 		
 		JLabel lblLogo = new JLabel("");
-		lblLogo.setIcon(new ImageIcon("C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\git\\Projeto\\projeto-SGT\\SGTProject\\src\\main\\resources\\img\\Châteu_Imperial-removebg-preview 4.png"));
-		lblLogo.setBounds(276, 420, 218, 169);
+		lblLogo.setBounds(316, 420, 218, 169);
+		lblLogo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLogo.setIcon(new ImageIcon(LoginFuncionario.class.getResource("/imagens/Châteu_Imperial-removebg-preview 4.png")));
 		panelVerde.add(lblLogo);
 		
 		JPanel panelCinza = new JPanel();
