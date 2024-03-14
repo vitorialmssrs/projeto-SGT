@@ -100,17 +100,20 @@ public class FuncionarioDAO {
 		
 			public boolean atualizarFuncionario(Funcionario end){
 				
-			
 			String SQL = "UPTADE funcionario Set PrimeiroNome = ?";
-			Conexao con = Conexao.getInstancia();
-			Connection conBD = con.conectar();
+			
+			Conexao con = Conexao.getInstancia(); //instancia
+			Connection conBD = con.conectar(); //cria uma "ponte"
+			
 			int retorno = 0;
 			
 			try {
 				PreparedStatement ps = conBD.prepareStatement(SQL);
 				ps.setString(1, end.getPrimeiroNome());
 				ps.setString(2, end.getSobrenome());
-				retorno = ps.executeUpdate();
+				
+				retorno = ps.executeUpdate(); 
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}finally {
@@ -119,5 +122,32 @@ public class FuncionarioDAO {
 			return retorno != 0;
 			
 			}
+			
+			
+			public boolean removerFuncionario(Funcionario end){
+				
+				String SQL = "DELETE FROM funcionario PrimeiroNome = ?";
+				
+				Conexao con = Conexao.getInstancia(); //instancia
+				Connection conBD = con.conectar(); //cria uma "ponte"
+				
+				int retorno = 0;
+				
+				try {
+					PreparedStatement ps = conBD.prepareStatement(SQL);
+					ps.setString(1, end.getPrimeiroNome());
+					ps.setString(2, end.getSobrenome());
+					
+					retorno = ps.executeUpdate(); 
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}finally {
+					con.fecharConexao();
+				}
+				return retorno != 0;
+				
+				}
+			
 		
 }

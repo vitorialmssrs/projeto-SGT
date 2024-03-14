@@ -245,15 +245,15 @@ public class CadastroFuncionario extends JFrame {
 				
 				String nome = textNome_Funcionario.getText();
 				String email = textEmail_Funcionario.getText();
-				int telefone = parseInt(textTelefone_Funcionario.getText());
-				int cpf = parseInt(textCPF_Funcionario.getText());
-				int cep = parseInt(textCep_Funcionario.getText());
+				String telefone = textTelefone_Funcionario.getText();
+				String cpf = textCPF_Funcionario.getText();
+				String cep = textCep_Funcionario.getText();
 				String rua = textRua_Funcionario.getText();
-				int  numero = parseInt(textNumero_Funcionario.getText());;
+				String  numero = textNumero_Funcionario.getText();
 				String  bairro = textBairro_Funcionario.getText();
 				
 				//Verifica se tem alguma coisa
-				if(nome.isEmpty()) {
+				if(nome.isEmpty() || email.isEmpty() || telefone.isEmpty() || cpf.isEmpty() || cep.isEmpty() || rua.isEmpty() || numero.isEmpty() || bairro.isEmpty() )  {
 					// exibir uma mensagem de erro
 				}else {
 					
@@ -263,11 +263,11 @@ public class CadastroFuncionario extends JFrame {
 				//Setar valores digitados nos atributos do OBJETO
 				f.setPrimeiroNome(nome);
 				f.setEmail(email);
-				f.setTelefone(telefone);
-				f.setCPF(cpf);
-				f.setCep(cep);
+				f.setTelefone(Integer.valueOf(telefone));
+				f.setCPF(Integer.valueOf(cpf));
+				f.setCep((Integer.valueOf(cep)));
 				f.setRua(rua);
-				f.setNumero(numero);
+				f.setNumero((Integer.valueOf(numero)));
 				f.setBairro(bairro);
 				
 				
@@ -275,16 +275,12 @@ public class CadastroFuncionario extends JFrame {
 				FuncionarioDAO dao = FuncionarioDAO.getInstancia();
 				
 				//Fazer a INSERÇÃO
-				int valida = dao.inserirFuncionario(f);
+				int retorno = dao.inserirFuncionario(f);
 					
 				}
 				
 			}
 
-			private int parseInt(String text) {
-				// TODO Auto-generated method stub
-				return 0;
-			}
 		});
 		btnCadastrar.setBackground(new Color(66, 142, 66));
 		btnCadastrar.setForeground(new Color(252, 251, 244));

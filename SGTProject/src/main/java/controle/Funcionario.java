@@ -5,10 +5,12 @@ import java.sql.Date;
 public class Funcionario{
 	
 	
+	
+	
 	public int CPF;
 	public String PrimeiroNome;
 	public String Sobrenome;
-	public Date data_nascimento;
+	public Date data_nascimento;  
 	public String email;
 	public int telefone;
 	public int cep;
