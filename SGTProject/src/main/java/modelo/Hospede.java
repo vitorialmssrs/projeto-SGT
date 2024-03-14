@@ -1,13 +1,13 @@
 package modelo;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Hospede {
 	
 	//alt shift r muda todas as variaveis 
 	
 	private Integer id; 	
-	private String primeiro_nome;
+	private String primeironome;
 	private String sobrenome;
 	private int cpfClientes;
 	private Date datanascimento;
@@ -21,11 +21,11 @@ public class Hospede {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getPrimeiro_nome() {
-		return primeiro_nome;
+	public String getPrimeironome() {
+		return primeironome;
 	}
-	public void setPrimeiro_nome(String primeiro_nome) {
-		this.primeiro_nome = primeiro_nome;
+	public void setPrimeironome(String primeironome) {
+		this.primeironome = primeironome;
 	}
 	public String getSobrenome() {
 		return sobrenome;

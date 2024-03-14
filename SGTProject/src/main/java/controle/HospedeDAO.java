@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 
 
 import modelo.Hospede;
@@ -14,20 +14,20 @@ import modelo.Hospede;
 public class HospedeDAO {
 
 	private static HospedeDAO instancia;
-	
-	private HospedeDAO() {}
-	
+
+	private HospedeDAO() {
+	}
+
 	public static HospedeDAO getInstancia() {
 		if (instancia == null) {
 			instancia = new HospedeDAO();
 		}
-	return instancia;
+		return instancia;
 	}
-	
-	public int insertHospede(Hospede end) { 
-		String SQL = "INSERT INTO hospede (primeiroNome, sobrenome, cpf, dataNascimento, checkIn, checkOut) VALUES (?, ?)";
 
-		
+	public int insertHospede(Hospede end) {
+		String SQL = "INSERT INTO hospede (primeiroNome, sobrenome, cpf, dataNascimento, checkIn, checkOut) VALUES (?, ?, ?, ?, ?, ?)";
+
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
 		
@@ -36,12 +36,12 @@ public class HospedeDAO {
 		try {
 			PreparedStatement ps = conBD.prepareStatement(SQL,Statement.RETURN_GENERATED_KEYS);
 			
-			ps.setString(1, end.getPrimeiro_nome());
+			ps.setString(1, end.getPrimeironome());
 			ps.setString(2, end.getSobrenome());
 			ps.setInt(3, end.getCpfClientes());
-			ps.setDate(4, (java.sql.Date) end.getDatanascimento());
-			ps.setDate(5, (java.sql.Date) end.getCheckin());
-			ps.setDate(6, (java.sql.Date) end.getCheckout());
+			ps.setDate(4, end.getDatanascimento());
+			ps.setDate(5, end.getCheckin());
+			ps.setDate(6, end.getCheckout());
 			
 			int ra = ps.executeUpdate();
 			
@@ -56,14 +56,13 @@ public class HospedeDAO {
 
 					
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
 			
 		}finally {
 			con.fecharConexao();
 			
 		}
-		
 
 		return chavePrimariaGerada;
 	}
@@ -105,7 +104,7 @@ public class HospedeDAO {
 				//LocalDateTime
 				
 				//seta oa valores no objeto java 
-				end.setPrimeiro_nome(PrimeiroNome);
+				end.setPrimeironome(PrimeiroNome);
 				end.setSobrenome(Sobrenome);
 				end.setCpfClientes(cpf);
 				end.setDatanascimento(Datanascimento);
@@ -121,11 +120,10 @@ public class HospedeDAO {
 		} finally {
 			con.fecharConexao();
 		}
-		
-		
+
 		return hospedes;
 	}
-	
+
 	public boolean atualizarHospede(Hospede end) {
 		
 		String SQL = "UPDATE hospedes SET nome = ?, sobrenome = ?, cpf = ?, dataNascimento = ?, checkIn = ?, checkOut = ? WHERE cpf = ?";
@@ -140,12 +138,12 @@ public class HospedeDAO {
 			
 			PreparedStatement ps = conBD.prepareStatement(SQL);
 
-			ps.setString(1, end.getPrimeiro_nome());
+			ps.setString(1, end.getPrimeironome());
 			ps.setString(2, end.getSobrenome());
 			ps.setInt(3, end.getCpfClientes());
-			ps.setDate(4, (java.sql.Date) end.getDatanascimento());
-			ps.setDate(5, (java.sql.Date) end.getCheckin());
-			ps.setDate(6, (java.sql.Date) end.getCheckout());
+			ps.setDate(4, end.getDatanascimento());
+			ps.setDate(5, end.getCheckin());
+			ps.setDate(6, end.getCheckout());
 			
 			retorno = ps.executeUpdate();
 			
@@ -159,33 +157,31 @@ public class HospedeDAO {
 		return retorno != 0;
 	}
 	
-	public boolean removerHospede (Hospede via) {
+	public boolean removerHospede (Hospede end) {
 		
-		String SQL = "SELECT * FROM hospede WHERE id_hospede = ?";
+		String SQL = "DELETE FROM hospede WHERE cpf = ?"; //verificar qual sera usado para excluir id ou cpf
 		
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
-		
+		int retorno = 0;
 		try {
 			PreparedStatement ps = conBD.prepareStatement(SQL);
+			ps.setInt(1, end.getId());
 			
-			ps.setInt(1, via.getId());
+			retorno = ps.executeUpdate();
 			
-			int rowsAffected = ps.executeUpdate();
-			
+			/*int rowsAffected = ps.executeUpdate();
 			if (rowsAffected > 0) {
 				con.fecharConexao();
-				return true;
-			}
+				return true;}*/
 			
 		} catch (SQLException e) {
-			
 			e.printStackTrace();
 		} finally {
 			con.fecharConexao();
 		}
 
-		return false;
+		return retorno != 0;
 	}
 	
 	
