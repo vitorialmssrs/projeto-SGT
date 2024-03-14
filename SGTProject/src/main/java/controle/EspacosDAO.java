@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 
 import modelo.EspacoHotel;
+import visao.EspacosHotel;
 
 //criar o DAO para segunda e fazer a conexão com banco de dados 
 	/**
@@ -20,7 +21,16 @@ import modelo.EspacoHotel;
 	public class EspacosDAO implements IEspacosDAO {
 		
 		/*
-		 * Variavel padrao Singleton
+		 * Variavel padrao Singleton serve para somente criar a variavel na memoria ram uma unica vez
+		 * é colocado uma variavel da propria classe 
+		 * torna o construtor privado para n ser mais instanciada 
+		 * e para utilizar é usado o metodo getInstancia 
+		 * 
+		 * a primeira vez que for instanciada sera 
+		 * depois só retorna o mesmo valor na memoria 
+		 * e precisa ter no DAO e Conexao 
+		 * precisa ter o try catch e finaly
+		 * 
 		 */
 		private static EspacosDAO instancia;
 
@@ -48,8 +58,9 @@ import modelo.EspacoHotel;
 		 */
 		public int inserirEspacos(EspacoHotel end) {
 
-			String SQL = "INSERT INTO EspacoHotel (academia, quiosque, salao_festa, quadra_futebol, sala_jogos, quadra_volei, SPA, brinquedoteca, piscina ) VALUES (?)";
+			String SQL = "INSERT INTO EspacoHotel (academia, quiosque, salao_festa, quadra_futebol, sala_jogos, quadra_volei, SPA, brinquedoteca, piscina ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
+			//Abre conexao e cria a "ponte de conexao" com o MySQL
 			Conexao con = Conexao.getInstancia();
 			Connection conBD = con.conectar();
 
@@ -68,11 +79,8 @@ import modelo.EspacoHotel;
 				ps.setString(1, end.getBrinquedoteca());
 				ps.setString(1, end.getPiscina());
 				
-				
-				ResultSet rs = ps.executeQuery();
-				if (rs != null) {
-					chavePrimariaGerada = rs.getInt(1);
-				}
+				//Executa sem esperar retorno do BD
+				return ps.executeUpdate(); 
 
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -80,7 +88,7 @@ import modelo.EspacoHotel;
 				con.fecharConexao();
 			}
 
-			return chavePrimariaGerada;
+			return 0;
 
 		}
 
@@ -158,7 +166,7 @@ import modelo.EspacoHotel;
 			ArrayList<EspacoHotel> espacos = new ArrayList<EspacoHotel>();
 
 			// Comando SQL a ser executado
-			String SQL = "SELECT * FROM enderecos";
+			String SQL = "SELECT * FROM espacos";
 
 			// Cria a "ponte de conexao" com MYSQL
 			Conexao con = Conexao.getInstancia();
@@ -211,21 +219,86 @@ import modelo.EspacoHotel;
 			return espacos;
 		}
 
-		@Override
+	
 		public boolean atualizarEspaco(EspacoHotel end) {
 			
-			// TODO Auto-generated method stub
-			return false;
+			String SQL = "UPDATE espacos SET academia = ?, quiosque = ?, salao_festa = ?, quadra_futebol = ?, sala_jogos = ?, quadra_volei = ?, SPA = ?, brinquedoteca = ?, piscina = ?   WHERE academia = ?, quiosque = ?, salao_festa = ?, quadra_futebol = ?, sala_jogos = ?, quadra_volei = ?, SPA = ?, brinquedoteca = ?, piscina = ? "; 
+
+			
+			//Cria a "ponta de conexão" com o MYSQL com o padrão singleton
+			Conexao con = Conexao.getInstancia(); // instancia 
+			Connection conBD = con.conectar(); // cria a ponte
+			
+			int retorno = 0;
+			
+			try {
+				PreparedStatement ps = conBD.prepareStatement(SQL);
+				
+				//Setando os valores
+				
+				ps.setString(1, end.getAcademia());
+				ps.setString(1, end.getQuiosque());
+				ps.setString(1, end.getSalao_festa());
+				ps.setString(1, end.getQuadra_futebol());
+				ps.setString(1, end.getSala_jogos());
+				ps.setString(1, end.getQuadra_volei());
+				ps.setString(1, end.getSPA());
+				ps.setString(1, end.getBrinquedoteca());
+				ps.setString(1, end.getPiscina());
+				
+				retorno = ps.executeUpdate();
+				
+				
+			} catch (Exception e) {
+				// TODO: handle exception
+			}finally {
+				
+			}
+			
+			
+			return retorno;
 		}
 
 		@Override
 		public boolean removerEspaco(EspacoHotel end) {
-			// TODO Auto-generated method stub
-			return false;
+			
+			String SQL = "SELECT * FROM espaco WHERE id_espaco = ?";
+			
+			Conexao con = Conexao.getInstancia();
+			Connection conBD = con.conectar();
+			
+			int retorno = 0;
+			
+			try {
+				PreparedStatement ps = conBD.prepareStatement(SQL);
+				 
+				ps.setString(1, Academia);
+				ps.setString(2, Quiosque);
+				ps.setString(3, Salao_festa);
+				ps.setString(4, Quadra_futebol);
+				ps.setString(5, Sala_jogos);
+				ps.setString(6, Quadra_volei);
+				ps.setString(7, SPA);
+				ps.setString(8, Brinquedoteca);
+				ps.setString(9, Piscina);
+				
+			} catch (Exception e) {
+				
+			} finally {
+				
+			}
+			
+				return false;
+		
 		}
+		
+			
+			
+			
 
 
 		
+	}
 	}
 	
 

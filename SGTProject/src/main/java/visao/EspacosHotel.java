@@ -140,6 +140,29 @@ public class EspacosHotel extends JFrame {
 		contentPane.add(btnSPA);
 		
 		JButton btnSair = new JButton("<- |  Sair ");
+		btnSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				/* para editar precisa ter todos os parametros e dos novos valores 
+				 * 
+				 * pegar o que precisa excluir 
+				 * String cep txtCep.getText();
+				 * 
+				 * instanciar 
+				 * EspacosDAO endDAO = EspacosDAO.getInstancia();
+				 *  
+				 * pegar o retorno 
+				 * int retorno = endDAO.removerEspaco(academia);
+				 * 
+				 * exibir mensagem de erro ou sucesso com if 
+				 * if
+				 * 
+				 * 
+				 * 
+				 * 
+				 */
+			}
+		});
 		btnSair.setBackground(new Color(227, 236, 229));
 		btnSair.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnSair.setForeground(new Color(1, 50, 1));
