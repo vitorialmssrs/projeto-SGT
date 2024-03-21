@@ -62,6 +62,12 @@ public class LoginFuncionario extends JFrame {
 		contentPane.add(panelVerde);
 		panelVerde.setLayout(null);
 		
+		JLabel lblLogo = new JLabel("");
+		lblLogo.setHorizontalAlignment(SwingConstants.LEFT);
+		lblLogo.setIcon(new ImageIcon(LoginFuncionario.class.getResource("/imagens/Châteu_Imperial-removebg-preview 4.png")));
+		lblLogo.setBounds(276, 420, 218, 169);
+		panelVerde.add(lblLogo);
+		
 		JLabel lblSejaBemVindo = new JLabel("Seja bem-vindo!");
 		lblSejaBemVindo.setBounds(218, 219, 449, 82);
 		lblSejaBemVindo.setHorizontalAlignment(SwingConstants.CENTER);
@@ -77,12 +83,7 @@ public class LoginFuncionario extends JFrame {
 		lblRealizeSeuLogin.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		panelVerde.add(lblRealizeSeuLogin);
 		
-		JLabel lblLogo = new JLabel("");
-		lblLogo.setBounds(316, 420, 218, 169);
-		lblLogo.setHorizontalAlignment(SwingConstants.CENTER);
-		lblLogo.setIcon(new ImageIcon(LoginFuncionario.class.getResource("/imagens/Châteu_Imperial-removebg-preview 4.png")));
-		panelVerde.add(lblLogo);
-		
+
 		JPanel panelCinza = new JPanel();
 		panelCinza.setForeground(new Color(227, 236, 229));
 		panelCinza.setBackground(new Color(255, 255, 245));
@@ -156,8 +157,8 @@ public class LoginFuncionario extends JFrame {
 				funcionalidadefuncionario.setVisible(true);
 				funcionalidadefuncionario.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				
-				String cpf = textCPF.getText();
-				String senha = textSenha.getText();
+				//String cpf = textCPF.getText();
+				//String senha = textSenha.getText();
 			
 				
 			}
@@ -169,6 +170,11 @@ public class LoginFuncionario extends JFrame {
 		panelCinza.add(btnEntrar);
 		
 		JButton btnSair = new JButton("Sair");
+		btnSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+			}
+		});
 		btnSair.setIcon(new ImageIcon("C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\git\\Projeto\\projeto-SGT\\SGTProject\\src\\main\\resources\\img\\Vector (1).png"));
 		btnSair.setForeground(new Color(255, 255, 245));
 		btnSair.setBackground(new Color(1, 50, 1));
