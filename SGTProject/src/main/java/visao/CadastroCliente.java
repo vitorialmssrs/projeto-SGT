@@ -14,9 +14,11 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import controle.HospedeDAO;
 import modelo.Hospede;
 
 import javax.swing.ImageIcon;
+import java.awt.Toolkit;
 
 
 public class CadastroCliente extends JFrame {
@@ -55,6 +57,8 @@ public class CadastroCliente extends JFrame {
 	 * Create the frame.
 	 */
 	public CadastroCliente() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(CadastroCliente.class.getResource("/imagens/LogoPI.png")));
+		setBackground(new Color(255, 255, 245));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1920, 1080);
 		contentPane = new JPanel();
@@ -87,7 +91,6 @@ public class CadastroCliente extends JFrame {
 		contentPane.add(lblNome_Cliente);
 		
 		textDataEntrada = new JTextField();
-		textDataEntrada.setText(" dd/mm/aaaa");
 		textDataEntrada.setForeground(new Color(1, 50, 1));
 		textDataEntrada.setBackground(new Color(252, 251, 244));
 		textDataEntrada.setBounds(811, 369, 165, 29);
@@ -104,7 +107,6 @@ public class CadastroCliente extends JFrame {
 		
 		TextDataNascimento = new JTextField();
 		TextDataNascimento.setForeground(new Color(1, 50, 1));
-		TextDataNascimento.setText(" dd/mm/aaaa");
 		TextDataNascimento.setBackground(new Color(252, 251, 244));
 		TextDataNascimento.setBounds(194, 522, 404, 29);
 		contentPane.add(TextDataNascimento);
@@ -119,7 +121,6 @@ public class CadastroCliente extends JFrame {
 		contentPane.add(lblDataNascimento);
 		
 		textCPF = new JTextField();
-		textCPF.setText("11111111111");
 		textCPF.setToolTipText("");
 		textCPF.setForeground(new Color(1, 50, 1));
 		textCPF.setBackground(new Color(252, 251, 244));
@@ -151,7 +152,6 @@ public class CadastroCliente extends JFrame {
 		contentPane.add(lblDataSaida);
 		
 		textHoraEntrada = new JTextField();
-		textHoraEntrada.setText(" hh:mm");
 		textHoraEntrada.setForeground(new Color(1, 50, 1));
 		textHoraEntrada.setBackground(new Color(252, 251, 244));
 		textHoraEntrada.setBounds(986, 369, 165, 29);
@@ -169,7 +169,6 @@ public class CadastroCliente extends JFrame {
 		contentPane.add(lblSenhaCad);
 		
 		textDataSaida = new JTextField();
-		textDataSaida.setText(" dd/mm/aaaa");
 		textDataSaida.setBackground(new Color(252, 251, 244));
 		textDataSaida.setBounds(811, 429, 165, 29);
 		contentPane.add(textDataSaida);
@@ -219,9 +218,24 @@ public class CadastroCliente extends JFrame {
 		JButton btnCadastro_Cliente = new JButton("Cadastrar");
 		btnCadastro_Cliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 				//precisa adicionar um comando que mostre a tela de confirmação de cadastro realizado ou não 
 				// caso de certo precisa perguntar se deseja fazer mais alguma coisa ou se pode sair 
+				HospedeDAO dao = new HospedeDAO(); //instancia 
+				dao.insertHospede(null);
+				
+				String nome = textPrimeiroNome.getText();
+				String sobrenome = textSobrenome.getText();
+				String cpf = textCPF.getText();
+				String dataNascimento = textDataEntrada.getText();
+				
+				String dataEntradaString = textDataEntrada.getText();
+				String dataSaida = textDataSaida.getText();
+				String horaEntrada = textHoraEntrada.getText();
+				String horaSaida = txtHoraSaida.getText();
+				
+				
+				
+				
 			}
 		});
 		btnCadastro_Cliente.setBackground(new Color(66, 142, 66));
@@ -234,6 +248,7 @@ public class CadastroCliente extends JFrame {
 		btnSair_tela_cad_Cliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				setVisible(false);
 				
 				/*CadastroCliente cadastrocliente = new CadastroCliente();
 				cadastrocliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);*/
@@ -252,7 +267,6 @@ public class CadastroCliente extends JFrame {
 		
 		txtSenha = new JTextField();
 		txtSenha.setForeground(new Color(1, 50, 1));
-		txtSenha.setText(" ***********");
 		txtSenha.setBackground(new Color(252, 251, 244));
 		txtSenha.setBounds(811, 508, 404, 29);
 		contentPane.add(txtSenha);
@@ -260,7 +274,6 @@ public class CadastroCliente extends JFrame {
 		txtSenha.setColumns(10);
 		
 		txtHoraSaida = new JTextField();
-		txtHoraSaida.setText(" hh:mm");
 		txtHoraSaida.setBounds(986, 429, 165, 29);
 		contentPane.add(txtHoraSaida);
 		txtHoraSaida.setBorder(new LineBorder(new Color(1, 50, 1)));

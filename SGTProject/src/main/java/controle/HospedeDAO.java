@@ -15,8 +15,6 @@ public class HospedeDAO {
 
 	private static HospedeDAO instancia;
 
-	private HospedeDAO() {
-	}
 
 	public static HospedeDAO getInstancia() {
 		if (instancia == null) {
