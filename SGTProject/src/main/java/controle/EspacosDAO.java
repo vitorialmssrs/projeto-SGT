@@ -255,11 +255,10 @@ import visao.EspacosHotel;
 				
 			}
 			
-			
 			return retorno != 0;
 		}
 
-		@Override
+		
 		public boolean removerEspaco(EspacoHotel end) {
 			
 			String SQL = "SELECT * FROM espaco WHERE id_espaco = ?";
@@ -272,30 +271,27 @@ import visao.EspacosHotel;
 			try {
 				PreparedStatement ps = conBD.prepareStatement(SQL);
 				 
-				ps.setString(1, Academia);
-				ps.setString(2, Quiosque);
-				ps.setString(3, Salaofesta);
-				ps.setString(4, Quadrafutebol);
-				ps.setString(5, Salajogos);
-				ps.setString(6, Quadravolei);
-				ps.setString(7, SPA);
-				ps.setString(8, Brinquedoteca);
-				ps.setString(9, Piscina);
+				ps.setString(1, end.getAcademia());
+				ps.setString(2, end.getQuiosque());
+				ps.setString(3, end.getSalaoFesta());
+				ps.setString(4, end.getQuadraFutebol());
+				ps.setString(5, end.getSalaJogos());
+				ps.setString(6, end.getQuadraVolei());
+				ps.setString(7, end.getSPA());
+				ps.setString(8, end.getBrinquedoteca());
+				ps.setString(9, end.getPiscina());
+				
+				retorno = ps.executeUpdate();
 				
 			} catch (Exception e) {
-				
+				e.printStackTrace();
 			} finally {
-				
+				con.fecharConexao();
 			}
 			
-				return false;
+			return retorno != 0;
 		
 		}
-		
-			
-			
-			
-
 
 		
 	}

@@ -34,12 +34,16 @@ public class HospedeDAO {
 		try {
 			PreparedStatement ps = conBD.prepareStatement(SQL,Statement.RETURN_GENERATED_KEYS);
 			
-			ps.setString(1, end.getPrimeironome());
-			ps.setString(2, end.getSobrenome());
-			ps.setInt(3, end.getCpfClientes());
-			ps.setDate(4, end.getDatanascimento());
-			ps.setDate(5, end.getCheckin());
-			ps.setDate(6, end.getCheckout());
+			ps.setString(chavePrimariaGerada, end.getPrimeironome());
+			ps.setString(chavePrimariaGerada, end.getSobrenome());
+			ps.setInt(chavePrimariaGerada, end.getCpfClientes());
+			ps.setDate(chavePrimariaGerada, end.getDatanascimento());
+			ps.setDate(chavePrimariaGerada, end.getDataEntrada());
+			ps.setDate(chavePrimariaGerada, end.getDataSaida());
+			ps.setFloat(chavePrimariaGerada, end.getHoraEntrada());
+			ps.setFloat(chavePrimariaGerada, end.getHoraSaida());
+			
+
 			
 			int ra = ps.executeUpdate();
 			
@@ -94,8 +98,10 @@ public class HospedeDAO {
 				String Sobrenome = rs.getString("sobrenome");
 				Date Datanascimento = rs.getDate("dataNascimento");				
 				int cpf = rs.getInt("cpf");
-				Date Checkin = rs.getDate("DataCheckIn");
-				Date dataCheckOut = rs.getDate("DataCheckOut");
+				Date DataEntrada = rs.getDate("DataEntrada");
+				Date DataSaida = rs.getDate("DataSaida");
+				Float horaEntrada = rs.getFloat("horaEntrada");
+				Float horaSaida = rs.getFloat("horaSaida");
 				
 				//localdate ==> mais indicado para utilizar
 				//LocalTime
@@ -106,8 +112,10 @@ public class HospedeDAO {
 				end.setSobrenome(Sobrenome);
 				end.setCpfClientes(cpf);
 				end.setDatanascimento(Datanascimento);
-				end.setCheckin(Checkin);
-				end.setCheckout(dataCheckOut);
+				end.setDataEntrada(DataEntrada);
+				end.setDataSaida(DataSaida);
+				end.setHoraEntrada(horaEntrada);
+				end.setHoraSaida(horaSaida);
 				
 				hospedes.add(end);		
 			//precisa acrescentar a tela de confimação 
@@ -124,7 +132,7 @@ public class HospedeDAO {
 
 	public boolean atualizarHospede(Hospede end) {
 		
-		String SQL = "UPDATE hospedes SET nome = ?, sobrenome = ?, cpf = ?, dataNascimento = ?, checkIn = ?, checkOut = ? WHERE cpf = ?";
+		String SQL = "UPDATE hospedes SET nome = ?, sobrenome = ?, cpf = ?, dataNascimento = ?, dataEntrada = ?, dataSaida = ?, horaEntrada = ?, horaSaida = ?, WHERE cpf = ?";
 		
 		//Abre conexão e cria a "ponte de conexão" com o MySQL
 		Conexao con = Conexao.getInstancia();
@@ -140,8 +148,11 @@ public class HospedeDAO {
 			ps.setString(2, end.getSobrenome());
 			ps.setInt(3, end.getCpfClientes());
 			ps.setDate(4, end.getDatanascimento());
-			ps.setDate(5, end.getCheckin());
-			ps.setDate(6, end.getCheckout());
+			ps.setDate(5, end.getDataEntrada());
+			ps.setDate(6, end.getDataSaida());
+			ps.setFloat(7, end.getHoraEntrada());
+			ps.setFloat(8, end.getHoraSaida());
+			
 			
 			retorno = ps.executeUpdate();
 			
@@ -157,12 +168,16 @@ public class HospedeDAO {
 	
 	public boolean removerHospede (Hospede end) {
 		
-		String SQL = "DELETE FROM hospede WHERE cpf = ?"; //verificar qual sera usado para excluir id ou cpf
+		String SQL = "DELETE FROM hospedes SET nome = ?, sobrenome = ?, cpf = ?, dataNascimento = ?, dataEntrada = ?, dataSaida = ?, horaEntrada = ?, horaSaida = ?, WHERE cpf = ?"; //verificar qual sera usado para excluir id ou cpf
 		
 		Conexao con = Conexao.getInstancia();
+		
 		Connection conBD = con.conectar();
+		
 		int retorno = 0;
+		
 		try {
+				
 			PreparedStatement ps = conBD.prepareStatement(SQL);
 			ps.setInt(1, end.getId());
 			

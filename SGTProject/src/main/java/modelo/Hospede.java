@@ -13,8 +13,8 @@ public class Hospede {
 	private Date datanascimento;
 	private Date dataEntrada;
 	private Date dataSaida;
-	private Date horaEntrada;
-	private Date horaSaida;
+	private Float horaEntrada;
+	private Float horaSaida;
 
 	
 	
@@ -30,16 +30,16 @@ public class Hospede {
 	public void setDataSaida(Date dataSaida) {
 		this.dataSaida = dataSaida;
 	}
-	public Date getHoraEntrada() {
+	public Float getHoraEntrada() {
 		return horaEntrada;
 	}
-	public void setHoraEntrada(Date horaEntrada) {
+	public void setHoraEntrada(Float horaEntrada) {
 		this.horaEntrada = horaEntrada;
 	}
-	public Date getHoraSaida() {
+	public Float getHoraSaida() {
 		return horaSaida;
 	}
-	public void setHoraSaida(Date horaSaida) {
+	public void setHoraSaida(Float horaSaida) {
 		this.horaSaida = horaSaida;
 	}
 	
