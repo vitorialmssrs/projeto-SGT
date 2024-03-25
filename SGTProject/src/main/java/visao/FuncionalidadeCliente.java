@@ -103,9 +103,9 @@ public class FuncionalidadeCliente extends JFrame {
 		
 		JButton btnNewButton_3 = new JButton("Sair");
 		btnNewButton_3.setBackground(new Color(227, 236, 226));
-		btnNewButton_3.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\projeto-SGT\\SGTProject\\src\\main\\resources\\img\\Vector sair.png"));
+		btnNewButton_3.setIcon(new ImageIcon(FuncionalidadeCliente.class.getResource("/imagens/Vector sair.png")));
 		btnNewButton_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnNewButton_3.setForeground(new Color(1, 50, 1));
-		panelOpcoes.add(btnNewButton_3, "cell 2 10,alignx center");
+		panelOpcoes.add(btnNewButton_3, "cell 2 10,growx");
 	}
 }

@@ -71,10 +71,10 @@ import visao.EspacosHotel;
 
 				ps.setString(1, end.getAcademia());
 				ps.setString(1, end.getQuiosque());
-				ps.setString(1, end.getSalao_festa());
-				ps.setString(1, end.getQuadra_futebol());
-				ps.setString(1, end.getSala_jogos());
-				ps.setString(1, end.getQuadra_volei());
+				ps.setString(1, end.getSalaoFesta());
+				ps.setString(1, end.getQuadraFutebol());
+				ps.setString(1, end.getSalaJogos());
+				ps.setString(1, end.getQuadraVolei());
 				ps.setString(1, end.getSPA());
 				ps.setString(1, end.getBrinquedoteca());
 				ps.setString(1, end.getPiscina());
@@ -124,11 +124,11 @@ import visao.EspacosHotel;
 					String academia = rs.getString("Academia");
 					String brinquedoteca = rs.getString("brinquedoteca");
 					String piscina = rs.getString("Piscina");
-					String quadra_Futebol = rs.getString("Quadra de Futebol");
-					String quadra_volei = rs.getString("Quadra de vôlei");
+					String quadrafutebol = rs.getString("Quadra de Futebol");
+					String quadravolei = rs.getString("Quadra de vôlei");
 					String quiosque = rs.getString("Quiosque");
-					String sala_jogos = rs.getString("Sala de jogos");
-					String salao_festa = rs.getString("Salão de festas");
+					String salajogos = rs.getString("Sala de jogos");
+					String salaofesta = rs.getString("Salão de festas");
 					String spa = rs.getString("SPA");
 					
 				
@@ -139,11 +139,11 @@ import visao.EspacosHotel;
 					end.setAcademia(academia);
 					end.setBrinquedoteca(brinquedoteca);
 					end.setPiscina(piscina);
-					end.setQuadra_futebol(quadra_Futebol);
-					end.setQuadra_volei(quadra_volei);
+					end.setQuadraFutebol(quadrafutebol);
+					end.setQuadraVolei(quadravolei);
 					end.setQuiosque(quiosque);
-					end.setSala_jogos(sala_jogos);
-					end.setSalao_festa(salao_festa);
+					end.setSalaJogos(salajogos);
+					end.setSalaoFesta(salaofesta);
 					end.setSPA(spa);
 					
 					// Adiciona obj no arraylist
@@ -186,11 +186,11 @@ import visao.EspacosHotel;
 					String academia = rs.getString("Academia");
 					String brinquedoteca = rs.getString("brinquedoteca");
 					String piscina = rs.getString("Piscina");
-					String quadra_Futebol = rs.getString("Quadra de Futebol");
-					String quadra_volei = rs.getString("Quadra de vôlei");
+					String quadrafutebol = rs.getString("Quadra de Futebol");
+					String quadravolei = rs.getString("Quadra de vôlei");
 					String quiosque = rs.getString("Quiosque");
-					String sala_jogos = rs.getString("Sala de jogos");
-					String salao_festa = rs.getString("Salão de festas");
+					String salajogos = rs.getString("Sala de jogos");
+					String salaofesta = rs.getString("Salão de festas");
 					String spa = rs.getString("SPA");
 
 					// Seta os valores no obj java
@@ -198,11 +198,11 @@ import visao.EspacosHotel;
 					end.setAcademia(academia);
 					end.setBrinquedoteca(brinquedoteca);
 					end.setPiscina(piscina);
-					end.setQuadra_futebol(quadra_Futebol);
-					end.setQuadra_volei(quadra_volei);
+					end.setQuadraFutebol(quadrafutebol);
+					end.setQuadraVolei(quadravolei);
 					end.setQuiosque(quiosque);
-					end.setSala_jogos(sala_jogos);
-					end.setSalao_festa(salao_festa);
+					end.setSalaJogos(salajogos);
+					end.setSalaoFesta(salaofesta);
 					end.setSPA(spa);
 
 					// Adiciona obj no arraylist
@@ -238,10 +238,10 @@ import visao.EspacosHotel;
 				
 				ps.setString(1, end.getAcademia());
 				ps.setString(1, end.getQuiosque());
-				ps.setString(1, end.getSalao_festa());
-				ps.setString(1, end.getQuadra_futebol());
-				ps.setString(1, end.getSala_jogos());
-				ps.setString(1, end.getQuadra_volei());
+				ps.setString(1, end.getSalaoFesta());
+				ps.setString(1, end.getQuadraFutebol());
+				ps.setString(1, end.getSalaJogos());
+				ps.setString(1, end.getQuadraVolei());
 				ps.setString(1, end.getSPA());
 				ps.setString(1, end.getBrinquedoteca());
 				ps.setString(1, end.getPiscina());
@@ -256,7 +256,7 @@ import visao.EspacosHotel;
 			}
 			
 			
-			return retorno;
+			return retorno != 0;
 		}
 
 		@Override
@@ -274,10 +274,10 @@ import visao.EspacosHotel;
 				 
 				ps.setString(1, Academia);
 				ps.setString(2, Quiosque);
-				ps.setString(3, Salao_festa);
-				ps.setString(4, Quadra_futebol);
-				ps.setString(5, Sala_jogos);
-				ps.setString(6, Quadra_volei);
+				ps.setString(3, Salaofesta);
+				ps.setString(4, Quadrafutebol);
+				ps.setString(5, Salajogos);
+				ps.setString(6, Quadravolei);
 				ps.setString(7, SPA);
 				ps.setString(8, Brinquedoteca);
 				ps.setString(9, Piscina);
@@ -299,7 +299,7 @@ import visao.EspacosHotel;
 
 		
 	}
-	}
+	
 	
 
 

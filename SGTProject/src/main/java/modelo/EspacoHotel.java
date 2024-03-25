@@ -5,10 +5,10 @@ public class EspacoHotel {
 	
 	private String academia; 
 	private String quiosque;
-	private String salao_festa;
-	private String quadra_futebol; 
-	private String sala_jogos;
-	private String quadra_volei;
+	private String salaofesta;
+	private String quadrafutebol; 
+	private String salajogos;
+	private String quadravolei;
 	private String SPA; 
 	private String brinquedoteca;
 	private String piscina;
@@ -31,29 +31,29 @@ public class EspacoHotel {
 	public void setQuiosque(String quiosque) {
 		this.quiosque = quiosque;
 	}
-	public String getSalao_festa() {
-		return salao_festa;
+	public String getSalaoFesta() {
+		return salaofesta;
 	}
-	public void setSalao_festa(String salao_festa) {
-		this.salao_festa = salao_festa;
+	public void setSalaoFesta(String salaofesta) {
+		this.salaofesta = salaofesta;
 	}
-	public String getQuadra_futebol() {
-		return quadra_futebol;
+	public String getQuadraFutebol() {
+		return quadrafutebol;
 	}
-	public void setQuadra_futebol(String quadra_futebol) {
-		this.quadra_futebol = quadra_futebol;
+	public void setQuadraFutebol(String quadrafutebol) {
+		this.quadrafutebol = quadrafutebol;
 	}
-	public String getSala_jogos() {
-		return sala_jogos;
+	public String getSalaJogos() {
+		return salajogos;
 	}
-	public void setSala_jogos(String sala_jogos) {
-		this.sala_jogos = sala_jogos;
+	public void setSalaJogos(String salajogos) {
+		this.salajogos = salajogos;
 	}
-	public String getQuadra_volei() {
-		return quadra_volei;
+	public String getQuadraVolei() {
+		return quadravolei;
 	}
-	public void setQuadra_volei(String quadra_volei) {
-		this.quadra_volei = quadra_volei;
+	public void setQuadraVolei(String quadravolei) {
+		this.quadravolei = quadravolei;
 	}
 	public String getSPA() {
 		return SPA;
