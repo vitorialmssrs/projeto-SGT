@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -215,6 +216,9 @@ public class CadastroCliente extends JFrame {
 		btnLimpar_info_cliente.setBounds(423, 638, 176, 39);
 		contentPane.add(btnLimpar_info_cliente);
 		
+		
+		//preciso ajeitar a funcao desse botao pois ainda nao funciona 
+		//ajeitar as validacoes e as telas de validacoes 
 		JButton btnCadastro_Cliente = new JButton("Cadastrar");
 		btnCadastro_Cliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -225,14 +229,53 @@ public class CadastroCliente extends JFrame {
 				
 				//recebe a o conteudo que esta no Text e joga para a variavel 
 				String nome = textPrimeiroNome.getText();
+				if(nome.length() == 0) {
+					JOptionPane.showMessageDialog(null, "Campo Nome obrigatório!");
+					return ;
+				}
+				
 				String sobrenome = textSobrenome.getText();
+				if(nome.length() == 0) {
+					JOptionPane.showMessageDialog(null, "Campo Sobrenome obrigatório!");
+					return ;
+				}
+				
 				String cpf = textCPF.getText();
+				if(nome.length() == 0) {
+					JOptionPane.showMessageDialog(null, "Campo CPF obrigatório!");
+					return ;
+				}
+				
 				String dataNascimento = textDataEntrada.getText();
+				if(nome.length() == 0) {
+					JOptionPane.showMessageDialog(null, "Campo Data de Nascimento obrigatório!");
+					return ;
+				}
 				
 				String dataEntradaString = textDataEntrada.getText();
+				if(nome.length() == 0) {
+					JOptionPane.showMessageDialog(null, "Campo Data de Entrada obrigatório!");
+					return ;
+				}
+				
 				String dataSaida = textDataSaida.getText();
+				if(nome.length() == 0) {
+					JOptionPane.showMessageDialog(null, "Campo Data de Saída obrigatório!");
+					return ;
+				}
+				
 				String horaEntrada = textHoraEntrada.getText();
+				if(nome.length() == 0) {
+					JOptionPane.showMessageDialog(null, "Campo Hora de Entrada obrigatório!");
+					return ;
+				}
+				
 				String horaSaida = txtHoraSaida.getText();
+				if(nome.length() == 0) {
+					JOptionPane.showMessageDialog(null, "Campo Hora de Saída obrigatório!");
+					return ;
+				}
+				
 				
 				//cricao de objeto 
 				Hospede h = new Hospede();
@@ -250,8 +293,6 @@ public class CadastroCliente extends JFrame {
 				HospedeDAO dao1 = new HospedeDAO();
 				///inserindo na classe 
 				dao1.insertHospede(h);
-				
-				list.atualizarLTableModel();
 				
 				dispose();
 				
