@@ -10,9 +10,9 @@ public class Conexao {
 //static consegue estanciar essa variavel de qualquer lugar do código sem ter que estanciar 
 
 	//criação de variavel
-	private static final String USERNAME = "aluno";
-	private static final String SENHA = "aluno";
-	private static final String BD = "SGT";
+	private static final String USERNAME = "root";
+	private static final String SENHA = "Aluno";
+	private static final String BD = "sgt";
 	
 
 	private Connection con; // jdbc

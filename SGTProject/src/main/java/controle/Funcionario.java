@@ -5,18 +5,19 @@ import java.sql.Date;
 public class Funcionario{
 	
 	
-	public int CPF;
-	public String PrimeiroNome;
-	public String Sobrenome;
+	public int num_identificacao;
+	public String primeiro_nome;
+	public String sobrenome;
 	public Date data_nascimento;
-	public String email;
+	//public String email;
 	public int telefone;
 	public int cep;
-	public int numero;
-	public String rua;
-	public String bairro;
+	public int num_casa;
+	public int id_usuarios;
+//	public String rua;
+//	public String bairro;
 	
-	public String getBairro() {
+	/*public String getBairro() {
 		return bairro;
 	}
 	public void setBairro(String bairro) {
@@ -34,26 +35,28 @@ public class Funcionario{
 		return CPF;
 	}
 	public void setCPF(int cPF) {
-		CPF = cPF;
+		CPF = cPF;	
 	}
+	
+	*/
 	public String getPrimeiroNome() {
-		return PrimeiroNome;
+		return primeiro_nome;
 	}
 	public void setPrimeiroNome(String primeiroNome) {
-		PrimeiroNome = primeiroNome;
+		primeiro_nome = primeiroNome;
 	}
 	public String getSobrenome() {
-		return Sobrenome;
+		return sobrenome;
 	}
 	public void setSobrenome(String sobrenome) {
-		Sobrenome = sobrenome;
+		sobrenome = sobrenome;
 	}
-	public String getEmail() {
+/*	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
-		this.email = email;
-	}
+		this.email = email;	
+	}  */
 	public int getTelefone() {
 		return telefone;
 	}
@@ -67,16 +70,16 @@ public class Funcionario{
 		this.cep = cep;
 	}
 	public int getNumero() {
-		return numero;
+		return num_casa;
 	}
 	public void setNumero(int numero) {
-		this.numero = numero;
+		this.num_casa = numero;
 	}
-	public int getUsuario_id_usuario() {
-		return usuario_id_usuario;
+	public int getid_usuarios() {
+		return id_usuarios;
 	}
-	public void setUsuario_id_usuario(int usuario_id_usuario) {
-	    this.usuario_id_usuario = usuario_id_usuario;
+	public void setid_usuarioso(int id_usuarios) {
+	    this.id_usuarios = id_usuarios;
 	}
 	public void setData_nascimento(Date date){
 		this.data_nascimento = date;
@@ -85,6 +88,17 @@ public class Funcionario{
 	public Date getData_nascimento() {
         return this.data_nascimento;
     }
+	public void id_usuarios(int int1) { /*  Ver se isso deve estar aqui   */ 
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public int getnum_identificacao() {
+		return num_identificacao;
+	}
+	public void setCPF(int Num_identificacao) {
+		num_identificacao = Num_identificacao;	
+	}
 	
 	
 
