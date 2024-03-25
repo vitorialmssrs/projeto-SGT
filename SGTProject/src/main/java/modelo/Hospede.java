@@ -11,9 +11,37 @@ public class Hospede {
 	private String sobrenome;
 	private int cpfClientes;
 	private Date datanascimento;
-	private Date checkin;
-	private Date checkout;
+	private Date dataEntrada;
+	private Date dataSaida;
+	private Date horaEntrada;
+	private Date horaSaida;
+
 	
+	
+	public Date getDataEntrada() {
+		return dataEntrada;
+	}
+	public void setDataEntrada(Date dataEntrada) {
+		this.dataEntrada = dataEntrada;
+	}
+	public Date getDataSaida() {
+		return dataSaida;
+	}
+	public void setDataSaida(Date dataSaida) {
+		this.dataSaida = dataSaida;
+	}
+	public Date getHoraEntrada() {
+		return horaEntrada;
+	}
+	public void setHoraEntrada(Date horaEntrada) {
+		this.horaEntrada = horaEntrada;
+	}
+	public Date getHoraSaida() {
+		return horaSaida;
+	}
+	public void setHoraSaida(Date horaSaida) {
+		this.horaSaida = horaSaida;
+	}
 	
 	public Integer getId() {
 		return id;
@@ -47,24 +75,5 @@ public class Hospede {
 	public void setDatanascimento(Date datanascimento) {
 		this.datanascimento = datanascimento;
 	}
-
-	public Date getCheckin() {
-		return checkin;
-	}
-
-	public void setCheckin(Date checkin) {
-		this.checkin = checkin;
-	}
-
-	public Date getCheckout() {
-		return checkout;
-	}
-
-	public void setCheckout(Date checkout) {
-		this.checkout = checkout;
-	}
-
-	
-	
 
 }

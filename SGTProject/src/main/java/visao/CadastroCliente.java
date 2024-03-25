@@ -223,6 +223,7 @@ public class CadastroCliente extends JFrame {
 				HospedeDAO dao = new HospedeDAO(); //instancia 
 				dao.insertHospede(null);
 				
+				//recebe a o conteudo que esta no Text e joga para a variavel 
 				String nome = textPrimeiroNome.getText();
 				String sobrenome = textSobrenome.getText();
 				String cpf = textCPF.getText();
@@ -233,7 +234,26 @@ public class CadastroCliente extends JFrame {
 				String horaEntrada = textHoraEntrada.getText();
 				String horaSaida = txtHoraSaida.getText();
 				
+				//cricao de objeto 
+				Hospede h = new Hospede();
+				//setando os valores
+				h.setPrimeironome(nome);
+				h.setSobrenome(sobrenome);
+				h.setCpfClientes(ABORT);
+				h.setDatanascimento(null);
+				h.setDataEntrada(null);
+				h.setHoraEntrada(null);
+				h.setHoraEntrada(null);
+				h.setHoraSaida(null);
 				
+				//instanciando a classe DAO
+				HospedeDAO dao1 = new HospedeDAO();
+				///inserindo na classe 
+				dao1.insertHospede(h);
+				
+				list.atualizarLTableModel();
+				
+				dispose();
 				
 				
 			}
