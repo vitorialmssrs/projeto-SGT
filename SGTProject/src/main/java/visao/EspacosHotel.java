@@ -71,6 +71,8 @@ public class EspacosHotel extends JFrame {
 		btnAcademia.setBorder(new LineBorder(new Color(1, 50, 1)));
 		btnAcademia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//Academia academia = new Academia ();
+				//academia.setViseble(true);
 			}
 		});
 		btnAcademia.setBackground(new Color(247, 246, 243));
@@ -161,6 +163,7 @@ public class EspacosHotel extends JFrame {
 				 * 
 				 * 
 				 */
+				setVisible(false);
 			}
 		});
 		btnSair.setBackground(new Color(227, 236, 229));

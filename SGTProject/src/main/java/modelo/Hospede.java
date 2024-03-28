@@ -1,6 +1,7 @@
 package modelo;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 public class Hospede {
 	
@@ -10,24 +11,17 @@ public class Hospede {
 	private String primeironome;
 	private String sobrenome;
 	private int cpfClientes;
-	private Date datanascimento;
-	private Date dataEntrada;
-	private Date dataSaida;
+	private LocalDate datanascimento;
+	private LocalDate dataEntrada;
+	private LocalDate dataSaida;
 	private Float horaEntrada;
 	private Float horaSaida;
 
 	
-	
-	public Date getDataEntrada() {
-		return dataEntrada;
-	}
-	public void setDataEntrada(Date dataEntrada) {
-		this.dataEntrada = dataEntrada;
-	}
-	public Date getDataSaida() {
+	public LocalDate getDataSaida() {
 		return dataSaida;
 	}
-	public void setDataSaida(Date dataSaida) {
+	public void setDataSaida(LocalDate dataSaida) {
 		this.dataSaida = dataSaida;
 	}
 	public Float getHoraEntrada() {
@@ -68,12 +62,17 @@ public class Hospede {
 	public void setCpfClientes(int cpfClientes) {
 		this.cpfClientes = cpfClientes;
 	}
-
-	public Date getDatanascimento() {
+	public LocalDate getDatanascimento() {
 		return datanascimento;
 	}
-	public void setDatanascimento(Date datanascimento) {
+	public void setDatanascimento(LocalDate datanascimento) {
 		this.datanascimento = datanascimento;
+	}
+	public LocalDate getDataEntrada() {
+		return dataEntrada;
+	}
+	public void setDataEntrada(LocalDate dataEntrada) {
+		this.dataEntrada = dataEntrada;
 	}
 
 }

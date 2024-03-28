@@ -34,14 +34,14 @@ public class HospedeDAO {
 		try {
 			PreparedStatement ps = conBD.prepareStatement(SQL,Statement.RETURN_GENERATED_KEYS);
 			
-			ps.setString(chavePrimariaGerada, end.getPrimeironome());
-			ps.setString(chavePrimariaGerada, end.getSobrenome());
-			ps.setInt(chavePrimariaGerada, end.getCpfClientes());
-			ps.setDate(chavePrimariaGerada, end.getDatanascimento());
-			ps.setDate(chavePrimariaGerada, end.getDataEntrada());
-			ps.setDate(chavePrimariaGerada, end.getDataSaida());
-			ps.setFloat(chavePrimariaGerada, end.getHoraEntrada());
-			ps.setFloat(chavePrimariaGerada, end.getHoraSaida());
+			ps.setString(1, end.getPrimeironome());
+			ps.setString(2, end.getSobrenome());
+			ps.setInt(3, end.getCpfClientes());
+			ps.setDate(4, end.getDatanascimento());
+			ps.setDate(5, end.getDataEntrada());
+			ps.setDate(6, end.getDataSaida());
+			ps.setFloat(7, end.getHoraEntrada());
+			ps.setFloat(8, end.getHoraSaida());
 			
 
 			
@@ -152,7 +152,7 @@ public class HospedeDAO {
 			ps.setDate(6, end.getDataSaida());
 			ps.setFloat(7, end.getHoraEntrada());
 			ps.setFloat(8, end.getHoraSaida());
-			
+			ps.setFloat(8, end.getHoraSaida());
 			
 			retorno = ps.executeUpdate();
 			

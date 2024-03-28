@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -196,16 +197,16 @@ public class CadastroCliente extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				//Comando para limpar os campos de textos 
 				
-				textPrimeiroNome.setText(" ");
-				textSobrenome.setText(" ");
-				textCPF.setText(" ");
-				TextDataNascimento.setText(" ");
+				textPrimeiroNome.setText("");
+				textSobrenome.setText("");
+				textCPF.setText("");
+				TextDataNascimento.setText("");
 				
-				textDataEntrada.setText(" ");
-				textHoraEntrada.setText(" ");
-				textDataSaida.setText(" ");
-				txtHoraSaida.setText(" ");
-				txtSenha.setText(" ");
+				textDataEntrada.setText("");
+				textHoraEntrada.setText("");
+				textDataSaida.setText("");
+				txtHoraSaida.setText("");
+				txtSenha.setText("");
 						
 
 			}
@@ -224,8 +225,7 @@ public class CadastroCliente extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				//precisa adicionar um comando que mostre a tela de confirmação de cadastro realizado ou não 
 				// caso de certo precisa perguntar se deseja fazer mais alguma coisa ou se pode sair 
-				HospedeDAO dao = new HospedeDAO(); //instancia 
-				dao.insertHospede(null);
+				//dao.insertHospede(null);
 				
 				//recebe a o conteudo que esta no Text e joga para a variavel 
 				String nome = textPrimeiroNome.getText();
@@ -245,24 +245,28 @@ public class CadastroCliente extends JFrame {
 					JOptionPane.showMessageDialog(null, "Campo CPF obrigatório!");
 					return ;
 				}
+				Integer cpfI = Integer.parseInt(cpf);
 				
 				String dataNascimento = textDataEntrada.getText();
 				if(nome.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Data de Nascimento obrigatório!");
 					return ;
 				}
+				LocalDate dn = LocalDate.parse(dataNascimento);
 				
 				String dataEntradaString = textDataEntrada.getText();
 				if(nome.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Data de Entrada obrigatório!");
 					return ;
 				}
+				LocalDate de = LocalDate.parse(dataEntradaString);
 				
 				String dataSaida = textDataSaida.getText();
 				if(nome.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Data de Saída obrigatório!");
 					return ;
 				}
+				LocalDate ds = LocalDate.parse(dataSaida);
 				
 				String horaEntrada = textHoraEntrada.getText();
 				if(nome.length() == 0) {
@@ -282,17 +286,17 @@ public class CadastroCliente extends JFrame {
 				//setando os valores
 				h.setPrimeironome(nome);
 				h.setSobrenome(sobrenome);
-				h.setCpfClientes(ABORT);
-				h.setDatanascimento(null);
-				h.setDataEntrada(null);
-				h.setHoraEntrada(null);
+				h.setCpfClientes(cpfI);
+				h.setDatanasciadamento(dn);
+				h.setDataEntrada(de);
+				h.setDataSaida(ds);
 				h.setHoraEntrada(null);
 				h.setHoraSaida(null);
 				
 				//instanciando a classe DAO
-				HospedeDAO dao1 = new HospedeDAO();
+				HospedeDAO dao = new HospedeDAO();
 				///inserindo na classe 
-				dao1.insertHospede(h);
+				dao.insertHospede(h);
 				
 				dispose();
 				

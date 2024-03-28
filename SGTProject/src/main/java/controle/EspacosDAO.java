@@ -70,14 +70,14 @@ import visao.EspacosHotel;
 				PreparedStatement ps = conBD.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
 
 				ps.setString(1, end.getAcademia());
-				ps.setString(1, end.getQuiosque());
-				ps.setString(1, end.getSalaoFesta());
-				ps.setString(1, end.getQuadraFutebol());
-				ps.setString(1, end.getSalaJogos());
-				ps.setString(1, end.getQuadraVolei());
-				ps.setString(1, end.getSPA());
-				ps.setString(1, end.getBrinquedoteca());
-				ps.setString(1, end.getPiscina());
+				ps.setString(2, end.getQuiosque());
+				ps.setString(3, end.getSalaoFesta());
+				ps.setString(4, end.getQuadraFutebol());
+				ps.setString(5, end.getSalaJogos());
+				ps.setString(6, end.getQuadraVolei());
+				ps.setString(7, end.getSPA());
+				ps.setString(8, end.getBrinquedoteca());
+				ps.setString(9, end.getPiscina());
 				
 				//Executa sem esperar retorno do BD
 				return ps.executeUpdate(); 
@@ -221,7 +221,7 @@ import visao.EspacosHotel;
 
 	
 		public boolean atualizarEspaco(EspacoHotel end) {
-			
+			//arrumar a sintese de update or ou end
 			String SQL = "UPDATE espacos SET academia = ?, quiosque = ?, salao_festa = ?, quadra_futebol = ?, sala_jogos = ?, quadra_volei = ?, SPA = ?, brinquedoteca = ?, piscina = ?   WHERE academia = ?, quiosque = ?, salao_festa = ?, quadra_futebol = ?, sala_jogos = ?, quadra_volei = ?, SPA = ?, brinquedoteca = ?, piscina = ? "; 
 
 			
@@ -237,14 +237,14 @@ import visao.EspacosHotel;
 				//Setando os valores
 				
 				ps.setString(1, end.getAcademia());
-				ps.setString(1, end.getQuiosque());
-				ps.setString(1, end.getSalaoFesta());
-				ps.setString(1, end.getQuadraFutebol());
-				ps.setString(1, end.getSalaJogos());
-				ps.setString(1, end.getQuadraVolei());
-				ps.setString(1, end.getSPA());
-				ps.setString(1, end.getBrinquedoteca());
-				ps.setString(1, end.getPiscina());
+				ps.setString(2, end.getQuiosque());
+				ps.setString(3, end.getSalaoFesta());
+				ps.setString(4, end.getQuadraFutebol());
+				ps.setString(5, end.getSalaJogos());
+				ps.setString(6, end.getQuadraVolei());
+				ps.setString(7, end.getSPA());
+				ps.setString(8, end.getBrinquedoteca());
+				ps.setString(9, end.getPiscina());
 				
 				retorno = ps.executeUpdate();
 				
