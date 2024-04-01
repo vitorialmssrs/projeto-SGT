@@ -58,6 +58,7 @@ public class CheckInHospede extends JFrame {
 		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
+	
 			}
 		});
 		btnSair.setIcon(new ImageIcon(CheckInHospede.class.getResource("/imagens/Vector (1).png")));

@@ -27,7 +27,12 @@ public class FuncionarioDAO {
 		}
 		
 		public int inserirFuncionario(Funcionario end) {
-			String SQL = "INSERT INTO funcionarios (CPF, PrimeiroNome, Sobrenome, data_de_nascimento, email, telefone, cep, numero, usuario_id_usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			
+			/*
+			 * num_identificacao, primeiro_nome, sobrenome, data_nascimento, telefone , cep, num_casa, id_usuarios
+			 * Ver se realmente o campo CPF e Email serão necessarios, além dos campos rua e bairro
+			 */
+			String SQL = "INSERT INTO funcionarios (num_identificacao, primeiro_nome, sobrenome, data_nascimento, telefone, cep, num_casa, id_usuarios) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 			
 			Conexao con = Conexao.getInstancia();
 			Connection conBD = con.conectar();
@@ -35,15 +40,14 @@ public class FuncionarioDAO {
 			try {
 				PreparedStatement ps = conBD.prepareStatement(SQL);
 				
-				ps.setInt(1, end.getCPF());
+				ps.setInt(1, end.getNumIdentificacao());
 				ps.setString(2, end.getPrimeiroNome());
 				ps.setString(3, end.getSobrenome());
-				ps.setDate(4, end.getData_nascimento());
-				ps.setString(5, end.getEmail());
-				ps.setInt(6, end.getTelefone());
-				ps.setInt(7, end.getCep());
-				ps.setInt(8, end.getNumero());
-				ps.setInt(9, end.getUsuario_id_usuario());
+				ps.setDate(4, java.sql.Date.valueOf(end.getDatanascimento().toString()));
+				ps.setInt(5, end.getTelefone());
+				ps.setInt(6, end.getCep());
+				ps.setInt(7, end.getNumero());
+				ps.setInt(8, end.getidusuarios());
 				
 				return ps.executeUpdate();
 			}catch(SQLException e) {
@@ -73,15 +77,14 @@ public class FuncionarioDAO {
 					
 					Funcionario f = new Funcionario();
 					
-					f.setCPF(rs.getInt("CPF"));
+			        f.setIndentificacao(rs.getInt("num_identificacao"));
 					f.setPrimeiroNome(rs.getString("PrimeiroNome"));
 					f.setSobrenome(rs.getString("Sobrenome"));
-					f.setData_nascimento(rs.getDate("data_de_nascimento"));
-					f.setEmail(rs.getString("Email"));
+					f.setDatanascimento(rs.getDate("data_de_nascimento"));
 					f.setTelefone(rs.getInt("Telefone"));
 					f.setCep(rs.getInt("Cep"));
 					f.setNumero(rs.getInt("Numero"));
-					f.setUsuario_id_usuario(rs.getInt("Usuario_id_usuario"));
+					f.id_usuarios(rs.getInt("id_usuarios"));
 				
 					funcionario.add(f);
 				}

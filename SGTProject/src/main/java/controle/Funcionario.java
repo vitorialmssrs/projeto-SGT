@@ -1,22 +1,23 @@
 package controle;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Funcionario{
 	
 	
-	public int CPF;
-	public String PrimeiroNome;
-	public String Sobrenome;
-	public Date data_nascimento;
-	public String email;
+	public int numidentificacao;
+	public String primeironome;
+	public String sobrenome;
+	public Date datanascimento;
+	//public String email;
 	public int telefone;
 	public int cep;
-	public int numero;
-	public String rua;
-	public String bairro;
+	public int numcasa;
+	public int idusuarios;
+//	public String rua;
+//	public String bairro;
 	
-	public String getBairro() {
+	/*public String getBairro() {
 		return bairro;
 	}
 	public void setBairro(String bairro) {
@@ -34,26 +35,23 @@ public class Funcionario{
 		return CPF;
 	}
 	public void setCPF(int cPF) {
-		CPF = cPF;
+		CPF = cPF;	
 	}
+	
+	*/
 	public String getPrimeiroNome() {
-		return PrimeiroNome;
+		return primeironome;
 	}
 	public void setPrimeiroNome(String primeiroNome) {
-		PrimeiroNome = primeiroNome;
+		primeironome = primeiroNome;
 	}
 	public String getSobrenome() {
-		return Sobrenome;
+		return sobrenome;
 	}
-	public void setSobrenome(String sobrenome) {
-		Sobrenome = sobrenome;
+	public void setSobrenome(String Sobrenome) {
+		sobrenome = Sobrenome;
 	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
+
 	public int getTelefone() {
 		return telefone;
 	}
@@ -67,24 +65,35 @@ public class Funcionario{
 		this.cep = cep;
 	}
 	public int getNumero() {
-		return numero;
+		return numcasa;
 	}
 	public void setNumero(int numero) {
-		this.numero = numero;
+		this.numcasa = numero;
 	}
-	public int getUsuario_id_usuario() {
-		return usuario_id_usuario;
+	public int getidusuarios() {
+		return idusuarios;
 	}
-	public void setUsuario_id_usuario(int usuario_id_usuario) {
-	    this.usuario_id_usuario = usuario_id_usuario;
+	public void setidusuarioso(int id_usuarios) {
+	    this.idusuarios = id_usuarios;
 	}
-	public void setData_nascimento(Date date){
-		this.data_nascimento = date;
+	public void setDatanascimento(Date date){
+		this.datanascimento = date;
 	}
 	
-	public Date getData_nascimento() {
-        return this.data_nascimento;
+	public Date getDatanascimento() {
+        return this.datanascimento;
     }
+	public void id_usuarios(int int1) { /*  Ver se isso deve estar aqui   */ 
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public int getNumIdentificacao() {
+		return numidentificacao;
+	}
+	public void setIndentificacao(int Numidentificacao) {
+		numidentificacao = Numidentificacao;	
+	}
 	
 	
 
