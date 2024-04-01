@@ -17,19 +17,22 @@ import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.awt.event.ActionEvent;
 
 public class CadastroFuncionario extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textNome_Funcionario;
-	private JTextField textSobrenome_Funcionario;
+	private JTextField textNomeFuncionario;
+	private JTextField textSobrenomeFuncionario;
 	private JTextField textNumeroIndentificacao;
-	private JTextField textCep_Funcionario;
-	private JTextField textRua_Funcionario;
-	private JTextField textNumero_Funcionario;
-	private JTextField textTelefone_Funcionario;
+	private JTextField textCepFuncionario;
+	private JTextField textDataFuncionario;
+	private JTextField textNumeroFuncionario;
+	private JTextField textTelefoneFuncionario;
 
 	/**
 	 * Launch the application.
@@ -89,35 +92,35 @@ public class CadastroFuncionario extends JFrame {
 		lblInformacoes_Funcionario.setBounds(553, 245, 466, 31);
 		contentPane.add(lblInformacoes_Funcionario);
 		
-		JLabel lblNome_Funcionario = new JLabel("Nome do Funcionário:");
-		lblNome_Funcionario.setBackground(new Color(1, 50, 1));
-		lblNome_Funcionario.setForeground(new Color(1, 50, 1));
-		lblNome_Funcionario.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNome_Funcionario.setBounds(553, 286, 176, 21);
-		contentPane.add(lblNome_Funcionario);
+		JLabel lblNomeFuncionario = new JLabel("Nome do Funcionário:");
+		lblNomeFuncionario.setBackground(new Color(1, 50, 1));
+		lblNomeFuncionario.setForeground(new Color(1, 50, 1));
+		lblNomeFuncionario.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblNomeFuncionario.setBounds(553, 286, 176, 21);
+		contentPane.add(lblNomeFuncionario);
 		
-		textNome_Funcionario = new JTextField();
-		textNome_Funcionario.setForeground(new Color(1, 50, 1));
-		textNome_Funcionario.setBackground(new Color(252, 251, 244));
-		textNome_Funcionario.setBounds(733, 289, 644, 21);
-		textNome_Funcionario.setBorder(new LineBorder(new Color(1, 50, 1)));
-		contentPane.add(textNome_Funcionario);
-		textNome_Funcionario.setColumns(10);
+		textNomeFuncionario = new JTextField();
+		textNomeFuncionario.setForeground(new Color(1, 50, 1));
+		textNomeFuncionario.setBackground(new Color(252, 251, 244));
+		textNomeFuncionario.setBounds(733, 289, 644, 21);
+		textNomeFuncionario.setBorder(new LineBorder(new Color(1, 50, 1)));
+		contentPane.add(textNomeFuncionario);
+		textNomeFuncionario.setColumns(10);
 		
-		JLabel lblSobrenome_Funcionario = new JLabel("Sobrenome do Funcionário:");
-		lblSobrenome_Funcionario.setBackground(new Color(1, 50, 1));
-		lblSobrenome_Funcionario.setForeground(new Color(1, 50, 1));
-		lblSobrenome_Funcionario.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblSobrenome_Funcionario.setBounds(553, 330, 231, 13);
-		contentPane.add(lblSobrenome_Funcionario);
+		JLabel lblSobrenomeFuncionario = new JLabel("Sobrenome do Funcionário:");
+		lblSobrenomeFuncionario.setBackground(new Color(1, 50, 1));
+		lblSobrenomeFuncionario.setForeground(new Color(1, 50, 1));
+		lblSobrenomeFuncionario.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblSobrenomeFuncionario.setBounds(553, 330, 231, 13);
+		contentPane.add(lblSobrenomeFuncionario);
 		
-		textSobrenome_Funcionario = new JTextField();
-		textSobrenome_Funcionario.setForeground(new Color(1, 50, 1));
-		textSobrenome_Funcionario.setBackground(new Color(252, 251, 244));
-		textSobrenome_Funcionario.setBounds(775, 329, 602, 21);
-		contentPane.add(textSobrenome_Funcionario);
-		textSobrenome_Funcionario.setBorder(new LineBorder(new Color(1, 50, 1)));
-		textSobrenome_Funcionario.setColumns(10);
+		textSobrenomeFuncionario = new JTextField();
+		textSobrenomeFuncionario.setForeground(new Color(1, 50, 1));
+		textSobrenomeFuncionario.setBackground(new Color(252, 251, 244));
+		textSobrenomeFuncionario.setBounds(775, 329, 602, 21);
+		contentPane.add(textSobrenomeFuncionario);
+		textSobrenomeFuncionario.setBorder(new LineBorder(new Color(1, 50, 1)));
+		textSobrenomeFuncionario.setColumns(10);
 		
 		JLabel lblNumeroIndentificacao = new JLabel("Numero de Indentificação:");
 		lblNumeroIndentificacao.setBackground(new Color(1, 50, 1));
@@ -141,79 +144,79 @@ public class CadastroFuncionario extends JFrame {
 		lblEndereco.setBounds(553, 487, 87, 21);
 		contentPane.add(lblEndereco);
 		
-		JLabel lblCep_Funcionario = new JLabel("Cep:");
-		lblCep_Funcionario.setForeground(new Color(1, 50, 1));
-		lblCep_Funcionario.setBackground(new Color(1, 50, 1));
-		lblCep_Funcionario.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblCep_Funcionario.setBounds(553, 531, 45, 21);
-		contentPane.add(lblCep_Funcionario);
+		JLabel lblCepFuncionario = new JLabel("Cep:");
+		lblCepFuncionario.setForeground(new Color(1, 50, 1));
+		lblCepFuncionario.setBackground(new Color(1, 50, 1));
+		lblCepFuncionario.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblCepFuncionario.setBounds(553, 531, 45, 21);
+		contentPane.add(lblCepFuncionario);
 		
-		textCep_Funcionario = new JTextField();
-		textCep_Funcionario.setForeground(new Color(1, 50, 1));
-		textCep_Funcionario.setBackground(new Color(252, 251, 244));
-		textCep_Funcionario.setBounds(703, 507, 129, 21);
-		contentPane.add(textCep_Funcionario);
-		textCep_Funcionario.setBorder(new LineBorder(new Color(1, 50, 1)));
-		textCep_Funcionario.setColumns(10);
+		textCepFuncionario = new JTextField();
+		textCepFuncionario.setForeground(new Color(1, 50, 1));
+		textCepFuncionario.setBackground(new Color(252, 251, 244));
+		textCepFuncionario.setBounds(608, 534, 129, 21);
+		contentPane.add(textCepFuncionario);
+		textCepFuncionario.setBorder(new LineBorder(new Color(1, 50, 1)));
+		textCepFuncionario.setColumns(10);
 		
-		JLabel lblRua_Funcionario = new JLabel("Data de Nascimento:");
-		lblRua_Funcionario.setBackground(new Color(1, 50, 1));
-		lblRua_Funcionario.setForeground(new Color(1, 50, 1));
-		lblRua_Funcionario.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblRua_Funcionario.setBounds(553, 442, 176, 21);
-		contentPane.add(lblRua_Funcionario);
+		JLabel lblDataFuncionario = new JLabel("Data de Nascimento:");
+		lblDataFuncionario.setBackground(new Color(1, 50, 1));
+		lblDataFuncionario.setForeground(new Color(1, 50, 1));
+		lblDataFuncionario.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblDataFuncionario.setBounds(553, 442, 176, 21);
+		contentPane.add(lblDataFuncionario);
 		
-		textRua_Funcionario = new JTextField();
-		textRua_Funcionario.setForeground(new Color(1, 50, 1));
-		textRua_Funcionario.setBackground(new Color(252, 251, 244));
-		textRua_Funcionario.setBounds(726, 445, 168, 21);
-		textRua_Funcionario.setBorder(new LineBorder(new Color(1, 50, 1)));
-		contentPane.add(textRua_Funcionario);
+		textDataFuncionario = new JTextField();
+		textDataFuncionario.setForeground(new Color(1, 50, 1));
+		textDataFuncionario.setBackground(new Color(252, 251, 244));
+		textDataFuncionario.setBounds(726, 445, 168, 21);
+		textDataFuncionario.setBorder(new LineBorder(new Color(1, 50, 1)));
+		contentPane.add(textDataFuncionario);
 		
-		textRua_Funcionario.setColumns(10);
+		textDataFuncionario.setColumns(10);
 		
-		JLabel lblNumero_Funcionario = new JLabel("Número:");
-		lblNumero_Funcionario.setForeground(new Color(1, 50, 1));
-		lblNumero_Funcionario.setBackground(new Color(1, 50, 1));
-		lblNumero_Funcionario.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNumero_Funcionario.setBounds(1204, 473, 72, 17);
-		contentPane.add(lblNumero_Funcionario);
+		JLabel lblNumeroFuncionario = new JLabel("Número:");
+		lblNumeroFuncionario.setForeground(new Color(1, 50, 1));
+		lblNumeroFuncionario.setBackground(new Color(1, 50, 1));
+		lblNumeroFuncionario.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblNumeroFuncionario.setBounds(843, 533, 72, 17);
+		contentPane.add(lblNumeroFuncionario);
 		
-		textNumero_Funcionario = new JTextField();
-		textNumero_Funcionario.setForeground(new Color(1, 50, 1));
-		textNumero_Funcionario.setBackground(new Color(252, 251, 244));
-		textNumero_Funcionario.setBounds(1286, 473, 97, 19);
-		contentPane.add(textNumero_Funcionario);
-		textNumero_Funcionario.setBorder(new LineBorder(new Color(1, 50, 1)));
-		textNumero_Funcionario.setColumns(10);
+		textNumeroFuncionario = new JTextField();
+		textNumeroFuncionario.setForeground(new Color(1, 50, 1));
+		textNumeroFuncionario.setBackground(new Color(252, 251, 244));
+		textNumeroFuncionario.setBounds(925, 535, 97, 19);
+		contentPane.add(textNumeroFuncionario);
+		textNumeroFuncionario.setBorder(new LineBorder(new Color(1, 50, 1)));
+		textNumeroFuncionario.setColumns(10);
 		
-		JLabel lblCPF_Funcionario = new JLabel("Telefone:");
-		lblCPF_Funcionario.setForeground(new Color(1, 50, 1));
-		lblCPF_Funcionario.setBackground(new Color(1, 50, 1));
-		lblCPF_Funcionario.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblCPF_Funcionario.setBounds(553, 397, 97, 21);
-		contentPane.add(lblCPF_Funcionario);
+		JLabel lblTelefoneFuncionario = new JLabel("Telefone:");
+		lblTelefoneFuncionario.setForeground(new Color(1, 50, 1));
+		lblTelefoneFuncionario.setBackground(new Color(1, 50, 1));
+		lblTelefoneFuncionario.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblTelefoneFuncionario.setBounds(553, 397, 97, 21);
+		contentPane.add(lblTelefoneFuncionario);
 		
-		textTelefone_Funcionario = new JTextField();
-		textTelefone_Funcionario.setForeground(new Color(1, 50, 1));
-		textTelefone_Funcionario.setBackground(new Color(252, 251, 244));
-		textTelefone_Funcionario.setBounds(641, 400, 168, 21);
-		textTelefone_Funcionario.setBorder(new LineBorder(new Color(1, 50, 1)));
-		contentPane.add(textTelefone_Funcionario);
-		textTelefone_Funcionario.setColumns(10);
+		textTelefoneFuncionario = new JTextField();
+		textTelefoneFuncionario.setForeground(new Color(1, 50, 1));
+		textTelefoneFuncionario.setBackground(new Color(252, 251, 244));
+		textTelefoneFuncionario.setBounds(641, 400, 168, 21);
+		textTelefoneFuncionario.setBorder(new LineBorder(new Color(1, 50, 1)));
+		contentPane.add(textTelefoneFuncionario);
+		textTelefoneFuncionario.setColumns(10);
 		
 		JButton btnLimpar = new JButton("Limpar");
 		btnLimpar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//comando para limpar os campos 
 				
-				 textNome_Funcionario.setText(" ");
-				 textSobrenome_Funcionario.setText(" ");
+				 textNomeFuncionario.setText(" ");
+				 textSobrenomeFuncionario.setText(" ");
 				 textNumeroIndentificacao.setText(" ");
-				 textCep_Funcionario.setText(" ");
-				 textRua_Funcionario.setText(" ");
-				 textNumero_Funcionario.setText(" ");
-				 textTelefone_Funcionario.setText(" ");
+				 textCepFuncionario.setText(" ");
+				 textDataFuncionario.setText(" ");
+				 textNumeroFuncionario.setText(" ");
+				 textTelefoneFuncionario.setText(" ");
 			}
 		});
 		btnLimpar.setForeground(new Color(252, 251, 244));
@@ -226,17 +229,28 @@ public class CadastroFuncionario extends JFrame {
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				String nome = textNome_Funcionario.getText();
-				String email = textSobrenome_Funcionario.getText();
-				int telefone = parseInt(textNumeroIndentificacao.getText());
-				int cpf = parseInt(textTelefone_Funcionario.getText());
-				int cep = parseInt(textCep_Funcionario.getText());
-				String rua = textRua_Funcionario.getText();
-				int  numero = parseInt(textNumero_Funcionario.getText());;
+				SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+				
+				String primeironome = textNomeFuncionario.getText();
+				String sobrenome = textSobrenomeFuncionario.getText();
+				int numindentificacao = parseInt(textNumeroIndentificacao.getText());
+				int telefone = parseInt(textTelefoneFuncionario.getText());
+				int cep = parseInt(textCepFuncionario.getText());
+				Date datanascimento = null;
+				try {
+					datanascimento = dateFormat.parse(textDataFuncionario.getText());
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				int  numcasa = parseInt(textNumeroFuncionario.getText());;   
+				
+				
 				
 				
 				//Verifica se tem alguma coisa
-				if(nome.isEmpty()) {
+				if(primeironome.isEmpty()){
+				
 					// exibir uma mensagem de erro
 				}else {
 					
@@ -244,14 +258,13 @@ public class CadastroFuncionario extends JFrame {
 				Funcionario f = new Funcionario();
 				
 				//Setar valores digitados nos atributos do OBJETO
-				f.setPrimeiroNome(nome);
-			//	f.setEmail(email);
+				f.setPrimeiroNome(primeironome);
+			    f.setSobrenome(sobrenome);
+		        f.setIndentificacao(numindentificacao);
 				f.setTelefone(telefone);
-			//	f.setCPF(cpf);
 				f.setCep(cep);
-			//	f.setRua(rua);
-				f.setNumero(numero);
-			//	f.setBairro(bairro);
+				f.setNumero(numcasa);
+			    f.setDatanascimento(datanascimento);
 				
 				
 				//Instanciar o DAO

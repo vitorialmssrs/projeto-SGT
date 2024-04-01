@@ -40,15 +40,14 @@ public class FuncionarioDAO {
 			try {
 				PreparedStatement ps = conBD.prepareStatement(SQL);
 				
-				ps.setInt(1, end.getnum_identificacao());
+				ps.setInt(1, end.getNumIdentificacao());
 				ps.setString(2, end.getPrimeiroNome());
 				ps.setString(3, end.getSobrenome());
-				ps.setDate(4, end.getData_nascimento());
-				//ps.setString(5, end.getEmail());
+				ps.setDate(4, java.sql.Date.valueOf(end.getDatanascimento().toString()));
 				ps.setInt(5, end.getTelefone());
 				ps.setInt(6, end.getCep());
 				ps.setInt(7, end.getNumero());
-				ps.setInt(8, end.getid_usuarios());
+				ps.setInt(8, end.getidusuarios());
 				
 				return ps.executeUpdate();
 			}catch(SQLException e) {
@@ -78,11 +77,10 @@ public class FuncionarioDAO {
 					
 					Funcionario f = new Funcionario();
 					
-			        f.setCPF(rs.getInt("num_identificacao"));
+			        f.setIndentificacao(rs.getInt("num_identificacao"));
 					f.setPrimeiroNome(rs.getString("PrimeiroNome"));
 					f.setSobrenome(rs.getString("Sobrenome"));
-					f.setData_nascimento(rs.getDate("data_de_nascimento"));
-				//	f.setEmail(rs.getString("Email"));
+					f.setDatanascimento(rs.getDate("data_de_nascimento"));
 					f.setTelefone(rs.getInt("Telefone"));
 					f.setCep(rs.getInt("Cep"));
 					f.setNumero(rs.getInt("Numero"));

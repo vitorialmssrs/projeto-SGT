@@ -1,19 +1,19 @@
 package controle;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Funcionario{
 	
 	
-	public int num_identificacao;
-	public String primeiro_nome;
+	public int numidentificacao;
+	public String primeironome;
 	public String sobrenome;
-	public Date data_nascimento;
+	public Date datanascimento;
 	//public String email;
 	public int telefone;
 	public int cep;
-	public int num_casa;
-	public int id_usuarios;
+	public int numcasa;
+	public int idusuarios;
 //	public String rua;
 //	public String bairro;
 	
@@ -40,23 +40,18 @@ public class Funcionario{
 	
 	*/
 	public String getPrimeiroNome() {
-		return primeiro_nome;
+		return primeironome;
 	}
 	public void setPrimeiroNome(String primeiroNome) {
-		primeiro_nome = primeiroNome;
+		primeironome = primeiroNome;
 	}
 	public String getSobrenome() {
 		return sobrenome;
 	}
-	public void setSobrenome(String sobrenome) {
-		sobrenome = sobrenome;
+	public void setSobrenome(String Sobrenome) {
+		sobrenome = Sobrenome;
 	}
-/*	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;	
-	}  */
+
 	public int getTelefone() {
 		return telefone;
 	}
@@ -70,34 +65,34 @@ public class Funcionario{
 		this.cep = cep;
 	}
 	public int getNumero() {
-		return num_casa;
+		return numcasa;
 	}
 	public void setNumero(int numero) {
-		this.num_casa = numero;
+		this.numcasa = numero;
 	}
-	public int getid_usuarios() {
-		return id_usuarios;
+	public int getidusuarios() {
+		return idusuarios;
 	}
-	public void setid_usuarioso(int id_usuarios) {
-	    this.id_usuarios = id_usuarios;
+	public void setidusuarioso(int id_usuarios) {
+	    this.idusuarios = id_usuarios;
 	}
-	public void setData_nascimento(Date date){
-		this.data_nascimento = date;
+	public void setDatanascimento(Date date){
+		this.datanascimento = date;
 	}
 	
-	public Date getData_nascimento() {
-        return this.data_nascimento;
+	public Date getDatanascimento() {
+        return this.datanascimento;
     }
 	public void id_usuarios(int int1) { /*  Ver se isso deve estar aqui   */ 
 		// TODO Auto-generated method stub
 		
 	}
 	
-	public int getnum_identificacao() {
-		return num_identificacao;
+	public int getNumIdentificacao() {
+		return numidentificacao;
 	}
-	public void setCPF(int Num_identificacao) {
-		num_identificacao = Num_identificacao;	
+	public void setIndentificacao(int Numidentificacao) {
+		numidentificacao = Numidentificacao;	
 	}
 	
 	
