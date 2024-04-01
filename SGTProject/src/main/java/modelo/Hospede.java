@@ -1,47 +1,30 @@
 package modelo;
 
-import java.sql.Date;
-import java.time.LocalDate;
+import java.util.Date;
 
 public class Hospede {
 	
 	//alt shift r muda todas as variaveis 
 	
-	private Integer id; 	
+	private Integer idcliente;
+	private Integer numidentificacao;
 	private String primeironome;
 	private String sobrenome;
-	private int cpfClientes;
-	private LocalDate datanascimento;
-	private LocalDate dataEntrada;
-	private LocalDate dataSaida;
-	private Float horaEntrada;
-	private Float horaSaida;
-
+	private Date datanascimento;
+	private Integer telefone;
+	private String email;
 	
-	public LocalDate getDataSaida() {
-		return dataSaida;
+	public Integer getIdcliente() {
+		return idcliente;
 	}
-	public void setDataSaida(LocalDate dataSaida) {
-		this.dataSaida = dataSaida;
+	public void setIdcliente(Integer idcliente) {
+		this.idcliente = idcliente;
 	}
-	public Float getHoraEntrada() {
-		return horaEntrada;
+	public Integer getNumidentificacao() {
+		return numidentificacao;
 	}
-	public void setHoraEntrada(Float horaEntrada) {
-		this.horaEntrada = horaEntrada;
-	}
-	public Float getHoraSaida() {
-		return horaSaida;
-	}
-	public void setHoraSaida(Float horaSaida) {
-		this.horaSaida = horaSaida;
-	}
-	
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setNumidentificacao(Integer numidentificacao) {
+		this.numidentificacao = numidentificacao;
 	}
 	public String getPrimeironome() {
 		return primeironome;
@@ -52,27 +35,30 @@ public class Hospede {
 	public String getSobrenome() {
 		return sobrenome;
 	}
-
 	public void setSobrenome(String sobrenome) {
 		this.sobrenome = sobrenome;
 	}
-	public int getCpfClientes() {
-		return cpfClientes;
-	}
-	public void setCpfClientes(int cpfClientes) {
-		this.cpfClientes = cpfClientes;
-	}
-	public LocalDate getDatanascimento() {
+	public Date getDatanascimento() {
 		return datanascimento;
 	}
-	public void setDatanascimento(LocalDate datanascimento) {
+	public void setDatanascimento(Date datanascimento) {
 		this.datanascimento = datanascimento;
 	}
-	public LocalDate getDataEntrada() {
-		return dataEntrada;
+	public Integer getTelefone() {
+		return telefone;
 	}
-	public void setDataEntrada(LocalDate dataEntrada) {
-		this.dataEntrada = dataEntrada;
+	public void setTelefone(Integer telefone) {
+		this.telefone = telefone;
 	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	
+	
+	
 
 }

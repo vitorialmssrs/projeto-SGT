@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.sql.Date;
+import java.util.Date;
 
 
 import modelo.Hospede;
@@ -36,12 +36,10 @@ public class HospedeDAO {
 			
 			ps.setString(1, end.getPrimeironome());
 			ps.setString(2, end.getSobrenome());
-			ps.setInt(3, end.getCpfClientes());
+			ps.setInteger(3, end.getNumidentificacao());
 			ps.setDate(4, end.getDatanascimento());
-			ps.setDate(5, end.getDataEntrada());
-			ps.setDate(6, end.getDataSaida());
-			ps.setFloat(7, end.getHoraEntrada());
-			ps.setFloat(8, end.getHoraSaida());
+			ps.setInteger(5, end.getTelefone());
+			ps.setString(6, end.getEmail());
 			
 
 			
@@ -110,7 +108,7 @@ public class HospedeDAO {
 				//seta oa valores no objeto java 
 				end.setPrimeironome(PrimeiroNome);
 				end.setSobrenome(Sobrenome);
-				end.setCpfClientes(cpf);
+				end.setNumidentificacao(cpf);
 				end.setDatanascimento(Datanascimento);
 				end.setDataEntrada(DataEntrada);
 				end.setDataSaida(DataSaida);
