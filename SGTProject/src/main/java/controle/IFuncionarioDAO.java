@@ -1,6 +1,8 @@
 package controle;
 
 import java.util.ArrayList;
+
+import modelo.Funcionario;
 	
 	
 	public interface IFuncionarioDAO {

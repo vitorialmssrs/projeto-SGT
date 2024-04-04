@@ -97,8 +97,10 @@ public class HospedeDAO {
 				// LocalTime
 				// LocalDateTime
 				/*
-				 * (Java)LocalTime <-> Time(BD) (Java)LocalDateTime <-> DateTime(BD)
-				 * (Java)LocalDate <-> Date(BD) Se estiver muito dificil usar a conversão,
+				 * (Java)LocalTime <-> Time(BD) 
+				 * (Java)LocalDateTime <-> DateTime(BD)
+				 * (Java)LocalDate <-> Date(BD) 
+				 * Se estiver muito dificil usar a conversão,
 				 * separar em 3 input, para verificar e converter mais rapido
 				 **/
 
