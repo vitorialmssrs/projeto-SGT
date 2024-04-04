@@ -28,11 +28,8 @@ public class FuncionarioDAO {
 		
 		public int inserirFuncionario(Funcionario end) {
 			
-			/*
-			 * num_identificacao, primeiro_nome, sobrenome, data_nascimento, telefone , cep, num_casa, id_usuarios
-			 * Ver se realmente o campo CPF e Email serão necessarios, além dos campos rua e bairro
-			 */
-			String SQL = "INSERT INTO funcionarios (num_identificacao, primeiro_nome, sobrenome, data_nascimento, telefone, cep, num_casa, id_usuarios) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+			
+			String SQL = "INSERT INTO funcionarios (id_funcionario, login, senha, num_indentificacao, nome_completo, data_nascismento, telefone, cep, num_casa, espacos_hotel_id_espacos) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			
 			Conexao con = Conexao.getInstancia();
 			Connection conBD = con.conectar();
@@ -40,14 +37,17 @@ public class FuncionarioDAO {
 			try {
 				PreparedStatement ps = conBD.prepareStatement(SQL);
 				
-				ps.setInt(1, end.getNumIdentificacao());
-				ps.setString(2, end.getPrimeiroNome());
-				ps.setString(3, end.getSobrenome());
-				ps.setDate(4, java.sql.Date.valueOf(end.getDatanascimento().toString()));
-				ps.setInt(5, end.getTelefone());
-				ps.setInt(6, end.getCep());
-				ps.setInt(7, end.getNumero());
-				ps.setInt(8, end.getidusuarios());
+				ps.setInt(1, end.getIdFuncionario());
+				ps.setString(2, end.getLogin());
+				ps.setString(3, end.getSenha());
+				ps.setInt(4, end.getNumIndentificacao());
+				ps.setString(5, end.getNomeCompleto());
+			    ps.setDate(6, end.getDataNascismento());
+			    ps.setInt(7, end.getTelefone());
+			    ps.setInt(8, end.getCep());
+			    ps.setInt(9, end.getNumCasa());
+			    ps.setInt(10, end.getEspacosHotelIdEspacos());
+				
 				
 				return ps.executeUpdate();
 			}catch(SQLException e) {
@@ -77,14 +77,16 @@ public class FuncionarioDAO {
 					
 					Funcionario f = new Funcionario();
 					
-			        f.setIndentificacao(rs.getInt("num_identificacao"));
-					f.setPrimeiroNome(rs.getString("PrimeiroNome"));
-					f.setSobrenome(rs.getString("Sobrenome"));
-					f.setDatanascimento(rs.getDate("data_de_nascimento"));
-					f.setTelefone(rs.getInt("Telefone"));
-					f.setCep(rs.getInt("Cep"));
-					f.setNumero(rs.getInt("Numero"));
-					f.id_usuarios(rs.getInt("id_usuarios"));
+					f.setIdFuncionario(rs.getInt("id_funcionario"));
+					f.setLogin(rs.getNString("login"));
+					f.setSenha(rs.getNString("senha"));
+					f.setNumIndentificacao(rs.getInt("num_indentificacao"));
+					f.setNomeCompleto(rs.getNString("nome_completo"));
+					f.setDataNascismento(rs.getDate("data_nascismento"));
+					f.setTelefone(rs.getInt("telefone"));
+					f.setCep(rs.getInt("cep"));
+					f.setNumCasa(rs.getInt("num_casa"));
+					f.setEspacosHotelIdEspacos(rs.getInt("espacos_hotel_id_espacos"));
 				
 					funcionario.add(f);
 				}
@@ -111,8 +113,32 @@ public class FuncionarioDAO {
 			
 			try {
 				PreparedStatement ps = conBD.prepareStatement(SQL);
-				ps.setString(1, end.getPrimeiroNome());
-				ps.setString(2, end.getSobrenome());
+				ps.setInt(1, end.getIdFuncionario());
+				ps.setInt(1, end.getIdFuncionario());
+				ps.setString(2, end.getLogin());
+				ps.setString(3, end.getSenha());
+				ps.setInt(4, end.getNumIndentificacao());
+				ps.setString(5, end.getNomeCompleto());
+			    ps.setDate(6, end.getDataNascismento());
+			    ps.setInt(7, end.getTelefone());
+			    ps.setInt(8, end.getCep());
+			    ps.setInt(9, end.getNumCasa());
+			    ps.setInt(10, end.getEspacosHotelIdEspacos());
+				
+				/*
+				DAO                         Funcionario
+				
+				IdFuncionario               idFuncionario
+				Login                       login
+				Senha                       senha
+				NumIndentificacao           numIndentificacao
+				NomeCompleto                nomeCompleto
+				DataNascismento             dataNascismento
+			    Telefone                    telefone
+			    Cep                         cep
+			    NumCasa                     numCasa
+			    EspacosHotelIdEspacos       espacosHotelIdEspacos
+			    */
 				retorno = ps.executeUpdate();
 			} catch (Exception e) {
 				e.printStackTrace();

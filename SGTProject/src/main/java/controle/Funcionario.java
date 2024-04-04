@@ -1,99 +1,84 @@
 package controle;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Funcionario{
 	
 	
-	public int numidentificacao;
-	public String primeironome;
-	public String sobrenome;
-	public Date datanascimento;
-	//public String email;
-	public int telefone;
-	public int cep;
-	public int numcasa;
-	public int idusuarios;
-//	public String rua;
-//	public String bairro;
-	
-	/*public String getBairro() {
-		return bairro;
+	private Integer idFuncionario;
+	private String login;
+	private String senha;
+	private Integer numIndentificacao;
+	private String nomeCompleto;
+	private Date dataNascismento;
+	private Integer telefone;
+	private Integer cep;
+	private Integer numCasa;
+	private Integer espacosHotelIdEspacos;
+	public Integer getIdFuncionario() {
+		return idFuncionario;
 	}
-	public void setBairro(String bairro) {
-		this.bairro = bairro;
+	public void setIdFuncionario(Integer idFuncionario) {
+		this.idFuncionario = idFuncionario;
 	}
-	public String getRua() {
-		return rua;
+	public String getLogin() {
+		return login;
 	}
-	public void setRua(String rua) {
-		this.rua = rua;
+	public void setLogin(String login) {
+		this.login = login;
 	}
-	private int  usuario_id_usuario;
-	
-	public int getCPF() {
-		return CPF;
+	public String getSenha() {
+		return senha;
 	}
-	public void setCPF(int cPF) {
-		CPF = cPF;	
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
-	
-	*/
-	public String getPrimeiroNome() {
-		return primeironome;
+	public Integer getNumIndentificacao() {
+		return numIndentificacao;
 	}
-	public void setPrimeiroNome(String primeiroNome) {
-		primeironome = primeiroNome;
+	public void setNumIndentificacao(Integer numIndentificacao) {
+		this.numIndentificacao = numIndentificacao;
 	}
-	public String getSobrenome() {
-		return sobrenome;
+	public String getNomeCompleto() {
+		return nomeCompleto;
 	}
-	public void setSobrenome(String Sobrenome) {
-		sobrenome = Sobrenome;
+	public void setNomeCompleto(String nomeCompleto) {
+		this.nomeCompleto = nomeCompleto;
 	}
-
-	public int getTelefone() {
+	public Date getDataNascismento() {
+		return dataNascismento;
+	}
+	public void setDataNascismento(Date dataNascismento) {
+		this.dataNascismento = dataNascismento;
+	}
+	public Integer getTelefone() {
 		return telefone;
 	}
-	public void setTelefone(int telefone) {
+	public void setTelefone(Integer telefone) {
 		this.telefone = telefone;
 	}
-	public int getCep() {
+	public Integer getCep() {
 		return cep;
 	}
-	public void setCep(int cep) {
+	public void setCep(Integer cep) {
 		this.cep = cep;
 	}
-	public int getNumero() {
-		return numcasa;
+	public Integer getNumCasa() {
+		return numCasa;
 	}
-	public void setNumero(int numero) {
-		this.numcasa = numero;
+	public void setNumCasa(Integer numCasa) {
+		this.numCasa = numCasa;
 	}
-	public int getidusuarios() {
-		return idusuarios;
+	public Integer getEspacosHotelIdEspacos() {
+		return espacosHotelIdEspacos;
 	}
-	public void setidusuarioso(int id_usuarios) {
-	    this.idusuarios = id_usuarios;
-	}
-	public void setDatanascimento(Date date){
-		this.datanascimento = date;
+	public void setEspacosHotelIdEspacos(Integer espacosHotelIdEspacos) {
+		this.espacosHotelIdEspacos = espacosHotelIdEspacos;
 	}
 	
-	public Date getDatanascimento() {
-        return this.datanascimento;
-    }
-	public void id_usuarios(int int1) { /*  Ver se isso deve estar aqui   */ 
-		// TODO Auto-generated method stub
-		
-	}
 	
-	public int getNumIdentificacao() {
-		return numidentificacao;
-	}
-	public void setIndentificacao(int Numidentificacao) {
-		numidentificacao = Numidentificacao;	
-	}
+	
+	
 	
 	
 
