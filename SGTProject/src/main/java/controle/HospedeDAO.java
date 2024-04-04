@@ -5,16 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
-
+import java.sql.Date;
 
 import modelo.Hospede;
 
 public class HospedeDAO {
 
 	private static HospedeDAO instancia;
-
 
 	public static HospedeDAO getInstancia() {
 		if (instancia == null) {
@@ -24,100 +23,96 @@ public class HospedeDAO {
 	}
 
 	public int insertHospede(Hospede end) {
-		String SQL = "INSERT INTO hospede (primeiroNome, sobrenome, cpf, dataNascimento, checkIn, checkOut) VALUES (?, ?, ?, ?, ?, ?)";
+		String SQL = "INSERT INTO hospede (primeiro_nome, sobrenome, num_identificacao, data_de_nascimento, telefone, email) VALUES (?, ?, ?, ?, ?, ?)";
 
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
-		
+
 		int chavePrimariaGerada = Integer.MIN_VALUE;
-		
+
 		try {
-			PreparedStatement ps = conBD.prepareStatement(SQL,Statement.RETURN_GENERATED_KEYS);
-			
+			PreparedStatement ps = conBD.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+
 			ps.setString(1, end.getPrimeironome());
 			ps.setString(2, end.getSobrenome());
-			ps.setInteger(3, end.getNumidentificacao());
-			ps.setDate(4, end.getDatanascimento());
-			ps.setInteger(5, end.getTelefone());
+			ps.setInt(3, end.getNumidentificacao());
+
+			ps.setDate(4, Date.valueOf(end.getDatanascimento()));
+			ps.setInt(5, end.getTelefone());
 			ps.setString(6, end.getEmail());
-			
 
-			
 			int ra = ps.executeUpdate();
-			
-			if(ra > 0) {
+
+			if (ra > 0) {
 				ResultSet gk = ps.getGeneratedKeys();
-				if(gk.next()) {
+				if (gk.next()) {
 					chavePrimariaGerada = gk.getInt(1);
-					
 				}
-				
 			}
-
-					
 		} catch (SQLException e) {
-
 			e.printStackTrace();
-			
-		}finally {
+		} finally {
 			con.fecharConexao();
-			
 		}
-
 		return chavePrimariaGerada;
 	}
-	
-	public ArrayList<Hospede> listarHospede(){
-		
-		//ArrayList para armazenar o resultado do select
-		
+
+	public ArrayList<Hospede> listarHospede() {
+
+		// ArrayList para armazenar o resultado do select
+
 		ArrayList<Hospede> hospedes = new ArrayList<Hospede>();
-		
-		//Comando SQL a ser executado
-		
+
+		// Comando SQL a ser executado
+
 		String SQL = "SELECT * FROM hospedes";
-		
-		//Cria a "ponta de conexão" com o MYSQL
+
+		// Cria a "ponta de conexão" com o MYSQL
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
-		
-		
+
 		try {
-			
+
 			PreparedStatement ps = conBD.prepareStatement(SQL);
 			ResultSet rs = ps.executeQuery();
-			
-			while(rs.next()) {
-				//Cria o objeto
+
+			while (rs.next()) {
+				// Cria o objeto
 				Hospede end = new Hospede();
-				
-				//Pega os valores de cada coluna do registro 
-				String PrimeiroNome = rs.getString("primeiroNome");
+
+				/*
+				 * primeiro_nome, sobrenome, num_identificacao, data_de_nascimento, telefone,
+				 * email
+				 */
+
+				// Pega os valores de cada coluna do registro
+				String PrimeiroNome = rs.getString("primeiro_nome");
 				String Sobrenome = rs.getString("sobrenome");
-				Date Datanascimento = rs.getDate("dataNascimento");				
-				int cpf = rs.getInt("cpf");
-				Date DataEntrada = rs.getDate("DataEntrada");
-				Date DataSaida = rs.getDate("DataSaida");
-				Float horaEntrada = rs.getFloat("horaEntrada");
-				Float horaSaida = rs.getFloat("horaSaida");
-				
-				//localdate ==> mais indicado para utilizar
-				//LocalTime
-				//LocalDateTime
-				
-				//seta oa valores no objeto java 
+				LocalDate Datanascimento = rs.getDate("data_de_nascimento").toLocalDate();
+				int Numidentificacao = rs.getInt("num_identificacao");
+				int Telefone = rs.getInt("telefone");
+				String Email = rs.getString("email");
+
+				// localdate ==> mais indicado para utilizar
+				// LocalTime
+				// LocalDateTime
+				/*
+				 * (Java)LocalTime <-> Time(BD) (Java)LocalDateTime <-> DateTime(BD)
+				 * (Java)LocalDate <-> Date(BD) Se estiver muito dificil usar a conversão,
+				 * separar em 3 input, para verificar e converter mais rapido
+				 **/
+
+				// seta oa valores no objeto java
 				end.setPrimeironome(PrimeiroNome);
 				end.setSobrenome(Sobrenome);
-				end.setNumidentificacao(cpf);
+				end.setNumidentificacao(Numidentificacao);
 				end.setDatanascimento(Datanascimento);
-				end.setDataEntrada(DataEntrada);
-				end.setDataSaida(DataSaida);
-				end.setHoraEntrada(horaEntrada);
-				end.setHoraSaida(horaSaida);
-				
-				hospedes.add(end);		
-			//precisa acrescentar a tela de confimação 
-								
+				end.setTelefone(Telefone);
+				end.setEmail(Email);
+
+				hospedes.add(end);
+				// precisa acrescentar a tela de confimação
+
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -129,72 +124,85 @@ public class HospedeDAO {
 	}
 
 	public boolean atualizarHospede(Hospede end) {
-		
-		String SQL = "UPDATE hospedes SET nome = ?, sobrenome = ?, cpf = ?, dataNascimento = ?, dataEntrada = ?, dataSaida = ?, horaEntrada = ?, horaSaida = ?, WHERE cpf = ?";
-		
-		//Abre conexão e cria a "ponte de conexão" com o MySQL
+
+		/*
+		 * primeiro_nome, sobrenome, num_identificacao, data_de_nascimento, telefone,
+		 * email
+		 */
+		// verificar se o WHERE vai finalizar com n°identificação ou id_cliente
+		String SQL = "UPDATE hospedes SET primeiro_nome = ?, sobrenome = ?, num_identificacao = ?, data_de_nascimento = ?, telefone = ?, email = ?, WHERE id_cliente = ?";
+
+		// Abre conexão e cria a "ponte de conexão" com o MySQL
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
-		
+
 		int retorno = 0;
-		
+
 		try {
-			
+
 			PreparedStatement ps = conBD.prepareStatement(SQL);
 
 			ps.setString(1, end.getPrimeironome());
 			ps.setString(2, end.getSobrenome());
-			ps.setInt(3, end.getCpfClientes());
-			ps.setDate(4, end.getDatanascimento());
-			ps.setDate(5, end.getDataEntrada());
-			ps.setDate(6, end.getDataSaida());
-			ps.setFloat(7, end.getHoraEntrada());
-			ps.setFloat(8, end.getHoraSaida());
-			ps.setFloat(8, end.getHoraSaida());
-			
+			ps.setInt(3, end.getNumidentificacao());
+			ps.setDate(4, Date.valueOf(end.getDatanascimento()));
+			ps.setInt(5, end.getTelefone());
+			ps.setString(6, end.getEmail());
+
 			retorno = ps.executeUpdate();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			con.fecharConexao();
 		}
-		
-		//IF Ternário: se o retorno for zero é pra considerar esse valor falso, senão é pra considerar verdadeiro 
+
+		// IF Ternário: se o retorno for zero é pra considerar esse valor falso, senão é
+		// pra considerar verdadeiro
 		return retorno != 0;
 	}
-	
-	public boolean removerHospede (Hospede end) {
-		
-		String SQL = "DELETE FROM hospedes SET nome = ?, sobrenome = ?, cpf = ?, dataNascimento = ?, dataEntrada = ?, dataSaida = ?, horaEntrada = ?, horaSaida = ?, WHERE cpf = ?"; //verificar qual sera usado para excluir id ou cpf
-		
+
+	public boolean removerHospede(Hospede end) {
+
+		String SQL = "DELETE FROM hospedes SET primeiro_nome = ?, sobrenome = ?, num_identificacao = ?, data_de_nascimento = ?, telefone = ?, email = ?, WHERE id_cliente = ?"; // verificar
+																																														// qual
+																																														// sera
+																																														// usado
+																																														// para
+																																														// excluir
+																																														// id
+																																														// ou
+																																														// cpf
+
 		Conexao con = Conexao.getInstancia();
-		
+
 		Connection conBD = con.conectar();
-		
+
 		int retorno = 0;
-		
+
 		try {
-				
+
 			PreparedStatement ps = conBD.prepareStatement(SQL);
-			ps.setInt(1, end.getId());
-			
+
+			ps.setString(1, end.getPrimeironome());
+			ps.setString(2, end.getSobrenome());
+			ps.setInt(3, end.getNumidentificacao());
+			ps.setDate(4, Date.valueOf(end.getDatanascimento()));
+			ps.setInt(5, end.getTelefone());
+			ps.setString(6, end.getEmail());
+
 			retorno = ps.executeUpdate();
-			
-			/*int rowsAffected = ps.executeUpdate();
-			if (rowsAffected > 0) {
-				con.fecharConexao();
-				return true;}*/
-			
+
+			/*
+			 * int rowsAffected = ps.executeUpdate(); if (rowsAffected > 0) {
+			 * con.fecharConexao(); return true;}
+			 */
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			con.fecharConexao();
 		}
-
 		return retorno != 0;
 	}
-	
-	
-	
 }

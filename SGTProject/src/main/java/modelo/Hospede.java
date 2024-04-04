@@ -1,6 +1,6 @@
 package modelo;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Hospede {
 	
@@ -10,7 +10,7 @@ public class Hospede {
 	private Integer numidentificacao;
 	private String primeironome;
 	private String sobrenome;
-	private Date datanascimento;
+	private LocalDate datanascimento;
 	private Integer telefone;
 	private String email;
 	
@@ -38,10 +38,10 @@ public class Hospede {
 	public void setSobrenome(String sobrenome) {
 		this.sobrenome = sobrenome;
 	}
-	public Date getDatanascimento() {
+	public LocalDate getDatanascimento() {
 		return datanascimento;
 	}
-	public void setDatanascimento(Date datanascimento) {
+	public void setDatanascimento(LocalDate datanascimento) {
 		this.datanascimento = datanascimento;
 	}
 	public Integer getTelefone() {
