@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import java.time.LocalDate;
+import java.sql.Date;
 
 import controle.FuncionarioDAO;
 import modelo.Funcionario;
@@ -19,7 +21,6 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.awt.event.ActionEvent;
 
 public class CadastroFuncionario extends JFrame {
@@ -212,21 +213,23 @@ public class CadastroFuncionario extends JFrame {
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+				/*String SimpleDateFormat = "dd/MM/yyyy";*/
+				/*SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");*/
 				
 				String nomeCompleto = textNomeFuncionario.getText();
 				int numIndentificacao = parseInt(textNumeroIndentificacao.getText());
 				int telefone = parseInt(textTelefoneFuncionario.getText());
 				int cep = parseInt(textCepFuncionario.getText());
-				Date dataNascismento = null;
+				int numCasa = parseInt(textNumeroFuncionario.getText());
+				
+				/*Date dataNascismento = null;
 				try {
 					dataNascismento = dateFormat.parse(textDataFuncionario.getText());
 				} catch (ParseException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
-				}
-				int  numcasa = parseInt(textNumeroFuncionario.getText());;   
-				
+				}*/
+				   
 				//Verifica se tem alguma coisa
 				if(nomeCompleto.isEmpty()){
 				
@@ -239,12 +242,10 @@ public class CadastroFuncionario extends JFrame {
 				//Setar valores digitados nos atributos do OBJETO
 			    f.setNumIndentificacao(numIndentificacao);
 			    f.setNomeCompleto(nomeCompleto);
-			    f.setDataNascismento(dataNascismento);
+			   /* f.setDataNascismento(dataNascismento);*/
 				f.setTelefone(telefone);
 				f.setCep(cep);
-				f.setNumCasa(numcasa);
-			 
-				
+				f.setNumCasa(numCasa);
 				
 				//Instanciar o DAO
 				FuncionarioDAO dao = FuncionarioDAO.getInstancia();

@@ -1,10 +1,14 @@
 package controle;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
+
+
 
 import modelo.Funcionario;
 
@@ -39,16 +43,15 @@ public class FuncionarioDAO {
 			try {
 				PreparedStatement ps = conBD.prepareStatement(SQL);
 				
-				ps.setInt(1, end.getIdFuncionario());
-				ps.setString(2, end.getLogin());
-				ps.setString(3, end.getSenha());
-				ps.setInt(4, end.getNumIndentificacao());
-				ps.setString(5, end.getNomeCompleto());
-			    ps.setDate(6, end.getDataNascismento());
-			    ps.setInt(7, end.getTelefone());
-			    ps.setInt(8, end.getCep());
-			    ps.setInt(9, end.getNumCasa());
-			    ps.setInt(10, end.getEspacosHotelIdEspacos());
+				ps.setString(1, end.getLogin());
+				ps.setString(2, end.getSenha());
+				ps.setInt(3, end.getNumIndentificacao());
+				ps.setString(4, end.getNomeCompleto());
+				ps.setDate(5,Date.valueOf(end.getDataNascismento()));
+			    ps.setInt(6, end.getTelefone());
+			    ps.setInt(7, end.getCep());
+			    ps.setInt(8, end.getNumCasa());
+			    ps.setInt(9, end.getEspacosHotelIdEspacos());
 				
 				
 				return ps.executeUpdate();
@@ -79,17 +82,29 @@ public class FuncionarioDAO {
 					
 					Funcionario f = new Funcionario();
 					
-					f.setIdFuncionario(rs.getInt("id_funcionario"));
-					f.setLogin(rs.getNString("login"));
-					f.setSenha(rs.getNString("senha"));
-					f.setNumIndentificacao(rs.getInt("num_indentificacao"));
-					f.setNomeCompleto(rs.getNString("nome_completo"));
-					f.setDataNascismento(rs.getDate("data_nascismento"));
-					f.setTelefone(rs.getInt("telefone"));
-					f.setCep(rs.getInt("cep"));
-					f.setNumCasa(rs.getInt("num_casa"));
-					f.setEspacosHotelIdEspacos(rs.getInt("espacos_hotel_id_espacos"));
+					Integer idFuncionario = rs.getInt("id_funcionario");
+				    String Login =  rs.getNString("login");
+				    String Senha = rs.getNString("senha");
+				    Integer NumIndentificacao = rs.getInt("num_indentificacao");
+				    String NomeCompleto = rs.getNString("nome_completo");
+				    Integer Telefone = rs.getInt("telefone");
+				    Integer Cep = rs.getInt("cep");
+				    Integer NumCasa = rs.getInt("num_casa");
+				    Integer EspacosHotelIdEspacos = rs.getInt("espacos_hotel_id_espacos");
+					LocalDate DataNascismento = rs.getDate("data_de_nascimento").toLocalDate();
+					
+					f.setIdFuncionario(idFuncionario);
+					f.setLogin(Login);
+					f.setSenha(Senha);
+					f.setNumIndentificacao(NumIndentificacao);
+					f.setNomeCompleto(NomeCompleto);
+					f.setDataNascismento(DataNascismento);
+					f.setTelefone(Telefone);
+					f.setCep(Cep);
+					f.setNumCasa(NumCasa);
+					f.setEspacosHotelIdEspacos(EspacosHotelIdEspacos);
 				
+					
 					funcionario.add(f);
 				}
 				
@@ -108,7 +123,7 @@ public class FuncionarioDAO {
 			public boolean atualizarFuncionario(Funcionario end){
 				
 			
-			String SQL = "UPTADE funcionario Set PrimeiroNome = ?";
+     		String SQL = "UPDATE funcionario Set Login = ?, Senha = ?, NumIndentificacao = ?, NomeCompleto = ?, DataNascismento = ?, Telefone = ?, Cep = ?, NumCasa = ?, EspacosHotelIdEspacos = ?  ";
 			Conexao con = Conexao.getInstancia();
 			Connection conBD = con.conectar();
 			int retorno = 0;
@@ -116,12 +131,11 @@ public class FuncionarioDAO {
 			try {
 				PreparedStatement ps = conBD.prepareStatement(SQL);
 				ps.setInt(1, end.getIdFuncionario());
-				ps.setInt(1, end.getIdFuncionario());
 				ps.setString(2, end.getLogin());
 				ps.setString(3, end.getSenha());
 				ps.setInt(4, end.getNumIndentificacao());
 				ps.setString(5, end.getNomeCompleto());
-			    ps.setDate(6, end.getDataNascismento());
+				ps.setDate(6,Date.valueOf(end.getDataNascismento()));
 			    ps.setInt(7, end.getTelefone());
 			    ps.setInt(8, end.getCep());
 			    ps.setInt(9, end.getNumCasa());
@@ -141,6 +155,7 @@ public class FuncionarioDAO {
 			    NumCasa                     numCasa
 			    EspacosHotelIdEspacos       espacosHotelIdEspacos
 			    */
+			    
 				retorno = ps.executeUpdate();
 			} catch (Exception e) {
 				e.printStackTrace();

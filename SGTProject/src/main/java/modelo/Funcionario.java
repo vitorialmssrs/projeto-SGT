@@ -1,6 +1,7 @@
 package modelo;
 
-import java.sql.Date;
+
+import java.time.LocalDate;
 
 public class Funcionario{
 	
@@ -10,7 +11,7 @@ public class Funcionario{
 	private String senha;
 	private Integer numIndentificacao;
 	private String nomeCompleto;
-	private Date dataNascismento;
+	private LocalDate dataNascismento;
 	private Integer telefone;
 	private Integer cep;
 	private Integer numCasa;
@@ -45,10 +46,10 @@ public class Funcionario{
 	public void setNomeCompleto(String nomeCompleto) {
 		this.nomeCompleto = nomeCompleto;
 	}
-	public Date getDataNascismento() {
+	public LocalDate getDataNascismento() {
 		return dataNascismento;
 	}
-	public void setDataNascismento(Date dataNascismento) {
+	public void setDataNascismento(LocalDate dataNascismento) {
 		this.dataNascismento = dataNascismento;
 	}
 	public Integer getTelefone() {
