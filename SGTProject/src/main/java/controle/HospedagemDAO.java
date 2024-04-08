@@ -1,14 +1,16 @@
 package controle;
 
 import java.sql.Connection;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 
 import modelo.Hospedagem;
@@ -34,11 +36,9 @@ public class HospedagemDAO {
 		try {
 			PreparedStatement ps = conBD.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
 
-			ps.setDate(1, Date.valueOf(end.getCheckindata()));
-			ps.setTime(2, Time.valueOf(end.getCheckinhora()));
-			ps.setDate(3, Date.valueOf(end.getCheckoutdata()));
-			ps.setTime(4, Time.valueOf(end.getCheckouthora()));
-
+			ps.setDate(1, end.getCheckin());
+			ps.setDate(2, Date.valueOf(end.getCheckout()));
+//ps.setDate(1, end.getCheckin().atZone(ZoneId.systemDefault()).toLocalDateTime()); ou java.sql.Timestamp.valueOf(dateToConvert);
 			ResultSet rs = ps.executeQuery();
 			if (rs != null) {
 				chavePrimariaGerada = rs.getInt(1);
@@ -66,20 +66,24 @@ public class HospedagemDAO {
 			while (rs.next()) {
 				
 				Hospedagem end = new Hospedagem();
-				LocalDate DtCheckin = rs.getDate("checkin").toLocalDate();
-				LocalTime HrCheckin = rs.getTime("checkin").toLocalTime();
-				LocalDate DtCheckout = rs.getDate ("checkout").toLocalDate();
-				LocalTime HrCheckout = rs.getTime("checkout").toLocalTime();
+				
+				//LocalDateTime localDateTime = date.toInstant().atZone( ZoneId.systemDefault() ).toLocalDateTime();
+				
+				LocalDateTime Checkin = rs.getDate("checkin");
+				
+				/*LocalDateTime Checkin = rs.getDate("checkin").toLocalDateTime();
+				LocalDateTime Checkout = rs.getDate("checkout").toLocalDateTime();*/
+				
+				
 		/*	ps.setDate(1, Date.valueOf(end.getCheckindata()));
 			ps.setTime(2, Time.valueOf(end.getCheckinhora()));
 			ps.setDate(3, Date.valueOf(end.getCheckoutdata()));
 			ps.setTime(4, Time.valueOf(end.getCheckouthora()));
 			LocalDate Datanascimento = rs.getDate("data_de_nascimento").toLocalDate();*/
 		
-				end.setCheckindata(DtCheckin);
-				end.setCheckinhora(HrCheckin);
-				end.setCheckoutdata(DtCheckout);
-				end.setCheckouthora(HrCheckout);
+				end.setCheckin(Checkin);
+				end.setCheckout(Checkout);
+
 				hospedagem.add(end);
 			}
 			} catch (SQLException e) {

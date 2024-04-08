@@ -1,45 +1,31 @@
 package modelo;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.sql.Date;
+import java.time.LocalDateTime;
 
 public class Hospedagem {
 	
 	private Integer numQuarto;
-	private LocalDate checkindata;
-	private LocalTime checkinhora;
-	private LocalDate checkoutdata;
-	private LocalTime checkouthora;
+	private LocalDateTime checkin;
+	private LocalDateTime checkout;
+	
 	public Integer getNumQuarto() {
 		return numQuarto;
 	}
 	public void setNumQuarto(Integer numQuarto) {
 		this.numQuarto = numQuarto;
 	}
-	public LocalDate getCheckindata() {
-		return checkindata;
+	public LocalDateTime getCheckin() {
+		return checkin;
 	}
-	public void setCheckindata(LocalDate checkindata) {
-		this.checkindata = checkindata;
+	public void setCheckin(LocalDateTime checkin) {
+		this.checkin = checkin;
 	}
-	public LocalTime getCheckinhora() {
-		return checkinhora;
+	public LocalDateTime getCheckout() {
+		return checkout;
 	}
-	public void setCheckinhora(LocalTime checkinhora) {
-		this.checkinhora = checkinhora;
+	public void setCheckout(LocalDateTime checkout) {
+		this.checkout = checkout;
 	}
-	public LocalDate getCheckoutdata() {
-		return checkoutdata;
-	}
-	public void setCheckoutdata(LocalDate checkoutdata) {
-		this.checkoutdata = checkoutdata;
-	}
-	public LocalTime getCheckouthora() {
-		return checkouthora;
-	}
-	public void setCheckouthora(LocalTime checkouthora) {
-		this.checkouthora = checkouthora;
-	}
-
 	
 }
