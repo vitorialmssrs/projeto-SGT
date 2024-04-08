@@ -36,7 +36,6 @@ public class HospedeDAO {
 			ps.setString(1, end.getPrimeironome());
 			ps.setString(2, end.getSobrenome());
 			ps.setInt(3, end.getNumidentificacao());
-
 			ps.setDate(4, Date.valueOf(end.getDatanascimento()));
 			ps.setInt(5, end.getTelefone());
 			ps.setString(6, end.getEmail());
@@ -103,7 +102,7 @@ public class HospedeDAO {
 				 * Se estiver muito dificil usar a conversão,
 				 * separar em 3 input, para verificar e converter mais rapido
 				 **/
-
+ 
 				// seta oa valores no objeto java
 				end.setPrimeironome(PrimeiroNome);
 				end.setSobrenome(Sobrenome);
@@ -167,14 +166,6 @@ public class HospedeDAO {
 	public boolean removerHospede(Hospede end) {
 
 		String SQL = "DELETE FROM hospedes SET primeiro_nome = ?, sobrenome = ?, num_identificacao = ?, data_de_nascimento = ?, telefone = ?, email = ?, WHERE id_cliente = ?"; // verificar
-																																														// qual
-																																														// sera
-																																														// usado
-																																														// para
-																																														// excluir
-																																														// id
-																																														// ou
-																																														// cpf
 
 		Conexao con = Conexao.getInstancia();
 
