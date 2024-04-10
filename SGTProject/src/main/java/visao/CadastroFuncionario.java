@@ -31,7 +31,7 @@ public class CadastroFuncionario extends JFrame {
 	private JTextField textNumeroIndentificacao;
 	private JTextField textCepFuncionario;
 	private JTextField textDataFuncionario;
-	private JTextField textNumeroFuncionario;
+	private JTextField textNumeroCasaFuncionario;
 	private JTextField textTelefoneFuncionario;
 
 	/**
@@ -167,13 +167,13 @@ public class CadastroFuncionario extends JFrame {
 		lblNumeroFuncionario.setBounds(553, 533, 72, 17);
 		contentPane.add(lblNumeroFuncionario);
 		
-		textNumeroFuncionario = new JTextField();
-		textNumeroFuncionario.setForeground(new Color(1, 50, 1));
-		textNumeroFuncionario.setBackground(new Color(252, 251, 244));
-		textNumeroFuncionario.setBounds(632, 535, 97, 19);
-		contentPane.add(textNumeroFuncionario);
-		textNumeroFuncionario.setBorder(new LineBorder(new Color(1, 50, 1)));
-		textNumeroFuncionario.setColumns(10);
+		textNumeroCasaFuncionario = new JTextField();
+		textNumeroCasaFuncionario.setForeground(new Color(1, 50, 1));
+		textNumeroCasaFuncionario.setBackground(new Color(252, 251, 244));
+		textNumeroCasaFuncionario.setBounds(632, 535, 97, 19);
+		contentPane.add(textNumeroCasaFuncionario);
+		textNumeroCasaFuncionario.setBorder(new LineBorder(new Color(1, 50, 1)));
+		textNumeroCasaFuncionario.setColumns(10);
 		
 		JLabel lblTelefoneFuncionario = new JLabel("Telefone:");
 		lblTelefoneFuncionario.setForeground(new Color(1, 50, 1));
@@ -199,7 +199,7 @@ public class CadastroFuncionario extends JFrame {
 				 textNumeroIndentificacao.setText(" ");
 				 textCepFuncionario.setText(" ");
 				 textDataFuncionario.setText(" ");
-				 textNumeroFuncionario.setText(" ");
+				 textNumeroCasaFuncionario.setText(" ");
 				 textTelefoneFuncionario.setText(" ");
 			}
 		});
@@ -220,7 +220,7 @@ public class CadastroFuncionario extends JFrame {
 				int numIndentificacao = parseInt(textNumeroIndentificacao.getText());
 				int telefone = parseInt(textTelefoneFuncionario.getText());
 				int cep = parseInt(textCepFuncionario.getText());
-				int numCasa = parseInt(textNumeroFuncionario.getText());
+				int numCasa = parseInt(textNumeroCasaFuncionario.getText());
 				
 				Date dataNascismento = null;
 				try {

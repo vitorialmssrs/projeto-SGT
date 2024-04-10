@@ -16,53 +16,52 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 -- -----------------------------------------------------
 -- Table `clientes`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `clientes` (
-  `id_cliente` INT(7) NOT NULL auto_increment,
-  `num_identificacao` VARCHAR(20) NOT NULL,
-  `primeiro_nome` VARCHAR(100) NOT NULL,
-  `sobrenome` VARCHAR(100) NOT NULL,
-  `data_nascimento` DATE NOT NULL,
-  `email` VARCHAR(100) NOT NULL,
-  `telefone` VARCHAR(20) NOT NULL,
-  `cep` INT(8) NOT NULL,
-  `num_casa` INT(4) NOT NULL,
-  `id_usuarios` INT(7) NOT NULL,
-  PRIMARY KEY ( `id_cliente`,`id_usuarios`) ,
-  FOREIGN KEY (`id_usuarios`) REFERENCES `usuarios` (`id_usuarios`)
+CREATE TABLE IF NOT EXISTS clientes (
+  id_cliente INT(7) NOT NULL auto_increment,
+  numIdentificacao VARCHAR(20) NOT NULL,
+  PrimeiroNome VARCHAR(100) NOT NULL,
+  Sobrenome VARCHAR(100) NOT NULL,
+  DataNascimento DATE NOT NULL,
+ /* email VARCHAR(100) NOT NULL,
+  telefone VARCHAR(20) NOT NULL,*/
+  PRIMARY KEY ( id_cliente) ,
+  FOREIGN KEY (id_cliente) REFERENCES usuarios (id_usuarios)
   ON DELETE CASCADE
   ON UPDATE CASCADE);
   
   -- -----------------------------------------------------
 -- Table `funcionarios`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `funcionarios` (
-  `id_funcionario` INT(20) NOT NULL AUTO_INCREMENT,
-  `num_identificacao` VARCHAR(20) NOT NULL,
-  `primeiro_nome` VARCHAR(100) NOT NULL,
-  `sobrenome` VARCHAR(100) NOT NULL,
-  `data_nascimento` DATE NOT NULL,
-  `telefone` VARCHAR(20) NOT NULL,
-  `cep` INT(8) NOT NULL,
-  `num_casa` INT(4) NOT NULL,
-  `id_usuarios` INT(7) NOT NULL,
-  PRIMARY KEY (`id_funcionario`, `id_usuarios`),
-  FOREIGN KEY (`id_usuarios`) REFERENCES `usuarios` (`id_usuarios`)
+CREATE TABLE IF NOT EXISTS funcionarios (
+  id_funcionario INT(20) NOT NULL AUTO_INCREMENT,
+  NumeroIndentificacao VARCHAR(20) NOT NULL,
+  NomeFuncionario VARCHAR(100) NOT NULL,
+  DataFuncionario DATE NOT NULL,
+  TelefoneFuncionario VARCHAR(20) NOT NULL,
+  CepFuncionario INT(8) NOT NULL,
+  NumeroCasaFuncionario INT(4) NOT NULL,
+  id_usuarios INT(7) NOT NULL,
+  PRIMARY KEY (id_funcionario, id_usuarios),
+  FOREIGN KEY (id_usuarios) REFERENCES usuarios (id_usuarios)
   ON DELETE CASCADE
   ON UPDATE CASCADE);
   
   -- -----------------------------------------------------
 -- Table `hospedagens`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `hospedagens` (
-  `num_quarto` INT(7) NOT NULL,
-  `checkin` DATETIME NOT NULL,
-  `checkout` DATETIME NOT NULL,
-  `id_cliente` INT(7) NOT NULL,
-  PRIMARY KEY (`num_quarto`, `id_cliente`),
-  FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`)
+CREATE TABLE IF NOT EXISTS hospedagens (
+  num_quarto INT(7) NOT NULL,
+  checkin DATETIME NOT NULL,
+  DataEntrada DATETIME NOT NULL,
+  DataSaida DATETIME NOT NULL,
+  HoraEntrada DATETIME NOT NULL,
+  HoraSaida DATETIME NOT NULL,
+  checkout DATETIME NOT NULL,
+  id_cliente INT(7) NOT NULL,
+  PRIMARY KEY (num_quarto, id_cliente),
+  FOREIGN KEY (id_cliente) REFERENCES clientes (id_cliente)
   ON DELETE CASCADE
   ON UPDATE CASCADE);
-
 -- -----------------------------------------------------
 -- Table `espacos_hotel`
 -- -----------------------------------------------------
