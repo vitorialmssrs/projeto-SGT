@@ -213,8 +213,8 @@ public class CadastroFuncionario extends JFrame {
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				/*String SimpleDateFormat = "dd/MM/yyyy";*/
-				/*SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");*/
+				String SimpleDateFormat = "dd/MM/yyyy";
+				SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 				
 				String nomeCompleto = textNomeFuncionario.getText();
 				int numIndentificacao = parseInt(textNumeroIndentificacao.getText());
@@ -222,13 +222,13 @@ public class CadastroFuncionario extends JFrame {
 				int cep = parseInt(textCepFuncionario.getText());
 				int numCasa = parseInt(textNumeroFuncionario.getText());
 				
-				/*Date dataNascismento = null;
+				Date dataNascismento = null;
 				try {
 					dataNascismento = dateFormat.parse(textDataFuncionario.getText());
 				} catch (ParseException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
-				}*/
+				}
 				   
 				//Verifica se tem alguma coisa
 				if(nomeCompleto.isEmpty()){
@@ -242,7 +242,7 @@ public class CadastroFuncionario extends JFrame {
 				//Setar valores digitados nos atributos do OBJETO
 			    f.setNumIndentificacao(numIndentificacao);
 			    f.setNomeCompleto(nomeCompleto);
-			   /* f.setDataNascismento(dataNascismento);*/
+			    f.setDataNascismento(dataNascismento);
 				f.setTelefone(telefone);
 				f.setCep(cep);
 				f.setNumCasa(numCasa);
