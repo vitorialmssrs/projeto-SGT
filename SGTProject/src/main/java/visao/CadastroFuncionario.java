@@ -7,7 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.time.LocalDate;
-import java.sql.Date;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 import controle.FuncionarioDAO;
 import modelo.Funcionario;
@@ -213,26 +214,26 @@ public class CadastroFuncionario extends JFrame {
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				String SimpleDateFormat = "dd/MM/yyyy";
-				SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-mm-yyyy");
+				
+				
+				/*String SimpleDateFormat = "dd/MM/yyyy";
+				SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");*/
 				
 				String nomeCompleto = textNomeFuncionario.getText();
 				int numIndentificacao = parseInt(textNumeroIndentificacao.getText());
 				int telefone = parseInt(textTelefoneFuncionario.getText());
 				int cep = parseInt(textCepFuncionario.getText());
 				int numCasa = parseInt(textNumeroCasaFuncionario.getText());
-				
-				Date dataNascismento = null;
-				try {
-					dataNascismento = dateFormat.parse(textDataFuncionario.getText());
-				} catch (ParseException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				LocalDate dataNascismento = LocalDate.parse(textDataFuncionario.getText());
+				String dtNascS = String.valueOf(dataNascismento);
+				LocalDate dataNasc = LocalDate.parse(dtNascS, formatter);
 				   
 				//Verifica se tem alguma coisa
 				if(nomeCompleto.isEmpty()){
-				
+					TelaInicial telainicial = new TelaInicial();
+					telainicial.setVisible(true);
+					telainicial.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 					// exibir uma mensagem de erro
 				}else {
 					
@@ -242,7 +243,7 @@ public class CadastroFuncionario extends JFrame {
 				//Setar valores digitados nos atributos do OBJETO
 			    f.setNumIndentificacao(numIndentificacao);
 			    f.setNomeCompleto(nomeCompleto);
-			    f.setDataNascismento(dataNascismento);
+			    f.setDataNascismento(dataNasc);
 				f.setTelefone(telefone);
 				f.setCep(cep);
 				f.setNumCasa(numCasa);
