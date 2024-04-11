@@ -262,14 +262,14 @@ public class CadastroCliente extends JFrame {
 					JOptionPane.showMessageDialog(null, "Campo Data de Entrada obrigatório!");
 					return ;
 				}
-				LocalDate de = LocalDate.parse(dataEntrada);
+				
 				
 				String dataSaida = textDataSaida.getText();
 				if(nome.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Data de Saída obrigatório!");
 					return ;
 				}
-				LocalDate ds = LocalDate.parse(dataSaida);
+			
 				
 				String horaEntrada = textHoraEntrada.getText();
 				if(nome.length() == 0) {
@@ -285,8 +285,8 @@ public class CadastroCliente extends JFrame {
 			
 				LocalDate dtEntrada = LocalDate.parse(dataEntrada);
 				LocalDate dtSaida = LocalDate.parse(dataSaida);
-				LocalTime hrEntrada = LocalTime.parse(dataEntrada);
-				LocalTime hrSaida = LocalTime.parse(dataSaida);
+				LocalTime hrEntrada = LocalTime.parse(horaEntrada);
+				LocalTime hrSaida = LocalTime.parse(horaSaida);
 				
 				Hospedagem hospedagem = new Hospedagem();
 				
@@ -305,7 +305,7 @@ public class CadastroCliente extends JFrame {
 				h.setPrimeironome(nome);
 				h.setSobrenome(sobrenome);
 				h.setNumidentificacao(cpfI);
-				h.setDatanascimento(ds);
+				h.setDatanascimento(dn);
 				/*h.setDataEntrada(de);
 				h.setDataSaida(ds);
 				h.setHoraEntrada(null);

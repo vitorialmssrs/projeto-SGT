@@ -81,31 +81,36 @@ public class FuncionalidadeFuncionario extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnSolicitarLimpeza.setFont(new Font("Tahoma", Font.BOLD, 60));
+		btnSolicitarLimpeza.setFont(new Font("Tahoma", Font.BOLD, 50));
 		btnSolicitarLimpeza.setBackground(new Color(81, 108, 81));
 		btnSolicitarLimpeza.setForeground(new Color(255, 255, 255));
 		btnSolicitarLimpeza.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\projeto-SGT\\SGTProject\\src\\main\\resources\\img\\Icons limpeza.png"));
 		panelOpcoes.add(btnSolicitarLimpeza, "cell 1 4,grow");
 		
 		JButton btnSolicitarConcerto = new JButton("Solicitar Conserto");
-		btnSolicitarConcerto.setFont(new Font("Tahoma", Font.BOLD, 50));
+		btnSolicitarConcerto.setFont(new Font("Tahoma", Font.BOLD, 48));
 		btnSolicitarConcerto.setForeground(new Color(255, 255, 255));
 		btnSolicitarConcerto.setBackground(new Color(66, 142, 66));
 		btnSolicitarConcerto.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\projeto-SGT\\SGTProject\\src\\main\\resources\\img\\Icons conserto.png"));
 		panelOpcoes.add(btnSolicitarConcerto, "cell 1 6,grow");
 		
 		JButton btnAtualizarEspaco = new JButton("Atualizar Espaço");
-		btnAtualizarEspaco.setFont(new Font("Tahoma", Font.BOLD, 60));
+		btnAtualizarEspaco.setFont(new Font("Tahoma", Font.BOLD, 50));
 		btnAtualizarEspaco.setBackground(new Color(109, 164, 109));
 		btnAtualizarEspaco.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\projeto-SGT\\SGTProject\\src\\main\\resources\\img\\Icons atualizacao espaco.png"));
 		btnAtualizarEspaco.setForeground(new Color(255, 255, 255));
 		panelOpcoes.add(btnAtualizarEspaco, "cell 1 8,grow");
 		
 		JButton btnSair_1 = new JButton("Sair");
-		btnSair_1.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\projeto-SGT\\SGTProject\\src\\main\\resources\\img\\Vector sair.png"));
+		btnSair_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+			}
+		});
+		btnSair_1.setIcon(new ImageIcon(FuncionalidadeFuncionario.class.getResource("/imagens/Vector sair.png")));
 		btnSair_1.setForeground(new Color(1, 50, 1));
 		btnSair_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnSair_1.setBackground(new Color(227, 236, 226));
-		panelOpcoes.add(btnSair_1, "cell 2 10,alignx center");
+		panelOpcoes.add(btnSair_1, "cell 2 10,growx");
 	}
 }

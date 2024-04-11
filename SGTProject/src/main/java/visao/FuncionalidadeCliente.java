@@ -102,6 +102,11 @@ public class FuncionalidadeCliente extends JFrame {
 		panelOpcoes.add(btnNewButton_2, "cell 1 8,grow");
 		
 		JButton btnNewButton_3 = new JButton("Sair");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+			}
+		});
 		btnNewButton_3.setBackground(new Color(227, 236, 226));
 		btnNewButton_3.setIcon(new ImageIcon(FuncionalidadeCliente.class.getResource("/imagens/Vector sair.png")));
 		btnNewButton_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
