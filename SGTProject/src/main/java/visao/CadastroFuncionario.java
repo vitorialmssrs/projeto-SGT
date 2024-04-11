@@ -8,7 +8,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 import controle.FuncionarioDAO;
 import modelo.Funcionario;
@@ -20,8 +19,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.awt.event.ActionEvent;
 
 public class CadastroFuncionario extends JFrame {
@@ -221,13 +218,18 @@ public class CadastroFuncionario extends JFrame {
 				SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");*/
 				
 				String nomeCompleto = textNomeFuncionario.getText();
-				int numIndentificacao = parseInt(textNumeroIndentificacao.getText());
+				/*int numIndentificacao = parseInt(textNumeroIndentificacao.getText());
 				int telefone = parseInt(textTelefoneFuncionario.getText());
 				int cep = parseInt(textCepFuncionario.getText());
-				int numCasa = parseInt(textNumeroCasaFuncionario.getText());
-				LocalDate dataNascismento = LocalDate.parse(textDataFuncionario.getText());
+				int numCasa = parseInt(textNumeroCasaFuncionario.getText());*/
+				String numIndentificacao = textNumeroIndentificacao.getText();
+				String telefone = textTelefoneFuncionario.getText();
+				String cep = textCepFuncionario.getText();
+				String numCasa = textNumeroCasaFuncionario.getText();
+				String dataNascismento = textNumeroCasaFuncionario.getText();
+				/*LocalDate dataNascismento = LocalDate.parse(textDataFuncionario.getText());
 				String dtNascS = String.valueOf(dataNascismento);
-				LocalDate dataNasc = LocalDate.parse(dtNascS, formatter);
+				LocalDate dataNasc = LocalDate.parse(dtNascS, formatter);*/
 				   
 				//Verifica se tem alguma coisa
 				if(nomeCompleto.isEmpty()){
@@ -237,16 +239,24 @@ public class CadastroFuncionario extends JFrame {
 					// exibir uma mensagem de erro
 				}else {
 					
+					int numIndentificacaoI = Integer.valueOf(numIndentificacao);
+					int telefoneI = Integer.valueOf(telefone);
+					int cepI = Integer.valueOf(cep);
+					int numCasaI = Integer.valueOf(numCasa);
+					int dataNascismentoI = Integer.valueOf(dataNascismento);
+					
+					
+					
 				//Instanciar o OBJETO do cadastro 
 				Funcionario f = new Funcionario();
 				
 				//Setar valores digitados nos atributos do OBJETO
-			    f.setNumIndentificacao(numIndentificacao);
+			    f.setNumIndentificacao(numIndentificacaoI);
 			    f.setNomeCompleto(nomeCompleto);
-			    f.setDataNascismento(dataNasc);
-				f.setTelefone(telefone);
-				f.setCep(cep);
-				f.setNumCasa(numCasa);
+			    f.setDataNascismento(dataNascismentoI);
+				f.setTelefone(telefoneI);
+				f.setCep(cepI);
+				f.setNumCasa(numCasaI);
 				
 				//Instanciar o DAO
 				FuncionarioDAO dao = FuncionarioDAO.getInstancia();
@@ -257,9 +267,6 @@ public class CadastroFuncionario extends JFrame {
 				}
 			}
 
-			private int parseInt(String text) {
-				return 0;
-			}
 		});
 		contentPane.add(btnCadastrar);
 		
