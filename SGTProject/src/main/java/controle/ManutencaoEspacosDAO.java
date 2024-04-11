@@ -1,12 +1,16 @@
 package controle;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Time;
+import java.util.ArrayList;
 
 import modelo.EspacoHotel;
+import modelo.LimpezaEspacos;
 import modelo.ManutencaoEspacos;
 
 public class ManutencaoEspacosDAO implements IManutencaoEspacoDAO{
@@ -84,7 +88,87 @@ public int inserirManutencao (ManutencaoEspacos end) {
 
 	return chavePrimariaGerada;
 
-
 }
+	public ArrayList<ManutencaoEspacos> inserirManutencao() {
+
+	// Arraylist para armazenar resultado do select
+	
+	ArrayList<ManutencaoEspacos> manutencao = new ArrayList<ManutencaoEspacos>();
+
+	// Comando SQL a ser executado
+	
+	String SQL = "SELECT * FROM ManutencaoEspacos";
+
+	// Cria a "ponte de conexao" com MYSQL
+	
+	Conexao con = Conexao.getInstancia();
+	Connection conBD = con.conectar();
+
+	try {
+		PreparedStatement ps = conBD.prepareStatement(SQL);
+
+		ResultSet rs = ps.executeQuery();
+
+		while (rs.next()) {
+			
+			// Criar objeto
+			ManutencaoEspacos end = new ManutencaoEspacos();
+
+			// Pega os valores de cada coluna do registro
+			Integer idManutencaoEspacos = rs.getInt("idManutencaoEspacos");
+			String TipoManutencao = rs.getString("TipoManutencao");
+			Time DiaManutencao = rs.getTime("DiaManutencao");
+					
+			// Seta os valores no obj java
+			end.setDiaManutencao(null);
+			end.setIdManutencaoEspacos(SQL);
+			end.setTipoManutencao(SQL);
+			
+			// Adiciona obj no arraylist
+			manutencao.add(end); 
+
+		}
+
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} finally {
+		con.fecharConexao();
+	}
+
+	 return manutencao; 
+}
+
+	
+	public ArrayList<ManutencaoEspacos> listarManutencaoEspacos() {
+	    ArrayList<ManutencaoEspacos> listaManutencaoEspacos = new ArrayList<ManutencaoEspacos>();
+	    
+	    // Comando SQL para selecionar os dados da tabela LimpezaEspacos
+	    String SQL = "SELECT * FROM ManutencaoEspacos";
+	    
+	    // Cria a "ponte de conexão" com o banco de dados MySQL
+	    Conexao con = Conexao.getInstancia();
+	    Connection conBD = con.conectar();
+	    
+	    try {
+	        PreparedStatement ps = conBD.prepareStatement(SQL);
+	        ResultSet rs = ps.executeQuery();
+	        
+	        while (rs.next()) {
+	        	ManutencaoEspacos manutencaoEspacos = new ManutencaoEspacos();
+	        	manutencaoEspacos.setDiaManutencao(null);
+	        	manutencaoEspacos.setIdManutencaoEspacos(SQL);
+	        	manutencaoEspacos.setTipoManutencao(SQL);
+	       
+	            
+	            listaManutencaoEspacos.add(manutencaoEspacos);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        con.fecharConexao();
+	    }
+	    
+	    return listaManutencaoEspacos;
+	}
 
 }
