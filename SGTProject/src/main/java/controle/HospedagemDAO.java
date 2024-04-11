@@ -1,16 +1,12 @@
 package controle;
 
 import java.sql.Connection;
-import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Time;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.ZoneId;
 import java.util.ArrayList;
 
 import modelo.Hospedagem;
@@ -27,7 +23,7 @@ public class HospedagemDAO {
 	}
 	
 	public int insertHospedagem(Hospedagem end) {
-		String SQL = "INSERT INTO hospedagem (checkin,checkout) VALUES (?,?)";
+		String SQL = "INSERT INTO hospedagem (DataEntrada,DataSaida,HoraEntrada,HoraSaida) VALUES (?,?,?,?)";
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
 
@@ -35,9 +31,14 @@ public class HospedagemDAO {
 
 		try {
 			PreparedStatement ps = conBD.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
-
-			ps.setDate(1, end.getCheckin());
-			ps.setDate(2, Date.valueOf(end.getCheckout()));
+			
+			ps.setDate(1, java.sql.Date.valueOf(end.getDataEntrada()));
+			ps.setDate(2, java.sql.Date.valueOf(end.getDataSaida()));
+			ps.setTime(3, java.sql.Time.valueOf(end.getHoraEntrada()));
+			ps.setTime(4, java.sql.Time.valueOf(end.getHoraSaida()));
+			
+			/*ps.setDateTime(1, ZonedDateTime.now(end.getCheckin()));
+			ps.setDate(2, Date.valueOf(end.getCheckout()));*/
 //ps.setDate(1, end.getCheckin().atZone(ZoneId.systemDefault()).toLocalDateTime()); ou java.sql.Timestamp.valueOf(dateToConvert);
 			ResultSet rs = ps.executeQuery();
 			if (rs != null) {
@@ -67,22 +68,16 @@ public class HospedagemDAO {
 				
 				Hospedagem end = new Hospedagem();
 				
-				//LocalDateTime localDateTime = date.toInstant().atZone( ZoneId.systemDefault() ).toLocalDateTime();
 				
-				LocalDateTime Checkin = rs.getDate("checkin");
-				
-				/*LocalDateTime Checkin = rs.getDate("checkin").toLocalDateTime();
-				LocalDateTime Checkout = rs.getDate("checkout").toLocalDateTime();*/
-				
-				
-		/*	ps.setDate(1, Date.valueOf(end.getCheckindata()));
-			ps.setTime(2, Time.valueOf(end.getCheckinhora()));
-			ps.setDate(3, Date.valueOf(end.getCheckoutdata()));
-			ps.setTime(4, Time.valueOf(end.getCheckouthora()));
-			LocalDate Datanascimento = rs.getDate("data_de_nascimento").toLocalDate();*/
+				LocalDate DataEntrada = rs.getDate("DataEntrada").toLocalDate();
+				LocalDate DataSaida = rs.getDate("DataSaida").toLocalDate();
+				LocalTime HoraEntrada = rs.getTime("HoraEntrada").toLocalTime();
+				LocalTime HoraSaida = rs.getTime("HoraSaida").toLocalTime();
 		
-				end.setCheckin(Checkin);
-				end.setCheckout(Checkout);
+				end.setDataEntrada(DataEntrada);
+				end.setDataSaida(DataSaida);
+				end.setHoraEntrada(HoraEntrada);
+				end.setHoraSaida(HoraSaida);
 
 				hospedagem.add(end);
 			}
@@ -95,8 +90,8 @@ public class HospedagemDAO {
 		}
 	
 	public boolean atualizarHospedagem(Hospedagem end) {
-		
-		String SQL = "UPDATE hospedagem SET checkin = ?, checkout = ?, WHERE num_quarto = ?";
+		//DataEntrada,DataSaida,HoraEntrada,HoraSaida
+		String SQL = "UPDATE hospedagem SET DataEntrada = ?, DataSaida = ?, HoraEntrada = ?, HoraSaida = ? WHERE num_quarto = ?";
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
 		int retorno = 0;
@@ -106,10 +101,11 @@ public class HospedagemDAO {
 
 			PreparedStatement ps = conBD.prepareStatement(SQL);
 
-			ps.setDate(1, Date.valueOf(end.getCheckindata()));
-			ps.setTime(2, Time.valueOf(end.getCheckinhora()));
-			ps.setDate(3, Date.valueOf(end.getCheckoutdata()));
-			ps.setTime(4, Time.valueOf(end.getCheckouthora()));
+			
+			ps.setDate(1, java.sql.Date.valueOf(end.getDataEntrada()));
+			ps.setDate(2, java.sql.Date.valueOf(end.getDataSaida()));
+			ps.setTime(3, java.sql.Time.valueOf(end.getHoraEntrada()));
+			ps.setTime(4, java.sql.Time.valueOf(end.getHoraSaida()));
 			
 
 			retorno = ps.executeUpdate();
@@ -125,7 +121,7 @@ public class HospedagemDAO {
 	
 	public boolean removerHospedagem (Hospedagem end) {
 		
-		String SQL = "DELETE FROM hospedagem SET checkin = ?, checkout = ?, WHERE num_quarto = ?"; // verificar
+		String SQL = "DELETE FROM hospedagem SET DataEntrada = ?, DataSaida = ?, HoraEntrada = ?, HoraSaida = ? WHERE num_quarto = ?"; // verificar
 		Conexao con = Conexao.getInstancia();
 
 		Connection conBD = con.conectar();
@@ -136,10 +132,10 @@ public class HospedagemDAO {
 
 			PreparedStatement ps = conBD.prepareStatement(SQL);
 
-			ps.setDate(1, Date.valueOf(end.getCheckindata()));
-			ps.setTime(2, Time.valueOf(end.getCheckinhora()));
-			ps.setDate(3, Date.valueOf(end.getCheckoutdata()));
-			ps.setTime(4, Time.valueOf(end.getCheckouthora()));
+			ps.setDate(1, java.sql.Date.valueOf(end.getDataEntrada()));
+			ps.setDate(2, java.sql.Date.valueOf(end.getDataSaida()));
+			ps.setTime(3, java.sql.Time.valueOf(end.getHoraEntrada()));
+			ps.setTime(4, java.sql.Time.valueOf(end.getHoraSaida()));
 
 			retorno = ps.executeUpdate();
 		} catch (SQLException e) {

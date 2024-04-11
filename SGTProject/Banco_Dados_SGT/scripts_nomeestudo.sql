@@ -51,12 +51,10 @@ CREATE TABLE IF NOT EXISTS funcionarios (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS hospedagens (
   num_quarto INT(7) NOT NULL,
-  checkin DATETIME NOT NULL,
   DataEntrada DATETIME NOT NULL,
   DataSaida DATETIME NOT NULL,
   HoraEntrada DATETIME NOT NULL,
   HoraSaida DATETIME NOT NULL,
-  checkout DATETIME NOT NULL,
   id_cliente INT(7) NOT NULL,
   PRIMARY KEY (num_quarto, id_cliente),
   FOREIGN KEY (id_cliente) REFERENCES clientes (id_cliente)
