@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,7 +17,9 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import controle.HospedagemDAO;
 import controle.HospedeDAO;
+import modelo.Hospedagem;
 import modelo.Hospede;
 
 import javax.swing.ImageIcon;
@@ -245,7 +248,6 @@ public class CadastroCliente extends JFrame {
 					JOptionPane.showMessageDialog(null, "Campo CPF obrigatório!");
 					return ;
 				}
-				//conversao do cpf
 				Integer cpfI = Integer.parseInt(cpf);
 				
 				String dataNascimento = textDataEntrada.getText();
@@ -253,15 +255,14 @@ public class CadastroCliente extends JFrame {
 					JOptionPane.showMessageDialog(null, "Campo Data de Nascimento obrigatório!");
 					return ;
 				}
-				//convertendo para localDate
 				LocalDate dn = LocalDate.parse(dataNascimento);
 				
-				/*String dataEntradaString = textDataEntrada.getText();
+				String dataEntrada = textDataEntrada.getText();
 				if(nome.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Data de Entrada obrigatório!");
 					return ;
 				}
-				LocalDate de = LocalDate.parse(dataEntradaString);
+				LocalDate de = LocalDate.parse(dataEntrada);
 				
 				String dataSaida = textDataSaida.getText();
 				if(nome.length() == 0) {
@@ -281,7 +282,22 @@ public class CadastroCliente extends JFrame {
 					JOptionPane.showMessageDialog(null, "Campo Hora de Saída obrigatório!");
 					return ;
 				}
-				*/
+			
+				LocalDate dtEntrada = LocalDate.parse(dataEntrada);
+				LocalDate dtSaida = LocalDate.parse(dataSaida);
+				LocalTime hrEntrada = LocalTime.parse(dataEntrada);
+				LocalTime hrSaida = LocalTime.parse(dataSaida);
+				
+				Hospedagem hospedagem = new Hospedagem();
+				
+				hospedagem.setDataEntrada(dtEntrada);
+				hospedagem.setDataSaida(dtSaida);
+				hospedagem.setHoraEntrada(hrEntrada);
+				hospedagem.setHoraSaida(hrSaida);
+				
+				HospedagemDAO hospedagemdao = new HospedagemDAO();
+				
+				hospedagemdao.insertHospedagem(hospedagem);
 				
 				//cricao de objeto 
 				Hospede h = new Hospede();
@@ -289,7 +305,7 @@ public class CadastroCliente extends JFrame {
 				h.setPrimeironome(nome);
 				h.setSobrenome(sobrenome);
 				h.setNumidentificacao(cpfI);
-				h.setDatanascimento(dn);
+				h.setDatanascimento(ds);
 				/*h.setDataEntrada(de);
 				h.setDataSaida(ds);
 				h.setHoraEntrada(null);
