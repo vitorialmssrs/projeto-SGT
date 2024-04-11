@@ -286,12 +286,12 @@ public class CadastroCliente extends JFrame {
 				//setando os valores
 				h.setPrimeironome(nome);
 				h.setSobrenome(sobrenome);
-				h.setCpfClientes(cpfI);
-				h.setDatanasciadamento(dn);
-				h.setDataEntrada(de);
+				h.setNumidentificacao(cpfI);
+				h.setDatanascimento(ds);
+				/*h.setDataEntrada(de);
 				h.setDataSaida(ds);
 				h.setHoraEntrada(null);
-				h.setHoraSaida(null);
+				h.setHoraSaida(null);*/
 				
 				//instanciando a classe DAO
 				HospedeDAO dao = new HospedeDAO();
