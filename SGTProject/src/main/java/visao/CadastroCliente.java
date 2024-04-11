@@ -204,7 +204,6 @@ public class CadastroCliente extends JFrame {
 				textSobrenome.setText("");
 				textCPF.setText("");
 				TextDataNascimento.setText("");
-				
 				textDataEntrada.setText("");
 				textHoraEntrada.setText("");
 				textDataSaida.setText("");
@@ -229,6 +228,17 @@ public class CadastroCliente extends JFrame {
 				//precisa adicionar um comando que mostre a tela de confirmação de cadastro realizado ou não 
 				// caso de certo precisa perguntar se deseja fazer mais alguma coisa ou se pode sair 
 				//dao.insertHospede(null);
+				
+				//Como adicionar uma mascara ao text
+				/*MaskFormatter mascaraTel = null;
+					try {
+      					mascaraTel = new MaskFormatter("(##) ###-###-###");
+					} catch (ParseException e) {
+      					e.printStackTrace();
+ 					}
+ 						textField = new JFormattedTextField(mascaraTel);
+ 						contentPane.add(textField);
+ 						textField.setColumns(10);*/
 				
 				//recebe a o conteudo que esta no Text e joga para a variavel 
 				String nome = textPrimeiroNome.getText();
@@ -301,15 +311,12 @@ public class CadastroCliente extends JFrame {
 				
 				//cricao de objeto 
 				Hospede h = new Hospede();
+				
 				//setando os valores
 				h.setPrimeironome(nome);
 				h.setSobrenome(sobrenome);
 				h.setNumidentificacao(cpfI);
 				h.setDatanascimento(dn);
-				/*h.setDataEntrada(de);
-				h.setDataSaida(ds);
-				h.setHoraEntrada(null);
-				h.setHoraSaida(null);*/
 				
 				//instanciando a classe DAO
 				HospedeDAO dao = new HospedeDAO();

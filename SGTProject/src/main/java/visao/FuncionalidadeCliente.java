@@ -90,6 +90,14 @@ public class FuncionalidadeCliente extends JFrame {
 		panelOpcoes.add(btnNewButton, "cell 1 4,grow");
 		
 		JButton btnNewButton_1 = new JButton("Check-out");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+					CheckoutCliente checkoutcliente = new CheckoutCliente();
+					checkoutcliente.setExtendedState(checkoutcliente.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+					checkoutcliente.setVisible(true);
+					checkoutcliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);				
+			}
+		});
 		btnNewButton_1.setForeground(new Color(255, 255, 255));
 		btnNewButton_1.setBackground(new Color(66, 142, 66));
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 60));
