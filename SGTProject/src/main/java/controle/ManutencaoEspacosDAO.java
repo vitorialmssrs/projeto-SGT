@@ -10,10 +10,9 @@ import java.sql.Time;
 import java.util.ArrayList;
 
 import modelo.EspacoHotel;
-import modelo.LimpezaEspacos;
 import modelo.ManutencaoEspacos;
 
-public class ManutencaoEspacosDAO implements IManutencaoEspacoDAO{
+	public class ManutencaoEspacosDAO implements IManutencaoEspacoDAO{
 	//criar o DAO e fazer a conexão com banco de dados 
 		/**
 		 * DAO = Data access object objeto de acesso a dados
@@ -33,19 +32,19 @@ public class ManutencaoEspacosDAO implements IManutencaoEspacoDAO{
  * precisa ter o try catch e finaly
  * 
  */
-private static ManutencaoEspacosDAO instancia;
+	private static ManutencaoEspacosDAO instancia;
 
 /*
  * Construtor privado (padrao Singleton)
  */
-private ManutencaoEspacosDAO() {
+	private ManutencaoEspacosDAO() {
 }
 
 /*
  * Metodo para instanciar (padrao Singleton)
  */
 
-public static ManutencaoEspacosDAO getInstancia() {
+	public static ManutencaoEspacosDAO getInstancia() {
 
 	if (instancia == null) {
 		instancia = new ManutencaoEspacosDAO();
@@ -53,7 +52,7 @@ public static ManutencaoEspacosDAO getInstancia() {
 	return instancia;
 }
 
-public int inserirManutencao (ManutencaoEspacos end) {
+	public int inserirManutencao (ManutencaoEspacos end) {
 
 	String SQL = "INSERT INTO ManutencaoEspacos (idManutencaoEspacos, tipoManutencao, diaManutencao) VALUES ( ?, ?, ?)";
 
@@ -67,7 +66,7 @@ public int inserirManutencao (ManutencaoEspacos end) {
 	try {
 	    PreparedStatement ps = conBD.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
 
-	    ps.setString(1,end.getIdManutencaoEspacos());
+	    ps.setInt(1,end.getIdManutencaoEspacos());
 	    ps.setString(2,end.getTipoManutencao());
 	    ps.setDate(5, end.getDiaManutencao());
 	    
@@ -121,7 +120,7 @@ public int inserirManutencao (ManutencaoEspacos end) {
 					
 			// Seta os valores no obj java
 			end.setDiaManutencao(null);
-			end.setIdManutencaoEspacos(SQL);
+			end.setIdManutencaoEspacos(idManutencaoEspacos);
 			end.setTipoManutencao(SQL);
 			
 			// Adiciona obj no arraylist
@@ -156,7 +155,7 @@ public int inserirManutencao (ManutencaoEspacos end) {
 	        while (rs.next()) {
 	        	ManutencaoEspacos manutencaoEspacos = new ManutencaoEspacos();
 	        	manutencaoEspacos.setDiaManutencao(null);
-	        	manutencaoEspacos.setIdManutencaoEspacos(SQL);
+	        	manutencaoEspacos.setIdManutencaoEspacos(null);
 	        	manutencaoEspacos.setTipoManutencao(SQL);
 	       
 	            
@@ -182,7 +181,7 @@ public int inserirManutencao (ManutencaoEspacos end) {
 	    try {
 	        PreparedStatement ps = conBD.prepareStatement(SQL);
 	        
-	        ps.setString(1, end.getIdManutencaoEspacos());
+	        ps.setInt(1, end.getIdManutencaoEspacos());
 	        ps.setDate(2, end.getDiaManutencao());
 	        ps.setString(3, end.getTipoManutencao());
 
@@ -195,6 +194,31 @@ public int inserirManutencao (ManutencaoEspacos end) {
 	    
 	    return retorno != 0;
 	}
+	
+	public boolean removerManutencaoEspacos(ManutencaoEspacos end) {
+	    String SQL = "DELETE FROM ManutencaoEspacos WHERE idManutencaoEspacos = ?";
+	    
+	    Conexao con = Conexao.getInstancia();
+	    Connection conBD = con.conectar();
+	    
+	    int retorno = 0;
+	    
+	    try {
+	        PreparedStatement ps = conBD.prepareStatement(SQL);
+	        
+	        ps.setInt(1, end.getIdManutencaoEspacos());
+	        
+	        retorno = ps.executeUpdate();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        con.fecharConexao();
+	    }
+	    
+	    return retorno != 0;
+	}
+
+
 	
 
 }

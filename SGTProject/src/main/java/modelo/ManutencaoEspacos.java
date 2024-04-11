@@ -4,15 +4,15 @@ import java.time.LocalDate;
 
 public class ManutencaoEspacos {
 	
-	private String idManutencaoEspacos;
+	private Integer idManutencaoEspacos;
 	private String tipoManutencao;
 	private LocalDate diaManutencao;
 	
 	
-	public String getIdManutencaoEspacos() {
+	public Integer getIdManutencaoEspacos() {
 		return idManutencaoEspacos;
 	}
-	public void setIdManutencaoEspacos(String idManutencaoEspacos) {
+	public void setIdManutencaoEspacos(Integer idManutencaoEspacos) {
 		this.idManutencaoEspacos = idManutencaoEspacos;
 	}
 	public String getTipoManutencao() {
