@@ -50,7 +50,7 @@ public class TelaInicial extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[620][641px]", "[200][191px][49px][72px][80px][50][85px]"));
+		contentPane.setLayout(new MigLayout("", "[620][641px][]", "[200][191px][49px][72px][80px][50][85px]"));
 
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setIcon(new ImageIcon(TelaInicial.class.getResource("/imagens/Châteu_Imperial-removebg-preview 4.png")));
