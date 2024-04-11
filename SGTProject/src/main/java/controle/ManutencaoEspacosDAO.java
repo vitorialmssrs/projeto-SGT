@@ -170,5 +170,31 @@ public int inserirManutencao (ManutencaoEspacos end) {
 	    
 	    return listaManutencaoEspacos;
 	}
+	
+	public boolean atualizarLManutencaoEspacos(ManutencaoEspacos end) {
+	    String SQL = "UPDATE ManutencaoEspacos SET idManutencaoEspacos, tipoManutencao, diaManutencao WHERE idManutencaoEspacos = ?";
+	    
+	    Conexao con = Conexao.getInstancia();
+	    Connection conBD = con.conectar();
+	    
+	    int retorno = 0;
+	    
+	    try {
+	        PreparedStatement ps = conBD.prepareStatement(SQL);
+	        
+	        ps.setString(1, end.getIdManutencaoEspacos());
+	        ps.setDate(2, end.getDiaManutencao());
+	        ps.setString(3, end.getTipoManutencao());
+
+	        retorno = ps.executeUpdate();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        con.fecharConexao();
+	    }
+	    
+	    return retorno != 0;
+	}
+	
 
 }
