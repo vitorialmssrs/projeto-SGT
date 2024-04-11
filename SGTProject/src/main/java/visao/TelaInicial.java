@@ -50,23 +50,27 @@ public class TelaInicial extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[620][641px][]", "[200][191px][49px][72px][80px][50][85px]"));
+		contentPane.setLayout(null);
 
 		JLabel lblLogo = new JLabel("");
+		lblLogo.setBounds(854, 216, 206, 191);
 		lblLogo.setIcon(new ImageIcon(TelaInicial.class.getResource("/imagens/Châteu_Imperial-removebg-preview 4.png")));
-		contentPane.add(lblLogo, "cell 1 1,alignx center,growy");
+		contentPane.add(lblLogo);
 
 		JLabel lblBemVindos = new JLabel("Bem-vindo ao Chateau Imperial");
+		lblBemVindos.setBounds(636, 411, 641, 49);
 		lblBemVindos.setForeground(new Color(1, 50, 1));
 		lblBemVindos.setFont(new Font("Tahoma", Font.BOLD, 40));
-		contentPane.add(lblBemVindos, "cell 1 2,growx,aligny bottom");
+		contentPane.add(lblBemVindos);
 
 		JLabel lblNewLabel = new JLabel("Escolha uma das opções:");
+		lblNewLabel.setBounds(816, 464, 281, 72);
 		lblNewLabel.setForeground(new Color(1, 50, 1));
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		contentPane.add(lblNewLabel, "cell 1 3,alignx center,growy");
+		contentPane.add(lblNewLabel);
 
 		JButton btnCliente = new JButton("Cliente");
+		btnCliente.setBounds(636, 540, 641, 80);
 		btnCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evento) {
 				FuncionalidadeCliente funcionalidadeCliente = new FuncionalidadeCliente();
@@ -79,9 +83,10 @@ public class TelaInicial extends JFrame {
 		btnCliente.setForeground(new Color(255, 255, 255));
 		btnCliente.setBackground(new Color(1, 50, 1));
 		btnCliente.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		contentPane.add(btnCliente, "cell 1 4,grow");
+		contentPane.add(btnCliente);
 
 		JButton btnNewButton = new JButton("Funcionário");
+		btnNewButton.setBounds(636, 678, 641, 85);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				LoginFuncionario loginfuncionario = new LoginFuncionario();
@@ -93,6 +98,6 @@ public class TelaInicial extends JFrame {
 		btnNewButton.setBackground(new Color(1, 50, 1));
 		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		contentPane.add(btnNewButton, "cell 1 6,grow");
+		contentPane.add(btnNewButton);
 	}
 }
