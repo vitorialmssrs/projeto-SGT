@@ -28,11 +28,17 @@ public class HospedeDAO {
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
 
+			//inicializa a variavel chave primaria antes de outra operação no banco 
 		int chavePrimariaGerada = Integer.MIN_VALUE;
 
+		//incializa um bloco de exceções 
 		try {
+			//Cria um objeto PreparedStatement chamado ps usando a conexão com o banco de dados (conBD).
+			//O método prepareStatement recebe a string SQL (que representa a instrução SQL a ser executada) 
+			//e um segundo argumento Statement.RETURN_GENERATED_KEYS é uma constante que informa ao banco de dados para retornar as chaves primárias geradas 
 			PreparedStatement ps = conBD.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
-
+			
+			//END Define o primeiro parâmetro (?) da instrução SQL com o valor do primeiro nome 
 			ps.setString(1, end.getPrimeironome());
 			ps.setString(2, end.getSobrenome());
 			ps.setInt(3, end.getNumidentificacao());
@@ -40,18 +46,28 @@ public class HospedeDAO {
 			ps.setInt(5, end.getTelefone());
 			ps.setString(6, end.getEmail());
 
+			//Executa a instrução SQL (uma operação de inserção) e armazena o número de linhas afetadas na variável ra.
 			int ra = ps.executeUpdate();
 
-			if (ra > 0) {
+			if (ra > 0) { 
+				
+				//Obtém um ResultSet (gk) contendo as chaves primárias geradas pela operação de inserção.
 				ResultSet gk = ps.getGeneratedKeys();
-				if (gk.next()) {
+				
+				if (gk.next()) { 
+					
+					//Se gk contém uma chave primária, define a variável chavePrimariaGerada com o valor da chave primária.
 					chavePrimariaGerada = gk.getInt(1);
 				}
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			con.fecharConexao();
+			
+		} catch (SQLException e) { //Captura qualquer exceção de tipo SQLException que possa ocorrer durante a execução do bloco try.
+			
+			e.printStackTrace(); //Imprime o rastreamento de pilha da exceção para o console (geralmente usado para depuração).
+			
+		} finally { //nicia o bloco finally, que será executado independentemente de o bloco try ou catch serem executados.
+			
+			con.fecharConexao(); //Fecha a conexão com o banco de dados (con).
 		}
 		return chavePrimariaGerada;
 	}

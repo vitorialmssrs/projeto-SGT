@@ -245,6 +245,7 @@ public class CadastroCliente extends JFrame {
 					JOptionPane.showMessageDialog(null, "Campo CPF obrigatório!");
 					return ;
 				}
+				//conversao do cpf
 				Integer cpfI = Integer.parseInt(cpf);
 				
 				String dataNascimento = textDataEntrada.getText();
@@ -252,9 +253,10 @@ public class CadastroCliente extends JFrame {
 					JOptionPane.showMessageDialog(null, "Campo Data de Nascimento obrigatório!");
 					return ;
 				}
+				//convertendo para localDate
 				LocalDate dn = LocalDate.parse(dataNascimento);
 				
-				String dataEntradaString = textDataEntrada.getText();
+				/*String dataEntradaString = textDataEntrada.getText();
 				if(nome.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Data de Entrada obrigatório!");
 					return ;
@@ -279,7 +281,7 @@ public class CadastroCliente extends JFrame {
 					JOptionPane.showMessageDialog(null, "Campo Hora de Saída obrigatório!");
 					return ;
 				}
-				
+				*/
 				
 				//cricao de objeto 
 				Hospede h = new Hospede();
@@ -287,7 +289,7 @@ public class CadastroCliente extends JFrame {
 				h.setPrimeironome(nome);
 				h.setSobrenome(sobrenome);
 				h.setNumidentificacao(cpfI);
-				h.setDatanascimento(ds);
+				h.setDatanascimento(dn);
 				/*h.setDataEntrada(de);
 				h.setDataSaida(ds);
 				h.setHoraEntrada(null);

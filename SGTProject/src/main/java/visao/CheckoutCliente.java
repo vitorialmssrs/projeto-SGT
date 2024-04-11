@@ -1,4 +1,4 @@
-   bbnbn v  package visao;
+ package visao;
 
 import java.awt.Color;
 import java.awt.EventQueue;
