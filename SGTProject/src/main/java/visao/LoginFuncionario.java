@@ -7,9 +7,14 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import controle.FuncionarioDAO;
+import modelo.Funcionario;
+
 import java.awt.GridLayout;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
@@ -17,9 +22,6 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
-
-
-
 
 public class LoginFuncionario extends JFrame {
 
@@ -56,18 +58,19 @@ public class LoginFuncionario extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(1, 0, 0, 0));
-		
+
 		JPanel panelVerde = new JPanel();
 		panelVerde.setBackground(new Color(227, 236, 229));
 		contentPane.add(panelVerde);
 		panelVerde.setLayout(null);
-		
+
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setHorizontalAlignment(SwingConstants.LEFT);
-		lblLogo.setIcon(new ImageIcon(LoginFuncionario.class.getResource("/imagens/Châteu_Imperial-removebg-preview 4.png")));
+		lblLogo.setIcon(
+				new ImageIcon(LoginFuncionario.class.getResource("/imagens/Châteu_Imperial-removebg-preview 4.png")));
 		lblLogo.setBounds(276, 420, 218, 169);
 		panelVerde.add(lblLogo);
-		
+
 		JLabel lblSejaBemVindo = new JLabel("Seja bem-vindo!");
 		lblSejaBemVindo.setBounds(218, 219, 449, 82);
 		lblSejaBemVindo.setHorizontalAlignment(SwingConstants.CENTER);
@@ -75,65 +78,64 @@ public class LoginFuncionario extends JFrame {
 		lblSejaBemVindo.setBackground(new Color(66, 142, 66));
 		lblSejaBemVindo.setFont(new Font("Tahoma", Font.BOLD, 54));
 		panelVerde.add(lblSejaBemVindo);
-		
+
 		JLabel lblRealizeSeuLogin = new JLabel("Realize o seu Login");
 		lblRealizeSeuLogin.setBounds(316, 312, 244, 31);
 		lblRealizeSeuLogin.setHorizontalAlignment(SwingConstants.CENTER);
 		lblRealizeSeuLogin.setForeground(new Color(66, 142, 66));
 		lblRealizeSeuLogin.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		panelVerde.add(lblRealizeSeuLogin);
-		
 
 		JPanel panelCinza = new JPanel();
 		panelCinza.setForeground(new Color(227, 236, 229));
 		panelCinza.setBackground(new Color(255, 255, 245));
 		contentPane.add(panelCinza);
 		panelCinza.setLayout(null);
-		
+
 		textCPF = new JTextField();
 		textCPF.setBackground(new Color(252, 251, 244));
 		textCPF.setForeground(new Color(1, 50, 1));
 		textCPF.setBounds(70, 294, 633, 32);
 		panelCinza.add(textCPF);
 		textCPF.setColumns(10);
-		
+
 		JLabel lblCPF = new JLabel("CPF:");
 		lblCPF.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblCPF.setBounds(87, 271, 56, 13);
 		panelCinza.add(lblCPF);
-		
+
 		JLabel lblAtencao = new JLabel("*");
 		lblAtencao.setForeground(new Color(242, 48, 48));
 		lblAtencao.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblAtencao.setBounds(70, 270, 21, 13);
 		panelCinza.add(lblAtencao);
-		
+
 		textSenha = new JTextField();
 		textSenha.setForeground(new Color(1, 50, 1));
 		textSenha.setBackground(new Color(252, 251, 244));
 		textSenha.setBounds(70, 422, 633, 32);
 		panelCinza.add(textSenha);
 		textSenha.setColumns(10);
-		
+
 		JLabel lblSenha = new JLabel("Senha");
 		lblSenha.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblSenha.setBounds(87, 376, 56, 13);
 		panelCinza.add(lblSenha);
-		
+
 		JLabel lblAtecaoSenha = new JLabel("*");
 		lblAtecaoSenha.setForeground(new Color(242, 48, 48));
 		lblAtecaoSenha.setBackground(new Color(242, 48, 48));
 		lblAtecaoSenha.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblAtecaoSenha.setBounds(70, 375, 12, 13);
 		panelCinza.add(lblAtecaoSenha);
-		
+
 		JLabel lblRecadoSenha = new JLabel("Apenas números, com no Mínimo 8 caracteres e Sem caracteres especiais");
 		lblRecadoSenha.setForeground(new Color(242, 48, 48));
 		lblRecadoSenha.setBackground(new Color(242, 48, 48));
 		lblRecadoSenha.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblRecadoSenha.setBounds(70, 399, 432, 13);
 		panelCinza.add(lblRecadoSenha);
-		
+
 		JButton btnLimpar = new JButton("Limpar");
 		btnLimpar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -147,20 +149,30 @@ public class LoginFuncionario extends JFrame {
 		btnLimpar.setBounds(70, 525, 301, 32);
 		btnLimpar.setBorder(new LineBorder(new Color(36, 169, 36)));
 		panelCinza.add(btnLimpar);
-		
+
 		JButton btnEntrar = new JButton("Entrar");
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				FuncionalidadeFuncionario funcionalidadefuncionario = new FuncionalidadeFuncionario();
-				funcionalidadefuncionario.setExtendedState(funcionalidadefuncionario.getExtendedState() | JFrame.MAXIMIZED_BOTH);
-				funcionalidadefuncionario.setVisible(true);
-				funcionalidadefuncionario.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-				
-				//String cpf = textCPF.getText();
-				//String senha = textSenha.getText();
-			
-				
+
+				String cpf = textCPF.getText();
+				String senha = textSenha.getText();
+
+				if (cpf.isEmpty() || senha.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Nenhum campo preenchido!");
+				} else {
+					FuncionarioDAO funcDAO = FuncionarioDAO.getInstancia();
+					Funcionario fun = funcDAO.efetuaLogin(cpf, senha);
+					if (fun == null) {
+						JOptionPane.showMessageDialog(null, "Funcionário não cadastrado!");
+					} else {
+						FuncionalidadeFuncionario funcionalidadefuncionario = new FuncionalidadeFuncionario(fun);
+						funcionalidadefuncionario
+								.setExtendedState(funcionalidadefuncionario.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+						funcionalidadefuncionario.setVisible(true);
+						funcionalidadefuncionario.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+					}
+				}
+
 			}
 		});
 		btnEntrar.setForeground(new Color(255, 255, 245));
@@ -168,19 +180,20 @@ public class LoginFuncionario extends JFrame {
 		btnEntrar.setBackground(new Color(1, 50, 1));
 		btnEntrar.setBounds(402, 525, 301, 32);
 		panelCinza.add(btnEntrar);
-		
+
 		JButton btnSair = new JButton("Sair");
 		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 			}
 		});
-		btnSair.setIcon(new ImageIcon("C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\git\\Projeto\\projeto-SGT\\SGTProject\\src\\main\\resources\\img\\Vector (1).png"));
+		btnSair.setIcon(new ImageIcon(
+				"C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\git\\Projeto\\projeto-SGT\\SGTProject\\src\\main\\resources\\img\\Vector (1).png"));
 		btnSair.setForeground(new Color(255, 255, 245));
 		btnSair.setBackground(new Color(1, 50, 1));
 		btnSair.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnSair.setBounds(457, 709, 246, 50);
 		panelCinza.add(btnSair);
-		
+
 	}
 }

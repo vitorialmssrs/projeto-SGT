@@ -12,7 +12,7 @@ public class Conexao {
 	//criação de variavel
 	private static final String USERNAME = "root";
 	private static final String SENHA = "aluno";
-	private static final String BD = "SGT";
+	private static final String BD = "mydb";
 	private Connection con; // jdbc
 	private static Conexao instancia; // singleton
 	
