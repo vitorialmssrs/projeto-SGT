@@ -40,8 +40,8 @@ public class HospedagemDAO {
 			/*ps.setDateTime(1, ZonedDateTime.now(end.getCheckin()));
 			ps.setDate(2, Date.valueOf(end.getCheckout()));*/
 //ps.setDate(1, end.getCheckin().atZone(ZoneId.systemDefault()).toLocalDateTime()); ou java.sql.Timestamp.valueOf(dateToConvert);
-			ResultSet rs = ps.executeQuery();
-			if (rs != null) {
+			ResultSet rs = ps.getGeneratedKeys();
+			if (rs.next()) {
 				chavePrimariaGerada = rs.getInt(1);
 			}	
 	

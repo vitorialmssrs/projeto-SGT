@@ -7,7 +7,7 @@ public class Hospede {
 	//alt shift r muda todas as variaveis 
 	
 	private Integer idcliente;
-	private Integer numidentificacao;
+	private Long numidentificacao;
 	private String primeironome;
 	private String sobrenome;
 	private LocalDate datanascimento;
@@ -20,10 +20,10 @@ public class Hospede {
 	public void setIdcliente(Integer idcliente) {
 		this.idcliente = idcliente;
 	}
-	public Integer getNumidentificacao() {
+	public Long getNumidentificacao() {
 		return numidentificacao;
 	}
-	public void setNumidentificacao(Integer numidentificacao) {
+	public void setNumidentificacao(Long numidentificacao) {
 		this.numidentificacao = numidentificacao;
 	}
 	public String getPrimeironome() {

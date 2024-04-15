@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -39,6 +40,7 @@ public class CadastroCliente extends JFrame {
 	private JTextField textSobrenome;
 	private JTextField txtSenha;
 	private JTextField txtHoraSaida;
+	private JTextField textTelefone;
 
 	/**
 	 * Launch the application.
@@ -92,7 +94,7 @@ public class CadastroCliente extends JFrame {
 		lblNome_Cliente.setBackground(new Color(1, 50, 1));
 		lblNome_Cliente.setForeground(new Color(1, 50, 1));
 		lblNome_Cliente.setFont(new Font("Tahoma", Font.BOLD, 19));
-		lblNome_Cliente.setBounds(194, 301, 202, 21);
+		lblNome_Cliente.setBounds(195, 263, 202, 21);
 		contentPane.add(lblNome_Cliente);
 		
 		textDataEntrada = new JTextField();
@@ -107,29 +109,29 @@ public class CadastroCliente extends JFrame {
 		lblSobrenomeCliente.setBackground(new Color(1, 50, 1));
 		lblSobrenomeCliente.setForeground(new Color(1, 50, 1));
 		lblSobrenomeCliente.setFont(new Font("Tahoma", Font.BOLD, 19));
-		lblSobrenomeCliente.setBounds(194, 363, 165, 22);
+		lblSobrenomeCliente.setBounds(195, 325, 165, 22);
 		contentPane.add(lblSobrenomeCliente);
 		
 		TextDataNascimento = new JTextField();
 		TextDataNascimento.setForeground(new Color(1, 50, 1));
 		TextDataNascimento.setBackground(new Color(252, 251, 244));
-		TextDataNascimento.setBounds(194, 522, 404, 29);
+		TextDataNascimento.setBounds(195, 484, 404, 29);
 		contentPane.add(TextDataNascimento);
 		TextDataNascimento.setBorder(new LineBorder(new Color(1, 50, 1)));
 		TextDataNascimento.setColumns(10);
 		
-		JLabel lblDataNascimento = new JLabel("* Data de nascimento:");
-		lblDataNascimento.setBackground(new Color(1, 50, 1));
-		lblDataNascimento.setForeground(new Color(1, 50, 1));
-		lblDataNascimento.setFont(new Font("Tahoma", Font.BOLD, 19));
-		lblDataNascimento.setBounds(194, 489, 236, 21);
-		contentPane.add(lblDataNascimento);
+		JLabel lblTelefone = new JLabel("* Telefone:");
+		lblTelefone.setBackground(new Color(1, 50, 1));
+		lblTelefone.setForeground(new Color(1, 50, 1));
+		lblTelefone.setFont(new Font("Tahoma", Font.BOLD, 19));
+		lblTelefone.setBounds(195, 524, 236, 21);
+		contentPane.add(lblTelefone);
 		
 		textCPF = new JTextField();
 		textCPF.setToolTipText("");
 		textCPF.setForeground(new Color(1, 50, 1));
 		textCPF.setBackground(new Color(252, 251, 244));
-		textCPF.setBounds(194, 455, 404, 29);
+		textCPF.setBounds(195, 417, 404, 29);
 		contentPane.add(textCPF);
 		textCPF.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textCPF.setColumns(10);
@@ -144,7 +146,7 @@ public class CadastroCliente extends JFrame {
 		textPrimeiroNome = new JTextField();
 		textPrimeiroNome.setForeground(new Color(1, 50, 1));
 		textPrimeiroNome.setBackground(new Color(252, 251, 244));
-		textPrimeiroNome.setBounds(194, 329, 404, 29);
+		textPrimeiroNome.setBounds(195, 291, 404, 29);
 		contentPane.add(textPrimeiroNome);
 		textPrimeiroNome.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textPrimeiroNome.setColumns(10);
@@ -184,13 +186,13 @@ public class CadastroCliente extends JFrame {
 		lblCPFCliente.setForeground(new Color(1, 50, 1));
 		lblCPFCliente.setBackground(new Color(1, 50, 1));
 		lblCPFCliente.setFont(new Font("Tahoma", Font.BOLD, 19));
-		lblCPFCliente.setBounds(194, 425, 300, 18);
+		lblCPFCliente.setBounds(195, 387, 300, 18);
 		contentPane.add(lblCPFCliente);
 		
 		textSobrenome = new JTextField();
 		textSobrenome.setForeground(new Color(1, 50, 1));
 		textSobrenome.setBackground(new Color(252, 251, 244));
-		textSobrenome.setBounds(194, 389, 404, 29);
+		textSobrenome.setBounds(195, 351, 404, 29);
 		textSobrenome.setBorder(new LineBorder(new Color(1, 50, 1)));
 		contentPane.add(textSobrenome);
 		textSobrenome.setColumns(10);
@@ -258,14 +260,19 @@ public class CadastroCliente extends JFrame {
 					JOptionPane.showMessageDialog(null, "Campo CPF obrigatório!");
 					return ;
 				}
-				Integer cpfI = Integer.parseInt(cpf);
+				cpf = cpf.replace(".", "");
+				cpf = cpf.replace("-", "");
+				Long cpfI = Long.parseLong(cpf);
 				
 				String dataNascimento = textDataEntrada.getText();
 				if(nome.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Data de Nascimento obrigatório!");
 					return ;
 				}
-				LocalDate dn = LocalDate.parse(dataNascimento);
+				
+		        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+
+				LocalDate dn = LocalDate.parse(dataNascimento, formatter);
 				
 				String dataEntrada = textDataEntrada.getText();
 				if(nome.length() == 0) {
@@ -292,11 +299,24 @@ public class CadastroCliente extends JFrame {
 					JOptionPane.showMessageDialog(null, "Campo Hora de Saída obrigatório!");
 					return ;
 				}
+				
+				String telefone = textTelefone.getText();
+				if(telefone.length() == 0) {
+					JOptionPane.showMessageDialog(null, "Campo Hora de Saída obrigatório!");
+					return ;
+				}
+				telefone = telefone.replace("(","");
+				telefone = telefone.replace(")","");
+				telefone = telefone.replace("-","");
+				telefone = telefone.replace(" ","");
+				Integer telefoneI = Integer.parseInt(telefone);
 			
-				LocalDate dtEntrada = LocalDate.parse(dataEntrada);
-				LocalDate dtSaida = LocalDate.parse(dataSaida);
-				LocalTime hrEntrada = LocalTime.parse(horaEntrada);
-				LocalTime hrSaida = LocalTime.parse(horaSaida);
+				LocalDate dtEntrada = LocalDate.parse(dataEntrada, formatter);
+				LocalDate dtSaida = LocalDate.parse(dataSaida, formatter);
+				DateTimeFormatter formattertime = DateTimeFormatter.ofPattern("HH:mm");
+
+				LocalTime hrEntrada = LocalTime.parse(horaEntrada,formattertime);
+				LocalTime hrSaida = LocalTime.parse(horaSaida,formattertime);
 				
 				Hospedagem hospedagem = new Hospedagem();
 				
@@ -317,6 +337,7 @@ public class CadastroCliente extends JFrame {
 				h.setSobrenome(sobrenome);
 				h.setNumidentificacao(cpfI);
 				h.setDatanascimento(dn);
+				h.setTelefone(telefoneI);
 				
 				//instanciando a classe DAO
 				HospedeDAO dao = new HospedeDAO();
@@ -373,6 +394,21 @@ public class CadastroCliente extends JFrame {
 		lblNewLabel.setIcon(new ImageIcon(CadastroCliente.class.getResource("/imagens/LogoPI.png")));
 		lblNewLabel.setBounds(437, 62, 145, 128);
 		contentPane.add(lblNewLabel);
+		
+		JLabel lblDataNascimento_1 = new JLabel("* Data de nascimento:");
+		lblDataNascimento_1.setForeground(new Color(1, 50, 1));
+		lblDataNascimento_1.setFont(new Font("Tahoma", Font.BOLD, 19));
+		lblDataNascimento_1.setBackground(new Color(1, 50, 1));
+		lblDataNascimento_1.setBounds(195, 452, 236, 21);
+		contentPane.add(lblDataNascimento_1);
+		
+		textTelefone = new JTextField();
+		textTelefone.setForeground(new Color(1, 50, 1));
+		textTelefone.setColumns(10);
+		textTelefone.setBorder(new LineBorder(new Color(1, 50, 1)));
+		textTelefone.setBackground(new Color(252, 251, 244));
+		textTelefone.setBounds(195, 556, 404, 29);
+		contentPane.add(textTelefone);
 	}
 
 	/**criado para ser adicionado em hospede

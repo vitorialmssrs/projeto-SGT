@@ -41,7 +41,7 @@ public class HospedeDAO {
 			//END Define o primeiro parâmetro (?) da instrução SQL com o valor do primeiro nome 
 			ps.setString(1, end.getPrimeironome());
 			ps.setString(2, end.getSobrenome());
-			ps.setInt(3, end.getNumidentificacao());
+			ps.setLong(3, end.getNumidentificacao());
 			ps.setDate(4, Date.valueOf(end.getDatanascimento()));
 			ps.setInt(5, end.getTelefone());
 			ps.setString(6, end.getEmail());
@@ -104,7 +104,7 @@ public class HospedeDAO {
 				String PrimeiroNome = rs.getString("primeiro_nome");
 				String Sobrenome = rs.getString("sobrenome");
 				LocalDate Datanascimento = rs.getDate("data_de_nascimento").toLocalDate();
-				int Numidentificacao = rs.getInt("num_identificacao");
+				Long Numidentificacao = rs.getLong("num_identificacao");
 				int Telefone = rs.getInt("telefone");
 				String Email = rs.getString("email");
 
@@ -161,7 +161,7 @@ public class HospedeDAO {
 
 			ps.setString(1, end.getPrimeironome());
 			ps.setString(2, end.getSobrenome());
-			ps.setInt(3, end.getNumidentificacao());
+			ps.setLong(3, end.getNumidentificacao());
 			ps.setDate(4, Date.valueOf(end.getDatanascimento()));
 			ps.setInt(5, end.getTelefone());
 			ps.setString(6, end.getEmail());
@@ -195,7 +195,7 @@ public class HospedeDAO {
 
 			ps.setString(1, end.getPrimeironome());
 			ps.setString(2, end.getSobrenome());
-			ps.setInt(3, end.getNumidentificacao());
+			ps.setLong(3, end.getNumidentificacao());
 			ps.setDate(4, Date.valueOf(end.getDatanascimento()));
 			ps.setInt(5, end.getTelefone());
 			ps.setString(6, end.getEmail());
