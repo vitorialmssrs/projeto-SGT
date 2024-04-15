@@ -96,7 +96,7 @@ import modelo.ManutencaoEspacos;
 
 	// Comando SQL a ser executado
 	
-	String SQL = "SELECT * FROM ManutencaoEspacos";
+	String SQL = "INSERT INTO ManutencaoEspacos (idManutencaoEspacos, tipoManutencao, diaManutencao) VALUES ( ?, ?, ?)";
 
 	// Cria a "ponte de conexao" com MYSQL
 	
@@ -115,7 +115,7 @@ import modelo.ManutencaoEspacos;
 
 			// Pega os valores de cada coluna do registro
 			Integer idManutencaoEspacos = rs.getInt("idManutencaoEspacos");
-			String TipoManutencao = rs.getString("TipoManutencao");
+			String TipoManutencao = rs.getString("tipoManutencao");
 			Time DiaManutencao = rs.getTime("DiaManutencao");
 					
 			// Seta os valores no obj java
@@ -171,7 +171,7 @@ import modelo.ManutencaoEspacos;
 	}
 	
 	public boolean atualizarLManutencaoEspacos(ManutencaoEspacos end) {
-	    String SQL = "UPDATE ManutencaoEspacos SET idManutencaoEspacos, tipoManutencao, diaManutencao WHERE idManutencaoEspacos = ?";
+	    String SQL = "UPDATE ManutencaoEspacos SET idManutencaoEspacos = ?, tipoManutencao = ?, diaManutencao = ? WHERE idManutencaoEspacos = ?";
 	    
 	    Conexao con = Conexao.getInstancia();
 	    Connection conBD = con.conectar();
