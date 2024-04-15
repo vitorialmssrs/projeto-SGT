@@ -41,6 +41,7 @@ public class CadastroCliente extends JFrame {
 	private JTextField txtSenha;
 	private JTextField txtHoraSaida;
 	private JTextField textTelefone;
+	private JTextField textEmail;
 
 	/**
 	 * Launch the application.
@@ -100,7 +101,7 @@ public class CadastroCliente extends JFrame {
 		textDataEntrada = new JTextField();
 		textDataEntrada.setForeground(new Color(1, 50, 1));
 		textDataEntrada.setBackground(new Color(252, 251, 244));
-		textDataEntrada.setBounds(811, 369, 165, 29);
+		textDataEntrada.setBounds(811, 319, 165, 29);
 		textDataEntrada.setBorder(new LineBorder(new Color(1, 50, 1)));
 		contentPane.add(textDataEntrada);
 		textDataEntrada.setColumns(10);
@@ -140,7 +141,7 @@ public class CadastroCliente extends JFrame {
 		lblDataEntrada.setForeground(new Color(1, 50, 1));
 		lblDataEntrada.setBackground(new Color(1, 50, 1));
 		lblDataEntrada.setFont(new Font("Tahoma", Font.BOLD, 19));
-		lblDataEntrada.setBounds(811, 341, 255, 21);
+		lblDataEntrada.setBounds(811, 291, 255, 21);
 		contentPane.add(lblDataEntrada);
 		
 		textPrimeiroNome = new JTextField();
@@ -155,13 +156,13 @@ public class CadastroCliente extends JFrame {
 		lblDataSaida.setBackground(new Color(1, 50, 1));
 		lblDataSaida.setForeground(new Color(1, 50, 1));
 		lblDataSaida.setFont(new Font("Tahoma", Font.BOLD, 19));
-		lblDataSaida.setBounds(811, 403, 232, 21);
+		lblDataSaida.setBounds(811, 353, 232, 21);
 		contentPane.add(lblDataSaida);
 		
 		textHoraEntrada = new JTextField();
 		textHoraEntrada.setForeground(new Color(1, 50, 1));
 		textHoraEntrada.setBackground(new Color(252, 251, 244));
-		textHoraEntrada.setBounds(986, 369, 165, 29);
+		textHoraEntrada.setBounds(986, 319, 165, 29);
 		textHoraEntrada.setBorder(new LineBorder(new Color(1, 50, 1)));
 		contentPane.add(textHoraEntrada);
 		
@@ -172,12 +173,12 @@ public class CadastroCliente extends JFrame {
 		lblSenhaCad.setBackground(new Color(1, 50, 1));
 		lblSenhaCad.setForeground(new Color(1, 50, 1));
 		lblSenhaCad.setFont(new Font("Tahoma", Font.BOLD, 19));
-		lblSenhaCad.setBounds(811, 465, 340, 21);
+		lblSenhaCad.setBounds(811, 489, 340, 21);
 		contentPane.add(lblSenhaCad);
 		
 		textDataSaida = new JTextField();
 		textDataSaida.setBackground(new Color(252, 251, 244));
-		textDataSaida.setBounds(811, 429, 165, 29);
+		textDataSaida.setBounds(811, 379, 165, 29);
 		contentPane.add(textDataSaida);
 		textDataSaida.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textDataSaida.setColumns(10);
@@ -305,11 +306,7 @@ public class CadastroCliente extends JFrame {
 					JOptionPane.showMessageDialog(null, "Campo Hora de Saída obrigatório!");
 					return ;
 				}
-				telefone = telefone.replace("(","");
-				telefone = telefone.replace(")","");
-				telefone = telefone.replace("-","");
-				telefone = telefone.replace(" ","");
-				Integer telefoneI = Integer.parseInt(telefone);
+
 			
 				LocalDate dtEntrada = LocalDate.parse(dataEntrada, formatter);
 				LocalDate dtSaida = LocalDate.parse(dataSaida, formatter);
@@ -373,19 +370,19 @@ public class CadastroCliente extends JFrame {
 		
 		JLabel lblInformacaoSenha = new JLabel("Apenas números, com no Mínimo 8 caracteres  e Sem caracteres especiais.");
 		lblInformacaoSenha.setForeground(new Color(255, 0, 0));
-		lblInformacaoSenha.setBounds(811, 488, 353, 13);
+		lblInformacaoSenha.setBounds(811, 512, 353, 13);
 		contentPane.add(lblInformacaoSenha);
 		
 		txtSenha = new JTextField();
 		txtSenha.setForeground(new Color(1, 50, 1));
 		txtSenha.setBackground(new Color(252, 251, 244));
-		txtSenha.setBounds(811, 508, 404, 29);
+		txtSenha.setBounds(811, 532, 404, 29);
 		contentPane.add(txtSenha);
 		txtSenha.setBorder(new LineBorder(new Color(1, 50, 1)));
 		txtSenha.setColumns(10);
 		
 		txtHoraSaida = new JTextField();
-		txtHoraSaida.setBounds(986, 429, 165, 29);
+		txtHoraSaida.setBounds(986, 379, 165, 29);
 		contentPane.add(txtHoraSaida);
 		txtHoraSaida.setBorder(new LineBorder(new Color(1, 50, 1)));
 		txtHoraSaida.setColumns(10);
@@ -409,6 +406,21 @@ public class CadastroCliente extends JFrame {
 		textTelefone.setBackground(new Color(252, 251, 244));
 		textTelefone.setBounds(195, 556, 404, 29);
 		contentPane.add(textTelefone);
+		
+		JLabel lblEmail = new JLabel("* Email: ");
+		lblEmail.setForeground(new Color(1, 50, 1));
+		lblEmail.setFont(new Font("Tahoma", Font.BOLD, 19));
+		lblEmail.setBackground(new Color(1, 50, 1));
+		lblEmail.setBounds(811, 417, 340, 21);
+		contentPane.add(lblEmail);
+		
+		textEmail = new JTextField();
+		textEmail.setForeground(new Color(1, 50, 1));
+		textEmail.setColumns(10);
+		textEmail.setBorder(new LineBorder(new Color(1, 50, 1)));
+		textEmail.setBackground(new Color(252, 251, 244));
+		textEmail.setBounds(811, 449, 404, 29);
+		contentPane.add(textEmail);
 	}
 
 	/**criado para ser adicionado em hospede

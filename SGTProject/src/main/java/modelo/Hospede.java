@@ -11,7 +11,7 @@ public class Hospede {
 	private String primeironome;
 	private String sobrenome;
 	private LocalDate datanascimento;
-	private Integer telefone;
+	private String telefone;
 	private String email;
 	
 	public Integer getIdcliente() {
@@ -44,10 +44,10 @@ public class Hospede {
 	public void setDatanascimento(LocalDate datanascimento) {
 		this.datanascimento = datanascimento;
 	}
-	public Integer getTelefone() {
+	public String getTelefone() {
 		return telefone;
 	}
-	public void setTelefone(Integer telefone) {
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 	public String getEmail() {
