@@ -29,9 +29,9 @@ public class FuncionarioDAO {
 		return instancia;
 	}
 
-	public int inserirFuncionario(Funcionario end) {
+	public int inserirFuncionario(Funcionario fun) {
 
-		String SQL = "INSERT INTO funcionarios (id_funcionario, login, senha, num_indentificacao, nome_completo, data_nascismento, telefone, cep, num_casa, espacos_hotel_id_espacos) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String SQL = "INSERT INTO funcionarios (id_funcionario, login, senha, num_indentificacao, nome_completo, data_nascismento, telefone, cep, num_casa) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
@@ -39,15 +39,14 @@ public class FuncionarioDAO {
 		try {
 			PreparedStatement ps = conBD.prepareStatement(SQL);
 
-			ps.setString(1, end.getLogin());
-			ps.setString(2, end.getSenha());
-			ps.setInt(3, end.getNumIndentificacao());
-			ps.setString(4, end.getNomeCompleto());
-			ps.setDate(5, Date.valueOf(end.getDataNascismento()));
-			ps.setInt(6, end.getTelefone());
-			ps.setInt(7, end.getCep());
-			ps.setInt(8, end.getNumCasa());
-			ps.setInt(9, end.getEspacosHotelIdEspacos());
+			ps.setString(1, fun.getLogin());
+			ps.setString(2, fun.getSenha());
+			ps.setInt(3, fun.getNumIndentificacao());
+			ps.setString(4, fun.getNomeCompleto());
+			ps.setDate(5, Date.valueOf(fun.getDataNascimento()));
+			ps.setInt(6, fun.getTelefone());
+			ps.setInt(7, fun.getCep());
+			ps.setInt(8, fun.getNumCasa());
 
 			return ps.executeUpdate();
 		} catch (SQLException e) {
@@ -85,7 +84,6 @@ public class FuncionarioDAO {
 				Integer Telefone = rs.getInt("telefone");
 				Integer Cep = rs.getInt("cep");
 				Integer NumCasa = rs.getInt("num_casa");
-				Integer EspacosHotelIdEspacos = rs.getInt("espacos_hotel_id_espacos");
 				LocalDate DataNascismento = rs.getDate("data_de_nascimento").toLocalDate();
 
 				f.setIdFuncionario(idFuncionario);
@@ -93,11 +91,10 @@ public class FuncionarioDAO {
 				f.setSenha(Senha);
 				f.setNumIndentificacao(NumIndentificacao);
 				f.setNomeCompleto(NomeCompleto);
-				f.setDataNascismento(DataNascismento);
+				f.setDataNascimento(DataNascismento);
 				f.setTelefone(Telefone);
 				f.setCep(Cep);
 				f.setNumCasa(NumCasa);
-				f.setEspacosHotelIdEspacos(EspacosHotelIdEspacos);
 
 				funcionario.add(f);
 			}
@@ -125,20 +122,10 @@ public class FuncionarioDAO {
 			ps.setString(3, end.getSenha());
 			ps.setInt(4, end.getNumIndentificacao());
 			ps.setString(5, end.getNomeCompleto());
-			ps.setDate(6, Date.valueOf(end.getDataNascismento()));
+			ps.setDate(6, Date.valueOf(end.getDataNascimento()));
 			ps.setInt(7, end.getTelefone());
 			ps.setInt(8, end.getCep());
 			ps.setInt(9, end.getNumCasa());
-			ps.setInt(10, end.getEspacosHotelIdEspacos());
-
-			/*
-			 * DAO Funcionario
-			 * 
-			 * IdFuncionario idFuncionario Login login Senha senha NumIndentificacao
-			 * numIndentificacao NomeCompleto nomeCompleto DataNascismento dataNascismento
-			 * Telefone telefone Cep cep NumCasa numCasa EspacosHotelIdEspacos
-			 * espacosHotelIdEspacos
-			 */
 
 			retorno = ps.executeUpdate();
 		} catch (Exception e) {
@@ -184,11 +171,10 @@ public class FuncionarioDAO {
 				f.setSenha(Senha);
 				f.setNumIndentificacao(NumIndentificacao);
 				f.setNomeCompleto(NomeCompleto);
-				f.setDataNascismento(DataNascismento);
+				f.setDataNascimento(DataNascismento);
 				f.setTelefone(Telefone);
 				f.setCep(Cep);
 				f.setNumCasa(NumCasa);
-				f.setEspacosHotelIdEspacos(EspacosHotelIdEspacos);
 
 			}
 
