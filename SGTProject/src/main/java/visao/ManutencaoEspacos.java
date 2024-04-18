@@ -19,6 +19,8 @@ public class ManutencaoEspacos extends JFrame {
 			public void run() {
 				try {
 					ManutencaoEspacos frame = new ManutencaoEspacos();
+					//sempre antes do set visible para abrir em tela cheia 
+					frame.setExtendedState(frame.getExtendedState()|JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -32,7 +34,7 @@ public class ManutencaoEspacos extends JFrame {
 	 */
 	public ManutencaoEspacos() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 1920, 1080);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 

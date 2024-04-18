@@ -23,7 +23,7 @@ public class HospedeDAO {
 	}
 
 	public int insertHospede(Hospede end) {
-		String SQL = "INSERT INTO hospede (primeiro_nome, sobrenome, num_identificacao, data_de_nascimento, telefone, email) VALUES (?, ?, ?, ?, ?, ?)";
+		String SQL = "INSERT INTO clientes (primeiro_nome, sobrenome, num_identificacao, data_de_nascimento, telefone, email, senha) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
@@ -41,10 +41,11 @@ public class HospedeDAO {
 			//END Define o primeiro parâmetro (?) da instrução SQL com o valor do primeiro nome 
 			ps.setString(1, end.getPrimeironome());
 			ps.setString(2, end.getSobrenome());
-			ps.setInt(3, end.getNumidentificacao());
+			ps.setLong(3, end.getNumidentificacao());
 			ps.setDate(4, Date.valueOf(end.getDatanascimento()));
-			ps.setInt(5, end.getTelefone());
+			ps.setString(5, end.getTelefone());
 			ps.setString(6, end.getEmail());
+			ps.setInt(7, end.getSenha());
 
 			//Executa a instrução SQL (uma operação de inserção) e armazena o número de linhas afetadas na variável ra.
 			int ra = ps.executeUpdate();
@@ -80,7 +81,7 @@ public class HospedeDAO {
 
 		// Comando SQL a ser executado
 
-		String SQL = "SELECT * FROM hospedes";
+		String SQL = "SELECT * FROM clientes";
 
 		// Cria a "ponta de conexão" com o MYSQL
 		Conexao con = Conexao.getInstancia();
@@ -104,9 +105,10 @@ public class HospedeDAO {
 				String PrimeiroNome = rs.getString("primeiro_nome");
 				String Sobrenome = rs.getString("sobrenome");
 				LocalDate Datanascimento = rs.getDate("data_de_nascimento").toLocalDate();
-				int Numidentificacao = rs.getInt("num_identificacao");
-				int Telefone = rs.getInt("telefone");
+				Long Numidentificacao = rs.getLong("num_identificacao");
+				String Telefone = rs.getString("telefone");
 				String Email = rs.getString("email");
+				Integer senha = rs.getInt("senha");
 
 				// localdate ==> mais indicado para utilizar
 				// LocalTime
@@ -126,6 +128,7 @@ public class HospedeDAO {
 				end.setDatanascimento(Datanascimento);
 				end.setTelefone(Telefone);
 				end.setEmail(Email);
+				end.setSenha(senha);
 
 				hospedes.add(end);
 				// precisa acrescentar a tela de confimação
@@ -147,7 +150,7 @@ public class HospedeDAO {
 		 * email
 		 */
 		// verificar se o WHERE vai finalizar com n°identificação ou id_cliente
-		String SQL = "UPDATE hospedes SET primeiro_nome = ?, sobrenome = ?, num_identificacao = ?, data_de_nascimento = ?, telefone = ?, email = ?, WHERE id_cliente = ?";
+		String SQL = "UPDATE clientes SET primeiro_nome = ?, sobrenome = ?, num_identificacao = ?, data_de_nascimento = ?, telefone = ?, email = ?, senha = ?, WHERE id_cliente = ?";
 
 		// Abre conexão e cria a "ponte de conexão" com o MySQL
 		Conexao con = Conexao.getInstancia();
@@ -161,10 +164,11 @@ public class HospedeDAO {
 
 			ps.setString(1, end.getPrimeironome());
 			ps.setString(2, end.getSobrenome());
-			ps.setInt(3, end.getNumidentificacao());
+			ps.setLong(3, end.getNumidentificacao());
 			ps.setDate(4, Date.valueOf(end.getDatanascimento()));
-			ps.setInt(5, end.getTelefone());
+			ps.setString(5, end.getTelefone());
 			ps.setString(6, end.getEmail());
+			ps.setInt(7, end.getSenha());
 
 			retorno = ps.executeUpdate();
 
@@ -181,7 +185,7 @@ public class HospedeDAO {
 
 	public boolean removerHospede(Hospede end) {
 
-		String SQL = "DELETE FROM hospedes SET primeiro_nome = ?, sobrenome = ?, num_identificacao = ?, data_de_nascimento = ?, telefone = ?, email = ?, WHERE id_cliente = ?"; // verificar
+		String SQL = "DELETE FROM clientes SET primeiro_nome = ?, sobrenome = ?, num_identificacao = ?, data_de_nascimento = ?, telefone = ?, email = ?, senha = ?, WHERE id_cliente = ?"; // verificar
 
 		Conexao con = Conexao.getInstancia();
 
@@ -195,10 +199,11 @@ public class HospedeDAO {
 
 			ps.setString(1, end.getPrimeironome());
 			ps.setString(2, end.getSobrenome());
-			ps.setInt(3, end.getNumidentificacao());
+			ps.setLong(3, end.getNumidentificacao());
 			ps.setDate(4, Date.valueOf(end.getDatanascimento()));
-			ps.setInt(5, end.getTelefone());
+			ps.setString(5, end.getTelefone());
 			ps.setString(6, end.getEmail());
+			ps.setInt(7, end.getSenha());
 
 			retorno = ps.executeUpdate();
 

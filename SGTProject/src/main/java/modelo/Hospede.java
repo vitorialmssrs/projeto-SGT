@@ -7,23 +7,25 @@ public class Hospede {
 	//alt shift r muda todas as variaveis 
 	
 	private Integer idcliente;
-	private Integer numidentificacao;
+	private Long numidentificacao;
 	private String primeironome;
 	private String sobrenome;
 	private LocalDate datanascimento;
-	private Integer telefone;
+	private String telefone;
 	private String email;
+	private Integer senha;
 	
+
 	public Integer getIdcliente() {
 		return idcliente;
 	}
 	public void setIdcliente(Integer idcliente) {
 		this.idcliente = idcliente;
 	}
-	public Integer getNumidentificacao() {
+	public Long getNumidentificacao() {
 		return numidentificacao;
 	}
-	public void setNumidentificacao(Integer numidentificacao) {
+	public void setNumidentificacao(Long numidentificacao) {
 		this.numidentificacao = numidentificacao;
 	}
 	public String getPrimeironome() {
@@ -44,10 +46,10 @@ public class Hospede {
 	public void setDatanascimento(LocalDate datanascimento) {
 		this.datanascimento = datanascimento;
 	}
-	public Integer getTelefone() {
+	public String getTelefone() {
 		return telefone;
 	}
-	public void setTelefone(Integer telefone) {
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 	public String getEmail() {
@@ -56,7 +58,12 @@ public class Hospede {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	public Integer getSenha() {
+		return senha;
+	}
+	public void setSenha(Integer senha) {
+		this.senha = senha;
+	}
 	
 	
 	
