@@ -5,11 +5,13 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -17,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.text.MaskFormatter;
 
 import controle.FuncionarioDAO;
 import controle.HospedagemDAO;
@@ -199,8 +202,20 @@ public class CheckoutCliente extends JFrame {
 		
 		JButton btnCadastro_Cliente = new JButton("Check-out");
 		btnCadastro_Cliente.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {	
+				/*Como adicionar uma mascara ao text
+				MaskFormatter mascaraTel = null;
+					try {
+      					mascaraTel = new MaskFormatter("(##) ###-###-###");
+					} catch (ParseException e) {
+      					e.printStackTrace();
+ 					}
+ 						textField = new JFormattedTextField(mascaraTel);
+ 						contentPane.add(textField);
+ 						textField.setColumns(10);
+ 						*/
 				
+				//recebe a o conteudo que esta no Text e joga para a variavel 
 				String nome = textPrimeiroNome.getText();
 				if(nome.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Nome obrigatório!");
@@ -218,14 +233,25 @@ public class CheckoutCliente extends JFrame {
 					JOptionPane.showMessageDialog(null, "Campo CPF obrigatório!");
 					return ;
 				}
-				Integer cpfI = Integer.parseInt(cpf);
+				cpf = cpf.replace(".", "");
+				cpf = cpf.replace("-", "");
+				Long cpfI = Long.parseLong(cpf);
+				
+				MaskFormatter mascaraCPF = null;
+				try {
+					mascaraCPF = new MaskFormatter("###.###.###-##");
+				} catch (ParseException e1) {
+  					e1.printStackTrace();
+					}
+						textCPF = new JFormattedTextField(mascaraCPF);
+						contentPane.add(textCPF);
+						textCPF.setColumns(15);
 				
 				String dataNascimento = TextDataNascimento.getText();
 				if(nome.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Data de Nascimento obrigatório!");
 					return ;
 				}
-				
 				LocalDate dn = LocalDate.parse(dataNascimento);
 				
 				String dataSaida = textDataSaida.getText();
@@ -233,19 +259,38 @@ public class CheckoutCliente extends JFrame {
 					JOptionPane.showMessageDialog(null, "Campo Data de Saída obrigatório!");
 					return ;
 				}
+				MaskFormatter mascaraDataSaida = null;
+				try {
+					mascaraDataSaida = new MaskFormatter("##/##/####");
+				} catch (ParseException e1) {
+  					e1.printStackTrace();
+					}
+						textDataSaida = new JFormattedTextField(mascaraDataSaida);
+						contentPane.add(textDataSaida);
+						textDataSaida.setColumns(10);
 				
 				String horaSaida = textHoraSaida.getText();
 				if(nome.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Hora de Saída obrigatório!");
 					return ;
 				}
+				MaskFormatter mascaraHoraSaida = null;
+				try {
+					mascaraHoraSaida = new MaskFormatter("##:##");
+				} catch (ParseException e1) {
+					e1.printStackTrace();
+					}
+				textHoraSaida = new JFormattedTextField(mascaraHoraSaida);
+						contentPane.add(textHoraSaida);
+						textHoraSaida.setColumns(5);
 			
+						
 				LocalDate dtSaida = LocalDate.parse(dataSaida);
 				LocalTime hrSaida = LocalTime.parse(horaSaida);
 				
 				Hospedagem hospedagem = new Hospedagem();
 				
-				hospedagem.setDataSaida(dtSaida);
+				hospedagem.setDataSaida(dtSaida);;
 				hospedagem.setHoraSaida(hrSaida);
 				
 				HospedagemDAO hospedagemdao = new HospedagemDAO();
@@ -266,8 +311,7 @@ public class CheckoutCliente extends JFrame {
 				///inserindo na classe 
 				dao.insertHospede(h);
 				
-				dispose();
-				
+				dispose();	
 				
 			}
 		});
