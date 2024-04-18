@@ -303,7 +303,13 @@ public class CadastroCliente extends JFrame {
 				
 				String telefone = textTelefone.getText();
 				if(telefone.length() == 0) {
-					JOptionPane.showMessageDialog(null, "Campo Hora de Saída obrigatório!");
+					JOptionPane.showMessageDialog(null, "Campo Telefone obrigatório!");
+					return ;
+				}
+				
+				String email = textEmail.getText();
+				if(email.length() == 0) {
+					JOptionPane.showMessageDialog(null, "Campo Email obrigatório!");
 					return ;
 				}
 
@@ -334,7 +340,8 @@ public class CadastroCliente extends JFrame {
 				h.setSobrenome(sobrenome);
 				h.setNumidentificacao(cpfI);
 				h.setDatanascimento(dn);
-				h.setTelefone(telefoneI);
+				h.setTelefone(telefone);
+				h.setEmail(email);
 				
 				//instanciando a classe DAO
 				HospedeDAO dao = new HospedeDAO();
@@ -342,7 +349,6 @@ public class CadastroCliente extends JFrame {
 				dao.insertHospede(h);
 				
 				dispose();
-				
 				
 			}
 		});

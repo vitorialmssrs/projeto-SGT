@@ -44,7 +44,6 @@ public class HospedeDAO {
 			ps.setLong(3, end.getNumidentificacao());
 			ps.setDate(4, Date.valueOf(end.getDatanascimento()));
 			ps.setString(5, end.getTelefone());
-			end.setEmail("fdvndsfnsdn");
 			ps.setString(6, end.getEmail());
 
 			//Executa a instrução SQL (uma operação de inserção) e armazena o número de linhas afetadas na variável ra.
