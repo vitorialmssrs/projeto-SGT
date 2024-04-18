@@ -152,9 +152,9 @@ public class FuncionarioDAO {
 
 	public Funcionario efetuaLogin(String login, String senha) {
 
-		Funcionario f = null;
+		Funcionario f =  new Funcionario();
 
-		String SQL = "SELECT * FROM usuarios u WHERE u.login = ? AND u.senha = ?";
+		String SQL = "SELECT * FROM funcionarios u WHERE u.login = ? AND u.senha = ?";
 
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
@@ -167,7 +167,7 @@ public class FuncionarioDAO {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				f = new Funcionario();
+				
 				Integer idFuncionario = rs.getInt("id_funcionario");
 				String Login = rs.getNString("login");
 				String Senha = rs.getNString("senha");

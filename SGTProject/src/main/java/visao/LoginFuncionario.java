@@ -154,20 +154,19 @@ public class LoginFuncionario extends JFrame {
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				String cpf = textCPF.getText();
+				String login = textCPF.getText();
 				String senha = textSenha.getText();
 
-				if (cpf.isEmpty() || senha.isEmpty()) {
+				if (login.isEmpty() || senha.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Nenhum campo preenchido!");
 				} else {
 					FuncionarioDAO funcDAO = FuncionarioDAO.getInstancia();
-					Funcionario fun = funcDAO.efetuaLogin(cpf, senha);
+					Funcionario fun = funcDAO.efetuaLogin(login, senha);
 					if (fun == null) {
 						JOptionPane.showMessageDialog(null, "Funcionário não cadastrado!");
 					} else {
 						FuncionalidadeFuncionario funcionalidadefuncionario = new FuncionalidadeFuncionario(fun);
-						funcionalidadefuncionario
-								.setExtendedState(funcionalidadefuncionario.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+						funcionalidadefuncionario.setExtendedState(funcionalidadefuncionario.getExtendedState() | JFrame.MAXIMIZED_BOTH);
 						funcionalidadefuncionario.setVisible(true);
 						funcionalidadefuncionario.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 					}
