@@ -5,16 +5,24 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import controle.FuncionarioDAO;
+import controle.HospedagemDAO;
 import controle.HospedeDAO;
+import modelo.Funcionario;
+import modelo.Hospedagem;
 import modelo.Hospede;
 
 import javax.swing.ImageIcon;
@@ -32,10 +40,8 @@ public class CheckoutCliente extends JFrame {
 	private JTextField textCPF;
 	private JTextField textPrimeiroNome;
 	private JTextField textSobrenome;
+	private JTextField textHoraSaida;
 	private JTextField textDataSaida;
-	private JTextField txtHoraSaida;
-	private JTextField textHoraEntrada;
-	private JTextField textDataEntrada;
 
 	/**
 	 * Launch the application.
@@ -74,41 +80,6 @@ public class CheckoutCliente extends JFrame {
 		lbl_Insira_Informacoes_Cadastro.setBackground(new Color(1, 50, 1));
 		lbl_Insira_Informacoes_Cadastro.setFont(new Font("Tahoma", Font.PLAIN, 27));
 		
-		TextDataNascimento = new JTextField();
-		TextDataNascimento.setForeground(new Color(1, 50, 1));
-		TextDataNascimento.setBackground(new Color(252, 251, 244));
-		TextDataNascimento.setBorder(new LineBorder(new Color(1, 50, 1)));
-		TextDataNascimento.setColumns(10);
-		
-		textCPF = new JTextField();
-		textCPF.setToolTipText("");
-		textCPF.setForeground(new Color(1, 50, 1));
-		textCPF.setBackground(new Color(252, 251, 244));
-		textCPF.setBorder(new LineBorder(new Color(1, 50, 1)));
-		textCPF.setColumns(10);
-		
-		JLabel lblDataEntrada = new JLabel("* Data e hora de entrada: ");
-		lblDataEntrada.setForeground(new Color(1, 50, 1));
-		lblDataEntrada.setBackground(new Color(1, 50, 1));
-		lblDataEntrada.setFont(new Font("Tahoma", Font.BOLD, 19));
-		
-		textPrimeiroNome = new JTextField();
-		textPrimeiroNome.setForeground(new Color(1, 50, 1));
-		textPrimeiroNome.setBackground(new Color(252, 251, 244));
-		textPrimeiroNome.setBorder(new LineBorder(new Color(1, 50, 1)));
-		textPrimeiroNome.setColumns(10);
-		
-		JLabel lblDataSaida = new JLabel("* Data e hora de saída:");
-		lblDataSaida.setBackground(new Color(1, 50, 1));
-		lblDataSaida.setForeground(new Color(1, 50, 1));
-		lblDataSaida.setFont(new Font("Tahoma", Font.BOLD, 19));
-		
-		textSobrenome = new JTextField();
-		textSobrenome.setForeground(new Color(1, 50, 1));
-		textSobrenome.setBackground(new Color(252, 251, 244));
-		textSobrenome.setBorder(new LineBorder(new Color(1, 50, 1)));
-		textSobrenome.setColumns(10);
-		
 		JButton btnSair_tela_cad_Cliente = new JButton("<- | Sair");
 		btnSair_tela_cad_Cliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -135,31 +106,57 @@ public class CheckoutCliente extends JFrame {
 		contentPane.add(lblAgradecemosPorSua, "cell 5 1 5 1");
 		contentPane.add(lbl_Insira_Informacoes_Cadastro, "cell 5 3 4 1,growx,aligny top");
 		
+		JLabel lblCPFCliente = new JLabel("* CPF / CRNM / RNN / RNE:");
+		lblCPFCliente.setForeground(new Color(1, 50, 1));
+		lblCPFCliente.setBackground(new Color(1, 50, 1));
+		lblCPFCliente.setFont(new Font("Tahoma", Font.BOLD, 19));
+		contentPane.add(lblCPFCliente, "cell 3 4,grow");
+		
+		JLabel lblDataNascimento = new JLabel("* Data de nascimento:");
+		lblDataNascimento.setBackground(new Color(1, 50, 1));
+		lblDataNascimento.setForeground(new Color(1, 50, 1));
+		lblDataNascimento.setFont(new Font("Tahoma", Font.BOLD, 19));
+		contentPane.add(lblDataNascimento, "cell 7 4,alignx left,growy");
+		
+		textCPF = new JTextField();
+		textCPF.setToolTipText("");
+		textCPF.setForeground(new Color(1, 50, 1));
+		textCPF.setBackground(new Color(252, 251, 244));
+		textCPF.setBorder(new LineBorder(new Color(1, 50, 1)));
+		textCPF.setColumns(10);
+		contentPane.add(textCPF, "cell 3 5,grow");
+		
+		TextDataNascimento = new JTextField();
+		TextDataNascimento.setForeground(new Color(1, 50, 1));
+		TextDataNascimento.setBackground(new Color(252, 251, 244));
+		TextDataNascimento.setBorder(new LineBorder(new Color(1, 50, 1)));
+		TextDataNascimento.setColumns(10);
+		contentPane.add(TextDataNascimento, "cell 7 5,grow");
+		
 		JLabel lblNome_Cliente = new JLabel("* Primeiro nome:");
 		lblNome_Cliente.setBackground(new Color(1, 50, 1));
 		lblNome_Cliente.setForeground(new Color(1, 50, 1));
 		lblNome_Cliente.setFont(new Font("Tahoma", Font.BOLD, 19));
-		contentPane.add(lblNome_Cliente, "cell 3 4 3 1,grow");
+		contentPane.add(lblNome_Cliente, "cell 3 6,grow");
+		
+		textPrimeiroNome = new JTextField();
+		textPrimeiroNome.setForeground(new Color(1, 50, 1));
+		textPrimeiroNome.setBackground(new Color(252, 251, 244));
+		textPrimeiroNome.setBorder(new LineBorder(new Color(1, 50, 1)));
+		textPrimeiroNome.setColumns(10);
+		contentPane.add(textPrimeiroNome, "cell 3 7 1 2,grow");
+		
+		JLabel lblDataHoraSaida = new JLabel("* Data e hora de saída:");
+		lblDataHoraSaida.setForeground(new Color(1, 50, 1));
+		lblDataHoraSaida.setBackground(new Color(1, 50, 1));
+		lblDataHoraSaida.setFont(new Font("Tahoma", Font.BOLD, 19));
+		contentPane.add(lblDataHoraSaida, "cell 7 8,alignx left,aligny bottom");
 		
 		JLabel lblSobrenomeCliente = new JLabel("* Sobrenome:");
 		lblSobrenomeCliente.setBackground(new Color(1, 50, 1));
 		lblSobrenomeCliente.setForeground(new Color(1, 50, 1));
 		lblSobrenomeCliente.setFont(new Font("Tahoma", Font.BOLD, 19));
-		contentPane.add(lblSobrenomeCliente, "cell 3 6 2 1,growx,aligny center");
-		
-		textDataEntrada = new JTextField();
-		textDataEntrada.setForeground(new Color(1, 50, 1));
-		textDataEntrada.setColumns(10);
-		textDataEntrada.setBorder(new LineBorder(new Color(1, 50, 1)));
-		textDataEntrada.setBackground(new Color(252, 251, 244));
-		contentPane.add(textDataEntrada, "cell 7 6,grow");
-		
-		textHoraEntrada = new JTextField();
-		textHoraEntrada.setForeground(new Color(1, 50, 1));
-		textHoraEntrada.setColumns(10);
-		textHoraEntrada.setBorder(new LineBorder(new Color(1, 50, 1)));
-		textHoraEntrada.setBackground(new Color(252, 251, 244));
-		contentPane.add(textHoraEntrada, "cell 8 6,alignx left,growy");
+		contentPane.add(lblSobrenomeCliente, "cell 3 9,growx,aligny center");
 		
 		textDataSaida = new JTextField();
 		textDataSaida.setForeground(new Color(1, 50, 1));
@@ -168,38 +165,113 @@ public class CheckoutCliente extends JFrame {
 		textDataSaida.setBackground(new Color(252, 251, 244));
 		contentPane.add(textDataSaida, "cell 7 9,grow");
 		
-		txtHoraSaida = new JTextField();
-		txtHoraSaida.setForeground(new Color(1, 50, 1));
-		txtHoraSaida.setColumns(10);
-		txtHoraSaida.setBorder(new LineBorder(new Color(1, 50, 1)));
-		txtHoraSaida.setBackground(new Color(252, 251, 244));
-		contentPane.add(txtHoraSaida, "cell 8 9,alignx left,growy");
-		
-		JLabel lblCPFCliente = new JLabel("* CPF / CRNM / RNN / RNE:");
-		lblCPFCliente.setForeground(new Color(1, 50, 1));
-		lblCPFCliente.setBackground(new Color(1, 50, 1));
-		lblCPFCliente.setFont(new Font("Tahoma", Font.BOLD, 19));
-		contentPane.add(lblCPFCliente, "cell 3 10 2 1,grow");
-		
-		JLabel lblDataNascimento = new JLabel("* Data de nascimento:");
-		lblDataNascimento.setBackground(new Color(1, 50, 1));
-		lblDataNascimento.setForeground(new Color(1, 50, 1));
-		lblDataNascimento.setFont(new Font("Tahoma", Font.BOLD, 19));
-		contentPane.add(lblDataNascimento, "cell 3 12 2 1,alignx left,growy");
-		contentPane.add(TextDataNascimento, "cell 3 13 3 1,grow");
-		contentPane.add(textCPF, "cell 3 11 3 1,grow");
-		contentPane.add(lblDataEntrada, "cell 7 5 2 1,alignx left,aligny bottom");
-		contentPane.add(textPrimeiroNome, "cell 3 5 3 1,grow");
-		contentPane.add(lblDataSaida, "cell 7 8 2 1,alignx left,growy");
-		contentPane.add(textSobrenome, "cell 3 7 3 2,grow");
+		textHoraSaida = new JTextField();
+		textHoraSaida.setForeground(new Color(1, 50, 1));
+		textHoraSaida.setColumns(10);
+		textHoraSaida.setBorder(new LineBorder(new Color(1, 50, 1)));
+		textHoraSaida.setBackground(new Color(252, 251, 244));
+		contentPane.add(textHoraSaida, "cell 8 9,alignx left,growy");
 		
 		JButton btnLimpar_info_cliente = new JButton("Limpar");
+		btnLimpar_info_cliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				textPrimeiroNome.setText(" ");
+				textSobrenome.setText(" ");				
+				textCPF.setText(" ");
+				textDataSaida.setText("");
+				textDataSaida.setText(" ");
+				textHoraSaida.setText(" ");	
+				
+			}
+		});
+		
+		textSobrenome = new JTextField();
+		textSobrenome.setForeground(new Color(1, 50, 1));
+		textSobrenome.setBackground(new Color(252, 251, 244));
+		textSobrenome.setBorder(new LineBorder(new Color(1, 50, 1)));
+		textSobrenome.setColumns(10);
+		contentPane.add(textSobrenome, "cell 3 11,grow");
 		btnLimpar_info_cliente.setForeground(new Color(252, 251, 244));
 		btnLimpar_info_cliente.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnLimpar_info_cliente.setBackground(new Color(109, 164, 109));
 		contentPane.add(btnLimpar_info_cliente, "cell 4 15,grow");
 		
 		JButton btnCadastro_Cliente = new JButton("Check-out");
+		btnCadastro_Cliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String nome = textPrimeiroNome.getText();
+				if(nome.length() == 0) {
+					JOptionPane.showMessageDialog(null, "Campo Nome obrigatório!");
+					return ;
+				}
+				
+				String sobrenome = textSobrenome.getText();
+				if(nome.length() == 0) {
+					JOptionPane.showMessageDialog(null, "Campo Sobrenome obrigatório!");
+					return ;
+				}
+				
+				String cpf = textCPF.getText();
+				if(nome.length() == 0) {
+					JOptionPane.showMessageDialog(null, "Campo CPF obrigatório!");
+					return ;
+				}
+				Integer cpfI = Integer.parseInt(cpf);
+				
+				String dataNascimento = TextDataNascimento.getText();
+				if(nome.length() == 0) {
+					JOptionPane.showMessageDialog(null, "Campo Data de Nascimento obrigatório!");
+					return ;
+				}
+				
+				LocalDate dn = LocalDate.parse(dataNascimento);
+				
+				String dataSaida = textDataSaida.getText();
+				if(nome.length() == 0) {
+					JOptionPane.showMessageDialog(null, "Campo Data de Saída obrigatório!");
+					return ;
+				}
+				
+				String horaSaida = textHoraSaida.getText();
+				if(nome.length() == 0) {
+					JOptionPane.showMessageDialog(null, "Campo Hora de Saída obrigatório!");
+					return ;
+				}
+			
+				LocalDate dtSaida = LocalDate.parse(dataSaida);
+				LocalTime hrSaida = LocalTime.parse(horaSaida);
+				
+				Hospedagem hospedagem = new Hospedagem();
+				
+				hospedagem.setDataSaida(dtSaida);
+				hospedagem.setHoraSaida(hrSaida);
+				
+				HospedagemDAO hospedagemdao = new HospedagemDAO();
+				
+				hospedagemdao.insertHospedagem(hospedagem);
+				
+				//cricao de objeto 
+				Hospede h = new Hospede();
+				
+				//setando os valores
+				h.setPrimeironome(nome);
+				h.setSobrenome(sobrenome);
+				h.setNumidentificacao(cpfI);
+				h.setDatanascimento(dn);
+				
+				//instanciando a classe DAO
+				HospedeDAO dao = new HospedeDAO();
+				///inserindo na classe 
+				dao.insertHospede(h);
+				
+				dispose();
+				
+				
+			}
+		});
+		
 		btnCadastro_Cliente.setForeground(new Color(252, 251, 244));
 		btnCadastro_Cliente.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnCadastro_Cliente.setBackground(new Color(66, 142, 66));

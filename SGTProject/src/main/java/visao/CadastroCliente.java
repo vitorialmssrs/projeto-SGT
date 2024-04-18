@@ -5,11 +5,13 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -17,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.text.MaskFormatter;
 
 import controle.HospedagemDAO;
 import controle.HospedeDAO;
@@ -265,6 +268,16 @@ public class CadastroCliente extends JFrame {
 				cpf = cpf.replace("-", "");
 				Long cpfI = Long.parseLong(cpf);
 				
+				MaskFormatter mascaraCPF = null;
+				try {
+					mascaraCPF = new MaskFormatter("###.###.###-##");
+				} catch (ParseException e) {
+  					e.printStackTrace();
+					}
+						textCPF = new JFormattedTextField(mascaraCPF);
+						contentPane.add(textCPF);
+						textCPF.setColumns(15);
+				
 				String dataNascimento = textDataEntrada.getText();
 				if(nome.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Data de Nascimento obrigatório!");
@@ -281,13 +294,30 @@ public class CadastroCliente extends JFrame {
 					return ;
 				}
 				
+				MaskFormatter mascaraDataEntrada = null;
+				try {
+					mascaraDataEntrada = new MaskFormatter("##/##/####");
+				} catch (ParseException e) {
+  					e.printStackTrace();
+					}
+						textDataEntrada = new JFormattedTextField(mascaraDataEntrada);
+						contentPane.add(textDataEntrada);
+						textDataEntrada.setColumns(10);
 				
 				String dataSaida = textDataSaida.getText();
 				if(nome.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Data de Saída obrigatório!");
 					return ;
 				}
-			
+				MaskFormatter mascaraDataSaida = null;
+				try {
+					mascaraDataSaida = new MaskFormatter("##/##/####");
+				} catch (ParseException e) {
+  					e.printStackTrace();
+					}
+						textDataSaida = new JFormattedTextField(mascaraDataSaida);
+						contentPane.add(textDataSaida);
+						textDataSaida.setColumns(10);
 				
 				String horaEntrada = textHoraEntrada.getText();
 				if(nome.length() == 0) {
@@ -295,6 +325,16 @@ public class CadastroCliente extends JFrame {
 					return ;
 				}
 				
+				MaskFormatter mascaraHoraEntrada = null;
+				try {
+					mascaraHoraEntrada = new MaskFormatter("##:##");
+				} catch (ParseException e) {
+  					e.printStackTrace();
+					}
+						textHoraEntrada = new JFormattedTextField(mascaraHoraEntrada);
+						contentPane.add(textHoraEntrada);
+						textHoraEntrada.setColumns(5);
+						
 				String horaSaida = txtHoraSaida.getText();
 				if(nome.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Hora de Saída obrigatório!");
