@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`clientes` (
   `data_de_nascimento` DATE NOT NULL,
   `telefone` varchar(15) NOT NULL,
   `email` VARCHAR(50) NOT NULL,
+  `senha` INT(8) NOT NULL,
   PRIMARY KEY (`id_cliente`));
 
 
@@ -37,17 +38,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`espacos_hotel` (
   `horario_fechamento` TIME NOT NULL,
   `capacidade` INT(3) NOT NULL,
   PRIMARY KEY (`id_espacos`));
-
-
--- -----------------------------------------------------
--- Table `mydb`.`gerenciamento_acesso`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`gerenciamento_acesso` ;
-
-CREATE TABLE IF NOT EXISTS `mydb`.`gerenciamento_acesso` (
-  `login_cliente_id_login_cliente` INT(7) NOT NULL,
-  `login_cliente_clientes_id_clientes` INT(7) NOT NULL,
-  PRIMARY KEY (`login_cliente_id_login_cliente`, `login_cliente_clientes_id_clientes`));
 
 
 -- -----------------------------------------------------
@@ -165,26 +155,26 @@ DESC limpeza_espaco;
 -- -----------
 
 -- HOSPEDE/CLIENTE
-insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente) values ('78080932443', 'Putnam', 'Nowland', '2013-08-01', 'pnowland0@tripadvisor.com', '(36) 72424-5142', 1);
-insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente) values ('45345437765', 'Annalise', 'Mableson', '2009-05-30', 'amableson1@e-recht24.de', '(51) 29504-5076', 2);
-insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente) values ('99859850445', 'Winnie', 'Baribal', '2016-05-26', 'wbaribal2@marketwatch.com', '(20) 16574-5955', 3);
-insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente) values ('30912441445', 'Letti', 'Siemons', '1988-09-20', 'lsiemons3@imageshack.us', '(50) 51614-5525', 4);
-insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente) values ('76191405765', 'Leo', 'Skace', '1987-12-31', 'lskace4@twitpic.com', '(34) 27474-5070', 5);
-insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente) values ('51132384765', 'Granthem', 'Twelftree', '1988-10-03', 'gtwelftree5@plala.or.jp', '(14) 42754-5477', 6);
-insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente) values ('31609613445', 'Huberto', 'Barsby', '2018-05-08', 'hbarsby6@google.de', '(78) 709724-559', 7);
-insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente) values ('20268951765', 'Arnuad', 'Breem', '2001-04-13', 'abreem7@istockphoto.com', '(43) 56984-5760', 8);
-insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente) values ('70766435987', 'Abigail', 'Sellor', '1988-09-27', 'asellor8@fc2.com', '(52) 84834-5532', 9);
-insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente) values ('75712362234', 'Candy', 'Mathieu', '2005-08-15', 'cmathieu9@china.com.cn', '(91) 91754-5375', 10);
-insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente) values ('86266709234', 'Tonye', 'Linning', '2004-11-25', 'tlinninga@opera.com', '(60) 99574-5204', 11);
-insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente) values ('94503978987', 'Leann', 'Dobrovolny', '2002-05-03', 'ldobrovolnyb@businessinsider.com', '(73) 57904-5743', 12);
-insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente) values ('26336038234', 'Fowler', 'Gopsall', '2022-07-08', 'fgopsallc@google.com', '(47) 10044-5270', 13);
-insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente) values ('62164822765', 'Mort', 'Mart', '1987-09-09', 'mmartd@a8.net', '(35) 48744-5277', 14);
-insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente) values ('85035307765', 'Ingamar', 'Tutchener', '2017-02-19', 'itutchenere@columbia.edu', '(14) 32934-5260', 15);
-insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente) values ('93440157987', 'Hasty', 'Musto', '1996-02-10', 'hmustof@nhs.uk', '(57) 42904-5417', 16);
-insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente) values ('29886144987', 'Nickolaus', 'Roll', '1993-01-31', 'nrollg@google.com', '(87) 45074-5689', 17);
-insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente) values ('95968706765', 'Claudetta', 'Wight', '2014-06-13', 'cwighth@nyu.edu', '(32) 69934-5532', 18);
-insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente) values ('12035834987', 'Domeniga', 'Nappin', '2020-12-10', 'dnappini@wisc.edu', '(38) 84794-5310', 19);
-insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente) values ('42491338234', 'Nichole', 'Stranio', '1999-02-08', 'nstranioj@oakley.com', '(32) 78174-5968', 20);
+insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente, senha) values ('78080932443', 'Putnam', 'Nowland', '2013-08-01', 'pnowland0@tripadvisor.com', '(36) 72424-5142', 1, 45678912);
+insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente, senha) values ('45345437765', 'Annalise', 'Mableson', '2009-05-30', 'amableson1@e-recht24.de', '(51) 29504-5076', 2, 65489421);
+insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente, senha) values ('99859850445', 'Winnie', 'Baribal', '2016-05-26', 'wbaribal2@marketwatch.com', '(20) 16574-5955', 3, 63214522);
+insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente, senha) values ('30912441445', 'Letti', 'Siemons', '1988-09-20', 'lsiemons3@imageshack.us', '(50) 51614-5525', 4, 85475621);
+insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente, senha) values ('76191405765', 'Leo', 'Skace', '1987-12-31', 'lskace4@twitpic.com', '(34) 27474-5070', 5, 96548745);
+insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente, senha) values ('51132384765', 'Granthem', 'Twelftree', '1988-10-03', 'gtwelftree5@plala.or.jp', '(14) 42754-5477', 6, 66161215);
+insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente, senha) values ('31609613445', 'Huberto', 'Barsby', '2018-05-08', 'hbarsby6@google.de', '(78) 709724-559', 7, 96518212);
+insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente, senha) values ('20268951765', 'Arnuad', 'Breem', '2001-04-13', 'abreem7@istockphoto.com', '(43) 56984-5760', 8, 96214631);
+insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente, senha) values ('70766435987', 'Abigail', 'Sellor', '1988-09-27', 'asellor8@fc2.com', '(52) 84834-5532', 9, 54231565);
+insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente, senha) values ('75712362234', 'Candy', 'Mathieu', '2005-08-15', 'cmathieu9@china.com.cn', '(91) 91754-5375', 10, 6321532);
+insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente, senha) values ('86266709234', 'Tonye', 'Linning', '2004-11-25', 'tlinninga@opera.com', '(60) 99574-5204', 11, 63215369);
+insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente, senha) values ('94503978987', 'Leann', 'Dobrovolny', '2002-05-03', 'ldobrovolnyb@businessinsider.com', '(73) 57904-5743', 12, 65486103);
+insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente, senha) values ('26336038234', 'Fowler', 'Gopsall', '2022-07-08', 'fgopsallc@google.com', '(47) 10044-5270', 13, 01341569);
+insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente, senha) values ('62164822765', 'Mort', 'Mart', '1987-09-09', 'mmartd@a8.net', '(35) 48744-5277', 14, 87500156);
+insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente, senha) values ('85035307765', 'Ingamar', 'Tutchener', '2017-02-19', 'itutchenere@columbia.edu', '(14) 32934-5260', 15, 63231205);
+insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente, senha) values ('93440157987', 'Hasty', 'Musto', '1996-02-10', 'hmustof@nhs.uk', '(57) 42904-5417', 16, 74852021);
+insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente, senha) values ('29886144987', 'Nickolaus', 'Roll', '1993-01-31', 'nrollg@google.com', '(87) 45074-5689', 17, 00155121);
+insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente, senha) values ('95968706765', 'Claudetta', 'Wight', '2014-06-13', 'cwighth@nyu.edu', '(32) 69934-5532', 18, 05414596);
+insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente, senha) values ('12035834987', 'Domeniga', 'Nappin', '2020-12-10', 'dnappini@wisc.edu', '(38) 84794-5310', 19, 01204578);
+insert into clientes (num_identificacao, primeiro_nome, sobrenome, data_de_nascimento, email, telefone, id_cliente, senha) values ('42491338234', 'Nichole', 'Stranio', '1999-02-08', 'nstranioj@oakley.com', '(32) 78174-5968', 20, 02105607);
 
 -- INSERT HOSPEDAGEM
 insert into hospedagens (num_quarto, DataEntrada, HoraEntrada, DataSaida, HoraSaida, clientes_id_cliente) values (1, '2023-11-16','10:00', '2023-12-14','10:00', 1);
