@@ -206,7 +206,7 @@ public class CadastroFuncionario extends JFrame {
 				textTelefone.setText(" ");
 				textLogin.setText(" ");
 				textSenha.setText(" ");
-				
+
 			}
 		});
 		btnLimpar.setForeground(new Color(252, 251, 244));
@@ -229,11 +229,10 @@ public class CadastroFuncionario extends JFrame {
 				String numCasaText = textNumeroCasaFuncionario.getText();
 				String login = textLogin.getText();
 				String senha = textSenha.getText();
-				
-			
 
 				if (nomeCompleto.isEmpty() || numIdentificacaoText.isEmpty() || diaText.isEmpty() || mesText.isEmpty()
-						|| anoText.isEmpty() || telefoneText.isEmpty() || cepText.isEmpty() || numCasaText.isEmpty() || login.isEmpty() || senha.isEmpty()) {
+						|| anoText.isEmpty() || telefoneText.isEmpty() || cepText.isEmpty() || numCasaText.isEmpty()
+						|| login.isEmpty() || senha.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Preencha todos os campos!"); // SUBSTITUIR JOPTIONPANE por TELA
 																						// DE MENSAGEM
 				} else {
@@ -315,40 +314,41 @@ public class CadastroFuncionario extends JFrame {
 		textAno.setBackground(new Color(252, 251, 244));
 		textAno.setBounds(831, 374, 45, 21);
 		contentPane.add(textAno);
-		
+
 		JLabel lblLogin = new JLabel("Login:");
 		lblLogin.setForeground(new Color(1, 50, 1));
 		lblLogin.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		lblLogin.setBounds(553, 610, 72, 21);
 		contentPane.add(lblLogin);
-		
+
 		textLogin = new JTextField();
 		textLogin.setBackground(new Color(252, 251, 244));
 		textLogin.setBounds(611, 614, 602, 20);
 		contentPane.add(textLogin);
 		textLogin.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textLogin.setColumns(10);
-		
+
 		JLabel lblSenha = new JLabel("Senha: ");
 		lblSenha.setForeground(new Color(1, 50, 1));
 		lblSenha.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		lblSenha.setBounds(553, 652, 72, 17);
 		contentPane.add(lblSenha);
-		
+
 		textSenha = new JTextField();
 		textSenha.setBackground(new Color(252, 251, 244));
 		textSenha.setBounds(611, 653, 236, 21);
 		contentPane.add(textSenha);
 		textSenha.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textSenha.setColumns(10);
-		
+
 		JLabel lblInformacaoLoginSenha = new JLabel("Informações de Login/Senha");
 		lblInformacaoLoginSenha.setForeground(new Color(1, 50, 1));
 		lblInformacaoLoginSenha.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblInformacaoLoginSenha.setBounds(553, 575, 294, 24);
 		contentPane.add(lblInformacaoLoginSenha);
-		
-		JLabel lblNewLabel = new JLabel("A senha deve conter apenas números, com no Mínimo 6 caracteres e Sem caracteres especiais");
+
+		JLabel lblNewLabel = new JLabel(
+				"A senha deve conter apenas números, com no Mínimo 6 caracteres e Sem caracteres especiais");
 		lblNewLabel.setForeground(new Color(255, 0, 0));
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		lblNewLabel.setBounds(814, 584, 486, 13);

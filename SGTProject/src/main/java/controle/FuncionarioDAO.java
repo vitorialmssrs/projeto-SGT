@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -31,31 +32,40 @@ public class FuncionarioDAO {
 
 	public int inserirFuncionario(Funcionario fun) {
 
-		String SQL = "INSERT INTO funcionarios (id_funcionario, login, senha, num_indentificacao, nome_completo, data_nascismento, telefone, cep, num_casa) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String SQL = "INSERT INTO funcionarios(num_identificacao,nome_completo,data_nascimento,telefone,cep,num_casa,login,senha) VALUES (?,?,?,?,?,?,?,?)";
 
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
 
+		int chavePrimariaGerada = Integer.MIN_VALUE;
+
 		try {
-			PreparedStatement ps = conBD.prepareStatement(SQL);
+			PreparedStatement ps = conBD.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
 
-			ps.setString(1, fun.getLogin());
-			ps.setString(2, fun.getSenha());
-			ps.setInt(3, fun.getNumIndentificacao());
-			ps.setString(4, fun.getNomeCompleto());
-			ps.setDate(5, Date.valueOf(fun.getDataNascimento()));
-			ps.setInt(6, fun.getTelefone());
-			ps.setInt(7, fun.getCep());
-			ps.setInt(8, fun.getNumCasa());
+			ps.setInt(1, fun.getNumIndentificacao());
+			ps.setString(2, fun.getNomeCompleto());
+			ps.setDate(3, Date.valueOf(fun.getDataNascimento()));
+			ps.setInt(4, fun.getTelefone());
+			ps.setInt(5, fun.getCep());
+			ps.setInt(6, fun.getNumCasa());
+			ps.setString(7, fun.getLogin());
+			ps.setString(8, fun.getSenha());
 
-			return ps.executeUpdate();
+			int result = ps.executeUpdate();
+			if (result != 0) {
+				ResultSet rs = ps.getGeneratedKeys();
+				if (rs.next()) {
+					chavePrimariaGerada = rs.getInt(1);
+				}
+			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			con.fecharConexao();
 		}
 
-		return 0;
+		return chavePrimariaGerada;
 	}
 
 	public ArrayList<Funcionario> listarFuncionario() {
@@ -76,7 +86,6 @@ public class FuncionarioDAO {
 
 				Funcionario f = new Funcionario();
 
-				Integer idFuncionario = rs.getInt("id_funcionario");
 				String Login = rs.getNString("login");
 				String Senha = rs.getNString("senha");
 				Integer NumIndentificacao = rs.getInt("num_indentificacao");
@@ -86,7 +95,6 @@ public class FuncionarioDAO {
 				Integer NumCasa = rs.getInt("num_casa");
 				LocalDate DataNascismento = rs.getDate("data_de_nascimento").toLocalDate();
 
-				f.setIdFuncionario(idFuncionario);
 				f.setLogin(Login);
 				f.setSenha(Senha);
 				f.setNumIndentificacao(NumIndentificacao);
@@ -110,7 +118,7 @@ public class FuncionarioDAO {
 
 	public boolean atualizarFuncionario(Funcionario end) {
 
-		String SQL = "UPDATE funcionario Set Login = ?, Senha = ?, NumIndentificacao = ?, NomeCompleto = ?, DataNascismento = ?, Telefone = ?, Cep = ?, NumCasa = ?, EspacosHotelIdEspacos = ?  ";
+		String SQL = "UPDATE funcionario Set Login = ?, Senha = ?, NumIndentificacao = ?, NomeCompleto = ?, DataNascismento = ?, Telefone = ?, Cep = ?, NumCasa = ? WHERE id_funcionario";
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
 		int retorno = 0;
@@ -163,7 +171,6 @@ public class FuncionarioDAO {
 				Integer Telefone = rs.getInt("telefone");
 				Integer Cep = rs.getInt("cep");
 				Integer NumCasa = rs.getInt("num_casa");
-				Integer EspacosHotelIdEspacos = rs.getInt("espacos_hotel_id_espacos");
 				LocalDate DataNascismento = rs.getDate("data_de_nascimento").toLocalDate();
 
 				f.setIdFuncionario(idFuncionario);
