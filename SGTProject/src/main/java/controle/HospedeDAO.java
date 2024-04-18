@@ -23,7 +23,7 @@ public class HospedeDAO {
 	}
 
 	public int insertHospede(Hospede end) {
-		String SQL = "INSERT INTO clientes (primeiro_nome, sobrenome, num_identificacao, data_de_nascimento, telefone, email) VALUES (?, ?, ?, ?, ?, ?)";
+		String SQL = "INSERT INTO clientes (primeiro_nome, sobrenome, num_identificacao, data_de_nascimento, telefone, email, senha) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
@@ -45,6 +45,7 @@ public class HospedeDAO {
 			ps.setDate(4, Date.valueOf(end.getDatanascimento()));
 			ps.setString(5, end.getTelefone());
 			ps.setString(6, end.getEmail());
+			ps.setInt(7, end.getSenha());
 
 			//Executa a instrução SQL (uma operação de inserção) e armazena o número de linhas afetadas na variável ra.
 			int ra = ps.executeUpdate();
@@ -107,6 +108,7 @@ public class HospedeDAO {
 				Long Numidentificacao = rs.getLong("num_identificacao");
 				String Telefone = rs.getString("telefone");
 				String Email = rs.getString("email");
+				Integer senha = rs.getInt("senha");
 
 				// localdate ==> mais indicado para utilizar
 				// LocalTime
@@ -126,6 +128,7 @@ public class HospedeDAO {
 				end.setDatanascimento(Datanascimento);
 				end.setTelefone(Telefone);
 				end.setEmail(Email);
+				end.setSenha(senha);
 
 				hospedes.add(end);
 				// precisa acrescentar a tela de confimação
@@ -147,7 +150,7 @@ public class HospedeDAO {
 		 * email
 		 */
 		// verificar se o WHERE vai finalizar com n°identificação ou id_cliente
-		String SQL = "UPDATE clientes SET primeiro_nome = ?, sobrenome = ?, num_identificacao = ?, data_de_nascimento = ?, telefone = ?, email = ?, WHERE id_cliente = ?";
+		String SQL = "UPDATE clientes SET primeiro_nome = ?, sobrenome = ?, num_identificacao = ?, data_de_nascimento = ?, telefone = ?, email = ?, senha = ?, WHERE id_cliente = ?";
 
 		// Abre conexão e cria a "ponte de conexão" com o MySQL
 		Conexao con = Conexao.getInstancia();
@@ -165,6 +168,7 @@ public class HospedeDAO {
 			ps.setDate(4, Date.valueOf(end.getDatanascimento()));
 			ps.setString(5, end.getTelefone());
 			ps.setString(6, end.getEmail());
+			ps.setInt(7, end.getSenha());
 
 			retorno = ps.executeUpdate();
 
@@ -181,7 +185,7 @@ public class HospedeDAO {
 
 	public boolean removerHospede(Hospede end) {
 
-		String SQL = "DELETE FROM clientes SET primeiro_nome = ?, sobrenome = ?, num_identificacao = ?, data_de_nascimento = ?, telefone = ?, email = ?, WHERE id_cliente = ?"; // verificar
+		String SQL = "DELETE FROM clientes SET primeiro_nome = ?, sobrenome = ?, num_identificacao = ?, data_de_nascimento = ?, telefone = ?, email = ?, senha = ?, WHERE id_cliente = ?"; // verificar
 
 		Conexao con = Conexao.getInstancia();
 
@@ -199,6 +203,7 @@ public class HospedeDAO {
 			ps.setDate(4, Date.valueOf(end.getDatanascimento()));
 			ps.setString(5, end.getTelefone());
 			ps.setString(6, end.getEmail());
+			ps.setInt(7, end.getSenha());
 
 			retorno = ps.executeUpdate();
 

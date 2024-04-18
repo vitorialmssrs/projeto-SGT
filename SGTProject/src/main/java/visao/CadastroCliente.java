@@ -45,7 +45,7 @@ public class CadastroCliente extends JFrame {
 
 	/**
 	 * Launch the application.
-	 */
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -60,7 +60,7 @@ public class CadastroCliente extends JFrame {
 			}
 		});
 	}
-
+	 */
 	/**
 	 * Create the frame.
 	 */
@@ -312,7 +312,12 @@ public class CadastroCliente extends JFrame {
 					JOptionPane.showMessageDialog(null, "Campo Email obrigatório!");
 					return ;
 				}
-
+				String senha = txtSenha.getText();
+				if(senha.length() == 0) {
+					JOptionPane.showMessageDialog(null, "Campo Senha obrigatório!");
+					return ;
+				}
+				int senhai = Integer.parseInt(senha);
 			
 				LocalDate dtEntrada = LocalDate.parse(dataEntrada, formatter);
 				LocalDate dtSaida = LocalDate.parse(dataSaida, formatter);
@@ -342,11 +347,16 @@ public class CadastroCliente extends JFrame {
 				h.setDatanascimento(dn);
 				h.setTelefone(telefone);
 				h.setEmail(email);
+				h.setSenha(senhai);
 				
 				//instanciando a classe DAO
 				HospedeDAO dao = new HospedeDAO();
 				///inserindo na classe 
 				dao.insertHospede(h);
+				
+				
+				JOptionPane.showMessageDialog(null, "Cadastro Realizado!");
+
 				
 				dispose();
 				
@@ -364,8 +374,6 @@ public class CadastroCliente extends JFrame {
 				
 				setVisible(false);
 				
-				/*CadastroCliente cadastrocliente = new CadastroCliente();
-				cadastrocliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);*/
 			}
 		});
 		btnSair_tela_cad_Cliente.setForeground(new Color(252, 251, 244));

@@ -13,7 +13,9 @@ public class Hospede {
 	private LocalDate datanascimento;
 	private String telefone;
 	private String email;
+	private Integer senha;
 	
+
 	public Integer getIdcliente() {
 		return idcliente;
 	}
@@ -56,7 +58,12 @@ public class Hospede {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	public Integer getSenha() {
+		return senha;
+	}
+	public void setSenha(Integer senha) {
+		this.senha = senha;
+	}
 	
 	
 	
