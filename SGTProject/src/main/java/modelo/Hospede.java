@@ -7,7 +7,7 @@ public class Hospede {
 	//alt shift r muda todas as variaveis 
 	
 	private Integer idcliente;
-	private Long numidentificacao;
+	private Long numidentificacao; 
 	private String primeironome;
 	private String sobrenome;
 	private LocalDate datanascimento;
