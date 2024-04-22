@@ -13,6 +13,8 @@ import controle.FuncionarioDAO;
 import modelo.Funcionario;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.ImageIcon;
@@ -31,6 +33,8 @@ public class CadastroFuncionario extends JFrame {
 	private JTextField textDataFuncionario;
 	private JTextField textNumeroCasaFuncionario;
 	private JTextField textTelefoneFuncionario;
+	private JTextField textLogin;
+	private JTextField textSenha;
 
 	/**
 	 * Launch the application.
@@ -204,48 +208,36 @@ public class CadastroFuncionario extends JFrame {
 		btnLimpar.setForeground(new Color(252, 251, 244));
 		btnLimpar.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnLimpar.setBackground(new Color(109, 164, 109));
-		btnLimpar.setBounds(608, 623, 176, 39);
+		btnLimpar.setBounds(600, 714, 176, 39);
 		contentPane.add(btnLimpar);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+public void actionPerformed(ActionEvent e) {
 				
-				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-mm-yyyy");
-				
-				
-				/*String SimpleDateFormat = "dd/MM/yyyy";
-				SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");*/
-				
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		
 				String nomeCompleto = textNomeFuncionario.getText();
-				/*int numIndentificacao = parseInt(textNumeroIndentificacao.getText());
-				int telefone = parseInt(textTelefoneFuncionario.getText());
-				int cep = parseInt(textCepFuncionario.getText());
-				int numCasa = parseInt(textNumeroCasaFuncionario.getText());*/
-				String numIndentificacao = textNumeroIndentificacao.getText();
+				String numIdentificacao = textNumeroIndentificacao.getText();
 				String telefone = textTelefoneFuncionario.getText();
 				String cep = textCepFuncionario.getText();
 				String numCasa = textNumeroCasaFuncionario.getText();
-				String dataNascismento = textNumeroCasaFuncionario.getText();
-				/*LocalDate dataNascismento = LocalDate.parse(textDataFuncionario.getText());
-				String dtNascS = String.valueOf(dataNascismento);
-				LocalDate dataNasc = LocalDate.parse(dtNascS, formatter);*/
-				   
+				String dataNascismento = textDataFuncionario.getText();
+				String login = textLogin.getText();
+				String senha = textSenha.getText();
+				
 				//Verifica se tem alguma coisa
-				if(nomeCompleto.isEmpty()){
-					TelaInicial telainicial = new TelaInicial();
-					telainicial.setVisible(true);
-					telainicial.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-					// exibir uma mensagem de erro
+				if(nomeCompleto.isEmpty() || numIdentificacao.isEmpty() || dataNascismento.isEmpty() || telefone.isEmpty() || cep.isEmpty() || numCasa.isEmpty() 
+						|| login.isEmpty() || senha.isEmpty()){
+					JOptionPane.showMessageDialog(null, "Preencha todos os campos!"); // SUBSTITUIR JOPTIONPANE por TELA 
+					// DE MENSAGEM 
+					/* exibir uma mensagem de erro*/
 				}else {
 					
-					int numIndentificacaoI = Integer.valueOf(numIndentificacao);
-					int telefoneI = Integer.valueOf(telefone);
+					int numIndentificacaoI = Integer.valueOf(numIdentificacao);
 					int cepI = Integer.valueOf(cep);
 					int numCasaI = Integer.valueOf(numCasa);
-					int dataNascismentoI = Integer.valueOf(dataNascismento);
-					
-					
+					LocalDate dataNascismentoI = LocalDate.parse(dataNascismento, formatter);
 					
 				//Instanciar o OBJETO do cadastro 
 				Funcionario f = new Funcionario();
@@ -254,15 +246,24 @@ public class CadastroFuncionario extends JFrame {
 			    f.setNumIndentificacao(numIndentificacaoI);
 			    f.setNomeCompleto(nomeCompleto);
 			    f.setDataNascismento(dataNascismentoI);
-				f.setTelefone(telefoneI);
+				f.setTelefone(telefone);
 				f.setCep(cepI);
 				f.setNumCasa(numCasaI);
+				f.setLogin(login);
+				f.setSenha(senha);
 				
 				//Instanciar o DAO
 				FuncionarioDAO dao = FuncionarioDAO.getInstancia();
-				
-				//Fazer a INSERÇÃO
-				int valida = dao.inserirFuncionario(f);
+			
+				// Fazer a INSERÇÃO 
+				int valida = dao.inserirFuncionario(f); 
+				if (valida == 1) { 
+					JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!"); // SUBSTITUIR JOPTIONPANE por 
+																					// TELA DE MENSAGEM 
+				} else { 
+					JOptionPane.showMessageDialog(null, "Erro ao cadastrar!"); // SUBSTITUIR JOPTIONPANE por TELA DE 
+																				// MENSAGEM 
+				} 
 					
 				}
 			}
@@ -273,7 +274,7 @@ public class CadastroFuncionario extends JFrame {
 		btnCadastrar.setBackground(new Color(66, 142, 66));
 		btnCadastrar.setForeground(new Color(252, 251, 244));
 		btnCadastrar.setFont(new Font("Tahoma", Font.BOLD, 17));
-		btnCadastrar.setBounds(843, 623, 176, 39);
+		btnCadastrar.setBounds(835, 714, 176, 39);
 		contentPane.add(btnCadastrar);
 		
 		JButton btnSair = new JButton("<- | Sair");
@@ -287,5 +288,34 @@ public class CadastroFuncionario extends JFrame {
 		btnSair.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnSair.setBounds(1204, 714, 176, 39);
 		contentPane.add(btnSair);
+		
+		JLabel lblInformacoes_Login_Senha = new JLabel("Informações de Login/Senha");
+		lblInformacoes_Login_Senha.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblInformacoes_Login_Senha.setBounds(553, 582, 301, 21);
+		contentPane.add(lblInformacoes_Login_Senha);
+		
+		JLabel lblLogin = new JLabel("Login: ");
+		lblLogin.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblLogin.setBounds(553, 623, 60, 21);
+		contentPane.add(lblLogin);
+		
+		JLabel lblSenha = new JLabel("Senha: ");
+		lblSenha.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblSenha.setBounds(553, 660, 72, 21);
+		contentPane.add(lblSenha);
+		
+		textLogin = new JTextField();
+		textLogin.setBackground(new Color(255, 255, 245));
+		textLogin.setBounds(612, 627, 644, 19);
+		contentPane.add(textLogin);
+		textLogin.setBorder(new LineBorder(new Color(1, 50, 1)));
+		textLogin.setColumns(10);
+		
+		textSenha = new JTextField();
+		textSenha.setBackground(new Color(255, 255, 245));
+		textSenha.setBounds(612, 664, 289, 19);
+		contentPane.add(textSenha);
+		textSenha.setBorder(new LineBorder(new Color(1, 50, 1)));
+		textSenha.setColumns(10);
 	}
 }

@@ -12,10 +12,10 @@ public class Funcionario{
 	private Integer numIndentificacao;
 	private String nomeCompleto;
 	private LocalDate dataNascismento;
-	private Integer telefone;
+	private String telefone;
 	private Integer cep;
 	private Integer numCasa;
-	private Integer espacosHotelIdEspacos;
+
 	public Integer getIdFuncionario() {
 		return idFuncionario;
 	}
@@ -52,10 +52,10 @@ public class Funcionario{
 	public void setDataNascismento(LocalDate dataNascismento) {
 		this.dataNascismento = dataNascismento;
 	}
-	public Integer getTelefone() {
+	public String getTelefone() {
 		return telefone;
 	}
-	public void setTelefone(Integer telefone) {
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 	public Integer getCep() {
@@ -70,20 +70,7 @@ public class Funcionario{
 	public void setNumCasa(Integer numCasa) {
 		this.numCasa = numCasa;
 	}
-	public Integer getEspacosHotelIdEspacos() {
-		return espacosHotelIdEspacos;
-	}
-	public void setEspacosHotelIdEspacos(Integer espacosHotelIdEspacos) {
-		this.espacosHotelIdEspacos = espacosHotelIdEspacos;
-	}
-	
-	
-	
-	
-	
-	
 
-	
 }
 	
 	
