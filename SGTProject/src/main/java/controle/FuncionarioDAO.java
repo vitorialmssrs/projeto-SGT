@@ -31,7 +31,7 @@ public class FuncionarioDAO {
 
 	public int inserirFuncionario(Funcionario end) {
 
-		String SQL = "INSERT INTO funcionarios (id_funcionario, login, senha, num_indentificacao, nome_completo, data_nascismento, telefone, cep, num_casa, espacos_hotel_id_espacos) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String SQL = "INSERT INTO funcionarios (login, senha, num_identificacao, nome_completo, data_nascimento, telefone, cep, num_casa) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
@@ -44,10 +44,10 @@ public class FuncionarioDAO {
 			ps.setInt(3, end.getNumIndentificacao());
 			ps.setString(4, end.getNomeCompleto());
 			ps.setDate(5, Date.valueOf(end.getDataNascismento()));
-			ps.setInt(6, end.getTelefone());
+			ps.setString(6, end.getTelefone());
 			ps.setInt(7, end.getCep());
 			ps.setInt(8, end.getNumCasa());
-			ps.setInt(9, end.getEspacosHotelIdEspacos());
+
 
 			return ps.executeUpdate();
 		} catch (SQLException e) {
@@ -80,13 +80,12 @@ public class FuncionarioDAO {
 				Integer idFuncionario = rs.getInt("id_funcionario");
 				String Login = rs.getNString("login");
 				String Senha = rs.getNString("senha");
-				Integer NumIndentificacao = rs.getInt("num_indentificacao");
+				Integer NumIndentificacao = rs.getInt("num_identificacao");
 				String NomeCompleto = rs.getNString("nome_completo");
-				Integer Telefone = rs.getInt("telefone");
+				String Telefone = rs.getString("telefone");
 				Integer Cep = rs.getInt("cep");
 				Integer NumCasa = rs.getInt("num_casa");
-				Integer EspacosHotelIdEspacos = rs.getInt("espacos_hotel_id_espacos");
-				LocalDate DataNascismento = rs.getDate("data_de_nascimento").toLocalDate();
+				LocalDate DataNascismento = rs.getDate("data_nascimento").toLocalDate();
 
 				f.setIdFuncionario(idFuncionario);
 				f.setLogin(Login);
@@ -97,7 +96,7 @@ public class FuncionarioDAO {
 				f.setTelefone(Telefone);
 				f.setCep(Cep);
 				f.setNumCasa(NumCasa);
-				f.setEspacosHotelIdEspacos(EspacosHotelIdEspacos);
+
 
 				funcionario.add(f);
 			}
@@ -113,7 +112,7 @@ public class FuncionarioDAO {
 
 	public boolean atualizarFuncionario(Funcionario end) {
 
-		String SQL = "UPDATE funcionario Set Login = ?, Senha = ?, NumIndentificacao = ?, NomeCompleto = ?, DataNascismento = ?, Telefone = ?, Cep = ?, NumCasa = ?, EspacosHotelIdEspacos = ?  ";
+		String SQL = "UPDATE funcionario Set Login = ?, Senha = ?, Num_Identificacao  = ?, NomeCompleto = ?, Data_nascimento = ?, Telefone = ?, Cep = ?, NumCasa = ?  ";
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
 		int retorno = 0;
@@ -126,20 +125,10 @@ public class FuncionarioDAO {
 			ps.setInt(4, end.getNumIndentificacao());
 			ps.setString(5, end.getNomeCompleto());
 			ps.setDate(6, Date.valueOf(end.getDataNascismento()));
-			ps.setInt(7, end.getTelefone());
+			ps.setString(7, end.getTelefone());
 			ps.setInt(8, end.getCep());
 			ps.setInt(9, end.getNumCasa());
-			ps.setInt(10, end.getEspacosHotelIdEspacos());
-
-			/*
-			 * DAO Funcionario
-			 * 
-			 * IdFuncionario idFuncionario Login login Senha senha NumIndentificacao
-			 * numIndentificacao NomeCompleto nomeCompleto DataNascismento dataNascismento
-			 * Telefone telefone Cep cep NumCasa numCasa EspacosHotelIdEspacos
-			 * espacosHotelIdEspacos
-			 */
-
+	
 			retorno = ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -171,13 +160,12 @@ public class FuncionarioDAO {
 				Integer idFuncionario = rs.getInt("id_funcionario");
 				String Login = rs.getNString("login");
 				String Senha = rs.getNString("senha");
-				Integer NumIndentificacao = rs.getInt("num_indentificacao");
+				Integer NumIndentificacao = rs.getInt("num_identificacao");
 				String NomeCompleto = rs.getNString("nome_completo");
-				Integer Telefone = rs.getInt("telefone");
+				String Telefone = rs.getString("telefone");
 				Integer Cep = rs.getInt("cep");
 				Integer NumCasa = rs.getInt("num_casa");
-				Integer EspacosHotelIdEspacos = rs.getInt("espacos_hotel_id_espacos");
-				LocalDate DataNascismento = rs.getDate("data_de_nascimento").toLocalDate();
+				LocalDate DataNascismento = rs.getDate("data_nascimento").toLocalDate();
 
 				f.setIdFuncionario(idFuncionario);
 				f.setLogin(Login);
@@ -188,7 +176,6 @@ public class FuncionarioDAO {
 				f.setTelefone(Telefone);
 				f.setCep(Cep);
 				f.setNumCasa(NumCasa);
-				f.setEspacosHotelIdEspacos(EspacosHotelIdEspacos);
 
 			}
 
