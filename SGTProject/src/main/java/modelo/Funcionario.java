@@ -14,13 +14,11 @@ public class Funcionario {
 	private Integer idFuncionario;
 	private String nomeCompleto;
 	private Integer numIndentificacao;
-	private LocalDate dataNascimento;
-	private Integer telefone;
+	private String nomeCompleto;
+	private LocalDate dataNascismento;
+	private String telefone;
 	private Integer cep;
 	private Integer numCasa;
-
-	private String login;
-	private String senha;
 
 	public Integer getIdFuncionario() {
 		return idFuncionario;
@@ -53,12 +51,16 @@ public class Funcionario {
 	public void setDataNascimento(LocalDate dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
-
-	public Integer getTelefone() {
+	public LocalDate getDataNascismento() {
+		return dataNascismento;
+	}
+	public void setDataNascismento(LocalDate dataNascismento) {
+		this.dataNascismento = dataNascismento;
+	}
+	public String getTelefone() {
 		return telefone;
 	}
-
-	public void setTelefone(Integer telefone) {
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 
@@ -76,22 +78,6 @@ public class Funcionario {
 
 	public void setNumCasa(Integer numCasa) {
 		this.numCasa = numCasa;
-	}
-
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
 	}
 
 }

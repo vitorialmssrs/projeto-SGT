@@ -23,7 +23,7 @@ public class HospedagemDAO {
 	}
 	
 	public int insertHospedagem(Hospedagem end) {
-		String SQL = "INSERT INTO hospedagem (DataEntrada,DataSaida,HoraEntrada,HoraSaida) VALUES (?,?,?,?)";
+		String SQL = "INSERT INTO hospedagem (DataEntrada, DataSaida, HoraEntrada, HoraSaida) VALUES (?,?,?,?)";
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
 
@@ -37,9 +37,6 @@ public class HospedagemDAO {
 			ps.setTime(3, java.sql.Time.valueOf(end.getHoraEntrada()));
 			ps.setTime(4, java.sql.Time.valueOf(end.getHoraSaida()));
 			
-			/*ps.setDateTime(1, ZonedDateTime.now(end.getCheckin()));
-			ps.setDate(2, Date.valueOf(end.getCheckout()));*/
-//ps.setDate(1, end.getCheckin().atZone(ZoneId.systemDefault()).toLocalDateTime()); ou java.sql.Timestamp.valueOf(dateToConvert);
 			ResultSet rs = ps.getGeneratedKeys();
 			if (rs.next()) {
 				chavePrimariaGerada = rs.getInt(1);
@@ -55,7 +52,7 @@ public class HospedagemDAO {
 
 	public ArrayList<Hospedagem> listarHospedagem() {
 		ArrayList<Hospedagem> hospedagem = new ArrayList<Hospedagem>();
-		String SQL = "SELECT * FROM enderecos";
+		String SQL = "SELECT * FROM hospedagem";
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
 		
