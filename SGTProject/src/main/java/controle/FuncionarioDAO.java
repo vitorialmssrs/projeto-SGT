@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -29,15 +30,17 @@ public class FuncionarioDAO {
 		return instancia;
 	}
 
-	public int inserirFuncionario(Funcionario end) {
+	public int inserirFuncionario(Funcionario fun) {
 
 		String SQL = "INSERT INTO funcionarios (login, senha, num_identificacao, nome_completo, data_nascimento, telefone, cep, num_casa) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
 
+		int chavePrimariaGerada = Integer.MIN_VALUE;
+
 		try {
-			PreparedStatement ps = conBD.prepareStatement(SQL);
+			PreparedStatement ps = conBD.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
 
 			ps.setString(1, end.getLogin());
 			ps.setString(2, end.getSenha());
@@ -56,7 +59,7 @@ public class FuncionarioDAO {
 			con.fecharConexao();
 		}
 
-		return 0;
+		return chavePrimariaGerada;
 	}
 
 	public ArrayList<Funcionario> listarFuncionario() {
@@ -77,7 +80,6 @@ public class FuncionarioDAO {
 
 				Funcionario f = new Funcionario();
 
-				Integer idFuncionario = rs.getInt("id_funcionario");
 				String Login = rs.getNString("login");
 				String Senha = rs.getNString("senha");
 				Integer NumIndentificacao = rs.getInt("num_identificacao");
@@ -87,12 +89,11 @@ public class FuncionarioDAO {
 				Integer NumCasa = rs.getInt("num_casa");
 				LocalDate DataNascismento = rs.getDate("data_nascimento").toLocalDate();
 
-				f.setIdFuncionario(idFuncionario);
 				f.setLogin(Login);
 				f.setSenha(Senha);
 				f.setNumIndentificacao(NumIndentificacao);
 				f.setNomeCompleto(NomeCompleto);
-				f.setDataNascismento(DataNascismento);
+				f.setDataNascimento(DataNascismento);
 				f.setTelefone(Telefone);
 				f.setCep(Cep);
 				f.setNumCasa(NumCasa);
@@ -172,7 +173,7 @@ public class FuncionarioDAO {
 				f.setSenha(Senha);
 				f.setNumIndentificacao(NumIndentificacao);
 				f.setNomeCompleto(NomeCompleto);
-				f.setDataNascismento(DataNascismento);
+				f.setDataNascimento(DataNascismento);
 				f.setTelefone(Telefone);
 				f.setCep(Cep);
 				f.setNumCasa(NumCasa);
