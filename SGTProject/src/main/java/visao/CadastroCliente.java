@@ -125,14 +125,6 @@ public class CadastroCliente extends JFrame {
 		textDataNascimento.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textDataNascimento.setColumns(10);
 
-		textDataNascimento = new JTextField();
-		textDataNascimento.setForeground(new Color(1, 50, 1));
-		textDataNascimento.setBackground(new Color(252, 251, 244));
-		textDataNascimento.setBounds(194, 522, 404, 29);
-		contentPane.add(textDataNascimento);
-		textDataNascimento.setBorder(new LineBorder(new Color(1, 50, 1)));
-		textDataNascimento.setColumns(10);
-
 		
 		JLabel lblTelefone = new JLabel("* Telefone:");
 		lblTelefone.setBackground(new Color(1, 50, 1));
@@ -301,7 +293,7 @@ public class CadastroCliente extends JFrame {
   					e1.printStackTrace();
 					}
 				textDataNascimento = new JFormattedTextField(mascaraDataNascimento);
-						contentPane.add(textDataEntrada);
+						contentPane.add(textDataNascimento);
 						textDataNascimento.setColumns(10);
 				
 				String dataEntrada = textDataEntrada.getText();
@@ -410,8 +402,9 @@ public class CadastroCliente extends JFrame {
 				///inserindo na classe 
 				dao.insertHospede(h);
 				
-				
-				JOptionPane.showMessageDialog(null, "Cadastro Realizado!");
+				CheckInHospede frame = new CheckInHospede();
+				frame.setVisible(true);
+				//JOptionPane.showMessageDialog(null, "Cadastro Realizado!");
 
 				
 				dispose();
