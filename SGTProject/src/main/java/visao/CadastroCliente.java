@@ -402,7 +402,7 @@ public class CadastroCliente extends JFrame {
 				///inserindo na classe 
 				dao.insertHospede(h);
 				
-				CheckInHospede frame = new CheckInHospede();
+				AvisoCheckInHospede frame = new AvisoCheckInHospede();
 				frame.setVisible(true);
 				//JOptionPane.showMessageDialog(null, "Cadastro Realizado!");
 
