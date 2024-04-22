@@ -21,17 +21,13 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.text.MaskFormatter;
 
-import controle.FuncionarioDAO;
 import controle.HospedagemDAO;
 import controle.HospedeDAO;
-import modelo.Funcionario;
 import modelo.Hospedagem;
 import modelo.Hospede;
 
 import javax.swing.ImageIcon;
 import java.awt.Toolkit;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import net.miginfocom.swing.MigLayout;
 
 
@@ -96,7 +92,7 @@ public class CheckoutCliente extends JFrame {
 		btnSair_tela_cad_Cliente.setForeground(new Color(252, 251, 244));
 		btnSair_tela_cad_Cliente.setBackground(new Color(1, 50, 1));
 		btnSair_tela_cad_Cliente.setFont(new Font("Tahoma", Font.BOLD, 17));
-		contentPane.setLayout(new MigLayout("", "[300px][10px][27px][27px][50][45][212px][225][165][50][176px]", "[60][61px][11px][56px][21px][33px][35][15px][21px][35][12px][35][21px][35][39px][50][][39px]"));
+		contentPane.setLayout(new MigLayout("", "[300px][10px][27px][25px][50][45][179.00px][268.00px][159.00][50][176px]", "[60][61px][11px][56px][21px][33px][35][33px][21px][35][12px][33px][21px][35][39px][50][][39px]"));
 		
 		JLabel lblIcone = new JLabel("");
 		lblIcone.setIcon(new ImageIcon(CheckoutCliente.class.getResource("/imagens/LogoPI.png")));
@@ -147,7 +143,7 @@ public class CheckoutCliente extends JFrame {
 		textPrimeiroNome.setBackground(new Color(252, 251, 244));
 		textPrimeiroNome.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textPrimeiroNome.setColumns(10);
-		contentPane.add(textPrimeiroNome, "cell 3 7 1 2,grow");
+		contentPane.add(textPrimeiroNome, "cell 3 7,grow");
 		
 		JLabel lblDataHoraSaida = new JLabel("* Data e hora de saída:");
 		lblDataHoraSaida.setForeground(new Color(1, 50, 1));
@@ -247,18 +243,35 @@ public class CheckoutCliente extends JFrame {
 						contentPane.add(textCPF);
 						textCPF.setColumns(15);
 				
-				String dataNascimento = TextDataNascimento.getText();
-				if(nome.length() == 0) {
-					JOptionPane.showMessageDialog(null, "Campo Data de Nascimento obrigatório!");
-					return ;
-				}
-				LocalDate dn = LocalDate.parse(dataNascimento);
+						String dataNascimento = TextDataNascimento.getText();
+						if(nome.length() == 0) {
+							JOptionPane.showMessageDialog(null, "Campo Data de Nascimento obrigatório!");
+							return ;
+						}
+						
+				        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+
+						LocalDate dn = LocalDate.parse(dataNascimento, formatter);
+						
+						MaskFormatter mascaraDataNascimento = null;
+						try {
+							mascaraDataNascimento = new MaskFormatter("##/##/####");
+						} catch (ParseException e1) {
+		  					e1.printStackTrace();
+							}
+						TextDataNascimento = new JFormattedTextField(mascaraDataNascimento);
+								contentPane.add(TextDataNascimento);
+								TextDataNascimento.setColumns(10);
 				
 				String dataSaida = textDataSaida.getText();
 				if(nome.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Data de Saída obrigatório!");
 					return ;
 				}
+				DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+
+				LocalDate ds = LocalDate.parse(dataSaida, formatter1);
+				
 				MaskFormatter mascaraDataSaida = null;
 				try {
 					mascaraDataSaida = new MaskFormatter("##/##/####");
@@ -285,12 +298,12 @@ public class CheckoutCliente extends JFrame {
 						textHoraSaida.setColumns(5);
 			
 						
-				LocalDate dtSaida = LocalDate.parse(dataSaida);
+				//LocalDate dtSaida = LocalDate.parse(dataSaida);
 				LocalTime hrSaida = LocalTime.parse(horaSaida);
 				
 				Hospedagem hospedagem = new Hospedagem();
 				
-				hospedagem.setDataSaida(dtSaida);;
+				hospedagem.setDataSaida(ds);
 				hospedagem.setHoraSaida(hrSaida);
 				
 				HospedagemDAO hospedagemdao = new HospedagemDAO();
