@@ -5,11 +5,13 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -17,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.text.MaskFormatter;
 
 import controle.HospedagemDAO;
 import controle.HospedeDAO;
@@ -32,7 +35,7 @@ public class CadastroCliente extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textDataEntrada;
-	private JTextField TextDataNascimento;
+	private JTextField textDataNascimento;
 	private JTextField textCPF;
 	private JTextField textPrimeiroNome;
 	private JTextField textHoraEntrada;
@@ -113,13 +116,15 @@ public class CadastroCliente extends JFrame {
 		lblSobrenomeCliente.setBounds(195, 325, 165, 22);
 		contentPane.add(lblSobrenomeCliente);
 		
-		TextDataNascimento = new JTextField();
-		TextDataNascimento.setForeground(new Color(1, 50, 1));
-		TextDataNascimento.setBackground(new Color(252, 251, 244));
-		TextDataNascimento.setBounds(195, 484, 404, 29);
-		contentPane.add(TextDataNascimento);
-		TextDataNascimento.setBorder(new LineBorder(new Color(1, 50, 1)));
-		TextDataNascimento.setColumns(10);
+
+		textDataNascimento = new JTextField();
+		textDataNascimento.setForeground(new Color(1, 50, 1));
+		textDataNascimento.setBackground(new Color(252, 251, 244));
+		textDataNascimento.setBounds(195, 484, 404, 29);
+		contentPane.add(textDataNascimento);
+		textDataNascimento.setBorder(new LineBorder(new Color(1, 50, 1)));
+		textDataNascimento.setColumns(10);
+
 		
 		JLabel lblTelefone = new JLabel("* Telefone:");
 		lblTelefone.setBackground(new Color(1, 50, 1));
@@ -206,34 +211,27 @@ public class CadastroCliente extends JFrame {
 				textPrimeiroNome.setText("");
 				textSobrenome.setText("");
 				textCPF.setText("");
-				TextDataNascimento.setText("");
+				textDataNascimento.setText("");
 				textDataEntrada.setText("");
 				textHoraEntrada.setText("");
 				textDataSaida.setText("");
 				txtHoraSaida.setText("");
-				txtSenha.setText("");
-						
+				txtSenha.setText("");	
 
 			}
 		});
+		
 		btnLimpar_info_cliente.setForeground(new Color(252, 251, 244));
 		btnLimpar_info_cliente.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnLimpar_info_cliente.setBackground(new Color(109, 164, 109));
 		btnLimpar_info_cliente.setBounds(423, 638, 176, 39);
 		contentPane.add(btnLimpar_info_cliente);
 		
-		
-		//preciso ajeitar a funcao desse botao pois ainda nao funciona 
-		//ajeitar as validacoes e as telas de validacoes 
 		JButton btnCadastro_Cliente = new JButton("Cadastrar");
 		btnCadastro_Cliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//precisa adicionar um comando que mostre a tela de confirmação de cadastro realizado ou não 
-				// caso de certo precisa perguntar se deseja fazer mais alguma coisa ou se pode sair 
-				//dao.insertHospede(null);
-				
-				//Como adicionar uma mascara ao text
-				/*MaskFormatter mascaraTel = null;
+				/*Como adicionar uma mascara ao text
+				MaskFormatter mascaraTel = null;
 					try {
       					mascaraTel = new MaskFormatter("(##) ###-###-###");
 					} catch (ParseException e) {
@@ -241,7 +239,10 @@ public class CadastroCliente extends JFrame {
  					}
  						textField = new JFormattedTextField(mascaraTel);
  						contentPane.add(textField);
- 						textField.setColumns(10);*/
+ 						textField.setColumns(10);
+ 						
+ 					*/
+				
 				
 				//recebe a o conteudo que esta no Text e joga para a variavel 
 				String nome = textPrimeiroNome.getText();
@@ -265,7 +266,17 @@ public class CadastroCliente extends JFrame {
 				cpf = cpf.replace("-", "");
 				Long cpfI = Long.parseLong(cpf);
 				
-				String dataNascimento = textDataEntrada.getText();
+				MaskFormatter mascaraCPF = null;
+				try {
+					mascaraCPF = new MaskFormatter("###.###.###-##");
+				} catch (ParseException e1) {
+  					e1.printStackTrace();
+					}
+						textCPF = new JFormattedTextField(mascaraCPF);
+						contentPane.add(textCPF);
+						textCPF.setColumns(15);
+				
+				String dataNascimento = textDataNascimento.getText();
 				if(nome.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Data de Nascimento obrigatório!");
 					return ;
@@ -275,19 +286,46 @@ public class CadastroCliente extends JFrame {
 
 				LocalDate dn = LocalDate.parse(dataNascimento, formatter);
 				
+				MaskFormatter mascaraDataNascimento = null;
+				try {
+					mascaraDataNascimento = new MaskFormatter("##/##/####");
+				} catch (ParseException e1) {
+  					e1.printStackTrace();
+					}
+				textDataNascimento = new JFormattedTextField(mascaraDataNascimento);
+						contentPane.add(textDataNascimento);
+						textDataNascimento.setColumns(10);
+				
 				String dataEntrada = textDataEntrada.getText();
 				if(nome.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Data de Entrada obrigatório!");
 					return ;
 				}
 				
+				MaskFormatter mascaraDataEntrada = null;
+				try {
+					mascaraDataEntrada = new MaskFormatter("##/##/####");
+				} catch (ParseException e1) {
+  					e1.printStackTrace();
+					}
+						textDataEntrada = new JFormattedTextField(mascaraDataEntrada);
+						contentPane.add(textDataEntrada);
+						textDataEntrada.setColumns(10);
 				
 				String dataSaida = textDataSaida.getText();
 				if(nome.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Data de Saída obrigatório!");
 					return ;
 				}
-			
+				MaskFormatter mascaraDataSaida = null;
+				try {
+					mascaraDataSaida = new MaskFormatter("##/##/####");
+				} catch (ParseException e1) {
+  					e1.printStackTrace();
+					}
+						textDataSaida = new JFormattedTextField(mascaraDataSaida);
+						contentPane.add(textDataSaida);
+						textDataSaida.setColumns(10);
 				
 				String horaEntrada = textHoraEntrada.getText();
 				if(nome.length() == 0) {
@@ -295,6 +333,16 @@ public class CadastroCliente extends JFrame {
 					return ;
 				}
 				
+				MaskFormatter mascaraHoraEntrada = null;
+				try {
+					mascaraHoraEntrada = new MaskFormatter("##:##");
+				} catch (ParseException e1) {
+					e1.printStackTrace();
+					}
+						textHoraEntrada = new JFormattedTextField(mascaraHoraEntrada);
+						contentPane.add(textHoraEntrada);
+						textHoraEntrada.setColumns(5);
+						
 				String horaSaida = txtHoraSaida.getText();
 				if(nome.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Hora de Saída obrigatório!");
@@ -354,8 +402,9 @@ public class CadastroCliente extends JFrame {
 				///inserindo na classe 
 				dao.insertHospede(h);
 				
-				
-				JOptionPane.showMessageDialog(null, "Cadastro Realizado!");
+				AvisoCheckInHospede frame = new AvisoCheckInHospede();
+				frame.setVisible(true);
+				//JOptionPane.showMessageDialog(null, "Cadastro Realizado!");
 
 				
 				dispose();
