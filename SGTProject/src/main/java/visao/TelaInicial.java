@@ -30,7 +30,7 @@ public class TelaInicial extends JFrame {
 			public void run() {
 				try {
 					TelaInicial frame = new TelaInicial();
-					frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -73,8 +73,9 @@ public class TelaInicial extends JFrame {
 		btnCliente.setBounds(411, 488, 641, 80);
 		btnCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evento) {
+				dispose();
 				FuncionalidadeCliente funcionalidadeCliente = new FuncionalidadeCliente();
-				funcionalidadeCliente.setExtendedState(funcionalidadeCliente.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+				funcionalidadeCliente.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				funcionalidadeCliente.setVisible(true);
 				funcionalidadeCliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}

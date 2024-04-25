@@ -5,6 +5,7 @@ DROP DATABASE IF EXISTS mydb;
 
 CREATE DATABASE IF NOT EXISTS mydb;
 
+
 USE mydb;
 
 -- -----------------------------------------------------
@@ -14,7 +15,7 @@ DROP TABLE IF EXISTS clientes;
 
 CREATE TABLE IF NOT EXISTS clientes (
   id_cliente INT(11) NOT NULL AUTO_INCREMENT,
-  num_identificacao bigint(11) NOT NULL,
+  num_identificacao varchar(11) NOT NULL,
   primeiro_nome VARCHAR(100) NOT NULL,
   sobrenome VARCHAR(100) NOT NULL,
   data_de_nascimento DATE NOT NULL,
@@ -85,9 +86,9 @@ DROP TABLE IF EXISTS hospedagens;
 CREATE TABLE IF NOT EXISTS hospedagens (
   num_quarto INT(3) NOT NULL,
   DataEntrada DATE NOT NULL,
-  DataSaida DATE NOT NULL,
+  DataSaida DATE,
   HoraEntrada TIME NOT NULL,
-  HoraSaida TIME NOT NULL,
+  HoraSaida TIME,
   clientes_id_cliente INT(11) NOT NULL,
   PRIMARY KEY (num_quarto),
   CONSTRAINT fk_hospedagens_clientes1 FOREIGN KEY (clientes_id_cliente) REFERENCES clientes (id_cliente)
