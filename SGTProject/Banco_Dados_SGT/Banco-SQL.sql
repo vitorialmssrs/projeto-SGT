@@ -5,6 +5,7 @@ DROP DATABASE IF EXISTS mydb;
 
 CREATE DATABASE IF NOT EXISTS mydb;
 
+
 USE mydb;
 
 -- -----------------------------------------------------
@@ -14,7 +15,7 @@ DROP TABLE IF EXISTS clientes;
 
 CREATE TABLE IF NOT EXISTS clientes (
   id_cliente INT(11) NOT NULL AUTO_INCREMENT,
-  num_identificacao bigint(11) NOT NULL,
+  num_identificacao varchar(11) NOT NULL,
   primeiro_nome VARCHAR(100) NOT NULL,
   sobrenome VARCHAR(100) NOT NULL,
   data_de_nascimento DATE NOT NULL,
