@@ -1,7 +1,6 @@
 package visao;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -39,10 +38,8 @@ public class CadastroCliente extends JFrame {
 	private JTextField textCPF;
 	private JTextField textPrimeiroNome;
 	private JTextField textHoraEntrada;
-	private JTextField textDataSaida;
 	private JTextField textSobrenome;
 	private JTextField txtSenha;
-	private JTextField txtHoraSaida;
 	private JTextField textTelefone;
 	private JTextField textEmail;
 
@@ -104,7 +101,7 @@ public class CadastroCliente extends JFrame {
 		textDataEntrada = new JTextField();
 		textDataEntrada.setForeground(new Color(1, 50, 1));
 		textDataEntrada.setBackground(new Color(252, 251, 244));
-		textDataEntrada.setBounds(811, 319, 165, 29);
+		textDataEntrada.setBounds(811, 351, 165, 29);
 		textDataEntrada.setBorder(new LineBorder(new Color(1, 50, 1)));
 		contentPane.add(textDataEntrada);
 		textDataEntrada.setColumns(10);
@@ -146,7 +143,7 @@ public class CadastroCliente extends JFrame {
 		lblDataEntrada.setForeground(new Color(1, 50, 1));
 		lblDataEntrada.setBackground(new Color(1, 50, 1));
 		lblDataEntrada.setFont(new Font("Tahoma", Font.BOLD, 19));
-		lblDataEntrada.setBounds(811, 291, 255, 21);
+		lblDataEntrada.setBounds(811, 323, 255, 21);
 		contentPane.add(lblDataEntrada);
 		
 		textPrimeiroNome = new JTextField();
@@ -157,17 +154,10 @@ public class CadastroCliente extends JFrame {
 		textPrimeiroNome.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textPrimeiroNome.setColumns(10);
 		
-		JLabel lblDataSaida = new JLabel("* Data e hora de saída:");
-		lblDataSaida.setBackground(new Color(1, 50, 1));
-		lblDataSaida.setForeground(new Color(1, 50, 1));
-		lblDataSaida.setFont(new Font("Tahoma", Font.BOLD, 19));
-		lblDataSaida.setBounds(811, 353, 232, 21);
-		contentPane.add(lblDataSaida);
-		
 		textHoraEntrada = new JTextField();
 		textHoraEntrada.setForeground(new Color(1, 50, 1));
 		textHoraEntrada.setBackground(new Color(252, 251, 244));
-		textHoraEntrada.setBounds(986, 319, 165, 29);
+		textHoraEntrada.setBounds(986, 351, 165, 29);
 		textHoraEntrada.setBorder(new LineBorder(new Color(1, 50, 1)));
 		contentPane.add(textHoraEntrada);
 		
@@ -178,15 +168,8 @@ public class CadastroCliente extends JFrame {
 		lblSenhaCad.setBackground(new Color(1, 50, 1));
 		lblSenhaCad.setForeground(new Color(1, 50, 1));
 		lblSenhaCad.setFont(new Font("Tahoma", Font.BOLD, 19));
-		lblSenhaCad.setBounds(811, 489, 340, 21);
+		lblSenhaCad.setBounds(811, 463, 340, 21);
 		contentPane.add(lblSenhaCad);
-		
-		textDataSaida = new JTextField();
-		textDataSaida.setBackground(new Color(252, 251, 244));
-		textDataSaida.setBounds(811, 379, 165, 29);
-		contentPane.add(textDataSaida);
-		textDataSaida.setBorder(new LineBorder(new Color(1, 50, 1)));
-		textDataSaida.setColumns(10);
 		
 		JLabel lblCPFCliente = new JLabel("* CPF / CRNM / RNN / RNE:");
 		lblCPFCliente.setForeground(new Color(1, 50, 1));
@@ -214,8 +197,6 @@ public class CadastroCliente extends JFrame {
 				textDataNascimento.setText("");
 				textDataEntrada.setText("");
 				textHoraEntrada.setText("");
-				textDataSaida.setText("");
-				txtHoraSaida.setText("");
 				txtSenha.setText("");	
 
 			}
@@ -262,9 +243,7 @@ public class CadastroCliente extends JFrame {
 					JOptionPane.showMessageDialog(null, "Campo CPF obrigatório!");
 					return ;
 				}
-				cpf = cpf.replace(".", "");
-				cpf = cpf.replace("-", "");
-				Long cpfI = Long.parseLong(cpf);
+				
 				
 				MaskFormatter mascaraCPF = null;
 				try {
@@ -312,21 +291,6 @@ public class CadastroCliente extends JFrame {
 						contentPane.add(textDataEntrada);
 						textDataEntrada.setColumns(10);
 				
-				String dataSaida = textDataSaida.getText();
-				if(nome.length() == 0) {
-					JOptionPane.showMessageDialog(null, "Campo Data de Saída obrigatório!");
-					return ;
-				}
-				MaskFormatter mascaraDataSaida = null;
-				try {
-					mascaraDataSaida = new MaskFormatter("##/##/####");
-				} catch (ParseException e1) {
-  					e1.printStackTrace();
-					}
-						textDataSaida = new JFormattedTextField(mascaraDataSaida);
-						contentPane.add(textDataSaida);
-						textDataSaida.setColumns(10);
-				
 				String horaEntrada = textHoraEntrada.getText();
 				if(nome.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Hora de Entrada obrigatório!");
@@ -343,11 +307,6 @@ public class CadastroCliente extends JFrame {
 						contentPane.add(textHoraEntrada);
 						textHoraEntrada.setColumns(5);
 						
-				String horaSaida = txtHoraSaida.getText();
-				if(nome.length() == 0) {
-					JOptionPane.showMessageDialog(null, "Campo Hora de Saída obrigatório!");
-					return ;
-				}
 				
 				String telefone = textTelefone.getText();
 				if(telefone.length() == 0) {
@@ -366,20 +325,19 @@ public class CadastroCliente extends JFrame {
 					return ;
 				}
 				int senhai = Integer.parseInt(senha);
+				
+				cpf = cpf.replace(".", "");
+				cpf = cpf.replace("-", "");
 			
 				LocalDate dtEntrada = LocalDate.parse(dataEntrada, formatter);
-				LocalDate dtSaida = LocalDate.parse(dataSaida, formatter);
 				DateTimeFormatter formattertime = DateTimeFormatter.ofPattern("HH:mm");
 
 				LocalTime hrEntrada = LocalTime.parse(horaEntrada,formattertime);
-				LocalTime hrSaida = LocalTime.parse(horaSaida,formattertime);
 				
 				Hospedagem hospedagem = new Hospedagem();
 				
 				hospedagem.setDataEntrada(dtEntrada);
-				hospedagem.setDataSaida(dtSaida);
 				hospedagem.setHoraEntrada(hrEntrada);
-				hospedagem.setHoraSaida(hrSaida);
 				
 				HospedagemDAO hospedagemdao = new HospedagemDAO();
 				
@@ -391,7 +349,7 @@ public class CadastroCliente extends JFrame {
 				//setando os valores
 				h.setPrimeironome(nome);
 				h.setSobrenome(sobrenome);
-				h.setNumidentificacao(cpfI);
+				h.setNumidentificacao(cpf);
 				h.setDatanascimento(dn);
 				h.setTelefone(telefone);
 				h.setEmail(email);
@@ -433,22 +391,16 @@ public class CadastroCliente extends JFrame {
 		
 		JLabel lblInformacaoSenha = new JLabel("Apenas números, com no Mínimo 8 caracteres  e Sem caracteres especiais.");
 		lblInformacaoSenha.setForeground(new Color(255, 0, 0));
-		lblInformacaoSenha.setBounds(811, 512, 353, 13);
+		lblInformacaoSenha.setBounds(811, 486, 353, 13);
 		contentPane.add(lblInformacaoSenha);
 		
 		txtSenha = new JTextField();
 		txtSenha.setForeground(new Color(1, 50, 1));
 		txtSenha.setBackground(new Color(252, 251, 244));
-		txtSenha.setBounds(811, 532, 404, 29);
+		txtSenha.setBounds(811, 506, 404, 29);
 		contentPane.add(txtSenha);
 		txtSenha.setBorder(new LineBorder(new Color(1, 50, 1)));
 		txtSenha.setColumns(10);
-		
-		txtHoraSaida = new JTextField();
-		txtHoraSaida.setBounds(986, 379, 165, 29);
-		contentPane.add(txtHoraSaida);
-		txtHoraSaida.setBorder(new LineBorder(new Color(1, 50, 1)));
-		txtHoraSaida.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(CadastroCliente.class.getResource("/imagens/LogoPI.png")));
@@ -474,7 +426,7 @@ public class CadastroCliente extends JFrame {
 		lblEmail.setForeground(new Color(1, 50, 1));
 		lblEmail.setFont(new Font("Tahoma", Font.BOLD, 19));
 		lblEmail.setBackground(new Color(1, 50, 1));
-		lblEmail.setBounds(811, 417, 340, 21);
+		lblEmail.setBounds(811, 391, 340, 21);
 		contentPane.add(lblEmail);
 		
 		textEmail = new JTextField();
@@ -482,7 +434,7 @@ public class CadastroCliente extends JFrame {
 		textEmail.setColumns(10);
 		textEmail.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textEmail.setBackground(new Color(252, 251, 244));
-		textEmail.setBounds(811, 449, 404, 29);
+		textEmail.setBounds(811, 423, 404, 29);
 		contentPane.add(textEmail);
 	}
 
@@ -490,8 +442,4 @@ public class CadastroCliente extends JFrame {
 	 * 
 	 * @param end
 	 */
-	public static void add(Hospede end) {
-		// TODO Auto-generated method stub
-		
-	}
 }
