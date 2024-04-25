@@ -50,7 +50,7 @@ public class FuncionalidadeFuncionario extends JFrame {
 		JPanel panelOpcoes = new JPanel();
 		panelOpcoes.setBackground(new Color(227, 236, 226));
 		contentPane.add(panelOpcoes);
-		panelOpcoes.setLayout(new MigLayout("", "[100][300][150]", "[200][][100][50][200][50][200][50][200][50][100]"));
+		panelOpcoes.setLayout(new MigLayout("", "[100][300][150]", "[200][][100][50][200][50][200][50][200][50][150]"));
 		
 		JLabel lblCaro = new JLabel("Caro Funcionario");
 		lblCaro.setForeground(new Color(1, 50, 1));
@@ -93,10 +93,24 @@ public class FuncionalidadeFuncionario extends JFrame {
 				setVisible(false);
 			}
 		});
+		
+		JButton btnPerfil = new JButton("Visualizar Perfil");
+		btnPerfil.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RemoverVerificarFuncionario remover = new RemoverVerificarFuncionario();
+				remover.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				remover.setVisible(true);
+				remover.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);	
+			}
+		});
+		btnPerfil.setForeground(new Color(255, 255, 255));
+		btnPerfil.setBackground(new Color(81, 180, 81));
+		btnPerfil.setFont(new Font("Tahoma", Font.BOLD, 50));
+		panelOpcoes.add(btnPerfil, "cell 1 10,grow");
 		btnSair_1.setIcon(new ImageIcon(FuncionalidadeFuncionario.class.getResource("/imagens/Vector sair.png")));
 		btnSair_1.setForeground(new Color(1, 50, 1));
 		btnSair_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnSair_1.setBackground(new Color(227, 236, 226));
-		panelOpcoes.add(btnSair_1, "cell 2 10,growx");
+		panelOpcoes.add(btnSair_1, "cell 2 10,alignx center");
 	}
 }

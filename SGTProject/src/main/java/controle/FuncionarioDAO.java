@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -40,7 +41,7 @@ public class FuncionarioDAO {
 		int chavePrimariaGerada = Integer.MIN_VALUE;
 
 		try {
-			PreparedStatement ps = conBD.prepareStatement(SQL);
+			PreparedStatement ps = conBD.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, end.getLogin());
 			ps.setString(2, end.getSenha());
 			ps.setInt(3, end.getNumIndentificacao());
@@ -49,8 +50,13 @@ public class FuncionarioDAO {
 			ps.setString(6, end.getTelefone());
 			ps.setInt(7, end.getCep());
 			ps.setInt(8, end.getNumCasa());
+			
 
-
+			ResultSet rs = ps.getGeneratedKeys();
+			if (rs.next()) {
+				chavePrimariaGerada = rs.getInt(1);
+			}
+			
 			return ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -187,5 +193,32 @@ public class FuncionarioDAO {
 
 		return f;
 	}
+	
+	public int removerFuncionario(String login, String senha) {
+		
+		String SQL = "DELETE FROM enderecos WHERE login = ?, senha = ?";
+		
+		Conexao con = Conexao.getInstancia(); // instanciando
+		Connection conBD = con.conectar(); // cria "ponte"
+		
+		int retorno = 0;
+		try {
+		PreparedStatement ps = conBD.prepareStatement(SQL);
+		
+		ps.setString(2, login);
+		ps.setString(3, senha);
+		
+		retorno = ps.executeUpdate();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			con.fecharConexao();
+		}
+		
+		return retorno;
+	}
+	
+	
 
 }

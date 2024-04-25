@@ -211,7 +211,7 @@ public class CadastroFuncionario extends JFrame {
 		btnLimpar.setForeground(new Color(252, 251, 244));
 		btnLimpar.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnLimpar.setBackground(new Color(109, 164, 109));
-		btnLimpar.setBounds(600, 714, 176, 39);
+		btnLimpar.setBounds(553, 714, 176, 39);
 		contentPane.add(btnLimpar);
 
 		JButton btnCadastrar = new JButton("Cadastrar");
@@ -278,7 +278,7 @@ contentPane.add(btnCadastrar);
 		btnCadastrar.setBackground(new Color(66, 142, 66));
 		btnCadastrar.setForeground(new Color(252, 251, 244));
 		btnCadastrar.setFont(new Font("Tahoma", Font.BOLD, 17));
-		btnCadastrar.setBounds(835, 714, 176, 39);
+		btnCadastrar.setBounds(788, 714, 176, 39);
 		contentPane.add(btnCadastrar);
 
 		JButton btnSair = new JButton("<- | Sair");
@@ -290,7 +290,7 @@ contentPane.add(btnCadastrar);
 		btnSair.setForeground(new Color(252, 251, 244));
 		btnSair.setBackground(new Color(1, 50, 1));
 		btnSair.setFont(new Font("Tahoma", Font.BOLD, 17));
-		btnSair.setBounds(1204, 714, 176, 39);
+		btnSair.setBounds(1266, 714, 176, 39);
 		contentPane.add(btnSair);
 		
 		JLabel lblInformacoes_Login_Senha = new JLabel("Informações de Login/Senha");
@@ -321,5 +321,33 @@ contentPane.add(btnCadastrar);
 		contentPane.add(textSenha);
 		textSenha.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textSenha.setColumns(10);
+		
+		JButton btnExcluir = new JButton("Excluir");
+		btnExcluir.setForeground(new Color(252, 251, 244));
+		btnExcluir.setBackground(new Color(172, 23, 65));
+		btnExcluir.setFont(new Font("Tahoma", Font.BOLD, 17));
+		btnExcluir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String login = textLogin.getText();
+				String senha = textSenha.getText();
+			
+				
+				if (!login.isEmpty() || !senha.isEmpty()) {
+					FuncionarioDAO funcioDAO = FuncionarioDAO.getInstancia();
+					int retorno = funcioDAO.removerFuncionario(login, senha);
+					
+					if (retorno == 0) {
+						JOptionPane.showMessageDialog(null, "Erro ao EXCLUIR!"); // SUBSTITUIR JOPTIONPANE por TELA DE
+						// MENSAGEM// mensagem erro
+					} else {JOptionPane.showMessageDialog(null, "EXCLUIDO com sucesso!"); // SUBSTITUIR JOPTIONPANE por
+					// TELA DE MENSAGEM// mensagem de sucesso
+					}
+					
+				}
+			}
+		});
+		btnExcluir.setBounds(1032, 714, 176, 39);
+		contentPane.add(btnExcluir);
 	}
 }
