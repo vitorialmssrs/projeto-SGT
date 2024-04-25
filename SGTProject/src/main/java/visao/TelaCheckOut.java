@@ -31,12 +31,12 @@ import java.awt.Toolkit;
 import net.miginfocom.swing.MigLayout;
 
 
-public class CheckoutCliente extends JFrame {
+public class TelaCheckOut extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField TextDataNascimento;
-	private JTextField textCPF;
+	private JTextField textNumeroIdentificacao;
 	private JTextField textPrimeiroNome;
 	private JTextField textSobrenome;
 	private JTextField textHoraSaida;
@@ -49,7 +49,7 @@ public class CheckoutCliente extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CheckoutCliente frame = new CheckoutCliente();
+					TelaCheckOut frame = new TelaCheckOut();
 					//sempre antes do set visible para abrir em tela cheia 
 					frame.setExtendedState(frame.getExtendedState()|JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
@@ -63,8 +63,8 @@ public class CheckoutCliente extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public CheckoutCliente() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(CheckoutCliente.class.getResource("/imagens/LogoPI.png")));
+	public TelaCheckOut() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(TelaCheckOut.class.getResource("/imagens/LogoPI.png")));
 		setBackground(new Color(255, 255, 245));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1920, 1080);
@@ -85,7 +85,7 @@ public class CheckoutCliente extends JFrame {
 				
 				setVisible(false);
 				
-				/*CadastroCliente cadastrocliente = new CadastroCliente();
+				/*TelaCheckIn cadastrocliente = new TelaCheckIn();
 				cadastrocliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);*/
 			}
 		});
@@ -95,7 +95,7 @@ public class CheckoutCliente extends JFrame {
 		contentPane.setLayout(new MigLayout("", "[300px][10px][27px][25px][50][45][179.00px][268.00px][159.00][50][176px]", "[60][61px][11px][56px][21px][33px][35][33px][21px][35][12px][33px][21px][35][39px][50][][39px]"));
 		
 		JLabel lblIcone = new JLabel("");
-		lblIcone.setIcon(new ImageIcon(CheckoutCliente.class.getResource("/imagens/LogoPI.png")));
+		lblIcone.setIcon(new ImageIcon(TelaCheckOut.class.getResource("/imagens/LogoPI.png")));
 		contentPane.add(lblIcone, "cell 4 1,alignx center");
 		
 		JLabel lblAgradecemosPorSua = new JLabel("Agradecemos por sua estadia!");
@@ -117,13 +117,13 @@ public class CheckoutCliente extends JFrame {
 		lblDataNascimento.setFont(new Font("Tahoma", Font.BOLD, 19));
 		contentPane.add(lblDataNascimento, "cell 7 4,alignx left,growy");
 		
-		textCPF = new JTextField();
-		textCPF.setToolTipText("");
-		textCPF.setForeground(new Color(1, 50, 1));
-		textCPF.setBackground(new Color(252, 251, 244));
-		textCPF.setBorder(new LineBorder(new Color(1, 50, 1)));
-		textCPF.setColumns(10);
-		contentPane.add(textCPF, "cell 3 5,grow");
+		textNumeroIdentificacao = new JTextField();
+		textNumeroIdentificacao.setToolTipText("");
+		textNumeroIdentificacao.setForeground(new Color(1, 50, 1));
+		textNumeroIdentificacao.setBackground(new Color(252, 251, 244));
+		textNumeroIdentificacao.setBorder(new LineBorder(new Color(1, 50, 1)));
+		textNumeroIdentificacao.setColumns(10);
+		contentPane.add(textNumeroIdentificacao, "cell 3 5,grow");
 		
 		TextDataNascimento = new JTextField();
 		TextDataNascimento.setForeground(new Color(1, 50, 1));
@@ -177,7 +177,7 @@ public class CheckoutCliente extends JFrame {
 				
 				textPrimeiroNome.setText(" ");
 				textSobrenome.setText(" ");				
-				textCPF.setText(" ");
+				textNumeroIdentificacao.setText(" ");
 				textDataSaida.setText("");
 				textDataSaida.setText(" ");
 				textHoraSaida.setText(" ");	
@@ -219,32 +219,32 @@ public class CheckoutCliente extends JFrame {
 				}
 				
 				String sobrenome = textSobrenome.getText();
-				if(nome.length() == 0) {
+				if(sobrenome.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Sobrenome obrigatório!");
 					return ;
 				}
 				
-				String cpf = textCPF.getText();
-				if(nome.length() == 0) {
+				String numId = textNumeroIdentificacao.getText();
+				if(numId.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo CPF obrigatório!");
 					return ;
 				}
-				cpf = cpf.replace(".", "");
-				cpf = cpf.replace("-", "");
-				Long cpfI = Long.parseLong(cpf);
+				numId = numId.replace(".", "");
+				numId = numId.replace("-", "");
+				Long numID = Long.parseLong(numId);
 				
-				MaskFormatter mascaraCPF = null;
+				MaskFormatter mascaraNumID = null;
 				try {
-					mascaraCPF = new MaskFormatter("###.###.###-##");
+					mascaraNumID = new MaskFormatter("###.###.###-##");
 				} catch (ParseException e1) {
   					e1.printStackTrace();
 					}
-						textCPF = new JFormattedTextField(mascaraCPF);
-						contentPane.add(textCPF);
-						textCPF.setColumns(15);
+						textNumeroIdentificacao = new JFormattedTextField(mascaraNumID);
+						contentPane.add(textNumeroIdentificacao);
+						textNumeroIdentificacao.setColumns(15);
 				
 						String dataNascimento = TextDataNascimento.getText();
-						if(nome.length() == 0) {
+						if(dataNascimento.length() == 0) {
 							JOptionPane.showMessageDialog(null, "Campo Data de Nascimento obrigatório!");
 							return ;
 						}
@@ -264,7 +264,7 @@ public class CheckoutCliente extends JFrame {
 								TextDataNascimento.setColumns(10);
 				
 				String dataSaida = textDataSaida.getText();
-				if(nome.length() == 0) {
+				if(dataSaida.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Data de Saída obrigatório!");
 					return ;
 				}
@@ -283,7 +283,7 @@ public class CheckoutCliente extends JFrame {
 						textDataSaida.setColumns(10);
 				
 				String horaSaida = textHoraSaida.getText();
-				if(nome.length() == 0) {
+				if(horaSaida.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Hora de Saída obrigatório!");
 					return ;
 				}
@@ -316,7 +316,7 @@ public class CheckoutCliente extends JFrame {
 				//setando os valores
 				h.setPrimeironome(nome);
 				h.setSobrenome(sobrenome);
-				h.setNumidentificacao(cpfI);
+				h.setNumidentificacao(numID);
 				h.setDatanascimento(dn);
 				
 				//instanciando a classe DAO
