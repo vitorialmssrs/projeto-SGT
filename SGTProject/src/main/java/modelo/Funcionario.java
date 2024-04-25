@@ -12,7 +12,6 @@ public class Funcionario {
 	 * INT(8) NOT NULL, `num_casa` INT(4) NOT NULL, PRIMARY KEY (`id_funcionario`));
 	 */
 	private Integer idFuncionario;
-	private String nomeCompleto;
 	private Integer numIndentificacao;
 	private String nomeCompleto;
 	private LocalDate dataNascismento;
