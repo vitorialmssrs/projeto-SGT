@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -20,16 +21,7 @@ import javax.swing.border.LineBorder;
 import controle.FuncionarioDAO;
 import modelo.Funcionario;
 
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
-import java.awt.Font;
-import java.awt.Color;
-import javax.swing.ImageIcon;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+;
 
 public class CadastroFuncionario extends JFrame {
 
@@ -38,11 +30,11 @@ public class CadastroFuncionario extends JFrame {
 	private JTextField textNomeFuncionario;
 	private JTextField textNumeroIndentificacao;
 	private JTextField textCepFuncionario;
-	private JTextField textDia;
+	private JTextField textDataFuncionario;
 	private JTextField textNumeroCasaFuncionario;
-	private JTextField textTelefoneFuncionario;
 	private JTextField textLogin;
 	private JTextField textSenha;
+	private JTextField textTelefone;
 
 	/**
 	 * Launch the application.
@@ -161,14 +153,14 @@ public class CadastroFuncionario extends JFrame {
 		lblDataFuncionario.setBounds(553, 370, 176, 21);
 		contentPane.add(lblDataFuncionario);
 
-		textDia = new JTextField();
-		textDia.setForeground(new Color(1, 50, 1));
-		textDia.setBackground(new Color(252, 251, 244));
-		textDia.setBounds(719, 373, 45, 21);
-		textDia.setBorder(new LineBorder(new Color(1, 50, 1)));
-		contentPane.add(textDia);
+		textDataFuncionario = new JTextField();
+		textDataFuncionario.setForeground(new Color(1, 50, 1));
+		textDataFuncionario.setBackground(new Color(252, 251, 244));
+		textDataFuncionario.setBounds(719, 373, 143, 21);
+		textDataFuncionario.setBorder(new LineBorder(new Color(1, 50, 1)));
+		contentPane.add(textDataFuncionario);
 
-		textDia.setColumns(10);
+		textDataFuncionario.setColumns(10);
 
 		JLabel lblNumeroFuncionario = new JLabel("Número:");
 		lblNumeroFuncionario.setForeground(new Color(1, 50, 1));
@@ -208,9 +200,7 @@ public class CadastroFuncionario extends JFrame {
 				textNomeFuncionario.setText(" ");
 				textNumeroIndentificacao.setText(" ");
 				textCepFuncionario.setText(" ");
-				textDia.setText(" ");
-				textMes.setText(" ");
-				textAno.setText(" ");
+				textDataFuncionario.setText(" ");
 				textNumeroCasaFuncionario.setText(" ");
 				textTelefone.setText(" ");
 				textLogin.setText(" ");
@@ -228,61 +218,62 @@ public class CadastroFuncionario extends JFrame {
 		btnCadastrar.addActionListener(new ActionListener() {
 public void actionPerformed(ActionEvent e) {
 				
-				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	
+	String nomeCompleto = textNomeFuncionario.getText();
+	String numIdentificacao = textNumeroIndentificacao.getText();
+	String telefone = textTelefone.getText();
+	String cep = textCepFuncionario.getText();
+	String numCasa = textNumeroCasaFuncionario.getText();
+	String dataNascismento = textDataFuncionario.getText();
+	String login = textLogin.getText();
+	String senha = textSenha.getText();
+	
+	//Verifica se tem alguma coisa
+	if(nomeCompleto.isEmpty() || numIdentificacao.isEmpty() || dataNascismento.isEmpty() || telefone.isEmpty() || cep.isEmpty() || numCasa.isEmpty()
+			|| login.isEmpty() || senha.isEmpty()){
+		JOptionPane.showMessageDialog(null, "Preencha todos os campos!"); // SUBSTITUIR JOPTIONPANE por TELA
+		// DE MENSAGEM
+		/* exibir uma mensagem de erro*/
+	}else {
 		
-				String nomeCompleto = textNomeFuncionario.getText();
-				String numIdentificacao = textNumeroIndentificacao.getText();
-				String telefone = textTelefoneFuncionario.getText();
-				String cep = textCepFuncionario.getText();
-				String numCasa = textNumeroCasaFuncionario.getText();
-				String dataNascismento = textDataFuncionario.getText();
-				String login = textLogin.getText();
-				String senha = textSenha.getText();
-				
-				//Verifica se tem alguma coisa
-				if(nomeCompleto.isEmpty() || numIdentificacao.isEmpty() || dataNascismento.isEmpty() || telefone.isEmpty() || cep.isEmpty() || numCasa.isEmpty() 
-						|| login.isEmpty() || senha.isEmpty()){
-					JOptionPane.showMessageDialog(null, "Preencha todos os campos!"); // SUBSTITUIR JOPTIONPANE por TELA 
-					// DE MENSAGEM 
-					/* exibir uma mensagem de erro*/
-				}else {
-					
-					int numIndentificacaoI = Integer.valueOf(numIdentificacao);
-					int cepI = Integer.valueOf(cep);
-					int numCasaI = Integer.valueOf(numCasa);
-					LocalDate dataNascismentoI = LocalDate.parse(dataNascismento, formatter);
-					
-				//Instanciar o OBJETO do cadastro 
-				Funcionario f = new Funcionario();
-				
-				//Setar valores digitados nos atributos do OBJETO
-			    f.setNumIndentificacao(numIndentificacaoI);
-			    f.setNomeCompleto(nomeCompleto);
-			    f.setDataNascismento(dataNascismentoI);
-				f.setTelefone(telefone);
-				f.setCep(cepI);
-				f.setNumCasa(numCasaI);
-				f.setLogin(login);
-				f.setSenha(senha);
-				
-				//Instanciar o DAO
-				FuncionarioDAO dao = FuncionarioDAO.getInstancia();
-			
-				// Fazer a INSERÇÃO 
-				int valida = dao.inserirFuncionario(f); 
-				if (valida == 1) { 
-					JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!"); // SUBSTITUIR JOPTIONPANE por 
-																					// TELA DE MENSAGEM 
-				} else { 
-					JOptionPane.showMessageDialog(null, "Erro ao cadastrar!"); // SUBSTITUIR JOPTIONPANE por TELA DE 
-																				// MENSAGEM 
-				} 
-					
-				}
-			}
+		int numIndentificacaoI = Integer.valueOf(numIdentificacao);
+		int cepI = Integer.valueOf(cep);
+		int numCasaI = Integer.valueOf(numCasa);
+		LocalDate dataNascismentoI = LocalDate.parse(dataNascismento, formatter);
+		
+	//Instanciar o OBJETO do cadastro
+	Funcionario f = new Funcionario();
+	
+	//Setar valores digitados nos atributos do OBJETO
+    f.setNumIndentificacao(numIndentificacaoI);
+    f.setNomeCompleto(nomeCompleto);
+    f.setDataNascismento(dataNascismentoI);
+	f.setTelefone(telefone);
+	f.setCep(cepI);
+	f.setNumCasa(numCasaI);
+	f.setLogin(login);
+	f.setSenha(senha);
+	
+	//Instanciar o DAO
+	FuncionarioDAO dao = FuncionarioDAO.getInstancia();
 
-		});
-		contentPane.add(btnCadastrar);
+	// Fazer a INSERÇÃO
+	int valida = dao.inserirFuncionario(f);
+	if (valida == 1) {
+		JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!"); // SUBSTITUIR JOPTIONPANE por
+																		// TELA DE MENSAGEM
+	} else {
+		JOptionPane.showMessageDialog(null, "Erro ao cadastrar!"); // SUBSTITUIR JOPTIONPANE por TELA DE
+																	// MENSAGEM
+	}
+		
+	}
+}
+});
+contentPane.add(btnCadastrar);
+
+
 
 		btnCadastrar.setBackground(new Color(66, 142, 66));
 		btnCadastrar.setForeground(new Color(252, 251, 244));

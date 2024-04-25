@@ -5,7 +5,6 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -30,9 +29,10 @@ public class FuncionarioDAO {
 		return instancia;
 	}
 
-	public int inserirFuncionario(Funcionario fun) {
+	public int inserirFuncionario(Funcionario end) {
 
 		String SQL = "INSERT INTO funcionarios (login, senha, num_identificacao, nome_completo, data_nascimento, telefone, cep, num_casa) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
 
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
@@ -40,8 +40,7 @@ public class FuncionarioDAO {
 		int chavePrimariaGerada = Integer.MIN_VALUE;
 
 		try {
-			PreparedStatement ps = conBD.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
-
+			PreparedStatement ps = conBD.prepareStatement(SQL);
 			ps.setString(1, end.getLogin());
 			ps.setString(2, end.getSenha());
 			ps.setInt(3, end.getNumIndentificacao());
@@ -93,7 +92,7 @@ public class FuncionarioDAO {
 				f.setSenha(Senha);
 				f.setNumIndentificacao(NumIndentificacao);
 				f.setNomeCompleto(NomeCompleto);
-				f.setDataNascimento(DataNascismento);
+				f.setDataNascismento(DataNascismento);
 				f.setTelefone(Telefone);
 				f.setCep(Cep);
 				f.setNumCasa(NumCasa);
@@ -173,7 +172,7 @@ public class FuncionarioDAO {
 				f.setSenha(Senha);
 				f.setNumIndentificacao(NumIndentificacao);
 				f.setNomeCompleto(NomeCompleto);
-				f.setDataNascimento(DataNascismento);
+				f.setDataNascismento(DataNascismento);
 				f.setTelefone(Telefone);
 				f.setCep(Cep);
 				f.setNumCasa(NumCasa);
