@@ -29,7 +29,7 @@ import javax.swing.ImageIcon;
 import java.awt.Toolkit;
 
 
-public class CadastroCliente extends JFrame {
+public class TelaCheckIn extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -64,8 +64,8 @@ public class CadastroCliente extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public CadastroCliente() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(CadastroCliente.class.getResource("/imagens/LogoPI.png")));
+	public TelaCheckIn() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(TelaCheckIn.class.getResource("/imagens/LogoPI.png")));
 		setBackground(new Color(255, 255, 245));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1920, 1080);
@@ -202,6 +202,9 @@ public class CadastroCliente extends JFrame {
 			}
 		});
 		
+	
+
+		
 		btnLimpar_info_cliente.setForeground(new Color(252, 251, 244));
 		btnLimpar_info_cliente.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnLimpar_info_cliente.setBackground(new Color(109, 164, 109));
@@ -243,6 +246,8 @@ public class CadastroCliente extends JFrame {
 					JOptionPane.showMessageDialog(null, "Campo CPF obrigatório!");
 					return ;
 				}
+				cpf = cpf.replace(".", "");
+				cpf = cpf.replace("-", "");
 				
 				
 				MaskFormatter mascaraCPF = null;
@@ -263,7 +268,7 @@ public class CadastroCliente extends JFrame {
 				
 		        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
 
-				LocalDate dn = LocalDate.parse(dataNascimento, formatter);
+
 				
 				MaskFormatter mascaraDataNascimento = null;
 				try {
@@ -274,7 +279,7 @@ public class CadastroCliente extends JFrame {
 				textDataNascimento = new JFormattedTextField(mascaraDataNascimento);
 						contentPane.add(textDataNascimento);
 						textDataNascimento.setColumns(10);
-				
+								
 				String dataEntrada = textDataEntrada.getText();
 				if(nome.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Data de Entrada obrigatório!");
@@ -306,14 +311,12 @@ public class CadastroCliente extends JFrame {
 						textHoraEntrada = new JFormattedTextField(mascaraHoraEntrada);
 						contentPane.add(textHoraEntrada);
 						textHoraEntrada.setColumns(5);
-						
 				
 				String telefone = textTelefone.getText();
 				if(telefone.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Telefone obrigatório!");
 					return ;
 				}
-				
 				String email = textEmail.getText();
 				if(email.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Email obrigatório!");
@@ -326,39 +329,37 @@ public class CadastroCliente extends JFrame {
 				}
 				int senhai = Integer.parseInt(senha);
 				
-				cpf = cpf.replace(".", "");
-				cpf = cpf.replace("-", "");
-			
+				LocalDate dn = LocalDate.parse(dataNascimento, formatter);
 				LocalDate dtEntrada = LocalDate.parse(dataEntrada, formatter);
 				DateTimeFormatter formattertime = DateTimeFormatter.ofPattern("HH:mm");
 
 				LocalTime hrEntrada = LocalTime.parse(horaEntrada,formattertime);
 				
-				Hospedagem hospedagem = new Hospedagem();
-				
-				hospedagem.setDataEntrada(dtEntrada);
-				hospedagem.setHoraEntrada(hrEntrada);
-				
-				HospedagemDAO hospedagemdao = new HospedagemDAO();
-				
-				hospedagemdao.insertHospedagem(hospedagem);
 				
 				//cricao de objeto 
-				Hospede h = new Hospede();
+				Hospede hospede = new Hospede();
 				
 				//setando os valores
-				h.setPrimeironome(nome);
-				h.setSobrenome(sobrenome);
-				h.setNumidentificacao(cpf);
-				h.setDatanascimento(dn);
-				h.setTelefone(telefone);
-				h.setEmail(email);
-				h.setSenha(senhai);
+				hospede.setPrimeironome(nome);
+				hospede.setSobrenome(sobrenome);
+				hospede.setNumidentificacao(cpf);
+				hospede.setDatanascimento(dn);
+				hospede.setTelefone(telefone);
+				hospede.setEmail(email);
+				hospede.setSenha(senhai);
 				
 				//instanciando a classe DAO
 				HospedeDAO dao = new HospedeDAO();
 				///inserindo na classe 
-				dao.insertHospede(h);
+				int id = dao.insertHospede(hospede);
+				hospede.setIdcliente(id);
+				
+				Hospedagem hospedagem = new Hospedagem();
+				hospedagem.setDataEntrada(dtEntrada);
+				hospedagem.setHoraEntrada(hrEntrada);
+				hospedagem.setHospede(hospede);
+				HospedagemDAO hospedagemdao = new HospedagemDAO();
+				hospedagemdao.insertHospedagem(hospedagem);
 				
 				AvisoCheckInHospede frame = new AvisoCheckInHospede();
 				frame.setVisible(true);
@@ -378,8 +379,10 @@ public class CadastroCliente extends JFrame {
 		JButton btnSair_tela_cad_Cliente = new JButton("<- | Sair");
 		btnSair_tela_cad_Cliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				setVisible(false);
+				dispose();
+				FuncionalidadeCliente frame = new FuncionalidadeCliente();
+				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				frame.setVisible(true);
 				
 			}
 		});
@@ -403,7 +406,7 @@ public class CadastroCliente extends JFrame {
 		txtSenha.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(CadastroCliente.class.getResource("/imagens/LogoPI.png")));
+		lblNewLabel.setIcon(new ImageIcon(TelaCheckIn.class.getResource("/imagens/LogoPI.png")));
 		lblNewLabel.setBounds(437, 62, 145, 128);
 		contentPane.add(lblNewLabel);
 		
@@ -436,6 +439,16 @@ public class CadastroCliente extends JFrame {
 		textEmail.setBackground(new Color(252, 251, 244));
 		textEmail.setBounds(811, 423, 404, 29);
 		contentPane.add(textEmail);
+		
+		textPrimeiroNome.setText("Otavio");
+		textSobrenome.setText("Silva");
+		textCPF.setText("123.456.789-45");
+		textDataNascimento.setText("20/01/2024");
+		textDataEntrada.setText("25/04/2024");
+		textHoraEntrada.setText("15:00");
+		txtSenha.setText("12345656");	
+		textTelefone.setText("(47) 98456-1425");
+		textEmail.setText("jvdjhfdj@gmail.com");
 	}
 
 	/**criado para ser adicionado em hospede

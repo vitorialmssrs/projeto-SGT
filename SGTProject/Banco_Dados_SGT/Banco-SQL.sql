@@ -5,6 +5,7 @@ DROP DATABASE IF EXISTS mydb;
 
 CREATE DATABASE IF NOT EXISTS mydb;
 
+
 USE mydb;
 
 -- -----------------------------------------------------
@@ -85,7 +86,7 @@ DROP TABLE IF EXISTS hospedagens;
 CREATE TABLE IF NOT EXISTS hospedagens (
   num_quarto INT(3) NOT NULL,
   DataEntrada DATE NOT NULL,
-  DataSaida DATE ,
+  DataSaida DATE,
   HoraEntrada TIME NOT NULL,
   HoraSaida TIME,
   clientes_id_cliente INT(11) NOT NULL,
