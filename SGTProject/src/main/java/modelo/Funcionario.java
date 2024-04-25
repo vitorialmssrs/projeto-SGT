@@ -44,11 +44,11 @@ public class Funcionario {
 	}
 
 	public LocalDate getDataNascimento() {
-		return dataNascimento;
+		return dataNascismento;
 	}
 
 	public void setDataNascimento(LocalDate dataNascimento) {
-		this.dataNascimento = dataNascimento;
+		this.dataNascismento = dataNascimento;
 	}
 	public LocalDate getDataNascismento() {
 		return dataNascismento;

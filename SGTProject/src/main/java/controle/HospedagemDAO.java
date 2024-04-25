@@ -23,7 +23,7 @@ public class HospedagemDAO {
 	}
 
 	public int insertHospedagem(Hospedagem end) {
-		String SQL = "INSERT INTO hospedagem (DataEntrada, HoraEntrada, clientes_id_cliente) VALUES (?,?,?)";
+		String SQL = "INSERT INTO hospedagens (num_quarto, DataEntrada, HoraEntrada, clientes_id_cliente) VALUES (?,?,?,?)";
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
 
@@ -32,9 +32,9 @@ public class HospedagemDAO {
 		try {
 			PreparedStatement ps = conBD.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
 
-			ps.setDate(1, java.sql.Date.valueOf(end.getDataEntrada()));
-			ps.setTime(2, java.sql.Time.valueOf(end.getHoraEntrada()));
-			ps.setInt(3, end.getHospede().getIdcliente());
+			ps.setDate(2, java.sql.Date.valueOf(end.getDataEntrada()));
+			ps.setTime(3, java.sql.Time.valueOf(end.getHoraEntrada()));
+			ps.setInt(4, end.getHospede().getIdcliente());
 			ps.executeUpdate();
 			ResultSet rs = ps.getGeneratedKeys();
 			if (rs.next()) {
@@ -52,7 +52,7 @@ public class HospedagemDAO {
 
 	public ArrayList<Hospedagem> listarHospedagem() {
 		ArrayList<Hospedagem> hospedagem = new ArrayList<Hospedagem>();
-		String SQL = "SELECT * FROM hospedagem";
+		String SQL = "SELECT * FROM hospedagens";
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
 
@@ -87,7 +87,7 @@ public class HospedagemDAO {
 
 	public boolean atualizarHospedagem(Hospedagem end) {
 		// DataEntrada,DataSaida,HoraEntrada,HoraSaida
-		String SQL = "UPDATE hospedagem SET DataEntrada = ?, DataSaida = ?, HoraEntrada = ?, HoraSaida = ? WHERE num_quarto = ?";
+		String SQL = "UPDATE hospedagens SET DataEntrada = ?, DataSaida = ?, HoraEntrada = ?, HoraSaida = ? WHERE num_quarto = ?";
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
 		int retorno = 0;
@@ -114,7 +114,7 @@ public class HospedagemDAO {
 
 	public boolean removerHospedagem(Hospedagem end) {
 
-		String SQL = "DELETE FROM hospedagem SET DataEntrada = ?, DataSaida = ?, HoraEntrada = ?, HoraSaida = ? WHERE num_quarto = ?"; // verificar
+		String SQL = "DELETE FROM hospedagens SET DataEntrada = ?, DataSaida = ?, HoraEntrada = ?, HoraSaida = ? WHERE num_quarto = ?"; // verificar
 		Conexao con = Conexao.getInstancia();
 
 		Connection conBD = con.conectar();
