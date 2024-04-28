@@ -28,7 +28,7 @@ public class FuncionalidadeCliente extends JFrame {
 			public void run() {
 				try {
 					FuncionalidadeCliente frame = new FuncionalidadeCliente();
-					frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -80,7 +80,7 @@ public class FuncionalidadeCliente extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				TelaCheckIn cadastrocliente = new TelaCheckIn();
-				cadastrocliente.setExtendedState(cadastrocliente.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+				cadastrocliente.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				cadastrocliente.setVisible(true);
 				cadastrocliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}
@@ -95,7 +95,7 @@ public class FuncionalidadeCliente extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				CheckoutCliente checkoutcliente = new CheckoutCliente();
-				checkoutcliente.setExtendedState(checkoutcliente.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+				checkoutcliente.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				checkoutcliente.setVisible(true);
 				checkoutcliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}
@@ -116,6 +116,7 @@ public class FuncionalidadeCliente extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				TelaInicial telaInicial = new TelaInicial();
+				telaInicial.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				telaInicial.setVisible(true);
 			}
 		});

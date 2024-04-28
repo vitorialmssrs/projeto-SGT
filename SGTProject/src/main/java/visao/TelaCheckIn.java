@@ -373,7 +373,7 @@ public class TelaCheckIn extends JFrame {
 		btnCadastro_Cliente.setBackground(new Color(66, 142, 66));
 		btnCadastro_Cliente.setForeground(new Color(252, 251, 244));
 		btnCadastro_Cliente.setFont(new Font("Tahoma", Font.BOLD, 17));
-		btnCadastro_Cliente.setBounds(813, 638, 176, 39);
+		btnCadastro_Cliente.setBounds(739, 638, 176, 39);
 		contentPane.add(btnCadastro_Cliente);
 		
 		JButton btnSair_tela_cad_Cliente = new JButton("<- | Sair");
@@ -442,17 +442,39 @@ public class TelaCheckIn extends JFrame {
 		
 		textPrimeiroNome.setText("Otavio");
 		textSobrenome.setText("Silva");
-		textCPF.setText("123.456.789-45");
+		textCPF.setText("12345678945");
 		textDataNascimento.setText("20/01/2024");
 		textDataEntrada.setText("25/04/2024");
 		textHoraEntrada.setText("15:00");
 		txtSenha.setText("12345656");	
 		textTelefone.setText("(47) 98456-1425");
 		textEmail.setText("jvdjhfdj@gmail.com");
+		
+		JButton btnExcluirCadastro = new JButton("Excluir");
+		btnExcluirCadastro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String numidentificacao = textCPF.getText();
+				String senha = txtSenha.getText();
+				
+				if(!numidentificacao.isEmpty() || !senha.isEmpty()) {
+					Integer senhai = Integer.parseInt(senha);
+					HospedeDAO hospededao = HospedeDAO.getInstancia();
+					
+					int retorno = hospededao.removerHospede(numidentificacao, senhai);
+					if(retorno == 0) {
+						JOptionPane.showMessageDialog(null, "Erro ao Excluir");
+					}else{
+						JOptionPane.showMessageDialog(null, "Exclussão Sucedida");
+					}
+				}
+			}
+		});
+		btnExcluirCadastro.setForeground(new Color(252, 251, 244));
+		btnExcluirCadastro.setFont(new Font("Tahoma", Font.BOLD, 17));
+		btnExcluirCadastro.setBackground(new Color(242, 29, 68));
+		btnExcluirCadastro.setBounds(1079, 638, 176, 39);
+		contentPane.add(btnExcluirCadastro);
 	}
 
-	/**criado para ser adicionado em hospede
-	 * 
-	 * @param end
-	 */
 }
