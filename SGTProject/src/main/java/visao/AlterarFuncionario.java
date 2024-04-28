@@ -23,7 +23,7 @@ import modelo.Funcionario;
 
 ;
 
-public class CadastroFuncionario extends JFrame {
+public class AlterarFuncionario extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -43,7 +43,7 @@ public class CadastroFuncionario extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CadastroFuncionario frame = new CadastroFuncionario();
+					AlterarFuncionario frame = new AlterarFuncionario();
 					frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -56,7 +56,7 @@ public class CadastroFuncionario extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public CadastroFuncionario() {
+	public AlterarFuncionario() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1920, 1080);
 		contentPane = new JPanel();
@@ -73,16 +73,16 @@ public class CadastroFuncionario extends JFrame {
 		lblCaroFuncionario.setFont(new Font("Tahoma", Font.BOLD, 52));
 		contentPane.add(lblCaroFuncionario);
 
-		JLabel lbl_Insira_Informacoes_Cadastro = new JLabel("Insira as informações para cadastro: ");
+		JLabel lbl_Insira_Informacoes_Cadastro = new JLabel("Verifique sua informações, caso nescessário altere as informações");
 		lbl_Insira_Informacoes_Cadastro.setForeground(new Color(1, 50, 1));
 		lbl_Insira_Informacoes_Cadastro.setBackground(new Color(1, 50, 1));
 		lbl_Insira_Informacoes_Cadastro.setFont(new Font("Tahoma", Font.PLAIN, 27));
-		lbl_Insira_Informacoes_Cadastro.setBounds(553, 115, 474, 31);
+		lbl_Insira_Informacoes_Cadastro.setBounds(553, 115, 875, 31);
 		contentPane.add(lbl_Insira_Informacoes_Cadastro);
 
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setIcon(new ImageIcon(
-				CadastroFuncionario.class.getResource("/imagens/Châteu_Imperial-removebg-preview 1.png")));
+				AlterarFuncionario.class.getResource("/imagens/Châteu_Imperial-removebg-preview 1.png")));
 		lblLogo.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblLogo.setBounds(33, 185, 486, 451);
 		contentPane.add(lblLogo);
@@ -211,75 +211,8 @@ public class CadastroFuncionario extends JFrame {
 		btnLimpar.setForeground(new Color(252, 251, 244));
 		btnLimpar.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnLimpar.setBackground(new Color(109, 164, 109));
-		btnLimpar.setBounds(553, 714, 176, 39);
+		btnLimpar.setBounds(725, 714, 176, 39);
 		contentPane.add(btnLimpar);
-
-		JButton btnCadastrar = new JButton("Cadastrar");
-		btnCadastrar.addActionListener(new ActionListener() {
-public void actionPerformed(ActionEvent e) {
-				
-	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-	
-	String nomeCompleto = textNomeFuncionario.getText();
-	String numIdentificacao = textNumeroIndentificacao.getText();
-	String telefone = textTelefone.getText();
-	String cep = textCepFuncionario.getText();
-	String numCasa = textNumeroCasaFuncionario.getText();
-	String dataNascismento = textDataFuncionario.getText();
-	String login = textLogin.getText();
-	String senha = textSenha.getText();
-	
-	//Verifica se tem alguma coisa
-	if(nomeCompleto.isEmpty() || numIdentificacao.isEmpty() || dataNascismento.isEmpty() || telefone.isEmpty() || cep.isEmpty() || numCasa.isEmpty()
-			|| login.isEmpty() || senha.isEmpty()){
-		JOptionPane.showMessageDialog(null, "Preencha todos os campos!"); // SUBSTITUIR JOPTIONPANE por TELA
-		// DE MENSAGEM
-		/* exibir uma mensagem de erro*/
-	}else {
-		
-		int numIndentificacaoI = Integer.valueOf(numIdentificacao);
-		int cepI = Integer.valueOf(cep);
-		int numCasaI = Integer.valueOf(numCasa);
-		LocalDate dataNascismentoI = LocalDate.parse(dataNascismento, formatter);
-		
-	//Instanciar o OBJETO do cadastro
-	Funcionario f = new Funcionario();
-	
-	//Setar valores digitados nos atributos do OBJETO
-    f.setNumIndentificacao(numIndentificacaoI);
-    f.setNomeCompleto(nomeCompleto);
-    f.setDataNascismento(dataNascismentoI);
-	f.setTelefone(telefone);
-	f.setCep(cepI);
-	f.setNumCasa(numCasaI);
-	f.setLogin(login);
-	f.setSenha(senha);
-	
-	//Instanciar o DAO
-	FuncionarioDAO dao = FuncionarioDAO.getInstancia();
-
-	// Fazer a INSERÇÃO
-	int valida = dao.inserirFuncionario(f);
-	if (valida == 1) {
-		JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!"); // SUBSTITUIR JOPTIONPANE por
-																		// TELA DE MENSAGEM
-	} else {
-		JOptionPane.showMessageDialog(null, "Erro ao cadastrar!"); // SUBSTITUIR JOPTIONPANE por TELA DE
-																	// MENSAGEM
-	}
-		
-	}
-}
-});
-contentPane.add(btnCadastrar);
-
-
-
-		btnCadastrar.setBackground(new Color(66, 142, 66));
-		btnCadastrar.setForeground(new Color(252, 251, 244));
-		btnCadastrar.setFont(new Font("Tahoma", Font.BOLD, 17));
-		btnCadastrar.setBounds(788, 714, 176, 39);
-		contentPane.add(btnCadastrar);
 
 		JButton btnSair = new JButton("<- | Sair");
 		btnSair.addActionListener(new ActionListener() {
@@ -321,5 +254,73 @@ contentPane.add(btnCadastrar);
 		contentPane.add(textSenha);
 		textSenha.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textSenha.setColumns(10);
+		
+		JButton btnNewButton = new JButton("ALTERAR");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+				
+				String nomeCompleto = textNomeFuncionario.getText();
+				String numIdentificacao = textNumeroIndentificacao.getText();
+				String telefone = textTelefone.getText();
+				String cep = textCepFuncionario.getText();
+				String numCasa = textNumeroCasaFuncionario.getText();
+				String dataNascismento = textDataFuncionario.getText();
+				String login = textLogin.getText();
+				String senha = textSenha.getText();
+				
+				//Verifica se tem alguma coisa
+				if(nomeCompleto.isEmpty() || numIdentificacao.isEmpty() || dataNascismento.isEmpty() || telefone.isEmpty() || cep.isEmpty() || numCasa.isEmpty()
+						|| login.isEmpty() || senha.isEmpty()){
+					JOptionPane.showMessageDialog(null, "Preencha todos os campos!"); // SUBSTITUIR JOPTIONPANE por TELA
+					// DE MENSAGEM
+					/* exibir uma mensagem de erro*/
+				}else {
+					
+					int numIndentificacaoI = Integer.valueOf(numIdentificacao);
+					int cepI = Integer.valueOf(cep);
+					int numCasaI = Integer.valueOf(numCasa);
+					LocalDate dataNascismentoI = LocalDate.parse(dataNascismento, formatter);
+					
+					FuncionarioDAO funcioDAO = FuncionarioDAO.getInstancia();
+					
+					// Cria um novo obj com os novos valores atualizados
+					Funcionario funcionarioAtualizado = new Funcionario();
+					funcionarioAtualizado.setNumIndentificacao(numIndentificacaoI);
+					funcionarioAtualizado.setNomeCompleto(nomeCompleto);
+					funcionarioAtualizado.setDataNascismento(dataNascismentoI);
+					funcionarioAtualizado.setTelefone(telefone);
+					funcionarioAtualizado.setCep(cepI);
+					funcionarioAtualizado.setNumCasa(numCasaI);
+					funcionarioAtualizado.setLogin(login);
+					funcionarioAtualizado.setSenha(senha);
+	
+			/*	// Atualiza no banco pegando o retorno
+				int retorno = endDAO.atualizarEndereco(enderecoAtualizado);
+
+				if (retorno == 0) {
+					// mensagem erro
+				} else {
+					// mensagem de sucesso
+				}*/
+				
+				
+					// Atualiza no banco pegando o retorno
+					boolean sucesso = funcioDAO.atualizarFuncionario(funcionarioAtualizado);
+					if (!sucesso) {
+					    JOptionPane.showMessageDialog(null, "Atualização ocorreu um Erro!");
+					} else {
+					    JOptionPane.showMessageDialog(null, "Atualização ocorreu com Sucesso!");
+					}
+				}	
+			}
+		});
+		
+		btnNewButton.setBackground(new Color(61, 115, 84));
+		btnNewButton.setForeground(new Color(252, 251, 244));
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 17));
+		btnNewButton.setBounds(960, 717, 176, 39);
+		contentPane.add(btnNewButton);
 	}
 }

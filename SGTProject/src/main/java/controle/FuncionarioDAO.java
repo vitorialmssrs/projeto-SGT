@@ -118,22 +118,21 @@ public class FuncionarioDAO {
 
 	public boolean atualizarFuncionario(Funcionario end) {
 
-		String SQL = "UPDATE funcionario Set Login = ?, Senha = ?, Num_Identificacao  = ?, NomeCompleto = ?, Data_nascimento = ?, Telefone = ?, Cep = ?, NumCasa = ?  ";
+		String SQL = "UPDATE funcionarios Set login = ?, senha = ?, num_identificacao  = ?, nome_completo = ?, data_nascimento = ?, telefone = ?, cep = ?, num_casa = ?  ";
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
 		int retorno = 0;
 
 		try {
 			PreparedStatement ps = conBD.prepareStatement(SQL);
-			ps.setInt(1, end.getIdFuncionario());
-			ps.setString(2, end.getLogin());
-			ps.setString(3, end.getSenha());
-			ps.setInt(4, end.getNumIndentificacao());
-			ps.setString(5, end.getNomeCompleto());
-			ps.setDate(6, Date.valueOf(end.getDataNascismento()));
-			ps.setString(7, end.getTelefone());
-			ps.setInt(8, end.getCep());
-			ps.setInt(9, end.getNumCasa());
+			ps.setString(1, end.getLogin());
+			ps.setString(2, end.getSenha());
+			ps.setInt(3, end.getNumIndentificacao());
+			ps.setString(4, end.getNomeCompleto());
+			ps.setDate(5, Date.valueOf(end.getDataNascismento()));
+			ps.setString(6, end.getTelefone());
+			ps.setInt(7, end.getCep());
+			ps.setInt(8, end.getNumCasa());
 	
 			retorno = ps.executeUpdate();
 		} catch (Exception e) {
@@ -196,7 +195,7 @@ public class FuncionarioDAO {
 	
 	public int removerFuncionario(String login, String senha) {
 		
-		String SQL = "DELETE FROM enderecos WHERE login = ?, senha = ?";
+		String SQL = "DELETE FROM funcionarios WHERE login = ? AND senha = ?";
 		
 		Conexao con = Conexao.getInstancia(); // instanciando
 		Connection conBD = con.conectar(); // cria "ponte"
@@ -205,8 +204,8 @@ public class FuncionarioDAO {
 		try {
 		PreparedStatement ps = conBD.prepareStatement(SQL);
 		
-		ps.setString(2, login);
-		ps.setString(3, senha);
+		ps.setString(1, login);
+		ps.setString(2, senha);
 		
 		retorno = ps.executeUpdate();
 			

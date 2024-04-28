@@ -50,7 +50,7 @@ public class FuncionalidadeFuncionario extends JFrame {
 		JPanel panelOpcoes = new JPanel();
 		panelOpcoes.setBackground(new Color(227, 236, 226));
 		contentPane.add(panelOpcoes);
-		panelOpcoes.setLayout(new MigLayout("", "[100][300][150]", "[200][][100][50][200][50][200][50][200][50][150]"));
+		panelOpcoes.setLayout(new MigLayout("", "[100][300][150]", "[100][100][][150][150][150][150][150]"));
 		
 		JLabel lblCaro = new JLabel("Caro Funcionario");
 		lblCaro.setForeground(new Color(1, 50, 1));
@@ -60,7 +60,7 @@ public class FuncionalidadeFuncionario extends JFrame {
 		JLabel lblEscolha = new JLabel("Escolha uma opção de operação");
 		lblEscolha.setForeground(new Color(1, 50, 1));
 		lblEscolha.setFont(new Font("Tahoma", Font.BOLD, 30));
-		panelOpcoes.add(lblEscolha, "cell 1 2,alignx center");
+		panelOpcoes.add(lblEscolha, "cell 1 1,alignx center");
 		
 		JButton btnSolicitarLimpeza = new JButton("Solicitar Limpeza");
 		btnSolicitarLimpeza.addActionListener(new ActionListener() {
@@ -71,21 +71,21 @@ public class FuncionalidadeFuncionario extends JFrame {
 		btnSolicitarLimpeza.setBackground(new Color(81, 108, 81));
 		btnSolicitarLimpeza.setForeground(new Color(255, 255, 255));
 		btnSolicitarLimpeza.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\projeto-SGT\\SGTProject\\src\\main\\resources\\img\\Icons limpeza.png"));
-		panelOpcoes.add(btnSolicitarLimpeza, "cell 1 4,grow");
+		panelOpcoes.add(btnSolicitarLimpeza, "cell 1 3,grow");
 		
 		JButton btnSolicitarConcerto = new JButton("Solicitar Conserto");
 		btnSolicitarConcerto.setFont(new Font("Tahoma", Font.BOLD, 48));
 		btnSolicitarConcerto.setForeground(new Color(255, 255, 255));
 		btnSolicitarConcerto.setBackground(new Color(66, 142, 66));
 		btnSolicitarConcerto.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\projeto-SGT\\SGTProject\\src\\main\\resources\\img\\Icons conserto.png"));
-		panelOpcoes.add(btnSolicitarConcerto, "cell 1 6,grow");
+		panelOpcoes.add(btnSolicitarConcerto, "cell 1 4,grow");
 		
 		JButton btnAtualizarEspaco = new JButton("Atualizar Espaço");
 		btnAtualizarEspaco.setFont(new Font("Tahoma", Font.BOLD, 50));
 		btnAtualizarEspaco.setBackground(new Color(109, 164, 109));
 		btnAtualizarEspaco.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\projeto-SGT\\SGTProject\\src\\main\\resources\\img\\Icons atualizacao espaco.png"));
 		btnAtualizarEspaco.setForeground(new Color(255, 255, 255));
-		panelOpcoes.add(btnAtualizarEspaco, "cell 1 8,grow");
+		panelOpcoes.add(btnAtualizarEspaco, "cell 1 5,grow");
 		
 		JButton btnSair_1 = new JButton("Sair");
 		btnSair_1.addActionListener(new ActionListener() {
@@ -94,7 +94,7 @@ public class FuncionalidadeFuncionario extends JFrame {
 			}
 		});
 		
-		JButton btnPerfil = new JButton("Visualizar Perfil");
+		JButton btnPerfil = new JButton("Excluir Perfil");
 		btnPerfil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				RemoverVerificarFuncionario remover = new RemoverVerificarFuncionario();
@@ -103,14 +103,20 @@ public class FuncionalidadeFuncionario extends JFrame {
 				remover.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);	
 			}
 		});
+		
+		JButton btnNewButton = new JButton("Alterar Perfil");
+		btnNewButton.setForeground(new Color(252, 251, 244));
+		btnNewButton.setBackground(new Color(126, 191, 131));
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 50));
+		panelOpcoes.add(btnNewButton, "cell 1 6,grow");
 		btnPerfil.setForeground(new Color(255, 255, 255));
-		btnPerfil.setBackground(new Color(81, 180, 81));
+		btnPerfil.setBackground(new Color(61, 115, 84));
 		btnPerfil.setFont(new Font("Tahoma", Font.BOLD, 50));
-		panelOpcoes.add(btnPerfil, "cell 1 10,grow");
+		panelOpcoes.add(btnPerfil, "cell 1 7,grow");
 		btnSair_1.setIcon(new ImageIcon(FuncionalidadeFuncionario.class.getResource("/imagens/Vector sair.png")));
 		btnSair_1.setForeground(new Color(1, 50, 1));
 		btnSair_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnSair_1.setBackground(new Color(227, 236, 226));
-		panelOpcoes.add(btnSair_1, "cell 2 10,alignx center");
+		panelOpcoes.add(btnSair_1, "cell 2 7,alignx center");
 	}
 }
