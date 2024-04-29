@@ -1,7 +1,6 @@
 package visao;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -102,7 +101,7 @@ public class TelaCheckIn extends JFrame {
 		textDataEntrada = new JTextField();
 		textDataEntrada.setForeground(new Color(1, 50, 1));
 		textDataEntrada.setBackground(new Color(252, 251, 244));
-		textDataEntrada.setBounds(811, 319, 165, 29);
+		textDataEntrada.setBounds(811, 351, 165, 29);
 		textDataEntrada.setBorder(new LineBorder(new Color(1, 50, 1)));
 		contentPane.add(textDataEntrada);
 		textDataEntrada.setColumns(10);
@@ -144,7 +143,7 @@ public class TelaCheckIn extends JFrame {
 		lblDataEntrada.setForeground(new Color(1, 50, 1));
 		lblDataEntrada.setBackground(new Color(1, 50, 1));
 		lblDataEntrada.setFont(new Font("Tahoma", Font.BOLD, 19));
-		lblDataEntrada.setBounds(811, 291, 255, 21);
+		lblDataEntrada.setBounds(811, 323, 255, 21);
 		contentPane.add(lblDataEntrada);
 		
 		textPrimeiroNome = new JTextField();
@@ -158,7 +157,7 @@ public class TelaCheckIn extends JFrame {
 		textHoraEntrada = new JTextField();
 		textHoraEntrada.setForeground(new Color(1, 50, 1));
 		textHoraEntrada.setBackground(new Color(252, 251, 244));
-		textHoraEntrada.setBounds(986, 319, 165, 29);
+		textHoraEntrada.setBounds(986, 351, 165, 29);
 		textHoraEntrada.setBorder(new LineBorder(new Color(1, 50, 1)));
 		contentPane.add(textHoraEntrada);
 		
@@ -169,7 +168,7 @@ public class TelaCheckIn extends JFrame {
 		lblSenhaCad.setBackground(new Color(1, 50, 1));
 		lblSenhaCad.setForeground(new Color(1, 50, 1));
 		lblSenhaCad.setFont(new Font("Tahoma", Font.BOLD, 19));
-		lblSenhaCad.setBounds(811, 489, 340, 21);
+		lblSenhaCad.setBounds(811, 463, 340, 21);
 		contentPane.add(lblSenhaCad);
 		
 		JLabel lblCPFCliente = new JLabel("* CPF / CRNM / RNN / RNE:");
@@ -249,6 +248,7 @@ public class TelaCheckIn extends JFrame {
 				}
 				cpf = cpf.replace(".", "");
 				cpf = cpf.replace("-", "");
+				
 				
 				MaskFormatter mascaraCPF = null;
 				try {
@@ -373,7 +373,7 @@ public class TelaCheckIn extends JFrame {
 		btnCadastro_Cliente.setBackground(new Color(66, 142, 66));
 		btnCadastro_Cliente.setForeground(new Color(252, 251, 244));
 		btnCadastro_Cliente.setFont(new Font("Tahoma", Font.BOLD, 17));
-		btnCadastro_Cliente.setBounds(813, 638, 176, 39);
+		btnCadastro_Cliente.setBounds(739, 638, 176, 39);
 		contentPane.add(btnCadastro_Cliente);
 		
 		JButton btnSair_tela_cad_Cliente = new JButton("<- | Sair");
@@ -394,13 +394,13 @@ public class TelaCheckIn extends JFrame {
 		
 		JLabel lblInformacaoSenha = new JLabel("Apenas números, com no Mínimo 8 caracteres  e Sem caracteres especiais.");
 		lblInformacaoSenha.setForeground(new Color(255, 0, 0));
-		lblInformacaoSenha.setBounds(811, 512, 353, 13);
+		lblInformacaoSenha.setBounds(811, 486, 353, 13);
 		contentPane.add(lblInformacaoSenha);
 		
 		txtSenha = new JTextField();
 		txtSenha.setForeground(new Color(1, 50, 1));
 		txtSenha.setBackground(new Color(252, 251, 244));
-		txtSenha.setBounds(811, 532, 404, 29);
+		txtSenha.setBounds(811, 506, 404, 29);
 		contentPane.add(txtSenha);
 		txtSenha.setBorder(new LineBorder(new Color(1, 50, 1)));
 		txtSenha.setColumns(10);
@@ -429,7 +429,7 @@ public class TelaCheckIn extends JFrame {
 		lblEmail.setForeground(new Color(1, 50, 1));
 		lblEmail.setFont(new Font("Tahoma", Font.BOLD, 19));
 		lblEmail.setBackground(new Color(1, 50, 1));
-		lblEmail.setBounds(811, 417, 340, 21);
+		lblEmail.setBounds(811, 391, 340, 21);
 		contentPane.add(lblEmail);
 		
 		textEmail = new JTextField();
@@ -437,22 +437,44 @@ public class TelaCheckIn extends JFrame {
 		textEmail.setColumns(10);
 		textEmail.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textEmail.setBackground(new Color(252, 251, 244));
-		textEmail.setBounds(811, 449, 404, 29);
+		textEmail.setBounds(811, 423, 404, 29);
 		contentPane.add(textEmail);
 		
 		textPrimeiroNome.setText("Otavio");
 		textSobrenome.setText("Silva");
-		textCPF.setText("123.456.789-45");
+		textCPF.setText("12345678945");
 		textDataNascimento.setText("20/01/2024");
 		textDataEntrada.setText("25/04/2024");
 		textHoraEntrada.setText("15:00");
 		txtSenha.setText("12345656");	
 		textTelefone.setText("(47) 98456-1425");
 		textEmail.setText("jvdjhfdj@gmail.com");
+		
+		JButton btnExcluirCadastro = new JButton("Excluir");
+		btnExcluirCadastro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String numidentificacao = textCPF.getText();
+				String senha = txtSenha.getText();
+				
+				if(!numidentificacao.isEmpty() || !senha.isEmpty()) {
+					Integer senhai = Integer.parseInt(senha);
+					HospedeDAO hospededao = HospedeDAO.getInstancia();
+					
+					int retorno = hospededao.removerHospede(numidentificacao, senhai);
+					if(retorno == 0) {
+						JOptionPane.showMessageDialog(null, "Erro ao Excluir");
+					}else{
+						JOptionPane.showMessageDialog(null, "Exclussão Sucedida");
+					}
+				}
+			}
+		});
+		btnExcluirCadastro.setForeground(new Color(252, 251, 244));
+		btnExcluirCadastro.setFont(new Font("Tahoma", Font.BOLD, 17));
+		btnExcluirCadastro.setBackground(new Color(242, 29, 68));
+		btnExcluirCadastro.setBounds(1079, 638, 176, 39);
+		contentPane.add(btnExcluirCadastro);
 	}
 
-	/**criado para ser adicionado em hospede
-	 * 
-	 * @param end
-	 */
 }
