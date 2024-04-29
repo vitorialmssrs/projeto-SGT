@@ -50,8 +50,8 @@ public class TelaSolicitarLimpeza extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblTitulo = new JLabel("Qual espaço você deseja atualizar?");
-		lblTitulo.setBounds(449, 39, 771, 49);
+		JLabel lblTitulo = new JLabel("Qual espaço você deseja solicitar a limpeza?");
+		lblTitulo.setBounds(315, 39, 962, 49);
 		lblTitulo.setForeground(new Color(1, 50, 1));
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 40));
 		contentPane.add(lblTitulo);
