@@ -15,7 +15,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class EspacosHotel extends JFrame {
+public class TelaReservaEspacos extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -27,7 +27,7 @@ public class EspacosHotel extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					EspacosHotel frame = new EspacosHotel();
+					TelaReservaEspacos frame = new TelaReservaEspacos();
 					frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -40,7 +40,7 @@ public class EspacosHotel extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public EspacosHotel() {
+	public TelaReservaEspacos() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1920, 1080);
 		contentPane = new JPanel();
@@ -51,7 +51,7 @@ public class EspacosHotel extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblTitulo = new JLabel("Qual espaço você deseja reservar?");
-		lblTitulo.setBounds(449, 39, 696, 49);
+		lblTitulo.setBounds(449, 39, 771, 49);
 		lblTitulo.setForeground(new Color(1, 50, 1));
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 40));
 		contentPane.add(lblTitulo);
