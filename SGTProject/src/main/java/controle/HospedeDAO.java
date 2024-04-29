@@ -242,4 +242,37 @@ public class HospedeDAO {
 		}
 		return retorno;
 	}
+	
+	public Hospede buscarHospedePorCpf(String numidentificacao) {
+		String SQL = "SELECT primeiro_nome, sobrenome, data_de_nascimento FROM clientes WHERE num_identificacao = ?"; // verificar
+
+		Conexao con = Conexao.getInstancia();
+
+		Connection conBD = con.conectar();
+
+		Hospede hospede = null;
+		
+		try {
+
+			PreparedStatement ps = conBD.prepareStatement(SQL);
+
+			ps.setString(1, numidentificacao);
+			
+
+			ResultSet retorno = ps.executeQuery();
+			
+			while (retorno.next()) {
+				String pm = retorno.getString("primeiro_nome");
+				String sob = retorno.getString("sobrenome");
+				String dn = retorno.getString("data_de_nascimento");
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			con.fecharConexao();
+		}
+		
+		return hospede;
+	}
 }
