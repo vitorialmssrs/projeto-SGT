@@ -29,6 +29,8 @@ import modelo.Hospede;
 import javax.swing.ImageIcon;
 import java.awt.Toolkit;
 import net.miginfocom.swing.MigLayout;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 
 public class CheckoutCliente extends JFrame {
@@ -126,6 +128,7 @@ public class CheckoutCliente extends JFrame {
 		contentPane.add(textCPF, "cell 3 5,grow");
 		
 		TextDataNascimento = new JTextField();
+		TextDataNascimento.setEnabled(false);
 		TextDataNascimento.setForeground(new Color(1, 50, 1));
 		TextDataNascimento.setBackground(new Color(252, 251, 244));
 		TextDataNascimento.setBorder(new LineBorder(new Color(1, 50, 1)));
@@ -139,6 +142,8 @@ public class CheckoutCliente extends JFrame {
 		contentPane.add(lblNome_Cliente, "cell 3 6,grow");
 		
 		textPrimeiroNome = new JTextField();
+		textPrimeiroNome.setEnabled(false);
+		textPrimeiroNome.setEditable(false);
 		textPrimeiroNome.setForeground(new Color(1, 50, 1));
 		textPrimeiroNome.setBackground(new Color(252, 251, 244));
 		textPrimeiroNome.setBorder(new LineBorder(new Color(1, 50, 1)));
@@ -186,6 +191,8 @@ public class CheckoutCliente extends JFrame {
 		});
 		
 		textSobrenome = new JTextField();
+		textSobrenome.setEnabled(false);
+		textSobrenome.setEditable(false);
 		textSobrenome.setForeground(new Color(1, 50, 1));
 		textSobrenome.setBackground(new Color(252, 251, 244));
 		textSobrenome.setBorder(new LineBorder(new Color(1, 50, 1)));
@@ -212,119 +219,119 @@ public class CheckoutCliente extends JFrame {
  						*/
 				
 				//recebe a o conteudo que esta no Text e joga para a variavel 
-				String nome = textPrimeiroNome.getText();
-				if(nome.length() == 0) {
-					JOptionPane.showMessageDialog(null, "Campo Nome obrigatório!");
-					return ;
-				}
-				
-				String sobrenome = textSobrenome.getText();
-				if(nome.length() == 0) {
-					JOptionPane.showMessageDialog(null, "Campo Sobrenome obrigatório!");
-					return ;
-				}
-				
-				String cpf = textCPF.getText();
-				if(nome.length() == 0) {
-					JOptionPane.showMessageDialog(null, "Campo CPF obrigatório!");
-					return ;
-				}
-				cpf = cpf.replace(".", "");
-				cpf = cpf.replace("-", "");
-				Long cpfI = Long.parseLong(cpf);
-				
-				MaskFormatter mascaraCPF = null;
-				try {
-					mascaraCPF = new MaskFormatter("###.###.###-##");
-				} catch (ParseException e1) {
-  					e1.printStackTrace();
-					}
-						textCPF = new JFormattedTextField(mascaraCPF);
-						contentPane.add(textCPF);
-						textCPF.setColumns(15);
-				
-						String dataNascimento = TextDataNascimento.getText();
-						if(nome.length() == 0) {
-							JOptionPane.showMessageDialog(null, "Campo Data de Nascimento obrigatório!");
-							return ;
-						}
-						
-				        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
-
-						LocalDate dn = LocalDate.parse(dataNascimento, formatter);
-						
-						MaskFormatter mascaraDataNascimento = null;
-						try {
-							mascaraDataNascimento = new MaskFormatter("##/##/####");
-						} catch (ParseException e1) {
-		  					e1.printStackTrace();
-							}
-						TextDataNascimento = new JFormattedTextField(mascaraDataNascimento);
-								contentPane.add(TextDataNascimento);
-								TextDataNascimento.setColumns(10);
-				
-				String dataSaida = textDataSaida.getText();
-				if(nome.length() == 0) {
-					JOptionPane.showMessageDialog(null, "Campo Data de Saída obrigatório!");
-					return ;
-				}
-				DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/uuuu");
-
-				LocalDate ds = LocalDate.parse(dataSaida, formatter1);
-				
-				MaskFormatter mascaraDataSaida = null;
-				try {
-					mascaraDataSaida = new MaskFormatter("##/##/####");
-				} catch (ParseException e1) {
-  					e1.printStackTrace();
-					}
-						textDataSaida = new JFormattedTextField(mascaraDataSaida);
-						contentPane.add(textDataSaida);
-						textDataSaida.setColumns(10);
-				
-				String horaSaida = textHoraSaida.getText();
-				if(nome.length() == 0) {
-					JOptionPane.showMessageDialog(null, "Campo Hora de Saída obrigatório!");
-					return ;
-				}
-				MaskFormatter mascaraHoraSaida = null;
-				try {
-					mascaraHoraSaida = new MaskFormatter("##:##");
-				} catch (ParseException e1) {
-					e1.printStackTrace();
-					}
-				textHoraSaida = new JFormattedTextField(mascaraHoraSaida);
-						contentPane.add(textHoraSaida);
-						textHoraSaida.setColumns(5);
-			
-						
-				//LocalDate dtSaida = LocalDate.parse(dataSaida);
-				LocalTime hrSaida = LocalTime.parse(horaSaida);
-				
-				Hospedagem hospedagem = new Hospedagem();
-				
-				hospedagem.setDataSaida(ds);
-				hospedagem.setHoraSaida(hrSaida);
-				
-				HospedagemDAO hospedagemdao = new HospedagemDAO();
-				
-				hospedagemdao.insertHospedagem(hospedagem);
-				
-				//cricao de objeto 
-				Hospede h = new Hospede();
-				
-				//setando os valores
-				h.setPrimeironome(nome);
-				h.setSobrenome(sobrenome);
-				h.setNumidentificacao(cpfI);
-				h.setDatanascimento(dn);
-				
-				//instanciando a classe DAO
-				HospedeDAO dao = new HospedeDAO();
-				///inserindo na classe 
-				dao.insertHospede(h);
-				
-				dispose();	
+//				String nome = textPrimeiroNome.getText();
+//				if(nome.length() == 0) {
+//					JOptionPane.showMessageDialog(null, "Campo Nome obrigatório!");
+//					return ;
+//				}
+//				
+//				String sobrenome = textSobrenome.getText();
+//				if(nome.length() == 0) {
+//					JOptionPane.showMessageDialog(null, "Campo Sobrenome obrigatório!");
+//					return ;
+//				}
+//				
+//				String cpf = textCPF.getText();
+//				if(nome.length() == 0) {
+//					JOptionPane.showMessageDialog(null, "Campo CPF obrigatório!");
+//					return ;
+//				}
+//				cpf = cpf.replace(".", "");
+//				cpf = cpf.replace("-", "");
+//				//Long cpfI = Long.parseLong(cpf);
+//				
+//				MaskFormatter mascaraCPF = null;
+//				try {
+//					mascaraCPF = new MaskFormatter("###.###.###-##");
+//				} catch (ParseException e1) {
+//  					e1.printStackTrace();
+//					}
+//						textCPF = new JFormattedTextField(mascaraCPF);
+//						contentPane.add(textCPF);
+//						textCPF.setColumns(15);
+//				
+//						String dataNascimento = TextDataNascimento.getText();
+//						if(nome.length() == 0) {
+//							JOptionPane.showMessageDialog(null, "Campo Data de Nascimento obrigatório!");
+//							return ;
+//						}
+//						
+//				        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+//
+//						LocalDate dn = LocalDate.parse(dataNascimento, formatter);
+//						
+//						MaskFormatter mascaraDataNascimento = null;
+//						try {
+//							mascaraDataNascimento = new MaskFormatter("##/##/####");
+//						} catch (ParseException e1) {
+//		  					e1.printStackTrace();
+//							}
+//						TextDataNascimento = new JFormattedTextField(mascaraDataNascimento);
+//								contentPane.add(TextDataNascimento);
+//								TextDataNascimento.setColumns(10);
+//				
+//				String dataSaida = textDataSaida.getText();
+//				if(nome.length() == 0) {
+//					JOptionPane.showMessageDialog(null, "Campo Data de Saída obrigatório!");
+//					return ;
+//				}
+//				DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+//
+//				LocalDate ds = LocalDate.parse(dataSaida, formatter1);
+//				
+//				MaskFormatter mascaraDataSaida = null;
+//				try {
+//					mascaraDataSaida = new MaskFormatter("##/##/####");
+//				} catch (ParseException e1) {
+//  					e1.printStackTrace();
+//					}
+//						textDataSaida = new JFormattedTextField(mascaraDataSaida);
+//						contentPane.add(textDataSaida);
+//						textDataSaida.setColumns(10);
+//				
+//				String horaSaida = textHoraSaida.getText();
+//				if(nome.length() == 0) {
+//					JOptionPane.showMessageDialog(null, "Campo Hora de Saída obrigatório!");
+//					return ;
+//				}
+//				MaskFormatter mascaraHoraSaida = null;
+//				try {
+//					mascaraHoraSaida = new MaskFormatter("##:##");
+//				} catch (ParseException e1) {
+//					e1.printStackTrace();
+//					}
+//				textHoraSaida = new JFormattedTextField(mascaraHoraSaida);
+//						contentPane.add(textHoraSaida);
+//						textHoraSaida.setColumns(5);
+//			
+//						
+//				//LocalDate dtSaida = LocalDate.parse(dataSaida);
+//				LocalTime hrSaida = LocalTime.parse(horaSaida);
+//				
+//				Hospedagem hospedagem = new Hospedagem();
+//				
+//				hospedagem.setDataSaida(ds);
+//				hospedagem.setHoraSaida(hrSaida);
+//				
+//				HospedagemDAO hospedagemdao = new HospedagemDAO();
+//				
+//				hospedagemdao.insertHospedagem(hospedagem);
+//				
+//				//cricao de objeto 
+//				Hospede h = new Hospede();
+//				
+//				//setando os valores
+//				h.setPrimeironome(nome);
+//				h.setSobrenome(sobrenome);
+//				h.setNumidentificacao(cpf);
+//				h.setDatanascimento(dn);
+//				
+//				//instanciando a classe DAO
+//				HospedeDAO dao = new HospedeDAO();
+//				///inserindo na classe 
+//				dao.insertHospede(h);
+//				
+//				dispose();	
 				
 			}
 		});
@@ -334,6 +341,28 @@ public class CheckoutCliente extends JFrame {
 		btnCadastro_Cliente.setBackground(new Color(66, 142, 66));
 		contentPane.add(btnCadastro_Cliente, "cell 7 15,grow");
 		contentPane.add(btnSair_tela_cad_Cliente, "cell 10 17,grow");
+		
+		textCPF.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent e) {
+		        String cpf = textCPF.getText();
+		        if(cpf.length()==0) {
+		            JOptionPane.showMessageDialog(null,"Campo de CPF obrigatório");
+		            return ;
+		        }
+		        
+		        HospedeDAO dao = new HospedeDAO();
+		        Hospede hosp = dao.buscarHospedePorCpf(cpf);
+		        
+		        if (hosp != null) {
+		            textPrimeiroNome.setText(hosp.getPrimeironome());
+		            textSobrenome.setText(hosp.getSobrenome());
+		            TextDataNascimento.setText(hosp.getDatanascimento().toString()); // Certifique-se de que o método getDatanascimento retorne um LocalDate ou algo similar que possa ser convertido para String
+		        } else {
+		            JOptionPane.showMessageDialog(null,"Cliente não encontrado!");
+		        }
+		    }
+		});
 	}
 
 	/**criado para ser adicionado em hospede
