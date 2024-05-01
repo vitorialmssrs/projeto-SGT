@@ -116,32 +116,33 @@ public class FuncionarioDAO {
 		return funcionario;
 	}
 
-	public boolean atualizarFuncionario(Funcionario end) {
-
-		String SQL = "UPDATE funcionarios Set login = ?, senha = ?, num_identificacao  = ?, nome_completo = ?, data_nascimento = ?, telefone = ?, cep = ?, num_casa = ?  ";
-		Conexao con = Conexao.getInstancia();
-		Connection conBD = con.conectar();
-		int retorno = 0;
-
-		try {
-			PreparedStatement ps = conBD.prepareStatement(SQL);
-			ps.setString(1, end.getLogin());
-			ps.setString(2, end.getSenha());
-			ps.setInt(3, end.getNumIndentificacao());
-			ps.setString(4, end.getNomeCompleto());
-			ps.setDate(5, Date.valueOf(end.getDataNascismento()));
-			ps.setString(6, end.getTelefone());
-			ps.setInt(7, end.getCep());
-			ps.setInt(8, end.getNumCasa());
-	
-			retorno = ps.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			con.fecharConexao();
-		}
-		return retorno != 0;
-
+	public boolean atualizarFuncionarioPorIndentificacao(int numIndentificacao, Funcionario funcionarioAtualizado) {
+		String SQL = "UPDATE funcionarios SET login = ?, senha = ?, nome_completo=?, data_nascimento=?, telefone=?, cep=?, num_casa=? WHERE num_identificacao=?";
+	    
+	    Conexao con = Conexao.getInstancia();
+	    Connection conBD = con.conectar();
+	    
+	    int rowsAffected = 0;
+	    try {
+	      
+	        PreparedStatement ps = conBD.prepareStatement(SQL);
+			ps.setString(1, funcionarioAtualizado.getLogin());
+			ps.setString(2, funcionarioAtualizado.getSenha());
+			ps.setString(3, funcionarioAtualizado.getNomeCompleto());
+			ps.setDate(4, Date.valueOf(funcionarioAtualizado.getDataNascismento()));
+			ps.setString(5, funcionarioAtualizado.getTelefone());
+			ps.setInt(6, funcionarioAtualizado.getCep());
+			ps.setInt(7, funcionarioAtualizado.getNumCasa());
+			ps.setInt(8, funcionarioAtualizado.getNumIndentificacao());
+			   
+	        rowsAffected = ps.executeUpdate();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        con.fecharConexao();
+	    }
+	    
+	    return rowsAffected > 0;
 	}
 
 	public Funcionario efetuaLogin(String login, String senha) {
