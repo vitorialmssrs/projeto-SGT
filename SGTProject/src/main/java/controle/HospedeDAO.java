@@ -141,7 +141,7 @@ public class HospedeDAO {
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
 
-		int rowsAffected = 0;
+		int retorno = 0;
 
 		try {
 
@@ -155,7 +155,7 @@ public class HospedeDAO {
 			ps.setInt(6, atualizarHospede.getSenha());
 			ps.setString(7, atualizarHospede.getNumidentificacao());
 			
-			rowsAffected = ps.executeUpdate();
+			retorno = ps.executeUpdate();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -163,37 +163,8 @@ public class HospedeDAO {
 			con.fecharConexao();
 		}
 
-		return rowsAffected > 0;
+		return retorno != 0;
 	}
-
-	/*public int removerHospede(Hospede end) {
-
-		String SQL = "DELETE * FROM clientes WHERE num_identificacao = ? AND senha = ?"; // verificar
-
-		Conexao con = Conexao.getInstancia();
-
-		Connection conBD = con.conectar();
-
-		int retorno = 0;
-
-		try {
-
-			PreparedStatement ps = conBD.prepareStatement(SQL);
-
-			ps.setString(1, end.getNumidentificacao());
-			ps.setInt(2, end.getSenha());
-
-			retorno = ps.executeUpdate();
-
-			
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			con.fecharConexao();
-		}
-		return retorno;
-	}*/
 
 	public int removerHospede(String numidentificacao, Integer senhai) {
 		String SQL = "DELETE FROM clientes WHERE num_identificacao = ? AND senha = ?"; // verificar

@@ -246,7 +246,7 @@ public class TelaAlterarCadastroCliente extends JFrame {
 					}
 					textTelefone = new JFormattedTextField(mascaraTelefone);
 						contentPane.add(textTelefone);
-						textTelefone.setColumns(10);
+						textTelefone.setColumns(15);
 						
 				String email = textEmail.getText();
 				if(email.length() == 0) {
@@ -263,33 +263,7 @@ public class TelaAlterarCadastroCliente extends JFrame {
 				LocalDate dn = LocalDate.parse(dataNascimento, formatter);
 				
 				
-				/* 
-
-					FuncionarioDAO funcioDAO = FuncionarioDAO.getInstancia(); 
-					 
-					// Cria um novo obj com os novos valores atualizados 
-					Funcionario funcionarioAtualizado = new Funcionario(); 
-					funcionarioAtualizado.setNumIndentificacao(numIndentificacaoI); 
-					funcionarioAtualizado.setNomeCompleto(nomeCompleto); 
-					funcionarioAtualizado.setDataNascismento(dataNascismentoI); 
-					funcionarioAtualizado.setTelefone(telefone); 
-					funcionarioAtualizado.setCep(cepI); 
-					funcionarioAtualizado.setNumCasa(numCasaI); 
-					funcionarioAtualizado.setLogin(login); 
-					funcionarioAtualizado.setSenha(senha); 
- 
-					boolean sucesso = funcioDAO.atualizarFuncionarioPorIndentificacao(numIdentificacao, funcionarioAtualizado); 
-			         
-			        // Exibir mensagem de sucesso ou erro 
-			        if (sucesso) { 
-			            JOptionPane.showMessageDialog(null, "Funcionário atualizado com sucesso!"); 
-			        } else { 
-			            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao atualizar o funcionário."); 
-			        } 
-				}	 
-			} */
 				
-			 
 				Hospede atualizarHospede = new Hospede();
 				HospedeDAO hospededao = new HospedeDAO();
 				
@@ -306,19 +280,20 @@ public class TelaAlterarCadastroCliente extends JFrame {
 				if(confirm) {
 					//Alterar mensagens para tela de erro/sucesso
 					JOptionPane.showMessageDialog(null, "Cadastro do Cliente: " + nome + " Alterado com sucesso");
+					AvisoCheckInHospede frame = new AvisoCheckInHospede();
+					frame.setVisible(true);
 							}
-				else {JOptionPane.showMessageDialog(null, "Ocorreu um erro na Alteração do Cadastro: " + nome + ", Tente novamente");}
+				else {
+					JOptionPane.showMessageDialog(null, "Ocorreu um erro na Alteração do Cadastro: " + nome + ", Tente novamente");
+							}
 				
 				int id = hospededao.insertHospede(atualizarHospede);
 				atualizarHospede.setIdcliente(id);
 				
-				AvisoCheckInHospede frame = new AvisoCheckInHospede();
-				frame.setVisible(true);
-				//JOptionPane.showMessageDialog(null, "Cadastro Realizado!");
-
-				
 				dispose();
 				
+				FuncionalidadeCliente frame2 = new FuncionalidadeCliente();
+				frame2.setVisible(true);
 			}
 		});
 		btnCadastro_Cliente.setBackground(new Color(66, 142, 66));
