@@ -141,7 +141,7 @@ public class HospedeDAO {
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
 
-		int retorno = 0;
+		int rowsAffected = 0;
 
 		try {
 
@@ -155,7 +155,7 @@ public class HospedeDAO {
 			ps.setInt(6, atualizarHospede.getSenha());
 			ps.setString(7, atualizarHospede.getNumidentificacao());
 			
-			retorno = ps.executeUpdate();
+			rowsAffected = ps.executeUpdate();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -163,7 +163,7 @@ public class HospedeDAO {
 			con.fecharConexao();
 		}
 
-		return retorno != 0;
+		return rowsAffected > 0;
 	}
 
 	public int removerHospede(String numidentificacao, Integer senhai) {

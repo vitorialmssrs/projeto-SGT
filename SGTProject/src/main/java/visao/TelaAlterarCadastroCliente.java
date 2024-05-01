@@ -184,6 +184,8 @@ public class TelaAlterarCadastroCliente extends JFrame {
 		btnCadastro_Cliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				Hospede atualizarHospede = new Hospede();
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
 				//recebe a o conteudo que esta no Text e joga para a variavel 
 				String nome = textPrimeiroNome.getText();
 				if(nome.length() == 0) {
@@ -259,13 +261,10 @@ public class TelaAlterarCadastroCliente extends JFrame {
 					return ;
 				}
 				int senhai = Integer.parseInt(senha);
-				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+				
 				LocalDate dn = LocalDate.parse(dataNascimento, formatter);
-				
-				
-				
-				Hospede atualizarHospede = new Hospede();
-				HospedeDAO hospededao = new HospedeDAO();
+
+				HospedeDAO hospededao = HospedeDAO.getInstancia();
 				
 				atualizarHospede.setPrimeironome(nome);
 				atualizarHospede.setSobrenome(sobrenome);
@@ -275,20 +274,20 @@ public class TelaAlterarCadastroCliente extends JFrame {
 				atualizarHospede.setEmail(email);
 				atualizarHospede.setSenha(senhai);
 				
+				int id = hospededao.insertHospede(atualizarHospede);
+				atualizarHospede.setIdcliente(id);
+				
 				boolean confirm = hospededao.atualizarHospedeporIdentificacao(numidentificacao, atualizarHospede);
 				
 				if(confirm) {
 					//Alterar mensagens para tela de erro/sucesso
 					JOptionPane.showMessageDialog(null, "Cadastro do Cliente: " + nome + " Alterado com sucesso");
-					AvisoCheckInHospede frame = new AvisoCheckInHospede();
-					frame.setVisible(true);
+					//AvisoCheckInHospede frame = new AvisoCheckInHospede();
+					//frame.setVisible(true);
 							}
 				else {
 					JOptionPane.showMessageDialog(null, "Ocorreu um erro na Alteração do Cadastro: " + nome + ", Tente novamente");
 							}
-				
-				int id = hospededao.insertHospede(atualizarHospede);
-				atualizarHospede.setIdcliente(id);
 				
 				dispose();
 				
