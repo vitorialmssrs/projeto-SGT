@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
@@ -29,6 +30,9 @@ import modelo.Hospede;
 import javax.swing.ImageIcon;
 import java.awt.Toolkit;
 import net.miginfocom.swing.MigLayout;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.sql.Time;
 
 
 public class TelaCheckOut extends JFrame {
@@ -118,6 +122,33 @@ public class TelaCheckOut extends JFrame {
 		contentPane.add(lblDataNascimento, "cell 7 4,alignx left,growy");
 		
 		textNumeroIdentificacao = new JTextField();
+		textNumeroIdentificacao.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent e) {
+				HospedeDAO dao = HospedeDAO.getInstancia();  
+				String numIdentificacao =  textNumeroIdentificacao.getText();
+  
+				Long numId = Long.valueOf(numIdentificacao);  
+  
+				Hospede hosp = dao.buscarHospedePorCpf(numId);
+				if(hosp!=null) {  
+					  
+					textPrimeiroNome.setText(hosp.getPrimeironome());  
+					textSobrenome.setText(hosp.getSobrenome());  
+					  
+					//conversão para data de nascimento de LocalDate para String  
+					String dataNasc = String.valueOf(hosp.getDatanascimento());  
+					TextDataNascimento.setText(dataNasc);  
+					  
+					//conversão de localDate para string  
+					//String dataSaida = String.valueOf(hosp.get);  
+					//textDataSaida.setText(dataSaida);	  
+					//ver se a senha irá se auto preencher   
+					//textSenha.setText(hosp.getSenha());  
+					 			  
+				}  
+			}
+		});
 		textNumeroIdentificacao.setToolTipText("");
 		textNumeroIdentificacao.setForeground(new Color(1, 50, 1));
 		textNumeroIdentificacao.setBackground(new Color(252, 251, 244));
@@ -157,14 +188,24 @@ public class TelaCheckOut extends JFrame {
 		lblSobrenomeCliente.setFont(new Font("Tahoma", Font.BOLD, 19));
 		contentPane.add(lblSobrenomeCliente, "cell 3 9,growx,aligny center");
 		
-		textDataSaida = new JTextField();
+		try {
+		    MaskFormatter mascaraData = new MaskFormatter("##/##/####");
+		    textDataSaida = new JFormattedTextField(mascaraData);
+		} catch (ParseException e) {
+		    e.printStackTrace();
+		}
 		textDataSaida.setForeground(new Color(1, 50, 1));
 		textDataSaida.setColumns(10);
 		textDataSaida.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textDataSaida.setBackground(new Color(252, 251, 244));
 		contentPane.add(textDataSaida, "cell 7 9,grow");
 		
-		textHoraSaida = new JTextField();
+		try {
+		    MaskFormatter mascaraHora = new MaskFormatter("##:##");
+		    textHoraSaida = new JFormattedTextField(mascaraHora);
+		} catch (ParseException e) {
+		    e.printStackTrace();
+		}
 		textHoraSaida.setForeground(new Color(1, 50, 1));
 		textHoraSaida.setColumns(10);
 		textHoraSaida.setBorder(new LineBorder(new Color(1, 50, 1)));
@@ -212,119 +253,57 @@ public class TelaCheckOut extends JFrame {
  						*/
 				
 				//recebe a o conteudo que esta no Text e joga para a variavel 
-				String nome = textPrimeiroNome.getText();
-				if(nome.length() == 0) {
-					JOptionPane.showMessageDialog(null, "Campo Nome obrigatório!");
-					return ;
-				}
 				
-				String sobrenome = textSobrenome.getText();
-				if(sobrenome.length() == 0) {
-					JOptionPane.showMessageDialog(null, "Campo Sobrenome obrigatório!");
-					return ;
-				}
-				
-				String numId = textNumeroIdentificacao.getText();
-				if(numId.length() == 0) {
-					JOptionPane.showMessageDialog(null, "Campo CPF obrigatório!");
-					return ;
-				}
-				numId = numId.replace(".", "");
-				numId = numId.replace("-", "");
-				Long numID = Long.parseLong(numId);
-				
-				MaskFormatter mascaraNumID = null;
-				try {
-					mascaraNumID = new MaskFormatter("###.###.###-##");
-				} catch (ParseException e1) {
-  					e1.printStackTrace();
-					}
-						textNumeroIdentificacao = new JFormattedTextField(mascaraNumID);
-						contentPane.add(textNumeroIdentificacao);
-						textNumeroIdentificacao.setColumns(15);
-				
-						String dataNascimento = TextDataNascimento.getText();
-						if(dataNascimento.length() == 0) {
-							JOptionPane.showMessageDialog(null, "Campo Data de Nascimento obrigatório!");
-							return ;
-						}
-						
-				        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+				// Validações de data e hora
+                String dataSaida = textDataSaida.getText();
+                if (dataSaida.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Campo Data de Saída obrigatório!");
+                    return;
+                }
 
-						LocalDate dn = LocalDate.parse(dataNascimento, formatter);
-						
-						MaskFormatter mascaraDataNascimento = null;
-						try {
-							mascaraDataNascimento = new MaskFormatter("##/##/####");
-						} catch (ParseException e1) {
-		  					e1.printStackTrace();
-							}
-						TextDataNascimento = new JFormattedTextField(mascaraDataNascimento);
-								contentPane.add(TextDataNascimento);
-								TextDataNascimento.setColumns(10);
-				
-				String dataSaida = textDataSaida.getText();
-				if(dataSaida.length() == 0) {
-					JOptionPane.showMessageDialog(null, "Campo Data de Saída obrigatório!");
-					return ;
-				}
-				DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+                String horaSaida = textHoraSaida.getText();
+                if (horaSaida.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Campo Hora de Saída obrigatório!");
+                    return;
+                }
 
-				LocalDate ds = LocalDate.parse(dataSaida, formatter1);
-				
-				MaskFormatter mascaraDataSaida = null;
-				try {
-					mascaraDataSaida = new MaskFormatter("##/##/####");
-				} catch (ParseException e1) {
-  					e1.printStackTrace();
-					}
-						textDataSaida = new JFormattedTextField(mascaraDataSaida);
-						contentPane.add(textDataSaida);
-						textDataSaida.setColumns(10);
-				
-				String horaSaida = textHoraSaida.getText();
-				if(horaSaida.length() == 0) {
-					JOptionPane.showMessageDialog(null, "Campo Hora de Saída obrigatório!");
-					return ;
-				}
-				MaskFormatter mascaraHoraSaida = null;
-				try {
-					mascaraHoraSaida = new MaskFormatter("##:##");
-				} catch (ParseException e1) {
-					e1.printStackTrace();
-					}
-				textHoraSaida = new JFormattedTextField(mascaraHoraSaida);
-						contentPane.add(textHoraSaida);
-						textHoraSaida.setColumns(5);
-			
-						
-				//LocalDate dtSaida = LocalDate.parse(dataSaida);
-				LocalTime hrSaida = LocalTime.parse(horaSaida);
-				
-				Hospedagem hospedagem = new Hospedagem();
-				
-				hospedagem.setDataSaida(ds);
-				hospedagem.setHoraSaida(hrSaida);
-				
-				HospedagemDAO hospedagemdao = new HospedagemDAO();
-				
-				hospedagemdao.insertHospedagem(hospedagem);
-				
-				//cricao de objeto 
-				Hospede h = new Hospede();
-				
-				//setando os valores
-				h.setPrimeironome(nome);
-				h.setSobrenome(sobrenome);
-				h.setNumidentificacao(numID);
-				h.setDatanascimento(dn);
+                // Conversão de data e hora
+                LocalDate dSaida;
+                try {
+                    dSaida = LocalDate.parse(dataSaida, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                } catch (DateTimeParseException ex) {
+                    JOptionPane.showMessageDialog(null, "Data de saída inválida!");
+                    return;
+                }
+
+                LocalTime hSaida;
+                try {
+                    hSaida = LocalTime.parse(horaSaida, DateTimeFormatter.ofPattern("kk:mm:ss"));
+                } catch (DateTimeParseException ex) {
+                    JOptionPane.showMessageDialog(null, "Horário de saída inválido!");
+                    return;
+                }
+                
+                //cricao de objeto 
+				Hospede hospede = new Hospede();
 				
 				//instanciando a classe DAO
 				HospedeDAO dao = new HospedeDAO();
 				///inserindo na classe 
-				dao.insertHospede(h);
-				
-				dispose();	
+				int id = dao.insertHospede(hospede);
+				hospede.setIdcliente(id);
+
+                // Criação do objeto Hospedagem
+                Hospedagem hospedagem = new Hospedagem();
+                hospedagem.setDataSaida(dSaida);
+                hospedagem.setHoraSaida(hSaida);
+
+              
+                // Inserção no banco de dados
+                HospedagemDAO hospedagemdao = new HospedagemDAO();
+                hospedagemdao.insertHospedagem(hospedagem);
+
+                dispose();	
 				
 			}
 		});

@@ -11,7 +11,7 @@ import java.sql.Date;
 
 import modelo.Hospede;
 
-public class HospedeDAO {
+public class HospedeDAO implements IHospedeDao{
 
 	private static HospedeDAO instancia;
 
@@ -218,5 +218,51 @@ public class HospedeDAO {
 			con.fecharConexao();
 		}
 		return retorno != 0;
+	}
+
+	@Override
+	public Hospede buscarHospedePorCpf(long cpf) {
+		Conexao con = Conexao.getInstancia();
+		Connection conBD = con.conectar();
+		Hospede h = null;
+		
+		String query = "SELECT * FROM clientes WHERE num_identificacao = ?";
+		
+		try {
+			PreparedStatement ps = conBD.prepareStatement(query);
+			ps.setLong(1, cpf);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				
+				h = new Hospede();
+
+				
+				String PrimeiroNome = rs.getString("primeiro_nome");
+				String Sobrenome = rs.getString("sobrenome");
+				LocalDate Datanascimento = rs.getDate("data_de_nascimento").toLocalDate();
+				String Numidentificacao = rs.getString("num_identificacao");
+				String Telefone = rs.getString("telefone");
+				String Email = rs.getString("email");
+				Integer senha = rs.getInt("senha");
+
+				h.setPrimeironome(PrimeiroNome);
+				h.setSobrenome(Sobrenome);
+				h.setNumidentificacao(Numidentificacao);
+				h.setDatanascimento(Datanascimento);
+				h.setTelefone(Telefone);
+				h.setEmail(Email);
+				h.setSenha(senha);
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			con.fecharConexao();
+		}
+		
+		return h;
 	}
 }
