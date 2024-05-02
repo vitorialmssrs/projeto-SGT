@@ -38,8 +38,10 @@ public class TelaCheckIn extends JFrame {
 	private JTextField textCPF;
 	private JTextField textPrimeiroNome;
 	private JTextField textHoraEntrada;
+	private JTextField textDataSaida;
 	private JTextField textSobrenome;
 	private JTextField txtSenha;
+	private JTextField txtHoraSaida;
 	private JTextField textTelefone;
 	private JTextField textEmail;
 
@@ -50,7 +52,7 @@ public class TelaCheckIn extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CadastroCliente frame = new CadastroCliente();
+					TelaCheckIn frame = new TelaCheckIn();
 					//sempre antes do set visible para abrir em tela cheia 
 					frame.setExtendedState(frame.getExtendedState()|JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
@@ -154,6 +156,13 @@ public class TelaCheckIn extends JFrame {
 		textPrimeiroNome.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textPrimeiroNome.setColumns(10);
 		
+		JLabel lblDataSaida = new JLabel("* Data e hora de saída:");
+		lblDataSaida.setBackground(new Color(1, 50, 1));
+		lblDataSaida.setForeground(new Color(1, 50, 1));
+		lblDataSaida.setFont(new Font("Tahoma", Font.BOLD, 19));
+		lblDataSaida.setBounds(811, 353, 232, 21);
+		contentPane.add(lblDataSaida);
+		
 		textHoraEntrada = new JTextField();
 		textHoraEntrada.setForeground(new Color(1, 50, 1));
 		textHoraEntrada.setBackground(new Color(252, 251, 244));
@@ -170,6 +179,13 @@ public class TelaCheckIn extends JFrame {
 		lblSenhaCad.setFont(new Font("Tahoma", Font.BOLD, 19));
 		lblSenhaCad.setBounds(811, 463, 340, 21);
 		contentPane.add(lblSenhaCad);
+		
+		textDataSaida = new JTextField();
+		textDataSaida.setBackground(new Color(252, 251, 244));
+		textDataSaida.setBounds(811, 379, 165, 29);
+		contentPane.add(textDataSaida);
+		textDataSaida.setBorder(new LineBorder(new Color(1, 50, 1)));
+		textDataSaida.setColumns(10);
 		
 		JLabel lblCPFCliente = new JLabel("* CPF / CRNM / RNN / RNE:");
 		lblCPFCliente.setForeground(new Color(1, 50, 1));
@@ -197,7 +213,12 @@ public class TelaCheckIn extends JFrame {
 				textDataNascimento.setText("");
 				textDataEntrada.setText("");
 				textHoraEntrada.setText("");
+				textDataSaida.setText("");
+				txtHoraSaida.setText("");
 				txtSenha.setText("");	
+				textTelefone.setText(" ");
+				textEmail.setText("");
+				
 
 			}
 		});
@@ -236,32 +257,32 @@ public class TelaCheckIn extends JFrame {
 				}
 				
 				String sobrenome = textSobrenome.getText();
-				if(nome.length() == 0) {
+				if(sobrenome.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Sobrenome obrigatório!");
 					return ;
 				}
 				
-				String cpf = textCPF.getText();
-				if(nome.length() == 0) {
+				String numId = textCPF.getText();
+				if(numId.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo CPF obrigatório!");
 					return ;
 				}
-				cpf = cpf.replace(".", "");
-				cpf = cpf.replace("-", "");
+				numId = numId.replace(".", "");
+				numId = numId.replace("-", "");
+				Long numID = Long.parseLong(numId);
 				
-				
-				MaskFormatter mascaraCPF = null;
+				MaskFormatter mascaraNumID = null;
 				try {
-					mascaraCPF = new MaskFormatter("###.###.###-##");
+					mascaraNumID = new MaskFormatter("###.###.###-##");
 				} catch (ParseException e1) {
   					e1.printStackTrace();
 					}
-						textCPF = new JFormattedTextField(mascaraCPF);
+						textCPF = new JFormattedTextField(mascaraNumID);
 						contentPane.add(textCPF);
 						textCPF.setColumns(15);
 				
 				String dataNascimento = textDataNascimento.getText();
-				if(nome.length() == 0) {
+				if(dataNascimento.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Data de Nascimento obrigatório!");
 					return ;
 				}
@@ -281,7 +302,7 @@ public class TelaCheckIn extends JFrame {
 						textDataNascimento.setColumns(10);
 								
 				String dataEntrada = textDataEntrada.getText();
-				if(nome.length() == 0) {
+				if(dataEntrada.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Data de Entrada obrigatório!");
 					return ;
 				}
@@ -296,8 +317,23 @@ public class TelaCheckIn extends JFrame {
 						contentPane.add(textDataEntrada);
 						textDataEntrada.setColumns(10);
 				
+				String dataSaida = textDataSaida.getText();
+				if(dataSaida.length() == 0) {
+					JOptionPane.showMessageDialog(null, "Campo Data de Saída obrigatório!");
+					return ;
+				}
+				MaskFormatter mascaraDataSaida = null;
+				try {
+					mascaraDataSaida = new MaskFormatter("##/##/####");
+				} catch (ParseException e1) {
+  					e1.printStackTrace();
+					}
+						textDataSaida = new JFormattedTextField(mascaraDataSaida);
+						contentPane.add(textDataSaida);
+						textDataSaida.setColumns(10);
+				
 				String horaEntrada = textHoraEntrada.getText();
-				if(nome.length() == 0) {
+				if(horaEntrada.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Hora de Entrada obrigatório!");
 					return ;
 				}
@@ -311,6 +347,12 @@ public class TelaCheckIn extends JFrame {
 						textHoraEntrada = new JFormattedTextField(mascaraHoraEntrada);
 						contentPane.add(textHoraEntrada);
 						textHoraEntrada.setColumns(5);
+						
+				String horaSaida = txtHoraSaida.getText();
+				if(horaSaida.length() == 0) {
+					JOptionPane.showMessageDialog(null, "Campo Hora de Saída obrigatório!");
+					return ;
+				}
 				
 				String telefone = textTelefone.getText();
 				if(telefone.length() == 0) {
@@ -331,22 +373,33 @@ public class TelaCheckIn extends JFrame {
 				
 				LocalDate dn = LocalDate.parse(dataNascimento, formatter);
 				LocalDate dtEntrada = LocalDate.parse(dataEntrada, formatter);
+				LocalDate dtSaida = LocalDate.parse(dataSaida, formatter);
 				DateTimeFormatter formattertime = DateTimeFormatter.ofPattern("HH:mm");
 
 				LocalTime hrEntrada = LocalTime.parse(horaEntrada,formattertime);
+				LocalTime hrSaida = LocalTime.parse(horaSaida,formattertime);
 				
+				
+				hospedagem.setDataEntrada(dtEntrada);
+				hospedagem.setDataSaida(dtSaida);
+				hospedagem.setHoraEntrada(hrEntrada);
+				hospedagem.setHoraSaida(hrSaida);
+				
+				HospedagemDAO hospedagemdao = new HospedagemDAO();
+				
+				hospedagemdao.insertHospedagem(hospedagem);
 				
 				//cricao de objeto 
 				Hospede hospede = new Hospede();
 				
 				//setando os valores
-				hospede.setPrimeironome(nome);
-				hospede.setSobrenome(sobrenome);
-				hospede.setNumidentificacao(cpf);
-				hospede.setDatanascimento(dn);
-				hospede.setTelefone(telefone);
-				hospede.setEmail(email);
-				hospede.setSenha(senhai);
+				h.setPrimeironome(nome);
+				h.setSobrenome(sobrenome);
+				h.setNumidentificacao(numID);
+				h.setDatanascimento(dn);
+				h.setTelefone(telefone);
+				h.setEmail(email);
+				h.setSenha(senhai);
 				
 				//instanciando a classe DAO
 				HospedeDAO dao = new HospedeDAO();
@@ -404,6 +457,12 @@ public class TelaCheckIn extends JFrame {
 		contentPane.add(txtSenha);
 		txtSenha.setBorder(new LineBorder(new Color(1, 50, 1)));
 		txtSenha.setColumns(10);
+		
+		txtHoraSaida = new JTextField();
+		txtHoraSaida.setBounds(986, 379, 165, 29);
+		contentPane.add(txtHoraSaida);
+		txtHoraSaida.setBorder(new LineBorder(new Color(1, 50, 1)));
+		txtHoraSaida.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(TelaCheckIn.class.getResource("/imagens/LogoPI.png")));
