@@ -27,6 +27,7 @@ import controle.HospedeDAO;
 import modelo.Hospedagem;
 import modelo.Hospede;
 
+import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
 import java.awt.Toolkit;
 import net.miginfocom.swing.MigLayout;
@@ -45,10 +46,14 @@ public class TelaCheckOut extends JFrame {
 	private JTextField textSobrenome;
 	private JTextField textHoraSaida;
 	private JTextField textDataSaida;
+	private JTextField textDataEntrada;
+	private JTextField textHoraEntrada;
+	private JTextField textNumQuarto;
+	private Hospede hosp;
 
 	/**
 	 * Launch the application.
-	 */
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -63,7 +68,7 @@ public class TelaCheckOut extends JFrame {
 			}
 		});
 	}
-
+	 */
 	/**
 	 * Create the frame.
 	 */
@@ -96,7 +101,7 @@ public class TelaCheckOut extends JFrame {
 		btnSair_tela_cad_Cliente.setForeground(new Color(252, 251, 244));
 		btnSair_tela_cad_Cliente.setBackground(new Color(1, 50, 1));
 		btnSair_tela_cad_Cliente.setFont(new Font("Tahoma", Font.BOLD, 17));
-		contentPane.setLayout(new MigLayout("", "[300px][10px][27px][25px][50][45][179.00px][268.00px][159.00][50][176px]", "[60][61px][11px][56px][21px][33px][35][33px][21px][35][12px][33px][21px][35][39px][50][][39px]"));
+		contentPane.setLayout(new MigLayout("", "[300px][10px][27px][25px,grow][50][45][179.00px][268.00px,grow][159.00,grow][50][176px]", "[60][61px][11px][56px][21px][33px][35][33px][21px][35][12px][33px][21px][35][39px][17.00][50.00][39px]"));
 		
 		JLabel lblIcone = new JLabel("");
 		lblIcone.setIcon(new ImageIcon(TelaCheckOut.class.getResource("/imagens/LogoPI.png")));
@@ -124,14 +129,18 @@ public class TelaCheckOut extends JFrame {
 		
 		textNumeroIdentificacao = new JTextField();
 		textNumeroIdentificacao.addFocusListener(new FocusAdapter() {
+			
+			
+
 			@Override
 			public void focusLost(FocusEvent e) {
 				HospedeDAO dao = HospedeDAO.getInstancia();  
 				String numIdentificacao =  textNumeroIdentificacao.getText().trim();
-  
+		        String s =((JTextField) e.getSource()).getText();   
+
 				Long numId = Long.valueOf(numIdentificacao);  
   
-				Hospede hosp = dao.buscarHospedePorCpf(numId);
+				hosp = dao.buscarHospedePorCpf(numId);
 				if(hosp!=null) {  
 					  
 					textPrimeiroNome.setText(hosp.getPrimeironome());  
@@ -139,13 +148,15 @@ public class TelaCheckOut extends JFrame {
 					  
 					//conversão para data de nascimento de LocalDate para String  
 					String dataNasc = String.valueOf(hosp.getDatanascimento());  
-					TextDataNascimento.setText(dataNasc);  
-					  
-					//conversão de localDate para string  
-					//String dataSaida = String.valueOf(hosp.get);  
-					//textDataSaida.setText(dataSaida);	  
-					//ver se a senha irá se auto preencher   
-					//textSenha.setText(hosp.getSenha());  
+					TextDataNascimento.setText(dataNasc);
+					
+					HospedagemDAO hospedagemDao = new HospedagemDAO();
+					Hospedagem hospedagem = hospedagemDao.buscarHospedagemPorHospede(hosp);
+					
+					textDataEntrada.setText(hospedagem.getDataEntrada().toString());
+					textHoraEntrada.setText(hospedagem.getHoraEntrada().toString());
+					textNumQuarto.setText(hospedagem.getNumQuarto().toString());
+					
 					 			  
 				}  
 			}
@@ -170,6 +181,11 @@ public class TelaCheckOut extends JFrame {
 		lblNome_Cliente.setFont(new Font("Tahoma", Font.BOLD, 19));
 		contentPane.add(lblNome_Cliente, "cell 3 6,grow");
 		
+		JLabel lblDataEntrada = new JLabel("* Data e hora de Entrada:");
+		lblDataEntrada.setForeground(new Color(1, 50, 1));
+		lblDataEntrada.setFont(new Font("Tahoma", Font.BOLD, 19));
+		contentPane.add(lblDataEntrada, "cell 7 6");
+		
 		textPrimeiroNome = new JTextField();
 		textPrimeiroNome.setForeground(new Color(1, 50, 1));
 		textPrimeiroNome.setBackground(new Color(252, 251, 244));
@@ -177,11 +193,26 @@ public class TelaCheckOut extends JFrame {
 		textPrimeiroNome.setColumns(10);
 		contentPane.add(textPrimeiroNome, "cell 3 7,grow");
 		
-		JLabel lblDataHoraSaida = new JLabel("* Data e hora de saída:");
-		lblDataHoraSaida.setForeground(new Color(1, 50, 1));
-		lblDataHoraSaida.setBackground(new Color(1, 50, 1));
-		lblDataHoraSaida.setFont(new Font("Tahoma", Font.BOLD, 19));
-		contentPane.add(lblDataHoraSaida, "cell 7 8,alignx left,aligny bottom");
+		try {
+		    MaskFormatter mascaraDataEntrada = new MaskFormatter("##/##/####");
+		    textDataEntrada = new JFormattedTextField(mascaraDataEntrada);
+		} catch (ParseException e) {
+		    e.printStackTrace();
+		}
+		textDataEntrada = new JTextField();
+		contentPane.add(textDataEntrada, "cell 7 7,grow");
+		textDataEntrada.setColumns(10);
+		
+		
+		try {
+		    MaskFormatter mascaraHoraEntrada = new MaskFormatter("##/##/####");
+		    textHoraEntrada = new JFormattedTextField(mascaraHoraEntrada);
+		} catch (ParseException e) {
+		    e.printStackTrace();
+		}
+		textHoraEntrada = new JTextField();
+		contentPane.add(textHoraEntrada, "cell 8 7,alignx left,growy");
+		textHoraEntrada.setColumns(10);
 		
 		JLabel lblSobrenomeCliente = new JLabel("* Sobrenome:");
 		lblSobrenomeCliente.setBackground(new Color(1, 50, 1));
@@ -189,29 +220,54 @@ public class TelaCheckOut extends JFrame {
 		lblSobrenomeCliente.setFont(new Font("Tahoma", Font.BOLD, 19));
 		contentPane.add(lblSobrenomeCliente, "cell 3 9,growx,aligny center");
 		
+		JLabel lblDataHoraSaida = new JLabel("* Data e hora de saída:");
+		lblDataHoraSaida.setForeground(new Color(1, 50, 1));
+		lblDataHoraSaida.setBackground(new Color(1, 50, 1));
+		lblDataHoraSaida.setFont(new Font("Tahoma", Font.BOLD, 19));
+		contentPane.add(lblDataHoraSaida, "cell 7 9,alignx left,aligny bottom");
+		
+		textSobrenome = new JTextField();
+		textSobrenome.setForeground(new Color(1, 50, 1));
+		textSobrenome.setBackground(new Color(252, 251, 244));
+		textSobrenome.setBorder(new LineBorder(new Color(1, 50, 1)));
+		textSobrenome.setColumns(10);
+		contentPane.add(textSobrenome, "cell 3 11,grow");
+		
+		
 		try {
-		    MaskFormatter mascaraData = new MaskFormatter("##/##/####");
-		    textDataSaida = new JFormattedTextField(mascaraData);
+		    MaskFormatter mascaraDataSaida = new MaskFormatter("##/##/####");
+		    textDataSaida = new JFormattedTextField(mascaraDataSaida);
 		} catch (ParseException e) {
 		    e.printStackTrace();
 		}
+		textDataSaida = new JFormattedTextField();
 		textDataSaida.setForeground(new Color(1, 50, 1));
 		textDataSaida.setColumns(10);
 		textDataSaida.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textDataSaida.setBackground(new Color(252, 251, 244));
-		contentPane.add(textDataSaida, "cell 7 9,grow");
+		contentPane.add(textDataSaida, "cell 7 11,grow");
 		
 		try {
-		    MaskFormatter mascaraHora = new MaskFormatter("##:##");
-		    textHoraSaida = new JFormattedTextField(mascaraHora);
+		    MaskFormatter mascaraHoraSaida = new MaskFormatter("##:##");
+		    textHoraSaida = new JFormattedTextField(mascaraHoraSaida);
 		} catch (ParseException e) {
 		    e.printStackTrace();
 		}
+		textHoraSaida = new JFormattedTextField();
 		textHoraSaida.setForeground(new Color(1, 50, 1));
 		textHoraSaida.setColumns(10);
 		textHoraSaida.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textHoraSaida.setBackground(new Color(252, 251, 244));
-		contentPane.add(textHoraSaida, "cell 8 9,alignx left,growy");
+		contentPane.add(textHoraSaida, "cell 8 11,alignx left,growy");
+		
+		JLabel lblNumQuarto = new JLabel("* Número do Quarto: ");
+		lblNumQuarto.setForeground(new Color(1, 50, 1));
+		lblNumQuarto.setFont(new Font("Tahoma", Font.BOLD, 19));
+		contentPane.add(lblNumQuarto, "cell 3 13,alignx left,aligny top");
+		
+		textNumQuarto = new JTextField();
+		contentPane.add(textNumQuarto, "cell 3 14,grow");
+		textNumQuarto.setColumns(10);
 		
 		JButton btnLimpar_info_cliente = new JButton("Limpar");
 		btnLimpar_info_cliente.addActionListener(new ActionListener() {
@@ -227,33 +283,14 @@ public class TelaCheckOut extends JFrame {
 			}
 		});
 		
-		textSobrenome = new JTextField();
-		textSobrenome.setForeground(new Color(1, 50, 1));
-		textSobrenome.setBackground(new Color(252, 251, 244));
-		textSobrenome.setBorder(new LineBorder(new Color(1, 50, 1)));
-		textSobrenome.setColumns(10);
-		contentPane.add(textSobrenome, "cell 3 11,grow");
 		btnLimpar_info_cliente.setForeground(new Color(252, 251, 244));
 		btnLimpar_info_cliente.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnLimpar_info_cliente.setBackground(new Color(109, 164, 109));
-		contentPane.add(btnLimpar_info_cliente, "cell 4 15,grow");
+		contentPane.add(btnLimpar_info_cliente, "cell 4 16,grow");
 		
 		JButton btnCadastro_Cliente = new JButton("Check-out");
 		btnCadastro_Cliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {	
-				/*Como adicionar uma mascara ao text
-				MaskFormatter mascaraTel = null;
-					try {
-      					mascaraTel = new MaskFormatter("(##) ###-###-###");
-					} catch (ParseException e) {
-      					e.printStackTrace();
- 					}
- 						textField = new JFormattedTextField(mascaraTel);
- 						contentPane.add(textField);
- 						textField.setColumns(10);
- 						*/
-				
-				//recebe a o conteudo que esta no Text e joga para a variavel 
 				
 				// Validações de data e hora
                 String dataSaida = textDataSaida.getText().trim();
@@ -285,15 +322,50 @@ public class TelaCheckOut extends JFrame {
                     JOptionPane.showMessageDialog(null, "Horário de saída inválido! O formato deve ser HH:mm");
                     return;
                 }
+                
+                String dataEntrada = textDataSaida.getText().trim();
+                if (dataEntrada.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Campo Data de Entrada obrigatório!");
+                    return;
+                }
+
+                // Conversão de data e hora
+                LocalDate dEntrada;
+                try {
+                	dEntrada = LocalDate.parse(dataEntrada, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                } catch (DateTimeParseException ex) {
+                    JOptionPane.showMessageDialog(null, "Data de entrada inválida!");
+                    return;
+                }
+                
+                String horaEntrada = textHoraSaida.getText().trim(); 
+                if (horaEntrada.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Campo Hora de entrada obrigatório!");
+                    return;
+                }
+                LocalTime hEntrada;
+                try {
+                	hEntrada = LocalTime.parse(horaEntrada, DateTimeFormatter.ofPattern("HH:mm"));
+                } catch (DateTimeParseException ex) {
+                    JOptionPane.showMessageDialog(null, "Horário de entrada inválido! O formato deve ser HH:mm");
+                    return;
+                }
 
                 // Criação do objeto Hospedagem
                 Hospedagem hospedagem = new Hospedagem();
                 hospedagem.setDataSaida(dSaida);
                 hospedagem.setHoraSaida(hSaida);
+                hospedagem.setDataEntrada(dEntrada);
+                hospedagem.setHoraEntrada(hEntrada);
+                hospedagem.setHospede(hosp);
+                
 
                 // Inserção no banco de dados
                 HospedagemDAO hospedagemdao = new HospedagemDAO();
-                hospedagemdao.insertCheckOut(hospedagem);
+                hospedagemdao.AtualizarCheckOut(hospedagem);
+                
+              
+				JOptionPane.showMessageDialog(null, "CCheck-Out realizado com sucesso!");
 
                 dispose();	
 				
@@ -303,7 +375,7 @@ public class TelaCheckOut extends JFrame {
 		btnCadastro_Cliente.setForeground(new Color(252, 251, 244));
 		btnCadastro_Cliente.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnCadastro_Cliente.setBackground(new Color(66, 142, 66));
-		contentPane.add(btnCadastro_Cliente, "cell 7 15,grow");
+		contentPane.add(btnCadastro_Cliente, "cell 7 16,grow");
 		contentPane.add(btnSair_tela_cad_Cliente, "cell 10 17,grow");
 	}
 

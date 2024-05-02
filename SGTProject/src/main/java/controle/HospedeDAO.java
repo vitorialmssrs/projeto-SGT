@@ -246,6 +246,7 @@ public class HospedeDAO implements IHospedeDao{
 				String Telefone = rs.getString("telefone");
 				String Email = rs.getString("email");
 				Integer senha = rs.getInt("senha");
+				Integer idCliente = rs.getInt("id_cliente");
 
 				h.setPrimeironome(PrimeiroNome);
 				h.setSobrenome(Sobrenome);
@@ -254,6 +255,7 @@ public class HospedeDAO implements IHospedeDao{
 				h.setTelefone(Telefone);
 				h.setEmail(Email);
 				h.setSenha(senha);
+				h.setIdcliente(idCliente);
 				
 			}
 			
