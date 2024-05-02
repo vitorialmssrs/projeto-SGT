@@ -268,16 +268,13 @@ public class TelaAlterarCadastroCliente extends JFrame {
 				
 				atualizarHospede.setPrimeironome(nome);
 				atualizarHospede.setSobrenome(sobrenome);
-				atualizarHospede.setNumidentificacao(numidentificacao);
+				atualizarHospede.setNumidentificacao(Long.parseLong(numidentificacao));
 				atualizarHospede.setDatanascimento(dn);
 				atualizarHospede.setTelefone(telefone);
 				atualizarHospede.setEmail(email);
 				atualizarHospede.setSenha(senhai);
 				
-				int id = hospededao.insertHospede(atualizarHospede);
-				atualizarHospede.setIdcliente(id);
-				
-				boolean confirm = hospededao.atualizarHospedeporIdentificacao(numidentificacao, atualizarHospede);
+				boolean confirm = hospededao.atualizarHospedeporIdentificacao(atualizarHospede);
 				
 				if(confirm) {
 					//Alterar mensagens para tela de erro/sucesso
@@ -292,6 +289,7 @@ public class TelaAlterarCadastroCliente extends JFrame {
 				dispose();
 				
 				FuncionalidadeCliente frame2 = new FuncionalidadeCliente();
+				frame2.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame2.setVisible(true);
 			}
 		});

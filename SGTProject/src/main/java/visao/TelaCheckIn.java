@@ -332,7 +332,7 @@ public class TelaCheckIn extends JFrame {
 				LocalDate dn = LocalDate.parse(dataNascimento, formatter);
 				LocalDate dtEntrada = LocalDate.parse(dataEntrada, formatter);
 				DateTimeFormatter formattertime = DateTimeFormatter.ofPattern("HH:mm");
-
+				Long cpfL = Long.parseLong(cpf);
 				LocalTime hrEntrada = LocalTime.parse(horaEntrada,formattertime);
 				
 				
@@ -342,7 +342,7 @@ public class TelaCheckIn extends JFrame {
 				//setando os valores
 				hospede.setPrimeironome(nome);
 				hospede.setSobrenome(sobrenome);
-				hospede.setNumidentificacao(cpf);
+				hospede.setNumidentificacao(cpfL);
 				hospede.setDatanascimento(dn);
 				hospede.setTelefone(telefone);
 				hospede.setEmail(email);
@@ -458,10 +458,11 @@ public class TelaCheckIn extends JFrame {
 				String senha = txtSenha.getText();
 				
 				if(!numidentificacao.isEmpty() || !senha.isEmpty()) {
+					Long numidentificacaoL = Long.parseLong(numidentificacao);
 					Integer senhai = Integer.parseInt(senha);
 					HospedeDAO hospededao = HospedeDAO.getInstancia();
 					
-					int retorno = hospededao.removerHospede(numidentificacao, senhai);
+					int retorno = hospededao.removerHospede(numidentificacaoL, senhai);
 					if(retorno == 0) {
 						JOptionPane.showMessageDialog(null, "Erro ao Excluir");
 					}else{

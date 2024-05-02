@@ -36,7 +36,7 @@ public class HospedeDAO {
 			
 			ps.setString(1, end.getPrimeironome());
 			ps.setString(2, end.getSobrenome());
-			ps.setString(3, end.getNumidentificacao());
+			ps.setLong(3, end.getNumidentificacao());
 			ps.setDate(4, Date.valueOf(end.getDatanascimento()));
 			ps.setString(5, end.getTelefone());
 			ps.setString(6, end.getEmail());
@@ -95,7 +95,7 @@ public class HospedeDAO {
 				String PrimeiroNome = rs.getString("primeiro_nome");
 				String Sobrenome = rs.getString("sobrenome");
 				LocalDate Datanascimento = rs.getDate("data_de_nascimento").toLocalDate();
-				String Numidentificacao = rs.getString("num_identificacao");
+				Long Numidentificacao = rs.getLong("num_identificacao");
 				String Telefone = rs.getString("telefone");
 				String Email = rs.getString("email");
 				Integer senha = rs.getInt("senha");
@@ -133,7 +133,7 @@ public class HospedeDAO {
 		return hospedes;
 	}
 
-	public boolean atualizarHospedeporIdentificacao(String numidentificacao, Hospede atualizarHospede) {
+	public boolean atualizarHospedeporIdentificacao(Hospede atualizarHospede) {
 
 		String SQL = "UPDATE clientes SET primeiro_nome = ?, sobrenome = ?, data_de_nascimento = ?, telefone = ?, email = ?, senha = ?, WHERE num_identificacao = ?";
 
@@ -153,7 +153,7 @@ public class HospedeDAO {
 			ps.setString(4, atualizarHospede.getTelefone());
 			ps.setString(5, atualizarHospede.getEmail());
 			ps.setInt(6, atualizarHospede.getSenha());
-			ps.setString(7, atualizarHospede.getNumidentificacao());
+			ps.setLong(7, atualizarHospede.getNumidentificacao());
 			
 			rowsAffected = ps.executeUpdate();
 
@@ -166,7 +166,7 @@ public class HospedeDAO {
 		return rowsAffected > 0;
 	}
 
-	public int removerHospede(String numidentificacao, Integer senhai) {
+	public int removerHospede(Long numidentificacaoL, Integer senhai) {
 		String SQL = "DELETE FROM clientes WHERE num_identificacao = ? AND senha = ?"; // verificar
 
 		Conexao con = Conexao.getInstancia();
@@ -179,7 +179,7 @@ public class HospedeDAO {
 
 			PreparedStatement ps = conBD.prepareStatement(SQL);
 
-			ps.setString(1, numidentificacao);
+			ps.setLong(1, numidentificacaoL);
 			ps.setInt(2, senhai);
 
 			retorno = ps.executeUpdate();

@@ -114,7 +114,7 @@ public class HospedagemDAO {
 
 	public boolean removerHospedagem(Hospedagem end) {
 
-		String SQL = "DELETE FROM hospedagens SET DataEntrada = ?, DataSaida = ?, HoraEntrada = ?, HoraSaida = ? WHERE num_quarto = ?"; // verificar
+		String SQL = "DELETE FROM hospedagens DataEntrada = ?, DataSaida = ?, HoraEntrada = ?, HoraSaida = ? WHERE num_quarto = ?"; // verificar
 		Conexao con = Conexao.getInstancia();
 
 		Connection conBD = con.conectar();
