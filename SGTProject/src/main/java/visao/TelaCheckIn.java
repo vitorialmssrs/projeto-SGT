@@ -440,7 +440,7 @@ public class TelaCheckIn extends JFrame {
 		textEmail.setBounds(811, 423, 404, 29);
 		contentPane.add(textEmail);
 		
-		textPrimeiroNome.setText("Otavio");
+		/*textPrimeiroNome.setText("Otavio");
 		textSobrenome.setText("Silva");
 		textCPF.setText("12345678945");
 		textDataNascimento.setText("20/01/2024");
@@ -448,21 +448,26 @@ public class TelaCheckIn extends JFrame {
 		textHoraEntrada.setText("15:00");
 		txtSenha.setText("12345656");	
 		textTelefone.setText("(47) 98456-1425");
-		textEmail.setText("jvdjhfdj@gmail.com");
+		textEmail.setText("jvdjhfdj@gmail.com");*/
 		
 		JButton btnExcluirCadastro = new JButton("Excluir");
 		btnExcluirCadastro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				HospedagemDAO hospedagemdao = HospedagemDAO.getInstancia();
+				Hospedagem hosp = new Hospedagem();
+				HospedeDAO hospededao = HospedeDAO.getInstancia();
 				
 				String numidentificacao = textCPF.getText();
 				String senha = txtSenha.getText();
 				
 				if(!numidentificacao.isEmpty() || !senha.isEmpty()) {
 					Long numidentificacaoL = Long.parseLong(numidentificacao);
-					Integer senhai = Integer.parseInt(senha);
-					HospedeDAO hospededao = HospedeDAO.getInstancia();
+					int senhai = Integer.parseInt(senha);
+					
+					hospedagemdao.removerHospedagem(hosp);
 					
 					int retorno = hospededao.removerHospede(numidentificacaoL, senhai);
+					
 					if(retorno == 0) {
 						JOptionPane.showMessageDialog(null, "Erro ao Excluir");
 					}else{

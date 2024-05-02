@@ -133,9 +133,9 @@ public class HospedeDAO {
 		return hospedes;
 	}
 
-	public boolean atualizarHospedeporIdentificacao(Hospede atualizarHospede) {
+	public int atualizarHospedeporIdentificacao(Hospede atualizarHospede) {
 
-		String SQL = "UPDATE clientes SET primeiro_nome = ?, sobrenome = ?, data_de_nascimento = ?, telefone = ?, email = ?, senha = ?, WHERE num_identificacao = ?";
+		String SQL = "UPDATE clientes SET primeiro_nome = ?, sobrenome = ?, num_identificacao = ?, data_de_nascimento = ?, telefone = ?, email = ?, senha = ?, WHERE id_cliente = ?";
 
 		// Abre conexão e cria a "ponte de conexão" com o MySQL
 		Conexao con = Conexao.getInstancia();
@@ -154,6 +154,7 @@ public class HospedeDAO {
 			ps.setString(5, atualizarHospede.getEmail());
 			ps.setInt(6, atualizarHospede.getSenha());
 			ps.setLong(7, atualizarHospede.getNumidentificacao());
+			ps.setInt(8, atualizarHospede.getIdcliente());
 			
 			rowsAffected = ps.executeUpdate();
 
@@ -163,7 +164,7 @@ public class HospedeDAO {
 			con.fecharConexao();
 		}
 
-		return rowsAffected > 0;
+		return rowsAffected;
 	}
 
 	public int removerHospede(Long numidentificacaoL, Integer senhai) {

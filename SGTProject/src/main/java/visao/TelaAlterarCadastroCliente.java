@@ -274,9 +274,9 @@ public class TelaAlterarCadastroCliente extends JFrame {
 				atualizarHospede.setEmail(email);
 				atualizarHospede.setSenha(senhai);
 				
-				boolean confirm = hospededao.atualizarHospedeporIdentificacao(atualizarHospede);
+				int confirm = hospededao.atualizarHospedeporIdentificacao(atualizarHospede);
 				
-				if(confirm) {
+				if(confirm == 0) {
 					//Alterar mensagens para tela de erro/sucesso
 					JOptionPane.showMessageDialog(null, "Cadastro do Cliente: " + nome + " Alterado com sucesso");
 					//AvisoCheckInHospede frame = new AvisoCheckInHospede();

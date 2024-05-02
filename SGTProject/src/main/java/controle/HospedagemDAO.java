@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.sql.Date;
+import java.sql.Time;
 
 import modelo.Hospedagem;
 
@@ -32,8 +34,8 @@ public class HospedagemDAO {
 		try {
 			PreparedStatement ps = conBD.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
 
-			ps.setDate(1, java.sql.Date.valueOf(end.getDataEntrada()));
-			ps.setTime(2, java.sql.Time.valueOf(end.getHoraEntrada()));
+			ps.setDate(1, Date.valueOf(end.getDataEntrada()));
+			ps.setTime(2, Time.valueOf(end.getHoraEntrada()));
 			ps.setInt(3, end.getHospede().getIdcliente());
 			ps.executeUpdate();
 			ResultSet rs = ps.getGeneratedKeys();
@@ -96,10 +98,10 @@ public class HospedagemDAO {
 
 			PreparedStatement ps = conBD.prepareStatement(SQL);
 
-			ps.setDate(1, java.sql.Date.valueOf(end.getDataEntrada()));
-			ps.setDate(2, java.sql.Date.valueOf(end.getDataSaida()));
-			ps.setTime(3, java.sql.Time.valueOf(end.getHoraEntrada()));
-			ps.setTime(4, java.sql.Time.valueOf(end.getHoraSaida()));
+			ps.setDate(1, Date.valueOf(end.getDataEntrada()));
+			ps.setDate(2, Date.valueOf(end.getDataSaida()));
+			ps.setTime(3, Time.valueOf(end.getHoraEntrada()));
+			ps.setTime(4, Time.valueOf(end.getHoraSaida()));
 
 			retorno = ps.executeUpdate();
 
@@ -112,9 +114,9 @@ public class HospedagemDAO {
 		return retorno != 0;
 	}
 
-	public boolean removerHospedagem(Hospedagem end) {
+	public int removerHospedagem(Hospedagem end) {
 
-		String SQL = "DELETE FROM hospedagens DataEntrada = ?, DataSaida = ?, HoraEntrada = ?, HoraSaida = ? WHERE num_quarto = ?"; // verificar
+		String SQL = "DELETE FROM hospedagens WHERE num_quarto = ?"; // verificar
 		Conexao con = Conexao.getInstancia();
 
 		Connection conBD = con.conectar();
@@ -125,10 +127,8 @@ public class HospedagemDAO {
 
 			PreparedStatement ps = conBD.prepareStatement(SQL);
 
-			ps.setDate(1, java.sql.Date.valueOf(end.getDataEntrada()));
-			ps.setDate(2, java.sql.Date.valueOf(end.getDataSaida()));
-			ps.setTime(3, java.sql.Time.valueOf(end.getHoraEntrada()));
-			ps.setTime(4, java.sql.Time.valueOf(end.getHoraSaida()));
+			ps.setInt(1, end.getNumQuarto());
+			
 
 			retorno = ps.executeUpdate();
 		} catch (SQLException e) {
@@ -136,7 +136,7 @@ public class HospedagemDAO {
 		} finally {
 			con.fecharConexao();
 		}
-		return retorno != 0;
+		return retorno;
 
 	}
 }
