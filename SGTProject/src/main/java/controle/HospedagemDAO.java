@@ -139,4 +139,32 @@ public class HospedagemDAO {
 		return retorno != 0;
 
 	}
+	
+	public int insertCheckOut(Hospedagem end) {
+		String SQL = "INSERT INTO hospedagem (DataSaida, HoraSaida, clientes_id_cliente) VALUES (?,?,?)";
+		Conexao con = Conexao.getInstancia();
+		Connection conBD = con.conectar();
+
+		int chavePrimariaGerada = Integer.MIN_VALUE;
+
+		try {
+			PreparedStatement ps = conBD.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+
+			ps.setDate(1, java.sql.Date.valueOf(end.getDataSaida()));
+			ps.setTime(2, java.sql.Time.valueOf(end.getHoraSaida()));
+			ps.setInt(3, end.getHospede().getIdcliente());
+			ps.executeUpdate();
+			ResultSet rs = ps.getGeneratedKeys();
+			if (rs.next()) {
+				chavePrimariaGerada = rs.getInt(1);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			con.fecharConexao();
+		}
+
+		return chavePrimariaGerada;
+	}
 }

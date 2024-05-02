@@ -115,6 +115,7 @@ public class TelaCheckOut extends JFrame {
 		lblCPFCliente.setFont(new Font("Tahoma", Font.BOLD, 19));
 		contentPane.add(lblCPFCliente, "cell 3 4,grow");
 		
+		
 		JLabel lblDataNascimento = new JLabel("* Data de nascimento:");
 		lblDataNascimento.setBackground(new Color(1, 50, 1));
 		lblDataNascimento.setForeground(new Color(1, 50, 1));
@@ -126,7 +127,7 @@ public class TelaCheckOut extends JFrame {
 			@Override
 			public void focusLost(FocusEvent e) {
 				HospedeDAO dao = HospedeDAO.getInstancia();  
-				String numIdentificacao =  textNumeroIdentificacao.getText();
+				String numIdentificacao =  textNumeroIdentificacao.getText().trim();
   
 				Long numId = Long.valueOf(numIdentificacao);  
   
@@ -219,7 +220,7 @@ public class TelaCheckOut extends JFrame {
 				textPrimeiroNome.setText(" ");
 				textSobrenome.setText(" ");				
 				textNumeroIdentificacao.setText(" ");
-				textDataSaida.setText("");
+				textDataSaida.setText(" ");
 				textDataSaida.setText(" ");
 				textHoraSaida.setText(" ");	
 				
@@ -255,15 +256,9 @@ public class TelaCheckOut extends JFrame {
 				//recebe a o conteudo que esta no Text e joga para a variavel 
 				
 				// Validações de data e hora
-                String dataSaida = textDataSaida.getText();
+                String dataSaida = textDataSaida.getText().trim();
                 if (dataSaida.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Campo Data de Saída obrigatório!");
-                    return;
-                }
-
-                String horaSaida = textHoraSaida.getText();
-                if (horaSaida.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Campo Hora de Saída obrigatório!");
                     return;
                 }
 
@@ -275,33 +270,30 @@ public class TelaCheckOut extends JFrame {
                     JOptionPane.showMessageDialog(null, "Data de saída inválida!");
                     return;
                 }
+                
+                
+                String horaSaida = textHoraSaida.getText().trim(); 
+                if (horaSaida.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Campo Hora de Saída obrigatório!");
+                    return;
+                }
 
                 LocalTime hSaida;
                 try {
-                    hSaida = LocalTime.parse(horaSaida, DateTimeFormatter.ofPattern("kk:mm:ss"));
+                    hSaida = LocalTime.parse(horaSaida, DateTimeFormatter.ofPattern("HH:mm"));
                 } catch (DateTimeParseException ex) {
-                    JOptionPane.showMessageDialog(null, "Horário de saída inválido!");
+                    JOptionPane.showMessageDialog(null, "Horário de saída inválido! O formato deve ser HH:mm");
                     return;
                 }
-                
-                //cricao de objeto 
-				Hospede hospede = new Hospede();
-				
-				//instanciando a classe DAO
-				HospedeDAO dao = new HospedeDAO();
-				///inserindo na classe 
-				int id = dao.insertHospede(hospede);
-				hospede.setIdcliente(id);
 
                 // Criação do objeto Hospedagem
                 Hospedagem hospedagem = new Hospedagem();
                 hospedagem.setDataSaida(dSaida);
                 hospedagem.setHoraSaida(hSaida);
 
-              
                 // Inserção no banco de dados
                 HospedagemDAO hospedagemdao = new HospedagemDAO();
-                hospedagemdao.insertHospedagem(hospedagem);
+                hospedagemdao.insertCheckOut(hospedagem);
 
                 dispose();	
 				
