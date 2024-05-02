@@ -23,7 +23,7 @@ public class HospedagemDAO {
 	}
 
 	public int insertHospedagem(Hospedagem end) {
-		String SQL = "INSERT INTO hospedagens (num_quarto, DataEntrada, HoraEntrada, clientes_id_cliente) VALUES (?,?,?,?)";
+		String SQL = "INSERT INTO hospedagens (DataEntrada, HoraEntrada, clientes_id_cliente) VALUES (?,?,?)";
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
 
@@ -32,9 +32,9 @@ public class HospedagemDAO {
 		try {
 			PreparedStatement ps = conBD.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
 
-			ps.setDate(2, java.sql.Date.valueOf(end.getDataEntrada()));
-			ps.setTime(3, java.sql.Time.valueOf(end.getHoraEntrada()));
-			ps.setInt(4, end.getHospede().getIdcliente());
+			ps.setDate(1, java.sql.Date.valueOf(end.getDataEntrada()));
+			ps.setTime(2, java.sql.Time.valueOf(end.getHoraEntrada()));
+			ps.setInt(3, end.getHospede().getIdcliente());
 			ps.executeUpdate();
 			ResultSet rs = ps.getGeneratedKeys();
 			if (rs.next()) {

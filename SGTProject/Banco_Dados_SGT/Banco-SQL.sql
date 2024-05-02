@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS reservas_espacos (
 DROP TABLE IF EXISTS hospedagens;
 
 CREATE TABLE IF NOT EXISTS hospedagens (
-  num_quarto INT(3) NOT NULL,
+  num_quarto INT(3) NOT NULL auto_increment,
   DataEntrada DATE NOT NULL,
   DataSaida DATE,
   HoraEntrada TIME NOT NULL,

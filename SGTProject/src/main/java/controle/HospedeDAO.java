@@ -28,17 +28,12 @@ public class HospedeDAO {
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
 
-			//inicializa a variavel chave primaria antes de outra operação no banco 
 		int chavePrimariaGerada = Integer.MIN_VALUE;
-
-		//incializa um bloco de exceções 
+		
 		try {
-			//Cria um objeto PreparedStatement chamado ps usando a conexão com o banco de dados (conBD).
-			//O método prepareStatement recebe a string SQL (que representa a instrução SQL a ser executada) 
-			//e um segundo argumento Statement.RETURN_GENERATED_KEYS é uma constante que informa ao banco de dados para retornar as chaves primárias geradas 
+			
 			PreparedStatement ps = conBD.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
 			
-			//END Define o primeiro parâmetro (?) da instrução SQL com o valor do primeiro nome 
 			ps.setString(1, end.getPrimeironome());
 			ps.setString(2, end.getSobrenome());
 			ps.setString(3, end.getNumidentificacao());
@@ -47,7 +42,6 @@ public class HospedeDAO {
 			ps.setString(6, end.getEmail());
 			ps.setInt(7, end.getSenha());
 
-			//Executa a instrução SQL (uma operação de inserção) e armazena o número de linhas afetadas na variável ra.
 			int ra = ps.executeUpdate();
 
 			if (ra > 0) { 
@@ -61,14 +55,10 @@ public class HospedeDAO {
 					chavePrimariaGerada = gk.getInt(1);
 				}
 			}
-			
-		} catch (SQLException e) { //Captura qualquer exceção de tipo SQLException que possa ocorrer durante a execução do bloco try.
-			
-			e.printStackTrace(); //Imprime o rastreamento de pilha da exceção para o console (geralmente usado para depuração).
-			
-		} finally { //nicia o bloco finally, que será executado independentemente de o bloco try ou catch serem executados.
-			
-			con.fecharConexao(); //Fecha a conexão com o banco de dados (con).
+		} catch (SQLException e) { 
+			e.printStackTrace();
+		} finally { 
+			con.fecharConexao();
 		}
 		return chavePrimariaGerada;
 	}
@@ -143,34 +133,29 @@ public class HospedeDAO {
 		return hospedes;
 	}
 
-	public boolean atualizarHospede(Hospede end) {
+	public boolean atualizarHospedeporIdentificacao(String numidentificacao, Hospede atualizarHospede) {
 
-		/*
-		 * primeiro_nome, sobrenome, num_identificacao, data_de_nascimento, telefone,
-		 * email
-		 */
-		// verificar se o WHERE vai finalizar com n°identificação ou id_cliente
-		String SQL = "UPDATE clientes SET primeiro_nome = ?, sobrenome = ?, num_identificacao = ?, data_de_nascimento = ?, telefone = ?, email = ?, senha = ?, WHERE id_cliente = ?";
+		String SQL = "UPDATE clientes SET primeiro_nome = ?, sobrenome = ?, data_de_nascimento = ?, telefone = ?, email = ?, senha = ?, WHERE num_identificacao = ?";
 
 		// Abre conexão e cria a "ponte de conexão" com o MySQL
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
 
-		int retorno = 0;
+		int rowsAffected = 0;
 
 		try {
 
 			PreparedStatement ps = conBD.prepareStatement(SQL);
 
-			ps.setString(1, end.getPrimeironome());
-			ps.setString(2, end.getSobrenome());
-			ps.setString(3, end.getNumidentificacao());
-			ps.setDate(4, Date.valueOf(end.getDatanascimento()));
-			ps.setString(5, end.getTelefone());
-			ps.setString(6, end.getEmail());
-			ps.setInt(7, end.getSenha());
-
-			retorno = ps.executeUpdate();
+			ps.setString(1, atualizarHospede.getPrimeironome());
+			ps.setString(2, atualizarHospede.getSobrenome());
+			ps.setDate(3, Date.valueOf(atualizarHospede.getDatanascimento()));
+			ps.setString(4, atualizarHospede.getTelefone());
+			ps.setString(5, atualizarHospede.getEmail());
+			ps.setInt(6, atualizarHospede.getSenha());
+			ps.setString(7, atualizarHospede.getNumidentificacao());
+			
+			rowsAffected = ps.executeUpdate();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -178,39 +163,8 @@ public class HospedeDAO {
 			con.fecharConexao();
 		}
 
-		// IF Ternário: se o retorno for zero é pra considerar esse valor falso, senão é
-		// pra considerar verdadeiro
-		return retorno != 0;
+		return rowsAffected > 0;
 	}
-
-	/*public int removerHospede(Hospede end) {
-
-		String SQL = "DELETE * FROM clientes WHERE num_identificacao = ? AND senha = ?"; // verificar
-
-		Conexao con = Conexao.getInstancia();
-
-		Connection conBD = con.conectar();
-
-		int retorno = 0;
-
-		try {
-
-			PreparedStatement ps = conBD.prepareStatement(SQL);
-
-			ps.setString(1, end.getNumidentificacao());
-			ps.setInt(2, end.getSenha());
-
-			retorno = ps.executeUpdate();
-
-			
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			con.fecharConexao();
-		}
-		return retorno;
-	}*/
 
 	public int removerHospede(String numidentificacao, Integer senhai) {
 		String SQL = "DELETE FROM clientes WHERE num_identificacao = ? AND senha = ?"; // verificar

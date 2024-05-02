@@ -63,20 +63,20 @@ public class FuncionalidadeCliente extends JFrame {
 		JPanel panelOpcoes = new JPanel();
 		panelOpcoes.setBackground(new Color(227, 236, 226));
 		contentPane.add(panelOpcoes);
-		panelOpcoes.setLayout(new MigLayout("", "[150][300][150]", "[200][][100][50][200][50][200][50][200][50][100]"));
+		panelOpcoes.setLayout(new MigLayout("", "[150][300][150]", "[150][100][150][150][150][150][100]"));
 
-		JLabel lblNewLabel_1 = new JLabel("Caro Cliente");
-		lblNewLabel_1.setForeground(new Color(1, 50, 1));
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 40));
-		panelOpcoes.add(lblNewLabel_1, "cell 1 0,alignx center");
+		JLabel lblTexto1 = new JLabel("Caro Cliente");
+		lblTexto1.setForeground(new Color(1, 50, 1));
+		lblTexto1.setFont(new Font("Tahoma", Font.BOLD, 40));
+		panelOpcoes.add(lblTexto1, "cell 1 0,alignx center");
 
-		JLabel lblNewLabel_2 = new JLabel("Escolhe uma Opção de Atendimento");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 30));
-		lblNewLabel_2.setForeground(new Color(1, 50, 1));
-		panelOpcoes.add(lblNewLabel_2, "cell 1 2,alignx center");
+		JLabel lblTexto2 = new JLabel("Escolhe uma Opção de Atendimento");
+		lblTexto2.setFont(new Font("Tahoma", Font.BOLD, 30));
+		lblTexto2.setForeground(new Color(1, 50, 1));
+		panelOpcoes.add(lblTexto2, "cell 1 1,alignx center");
 
-		JButton btnNewButton = new JButton("Check-in");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnCheckin = new JButton("Check-in");
+		btnCheckin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				TelaCheckIn cadastrocliente = new TelaCheckIn();
@@ -85,13 +85,13 @@ public class FuncionalidadeCliente extends JFrame {
 				cadastrocliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}
 		});
-		btnNewButton.setForeground(new Color(255, 255, 255));
-		btnNewButton.setBackground(new Color(81, 108, 81));
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 60));
-		panelOpcoes.add(btnNewButton, "cell 1 4,grow");
+		btnCheckin.setForeground(new Color(255, 255, 255));
+		btnCheckin.setBackground(new Color(81, 108, 81));
+		btnCheckin.setFont(new Font("Tahoma", Font.BOLD, 60));
+		panelOpcoes.add(btnCheckin, "cell 1 2,grow");
 
-		JButton btnNewButton_1 = new JButton("Check-out");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton btnCheckout = new JButton("Check-out");
+		btnCheckout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				CheckoutCliente checkoutcliente = new CheckoutCliente();
@@ -100,16 +100,16 @@ public class FuncionalidadeCliente extends JFrame {
 				checkoutcliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}
 		});
-		btnNewButton_1.setForeground(new Color(255, 255, 255));
-		btnNewButton_1.setBackground(new Color(66, 142, 66));
-		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 60));
-		panelOpcoes.add(btnNewButton_1, "cell 1 6,grow");
+		btnCheckout.setForeground(new Color(255, 255, 255));
+		btnCheckout.setBackground(new Color(66, 142, 66));
+		btnCheckout.setFont(new Font("Tahoma", Font.BOLD, 60));
+		panelOpcoes.add(btnCheckout, "cell 1 3,grow");
 
-		JButton btnNewButton_2 = new JButton("Reservas Espaços");
-		btnNewButton_2.setForeground(new Color(255, 255, 255));
-		btnNewButton_2.setBackground(new Color(109, 164, 109));
-		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 60));
-		panelOpcoes.add(btnNewButton_2, "cell 1 8,grow");
+		JButton btnReservasEspacos = new JButton("Reservas Espaços");
+		btnReservasEspacos.setForeground(new Color(255, 255, 255));
+		btnReservasEspacos.setBackground(new Color(109, 164, 109));
+		btnReservasEspacos.setFont(new Font("Tahoma", Font.BOLD, 60));
+		panelOpcoes.add(btnReservasEspacos, "cell 1 4,grow");
 
 		JButton btnNewButton_3 = new JButton("Sair");
 		btnNewButton_3.addActionListener(new ActionListener() {
@@ -120,10 +120,24 @@ public class FuncionalidadeCliente extends JFrame {
 				telaInicial.setVisible(true);
 			}
 		});
+		
+		JButton btnAlterarCadastro = new JButton("Alterar Cadastro");
+		btnAlterarCadastro.setBackground(new Color(126, 191, 131));
+		btnAlterarCadastro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaAlterarCadastroCliente AlterarCadastroCliente = new TelaAlterarCadastroCliente();
+				AlterarCadastroCliente.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				AlterarCadastroCliente.setVisible(true);
+			}
+		});
+		btnAlterarCadastro.setForeground(new Color(255, 255, 255));
+		btnAlterarCadastro.setFont(new Font("Tahoma", Font.BOLD, 50));
+		panelOpcoes.add(btnAlterarCadastro, "cell 1 5,grow");
 		btnNewButton_3.setBackground(new Color(227, 236, 226));
 		btnNewButton_3.setIcon(new ImageIcon(FuncionalidadeCliente.class.getResource("/imagens/Vector sair.png")));
 		btnNewButton_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnNewButton_3.setForeground(new Color(1, 50, 1));
-		panelOpcoes.add(btnNewButton_3, "cell 2 10,growx");
+		panelOpcoes.add(btnNewButton_3, "cell 2 6,growx");
 	}
 }
