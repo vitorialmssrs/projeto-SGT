@@ -42,18 +42,12 @@ public class HospedeDAO {
 			ps.setString(6, end.getEmail());
 			ps.setInt(7, end.getSenha());
 
-			int ra = ps.executeUpdate();
-
-			if (ra > 0) { 
-				
-				//Obtém um ResultSet (gk) contendo as chaves primárias geradas pela operação de inserção.
-				ResultSet gk = ps.getGeneratedKeys();
-				
-				if (gk.next()) { 
+			ps.executeUpdate();
+			ResultSet gk = ps.getGeneratedKeys();
+			if (gk.next()) { 
 					
-					//Se gk contém uma chave primária, define a variável chavePrimariaGerada com o valor da chave primária.
-					chavePrimariaGerada = gk.getInt(1);
-				}
+				chavePrimariaGerada = gk.getInt(1);
+				
 			}
 		} catch (SQLException e) { 
 			e.printStackTrace();
@@ -86,12 +80,7 @@ public class HospedeDAO {
 				// Cria o objeto
 				Hospede end = new Hospede();
 
-				/*
-				 * primeiro_nome, sobrenome, num_identificacao, data_de_nascimento, telefone,
-				 * email
-				 */
-
-				// Pega os valores de cada coluna do registro
+				int idcliente = rs.getInt("id_cliente");
 				String PrimeiroNome = rs.getString("primeiro_nome");
 				String Sobrenome = rs.getString("sobrenome");
 				LocalDate Datanascimento = rs.getDate("data_de_nascimento").toLocalDate();
@@ -99,19 +88,9 @@ public class HospedeDAO {
 				String Telefone = rs.getString("telefone");
 				String Email = rs.getString("email");
 				Integer senha = rs.getInt("senha");
-
-				// localdate ==> mais indicado para utilizar
-				// LocalTime
-				// LocalDateTime
-				/*
-				 * (Java)LocalTime <-> Time(BD) 
-				 * (Java)LocalDateTime <-> DateTime(BD)
-				 * (Java)LocalDate <-> Date(BD) 
-				 * Se estiver muito dificil usar a conversão,
-				 * separar em 3 input, para verificar e converter mais rapido
-				 **/
  
 				// seta oa valores no objeto java
+				end.setIdcliente(idcliente);
 				end.setPrimeironome(PrimeiroNome);
 				end.setSobrenome(Sobrenome);
 				end.setNumidentificacao(Numidentificacao);

@@ -214,19 +214,6 @@ public class TelaCheckIn extends JFrame {
 		JButton btnCadastro_Cliente = new JButton("Cadastrar");
 		btnCadastro_Cliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				/*Como adicionar uma mascara ao text
-				MaskFormatter mascaraTel = null;
-					try {
-      					mascaraTel = new MaskFormatter("(##) ###-###-###");
-					} catch (ParseException e) {
-      					e.printStackTrace();
- 					}
- 						textField = new JFormattedTextField(mascaraTel);
- 						contentPane.add(textField);
- 						textField.setColumns(10);
- 						
- 					*/
-				
 				
 				//recebe a o conteudo que esta no Text e joga para a variavel 
 				String nome = textPrimeiroNome.getText();
@@ -359,15 +346,19 @@ public class TelaCheckIn extends JFrame {
 				hospedagem.setHoraEntrada(hrEntrada);
 				hospedagem.setHospede(hospede);
 				HospedagemDAO hospedagemdao = new HospedagemDAO();
+				
+				
 				hospedagemdao.insertHospedagem(hospedagem);
 				
 				AvisoCheckInHospede frame = new AvisoCheckInHospede();
 				frame.setVisible(true);
 				//JOptionPane.showMessageDialog(null, "Cadastro Realizado!");
 
-				
 				dispose();
 				
+				FuncionalidadeCliente frame2 = new FuncionalidadeCliente();
+				frame2.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				frame2.setVisible(true);
 			}
 		});
 		btnCadastro_Cliente.setBackground(new Color(66, 142, 66));

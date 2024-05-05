@@ -12,6 +12,7 @@ import java.sql.Date;
 import java.sql.Time;
 
 import modelo.Hospedagem;
+import modelo.Hospede;
 
 public class HospedagemDAO {
 
@@ -66,12 +67,14 @@ public class HospedagemDAO {
 			while (rs.next()) {
 
 				Hospedagem end = new Hospedagem();
-
+				
+				int numquarto = rs.getInt("num_quarto");
 				LocalDate DataEntrada = rs.getDate("DataEntrada").toLocalDate();
 				LocalDate DataSaida = rs.getDate("DataSaida").toLocalDate();
 				LocalTime HoraEntrada = rs.getTime("HoraEntrada").toLocalTime();
 				LocalTime HoraSaida = rs.getTime("HoraSaida").toLocalTime();
 
+				end.setNumQuarto(numquarto);
 				end.setDataEntrada(DataEntrada);
 				end.setDataSaida(DataSaida);
 				end.setHoraEntrada(HoraEntrada);
@@ -102,6 +105,7 @@ public class HospedagemDAO {
 			ps.setDate(2, Date.valueOf(end.getDataSaida()));
 			ps.setTime(3, Time.valueOf(end.getHoraEntrada()));
 			ps.setTime(4, Time.valueOf(end.getHoraSaida()));
+			ps.setInt(5, end.getNumQuarto());
 
 			retorno = ps.executeUpdate();
 
@@ -138,5 +142,26 @@ public class HospedagemDAO {
 		}
 		return retorno;
 
+	}
+	public int removerDetalhesTodos(Hospede hosp) {
+		String SQL = "DELETE FROM hospedagens WHERE id_cliente = ?;";
+		Conexao con = Conexao.getInstancia();
+
+		Connection conBD = con.conectar();
+
+		int retorno = 0;
+
+		try {
+			PreparedStatement ps = conBD.prepareStatement(SQL);
+			ps.setInt(1, hosp.getIdcliente());
+			retorno = ps.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			con.fecharConexao();
+		}
+
+		return retorno;
 	}
 }
