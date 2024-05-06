@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.sql.Date;
+import java.sql.Time;
 
 import modelo.Hospedagem;
 import modelo.Hospede;
@@ -24,7 +26,7 @@ public class HospedagemDAO {
 	}
 
 	public int insertHospedagem(Hospedagem end) {
-		String SQL = "INSERT INTO hospedagens (num_quarto, DataEntrada, HoraEntrada, clientes_id_cliente) VALUES (?,?,?,?)";
+		String SQL = "INSERT INTO hospedagens (DataEntrada, HoraEntrada, clientes_id_cliente) VALUES (?,?,?)";
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
 
@@ -33,9 +35,9 @@ public class HospedagemDAO {
 		try {
 			PreparedStatement ps = conBD.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
 
-			ps.setDate(2, java.sql.Date.valueOf(end.getDataEntrada()));
-			ps.setTime(3, java.sql.Time.valueOf(end.getHoraEntrada()));
-			ps.setInt(4, end.getHospede().getIdcliente());
+			ps.setDate(1, Date.valueOf(end.getDataEntrada()));
+			ps.setTime(2, Time.valueOf(end.getHoraEntrada()));
+			ps.setInt(3, end.getHospede().getIdcliente());
 			ps.executeUpdate();
 			ResultSet rs = ps.getGeneratedKeys();
 			if (rs.next()) {
@@ -66,12 +68,14 @@ public class HospedagemDAO {
 			while (rs.next()) {
 
 				Hospedagem end = new Hospedagem();
-
+				
+				int numquarto = rs.getInt("num_quarto");
 				LocalDate DataEntrada = rs.getDate("DataEntrada").toLocalDate();
 				LocalDate DataSaida = rs.getDate("DataSaida").toLocalDate();
 				LocalTime HoraEntrada = rs.getTime("HoraEntrada").toLocalTime();
 				LocalTime HoraSaida = rs.getTime("HoraSaida").toLocalTime();
 
+				end.setNumQuarto(numquarto);
 				end.setDataEntrada(DataEntrada);
 				end.setDataSaida(DataSaida);
 				end.setHoraEntrada(HoraEntrada);
@@ -137,10 +141,11 @@ public class HospedagemDAO {
 
 			PreparedStatement ps = conBD.prepareStatement(SQL);
 
-			ps.setDate(1, java.sql.Date.valueOf(end.getDataEntrada()));
-			ps.setDate(2, java.sql.Date.valueOf(end.getDataSaida()));
-			ps.setTime(3, java.sql.Time.valueOf(end.getHoraEntrada()));
-			ps.setTime(4, java.sql.Time.valueOf(end.getHoraSaida()));
+			ps.setDate(1, Date.valueOf(end.getDataEntrada()));
+			ps.setDate(2, Date.valueOf(end.getDataSaida()));
+			ps.setTime(3, Time.valueOf(end.getHoraEntrada()));
+			ps.setTime(4, Time.valueOf(end.getHoraSaida()));
+			ps.setInt(5, end.getNumQuarto());
 
 			retorno = ps.executeUpdate();
 
@@ -153,9 +158,9 @@ public class HospedagemDAO {
 		return retorno != 0;
 	}
 
-	public boolean removerHospedagem(Hospedagem end) {
+	public int removerHospedagem(Hospedagem end) {
 
-		String SQL = "DELETE FROM hospedagens SET DataEntrada = ?, DataSaida = ?, HoraEntrada = ?, HoraSaida = ? WHERE num_quarto = ?"; // verificar
+		String SQL = "DELETE FROM hospedagens WHERE num_quarto = ?"; // verificar
 		Conexao con = Conexao.getInstancia();
 
 		Connection conBD = con.conectar();
@@ -166,10 +171,8 @@ public class HospedagemDAO {
 
 			PreparedStatement ps = conBD.prepareStatement(SQL);
 
-			ps.setDate(1, java.sql.Date.valueOf(end.getDataEntrada()));
-			ps.setDate(2, java.sql.Date.valueOf(end.getDataSaida()));
-			ps.setTime(3, java.sql.Time.valueOf(end.getHoraEntrada()));
-			ps.setTime(4, java.sql.Time.valueOf(end.getHoraSaida()));
+			ps.setInt(1, end.getNumQuarto());
+			
 
 			retorno = ps.executeUpdate();
 		} catch (SQLException e) {
@@ -177,7 +180,7 @@ public class HospedagemDAO {
 		} finally {
 			con.fecharConexao();
 		}
-		return retorno != 0;
+		return retorno;
 
 	}
 	
