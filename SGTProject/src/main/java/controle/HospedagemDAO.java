@@ -103,7 +103,7 @@ public class HospedagemDAO {
 
 		try {
 			PreparedStatement ps = conBD.prepareStatement(SQL);
-			ps.setString(1, h.getNumidentificacao());
+			ps.setLong(1, h.getNumidentificacao());
 
 
 			ResultSet rs = ps.executeQuery();

@@ -237,7 +237,7 @@ public class HospedeDAO implements IHospedeDao{
 				String PrimeiroNome = rs.getString("primeiro_nome");
 				String Sobrenome = rs.getString("sobrenome");
 				LocalDate Datanascimento = rs.getDate("data_de_nascimento").toLocalDate();
-				String Numidentificacao = rs.getString("num_identificacao");
+				Long Numidentificacao = rs.getLong("num_identificacao");
 				String Telefone = rs.getString("telefone");
 				String Email = rs.getString("email");
 				Integer senha = rs.getInt("senha");
@@ -261,5 +261,17 @@ public class HospedeDAO implements IHospedeDao{
 		}
 		
 		return h;
+	}
+
+	@Override
+	public boolean atualizarHospede(Hospede end) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean removerHospede(Hospede end) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

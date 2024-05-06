@@ -243,8 +243,6 @@ public class TelaCheckIn extends JFrame {
 				}
 				numidentificacao = numidentificacao.replace(".", "");
 				numidentificacao = numidentificacao.replace("-", "");
-				Long numID = Long.parseLong(numidentificacao);
-				
 				MaskFormatter mascaraNumID = null;
 				try {
 					mascaraNumID = new MaskFormatter("###.###.###-##");
