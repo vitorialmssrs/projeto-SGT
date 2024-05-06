@@ -67,14 +67,14 @@ DROP TABLE IF EXISTS reservas_espacos;
 CREATE TABLE IF NOT EXISTS reservas_espacos (
   id_reservas INT(7) NOT NULL,
   dia_horario DATETIME NOT NULL,
-  id_cliente INT(11) NOT NULL,
+  id_clientes INT(11) NOT NULL,
   espacos_hotel_id_espacos INT(11) NOT NULL,
   PRIMARY KEY (
     id_reservas,
-    id_cliente,
+    id_clientes,
     espacos_hotel_id_espacos
   ),
-  CONSTRAINT fk_reservas_espacos_clientes1 FOREIGN KEY (id_cliente) REFERENCES clientes (id_cliente) ON DELETE CASCADE,
+  CONSTRAINT fk_reservas_espacos_clientes1 FOREIGN KEY (id_clientes) REFERENCES clientes (id_cliente) ON DELETE CASCADE,
   CONSTRAINT fk_reservas_espacos_espacos_hotel1 FOREIGN KEY (espacos_hotel_id_espacos) REFERENCES espacos_hotel (id_espacos) ON DELETE CASCADE
 );
 
