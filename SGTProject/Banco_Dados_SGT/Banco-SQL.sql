@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS funcionarios (
 DROP TABLE IF EXISTS reservas_espacos;
 
 CREATE TABLE IF NOT EXISTS reservas_espacos (
-  id_reservas INT(7) NOT NULL,
+  id_reservas INT(7) NOT NULL auto_increment,
   dia_horario DATETIME NOT NULL,
   id_clientes INT(11) NOT NULL,
   espacos_hotel_id_espacos INT(11) NOT NULL,
