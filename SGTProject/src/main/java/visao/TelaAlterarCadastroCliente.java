@@ -185,28 +185,16 @@ public class TelaAlterarCadastroCliente extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				Hospede atualizarHospede = new Hospede();
+				HospedeDAO hospededao = HospedeDAO.getInstancia();
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
 				//recebe a o conteudo que esta no Text e joga para a variavel 
 				String nome = textPrimeiroNome.getText();
-				if(nome.length() == 0) {
-					JOptionPane.showMessageDialog(null, "Campo Nome obrigatório!");
-					return ;
-				}
-				
 				String sobrenome = textSobrenome.getText();
-				if(sobrenome.length() == 0) {
-					JOptionPane.showMessageDialog(null, "Campo Sobrenome obrigatório!");
-					return ;
-				}
-				
 				String numidentificacao = textCPF.getText();
-				if(numidentificacao.length() == 0) {
-					JOptionPane.showMessageDialog(null, "Campo CPF obrigatório!");
-					return ;
-				}
-				numidentificacao = numidentificacao.replace(".", "");
-				numidentificacao = numidentificacao.replace("-", "");
-				
+				String dataNascimento = textDataNascimento.getText();
+				String telefone = textTelefone.getText();
+				String email = textEmail.getText();
+				String senha = txtSenha.getText();
 				
 				MaskFormatter mascaranumidentificacao = null;
 				try {
@@ -218,12 +206,6 @@ public class TelaAlterarCadastroCliente extends JFrame {
 						contentPane.add(textCPF);
 						textCPF.setColumns(15);
 				
-				String dataNascimento = textDataNascimento.getText();
-				if(dataNascimento.length() == 0) {
-					JOptionPane.showMessageDialog(null, "Campo Data de Nascimento obrigatório!");
-					return ;
-				}
-				
 				MaskFormatter mascaraDataNascimento = null;
 				try {
 					mascaraDataNascimento = new MaskFormatter("##/##/####");
@@ -233,13 +215,7 @@ public class TelaAlterarCadastroCliente extends JFrame {
 				textDataNascimento = new JFormattedTextField(mascaraDataNascimento);
 						contentPane.add(textDataNascimento);
 						textDataNascimento.setColumns(10);
-				
-				
-				String telefone = textTelefone.getText();
-				if(telefone.length() == 0) {
-					JOptionPane.showMessageDialog(null, "Campo Telefone obrigatório!");
-					return ;
-				}
+			
 				MaskFormatter mascaraTelefone = null;
 				try {
 					mascaraTelefone = new MaskFormatter("(##) #####-####");
@@ -250,36 +226,23 @@ public class TelaAlterarCadastroCliente extends JFrame {
 						contentPane.add(textTelefone);
 						textTelefone.setColumns(15);
 						
-				String email = textEmail.getText();
-				if(email.length() == 0) {
-					JOptionPane.showMessageDialog(null, "Campo Email obrigatório!");
-					return ;
-				}
-				String senha = txtSenha.getText();
-				if(senha.length() == 0) {
-					JOptionPane.showMessageDialog(null, "Campo Senha obrigatório!");
-					return ;
-				}
+				numidentificacao = numidentificacao.replace(".", "");
+				numidentificacao = numidentificacao.replace("-", "");
 				int senhai = Integer.parseInt(senha);
 				
 				LocalDate dn = LocalDate.parse(dataNascimento, formatter);
-
-				HospedeDAO hospededao = HospedeDAO.getInstancia();
 				
 				atualizarHospede.setPrimeironome(nome);
 				atualizarHospede.setSobrenome(sobrenome);
-				atualizarHospede.setNumidentificacao(numidentificacao);
+				atualizarHospede.setNumidentificacao(Long.parseLong(numidentificacao));
 				atualizarHospede.setDatanascimento(dn);
 				atualizarHospede.setTelefone(telefone);
 				atualizarHospede.setEmail(email);
 				atualizarHospede.setSenha(senhai);
 				
-				int id = hospededao.insertHospede(atualizarHospede);
-				atualizarHospede.setIdcliente(id);
+				int confirm = hospededao.atualizarHospedeporIdentificacao(atualizarHospede);
 				
-				boolean confirm = hospededao.atualizarHospedeporIdentificacao(numidentificacao, atualizarHospede);
-				
-				if(confirm) {
+				if(confirm == 0) {
 					//Alterar mensagens para tela de erro/sucesso
 					JOptionPane.showMessageDialog(null, "Cadastro do Cliente: " + nome + " Alterado com sucesso");
 					//AvisoCheckInHospede frame = new AvisoCheckInHospede();
@@ -292,6 +255,7 @@ public class TelaAlterarCadastroCliente extends JFrame {
 				dispose();
 				
 				FuncionalidadeCliente frame2 = new FuncionalidadeCliente();
+				frame2.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame2.setVisible(true);
 			}
 		});

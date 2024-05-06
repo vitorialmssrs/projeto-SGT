@@ -93,11 +93,10 @@ public class FuncionalidadeCliente extends JFrame {
 		JButton btnCheckout = new JButton("Check-out");
 		btnCheckout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
-				CheckoutCliente checkoutcliente = new CheckoutCliente();
-				checkoutcliente.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				checkoutcliente.setVisible(true);
-				checkoutcliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+					TelaCheckOut checkoutcliente = new TelaCheckOut();
+					checkoutcliente.setExtendedState(checkoutcliente.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+					checkoutcliente.setVisible(true);
+					checkoutcliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);				
 			}
 		});
 		btnCheckout.setForeground(new Color(255, 255, 255));
