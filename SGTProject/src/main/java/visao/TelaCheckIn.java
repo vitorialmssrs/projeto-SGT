@@ -347,7 +347,6 @@ public class TelaCheckIn extends JFrame {
 				hospedagem.setHospede(hospede);
 				HospedagemDAO hospedagemdao = new HospedagemDAO();
 				
-				
 				hospedagemdao.insertHospedagem(hospedagem);
 				
 				AvisoCheckInHospede frame = new AvisoCheckInHospede();
@@ -454,12 +453,12 @@ public class TelaCheckIn extends JFrame {
 				if(!numidentificacao.isEmpty() || !senha.isEmpty()) {
 					Long numidentificacaoL = Long.parseLong(numidentificacao);
 					int senhai = Integer.parseInt(senha);
-					
+
 					hospedagemdao.removerHospedagem(hosp);
 					
 					int retorno = hospededao.removerHospede(numidentificacaoL, senhai);
 					
-					if(retorno == 0) {
+					if(retorno != 0) {
 						JOptionPane.showMessageDialog(null, "Erro ao Excluir");
 					}else{
 						JOptionPane.showMessageDialog(null, "Exclussão Sucedida");
