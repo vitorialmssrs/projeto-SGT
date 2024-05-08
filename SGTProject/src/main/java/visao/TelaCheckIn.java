@@ -50,7 +50,7 @@ public class TelaCheckIn extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CadastroCliente frame = new CadastroCliente();
+					TelaCheckIn frame = new TelaCheckIn();
 					//sempre antes do set visible para abrir em tela cheia 
 					frame.setExtendedState(frame.getExtendedState()|JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
@@ -198,6 +198,9 @@ public class TelaCheckIn extends JFrame {
 				textDataEntrada.setText("");
 				textHoraEntrada.setText("");
 				txtSenha.setText("");	
+				textTelefone.setText(" ");
+				textEmail.setText("");
+				
 
 			}
 		});
@@ -217,38 +220,40 @@ public class TelaCheckIn extends JFrame {
 				
 				//recebe a o conteudo que esta no Text e joga para a variavel 
 				String nome = textPrimeiroNome.getText();
+				String sobrenome = textSobrenome.getText();
+				String numidentificacao = textCPF.getText();
+				String dataNascimento = textDataNascimento.getText();
+				String dataEntrada = textDataEntrada.getText();
+				String horaEntrada = textHoraEntrada.getText();
+				String telefone = textTelefone.getText();
+				String email = textEmail.getText();
+				String senha = txtSenha.getText();
+				
 				if(nome.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Nome obrigatório!");
 					return ;
 				}
-				
-				String sobrenome = textSobrenome.getText();
-				if(nome.length() == 0) {
+				if(sobrenome.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Sobrenome obrigatório!");
 					return ;
 				}
-				
-				String cpf = textCPF.getText();
-				if(nome.length() == 0) {
+				if(numidentificacao.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo CPF obrigatório!");
 					return ;
 				}
-				cpf = cpf.replace(".", "");
-				cpf = cpf.replace("-", "");
-				
-				
-				MaskFormatter mascaraCPF = null;
+				numidentificacao = numidentificacao.replace(".", "");
+				numidentificacao = numidentificacao.replace("-", "");
+				MaskFormatter mascaraNumID = null;
 				try {
-					mascaraCPF = new MaskFormatter("###.###.###-##");
+					mascaraNumID = new MaskFormatter("###.###.###-##");
 				} catch (ParseException e1) {
   					e1.printStackTrace();
 					}
-						textCPF = new JFormattedTextField(mascaraCPF);
+						textCPF = new JFormattedTextField(mascaraNumID);
 						contentPane.add(textCPF);
 						textCPF.setColumns(15);
 				
-				String dataNascimento = textDataNascimento.getText();
-				if(nome.length() == 0) {
+				if(dataNascimento.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Data de Nascimento obrigatório!");
 					return ;
 				}
@@ -267,8 +272,8 @@ public class TelaCheckIn extends JFrame {
 						contentPane.add(textDataNascimento);
 						textDataNascimento.setColumns(10);
 								
-				String dataEntrada = textDataEntrada.getText();
-				if(nome.length() == 0) {
+				
+				if(dataEntrada.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Data de Entrada obrigatório!");
 					return ;
 				}
@@ -283,8 +288,9 @@ public class TelaCheckIn extends JFrame {
 						contentPane.add(textDataEntrada);
 						textDataEntrada.setColumns(10);
 				
-				String horaEntrada = textHoraEntrada.getText();
-				if(nome.length() == 0) {
+				
+				
+				if(horaEntrada.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Hora de Entrada obrigatório!");
 					return ;
 				}
@@ -298,18 +304,19 @@ public class TelaCheckIn extends JFrame {
 						textHoraEntrada = new JFormattedTextField(mascaraHoraEntrada);
 						contentPane.add(textHoraEntrada);
 						textHoraEntrada.setColumns(5);
+					
 				
-				String telefone = textTelefone.getText();
+				
 				if(telefone.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Telefone obrigatório!");
 					return ;
 				}
-				String email = textEmail.getText();
+				
 				if(email.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Email obrigatório!");
 					return ;
 				}
-				String senha = txtSenha.getText();
+				
 				if(senha.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Senha obrigatório!");
 					return ;
@@ -319,9 +326,9 @@ public class TelaCheckIn extends JFrame {
 				LocalDate dn = LocalDate.parse(dataNascimento, formatter);
 				LocalDate dtEntrada = LocalDate.parse(dataEntrada, formatter);
 				DateTimeFormatter formattertime = DateTimeFormatter.ofPattern("HH:mm");
-				Long cpfL = Long.parseLong(cpf);
+				Long numidentificacaoL = Long.parseLong(numidentificacao);
 				LocalTime hrEntrada = LocalTime.parse(horaEntrada,formattertime);
-				
+
 				
 				//cricao de objeto 
 				Hospede hospede = new Hospede();
@@ -329,7 +336,7 @@ public class TelaCheckIn extends JFrame {
 				//setando os valores
 				hospede.setPrimeironome(nome);
 				hospede.setSobrenome(sobrenome);
-				hospede.setNumidentificacao(cpfL);
+				hospede.setNumidentificacao(numidentificacaoL);
 				hospede.setDatanascimento(dn);
 				hospede.setTelefone(telefone);
 				hospede.setEmail(email);
@@ -346,7 +353,6 @@ public class TelaCheckIn extends JFrame {
 				hospedagem.setHoraEntrada(hrEntrada);
 				hospedagem.setHospede(hospede);
 				HospedagemDAO hospedagemdao = new HospedagemDAO();
-				
 				
 				hospedagemdao.insertHospedagem(hospedagem);
 				
@@ -454,12 +460,12 @@ public class TelaCheckIn extends JFrame {
 				if(!numidentificacao.isEmpty() || !senha.isEmpty()) {
 					Long numidentificacaoL = Long.parseLong(numidentificacao);
 					int senhai = Integer.parseInt(senha);
-					
+
 					hospedagemdao.removerHospedagem(hosp);
 					
 					int retorno = hospededao.removerHospede(numidentificacaoL, senhai);
 					
-					if(retorno == 0) {
+					if(retorno != 0) {
 						JOptionPane.showMessageDialog(null, "Erro ao Excluir");
 					}else{
 						JOptionPane.showMessageDialog(null, "Exclussão Sucedida");

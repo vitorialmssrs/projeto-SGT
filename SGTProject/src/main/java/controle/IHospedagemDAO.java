@@ -13,4 +13,7 @@ public interface IHospedagemDAO {
 	
 	public boolean removerHospedagem (Hospedagem end);
 	
+	public int insertCheckOut(Hospedagem end);
+	
+	
 }

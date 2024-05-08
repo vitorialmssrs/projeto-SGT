@@ -259,10 +259,11 @@ public class AlterarFuncionario extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				 int numIdentificacao = Integer.parseInt(textNumeroIndentificacao.getText());
+				
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 				
 				String nomeCompleto = textNomeFuncionario.getText();
-				String numIdentificacao = textNumeroIndentificacao.getText();
 				String telefone = textTelefone.getText();
 				String cep = textCepFuncionario.getText();
 				String numCasa = textNumeroCasaFuncionario.getText();
@@ -271,7 +272,7 @@ public class AlterarFuncionario extends JFrame {
 				String senha = textSenha.getText();
 				
 				//Verifica se tem alguma coisa
-				if(nomeCompleto.isEmpty() || numIdentificacao.isEmpty() || dataNascismento.isEmpty() || telefone.isEmpty() || cep.isEmpty() || numCasa.isEmpty()
+				if(nomeCompleto.isEmpty() ||  dataNascismento.isEmpty() || telefone.isEmpty() || cep.isEmpty() || numCasa.isEmpty()
 						|| login.isEmpty() || senha.isEmpty()){
 					JOptionPane.showMessageDialog(null, "Preencha todos os campos!"); // SUBSTITUIR JOPTIONPANE por TELA
 					// DE MENSAGEM
@@ -296,23 +297,16 @@ public class AlterarFuncionario extends JFrame {
 					funcionarioAtualizado.setLogin(login);
 					funcionarioAtualizado.setSenha(senha);
 	
-			/*	// Atualiza no banco pegando o retorno
-				int retorno = endDAO.atualizarEndereco(enderecoAtualizado);
 
-				if (retorno == 0) {
-					// mensagem erro
-				} else {
-					// mensagem de sucesso
-				}*/
-				
-				
-					// Atualiza no banco pegando o retorno
-					boolean sucesso = funcioDAO.atualizarFuncionario(funcionarioAtualizado);
-					if (!sucesso) {
-					    JOptionPane.showMessageDialog(null, "Atualização ocorreu um Erro!");
-					} else {
-					    JOptionPane.showMessageDialog(null, "Atualização ocorreu com Sucesso!");
-					}
+			        // Chamar o método para atualizar o funcionário utilizando o número de identificação
+			        boolean sucesso = funcioDAO.atualizarFuncionarioPorIndentificacao(numIdentificacao, funcionarioAtualizado);
+			        
+			        // Exibir mensagem de sucesso ou erro
+			        if (sucesso) {
+			            JOptionPane.showMessageDialog(null, "Funcionário atualizado com sucesso!");
+			        } else {
+			            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao atualizar o funcionário.");
+			        }
 				}	
 			}
 		});
