@@ -98,14 +98,22 @@ public class TelaCheckIn extends JFrame {
 		lblNome_Cliente.setBounds(195, 263, 202, 21);
 		contentPane.add(lblNome_Cliente);
 		
-		textDataEntrada = new JTextField();
-		textDataEntrada.setForeground(new Color(1, 50, 1));
-		textDataEntrada.setBackground(new Color(252, 251, 244));
-		textDataEntrada.setBounds(811, 351, 165, 29);
-		textDataEntrada.setBorder(new LineBorder(new Color(1, 50, 1)));
-		contentPane.add(textDataEntrada);
-		textDataEntrada.setColumns(10);
+		try {
+			MaskFormatter formttDEntrada = new MaskFormatter("##/##/####");
+			formttDEntrada.setPlaceholder("");
+			textDataEntrada = new JFormattedTextField(formttDEntrada);
+			textDataEntrada.setForeground(new Color(1, 50, 1));
+			textDataEntrada.setBackground(new Color(252, 251, 244));
+			textDataEntrada.setBounds(811, 351, 165, 29);
+			textDataEntrada.setBorder(new LineBorder(new Color(1, 50, 1)));
+			textDataEntrada.setColumns(10);
+			contentPane.add(textDataEntrada);
+		} catch(Exception e) {
+			e.printStackTrace();
+			}
 		
+		//textDataEntrada = new JTextField();
+
 		JLabel lblSobrenomeCliente = new JLabel("* Sobrenome:");
 		lblSobrenomeCliente.setBackground(new Color(1, 50, 1));
 		lblSobrenomeCliente.setForeground(new Color(1, 50, 1));
@@ -113,16 +121,21 @@ public class TelaCheckIn extends JFrame {
 		lblSobrenomeCliente.setBounds(195, 325, 165, 22);
 		contentPane.add(lblSobrenomeCliente);
 		
+		try {
+			MaskFormatter formttDNasc = new MaskFormatter("##/##/####");
+			formttDNasc.setPlaceholder("");
+			textDataNascimento = new JFormattedTextField(formttDNasc);
+			textDataNascimento.setForeground(new Color(1, 50, 1));
+			textDataNascimento.setBackground(new Color(252, 251, 244));
+			textDataNascimento.setBounds(195, 484, 404, 29);
+			textDataNascimento.setBorder(new LineBorder(new Color(1, 50, 1)));
+			textDataNascimento.setColumns(10);
+			contentPane.add(textDataNascimento);
+		} catch(Exception e) {
+			e.printStackTrace();
+			}
+		//textDataNascimento = new JTextField();
 
-		textDataNascimento = new JTextField();
-		textDataNascimento.setForeground(new Color(1, 50, 1));
-		textDataNascimento.setBackground(new Color(252, 251, 244));
-		textDataNascimento.setBounds(195, 484, 404, 29);
-		contentPane.add(textDataNascimento);
-		textDataNascimento.setBorder(new LineBorder(new Color(1, 50, 1)));
-		textDataNascimento.setColumns(10);
-
-		
 		JLabel lblTelefone = new JLabel("* Telefone:");
 		lblTelefone.setBackground(new Color(1, 50, 1));
 		lblTelefone.setForeground(new Color(1, 50, 1));
@@ -130,15 +143,23 @@ public class TelaCheckIn extends JFrame {
 		lblTelefone.setBounds(195, 524, 236, 21);
 		contentPane.add(lblTelefone);
 		
-		textCPF = new JTextField();
-		textCPF.setToolTipText("");
-		textCPF.setForeground(new Color(1, 50, 1));
-		textCPF.setBackground(new Color(252, 251, 244));
-		textCPF.setBounds(195, 417, 404, 29);
-		contentPane.add(textCPF);
-		textCPF.setBorder(new LineBorder(new Color(1, 50, 1)));
-		textCPF.setColumns(10);
-		
+		try {
+			MaskFormatter formttNIden = new MaskFormatter("###.###.###-##");
+			formttNIden.setPlaceholder("");
+			textCPF = new JFormattedTextField(formttNIden);
+			textCPF.setToolTipText("Coloque o CPF Aqui");
+			textCPF.setForeground(new Color(1, 50, 1));
+			textCPF.setBackground(new Color(252, 251, 244));
+			textCPF.setBounds(195, 417, 404, 29);
+			textCPF.setBorder(new LineBorder(new Color(1, 50, 1)));
+			textCPF.setColumns(10);
+			contentPane.add(textCPF);
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+			}
+		//textCPF = new JTextField();
+
 		JLabel lblDataEntrada = new JLabel("* Data e hora de entrada: ");
 		lblDataEntrada.setForeground(new Color(1, 50, 1));
 		lblDataEntrada.setBackground(new Color(1, 50, 1));
@@ -154,15 +175,20 @@ public class TelaCheckIn extends JFrame {
 		textPrimeiroNome.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textPrimeiroNome.setColumns(10);
 		
-		textHoraEntrada = new JTextField();
-		textHoraEntrada.setForeground(new Color(1, 50, 1));
-		textHoraEntrada.setBackground(new Color(252, 251, 244));
-		textHoraEntrada.setBounds(986, 351, 165, 29);
-		textHoraEntrada.setBorder(new LineBorder(new Color(1, 50, 1)));
-		contentPane.add(textHoraEntrada);
-		
-		textHoraEntrada.setColumns(10);
-		
+		try {
+			MaskFormatter formttHEntr = new MaskFormatter("##:##");
+			formttHEntr.setPlaceholder("");
+			textHoraEntrada = new JFormattedTextField(formttHEntr);
+			textHoraEntrada.setForeground(new Color(1, 50, 1));
+			textHoraEntrada.setBackground(new Color(252, 251, 244));
+			textHoraEntrada.setBounds(986, 351, 165, 29);
+			textHoraEntrada.setBorder(new LineBorder(new Color(1, 50, 1)));
+			textHoraEntrada.setColumns(10);
+			contentPane.add(textHoraEntrada);
+		} catch(Exception e) {
+			e.printStackTrace();
+			}
+		//textHoraEntrada = new JTextField();
 				
 		JLabel lblSenhaCad = new JLabel("* Crie uma senha para o cadastro: ");
 		lblSenhaCad.setBackground(new Color(1, 50, 1));
@@ -414,13 +440,20 @@ public class TelaCheckIn extends JFrame {
 		lblDataNascimento_1.setBounds(195, 452, 236, 21);
 		contentPane.add(lblDataNascimento_1);
 		
-		textTelefone = new JTextField();
-		textTelefone.setForeground(new Color(1, 50, 1));
-		textTelefone.setColumns(10);
-		textTelefone.setBorder(new LineBorder(new Color(1, 50, 1)));
-		textTelefone.setBackground(new Color(252, 251, 244));
-		textTelefone.setBounds(195, 556, 404, 29);
-		contentPane.add(textTelefone);
+		try {
+			MaskFormatter formttTelef = new MaskFormatter("(##) #####-####");
+			formttTelef.setPlaceholder("");
+			textTelefone = new JFormattedTextField(formttTelef);
+			textTelefone.setForeground(new Color(1, 50, 1));
+			textTelefone.setColumns(15);
+			textTelefone.setBorder(new LineBorder(new Color(1, 50, 1)));
+			textTelefone.setBackground(new Color(252, 251, 244));
+			textTelefone.setBounds(195, 556, 404, 29);
+			contentPane.add(textTelefone);
+		} catch(Exception e) {
+			e.printStackTrace();
+			}
+		//textTelefone = new JTextField();
 		
 		JLabel lblEmail = new JLabel("* Email: ");
 		lblEmail.setForeground(new Color(1, 50, 1));
@@ -447,7 +480,7 @@ public class TelaCheckIn extends JFrame {
 		textTelefone.setText("(47) 98456-1425");
 		textEmail.setText("jvdjhfdj@gmail.com");*/
 		
-		JButton btnExcluirCadastro = new JButton("Excluir");
+		/*JButton btnExcluirCadastro = new JButton("Excluir");
 		btnExcluirCadastro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				HospedagemDAO hospedagemdao = HospedagemDAO.getInstancia();
@@ -477,7 +510,7 @@ public class TelaCheckIn extends JFrame {
 		btnExcluirCadastro.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnExcluirCadastro.setBackground(new Color(242, 29, 68));
 		btnExcluirCadastro.setBounds(1079, 638, 176, 39);
-		contentPane.add(btnExcluirCadastro);
+		contentPane.add(btnExcluirCadastro);*/
 	}
 
 }
