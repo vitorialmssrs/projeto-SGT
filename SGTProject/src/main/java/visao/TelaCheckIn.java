@@ -45,7 +45,7 @@ public class TelaCheckIn extends JFrame {
 
 	/**
 	 * Launch the application.
-
+//Removendo o metodo main para poder só rodar pela tela inicial
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -102,6 +102,7 @@ public class TelaCheckIn extends JFrame {
 			MaskFormatter formttDEntrada = new MaskFormatter("##/##/####");
 			formttDEntrada.setPlaceholder("");
 			textDataEntrada = new JFormattedTextField(formttDEntrada);
+			textDataEntrada.setToolTipText("Coloque a Data de Entrada do Checkin Aqui");
 			textDataEntrada.setForeground(new Color(1, 50, 1));
 			textDataEntrada.setBackground(new Color(252, 251, 244));
 			textDataEntrada.setBounds(811, 351, 165, 29);
@@ -125,6 +126,7 @@ public class TelaCheckIn extends JFrame {
 			MaskFormatter formttDNasc = new MaskFormatter("##/##/####");
 			formttDNasc.setPlaceholder("");
 			textDataNascimento = new JFormattedTextField(formttDNasc);
+			textDataNascimento.setToolTipText("Coloque sua Data de Nascimento Aqui");
 			textDataNascimento.setForeground(new Color(1, 50, 1));
 			textDataNascimento.setBackground(new Color(252, 251, 244));
 			textDataNascimento.setBounds(195, 484, 404, 29);
@@ -152,7 +154,7 @@ public class TelaCheckIn extends JFrame {
 			textCPF.setBackground(new Color(252, 251, 244));
 			textCPF.setBounds(195, 417, 404, 29);
 			textCPF.setBorder(new LineBorder(new Color(1, 50, 1)));
-			textCPF.setColumns(10);
+			textCPF.setColumns(11);
 			contentPane.add(textCPF);
 			
 		} catch(Exception e) {
@@ -168,6 +170,7 @@ public class TelaCheckIn extends JFrame {
 		contentPane.add(lblDataEntrada);
 		
 		textPrimeiroNome = new JTextField();
+		textPrimeiroNome.setToolTipText("Coloque Seu Primeiro Nome Aqui");
 		textPrimeiroNome.setForeground(new Color(1, 50, 1));
 		textPrimeiroNome.setBackground(new Color(252, 251, 244));
 		textPrimeiroNome.setBounds(195, 291, 404, 29);
@@ -179,6 +182,7 @@ public class TelaCheckIn extends JFrame {
 			MaskFormatter formttHEntr = new MaskFormatter("##:##");
 			formttHEntr.setPlaceholder("");
 			textHoraEntrada = new JFormattedTextField(formttHEntr);
+			textHoraEntrada.setToolTipText("Coloque a Hora de Entrada Aqui");
 			textHoraEntrada.setForeground(new Color(1, 50, 1));
 			textHoraEntrada.setBackground(new Color(252, 251, 244));
 			textHoraEntrada.setBounds(986, 351, 165, 29);
@@ -205,6 +209,7 @@ public class TelaCheckIn extends JFrame {
 		contentPane.add(lblCPFCliente);
 		
 		textSobrenome = new JTextField();
+		textSobrenome.setToolTipText("Coloque Seu Sobrenome Aqui");
 		textSobrenome.setForeground(new Color(1, 50, 1));
 		textSobrenome.setBackground(new Color(252, 251, 244));
 		textSobrenome.setBounds(195, 351, 404, 29);
@@ -255,111 +260,28 @@ public class TelaCheckIn extends JFrame {
 				String email = textEmail.getText();
 				String senha = txtSenha.getText();
 				
-				if(nome.length() == 0) {
-					JOptionPane.showMessageDialog(null, "Campo Nome obrigatório!");
-					return ;
+				
+				if(nome.isEmpty()||sobrenome.isEmpty()||numidentificacao.isEmpty()||
+dataNascimento.isEmpty()||dataEntrada.isEmpty()||horaEntrada.isEmpty()||telefone.isEmpty()||email.isEmpty()||senha.isEmpty()) {
+					TelaErroCheckin frame = new TelaErroCheckin();
+					frame.setVisible(true);
 				}
-				if(sobrenome.length() == 0) {
-					JOptionPane.showMessageDialog(null, "Campo Sobrenome obrigatório!");
-					return ;
-				}
-				if(numidentificacao.length() == 0) {
-					JOptionPane.showMessageDialog(null, "Campo CPF obrigatório!");
-					return ;
-				}
+				
 				numidentificacao = numidentificacao.replace(".", "");
 				numidentificacao = numidentificacao.replace("-", "");
-				MaskFormatter mascaraNumID = null;
-				try {
-					mascaraNumID = new MaskFormatter("###.###.###-##");
-				} catch (ParseException e1) {
-  					e1.printStackTrace();
-					}
-						textCPF = new JFormattedTextField(mascaraNumID);
-						contentPane.add(textCPF);
-						textCPF.setColumns(15);
 				
-				if(dataNascimento.length() == 0) {
-					JOptionPane.showMessageDialog(null, "Campo Data de Nascimento obrigatório!");
-					return ;
-				}
-				
-		        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
-
-
-				
-				MaskFormatter mascaraDataNascimento = null;
-				try {
-					mascaraDataNascimento = new MaskFormatter("##/##/####");
-				} catch (ParseException e1) {
-  					e1.printStackTrace();
-					}
-				textDataNascimento = new JFormattedTextField(mascaraDataNascimento);
-						contentPane.add(textDataNascimento);
-						textDataNascimento.setColumns(10);
-								
-				
-				if(dataEntrada.length() == 0) {
-					JOptionPane.showMessageDialog(null, "Campo Data de Entrada obrigatório!");
-					return ;
-				}
-				
-				MaskFormatter mascaraDataEntrada = null;
-				try {
-					mascaraDataEntrada = new MaskFormatter("##/##/####");
-				} catch (ParseException e1) {
-  					e1.printStackTrace();
-					}
-						textDataEntrada = new JFormattedTextField(mascaraDataEntrada);
-						contentPane.add(textDataEntrada);
-						textDataEntrada.setColumns(10);
-				
-				
-				
-				if(horaEntrada.length() == 0) {
-					JOptionPane.showMessageDialog(null, "Campo Hora de Entrada obrigatório!");
-					return ;
-				}
-				
-				MaskFormatter mascaraHoraEntrada = null;
-				try {
-					mascaraHoraEntrada = new MaskFormatter("##:##");
-				} catch (ParseException e1) {
-					e1.printStackTrace();
-					}
-						textHoraEntrada = new JFormattedTextField(mascaraHoraEntrada);
-						contentPane.add(textHoraEntrada);
-						textHoraEntrada.setColumns(5);
-					
-				
-				
-				if(telefone.length() == 0) {
-					JOptionPane.showMessageDialog(null, "Campo Telefone obrigatório!");
-					return ;
-				}
-				
-				if(email.length() == 0) {
-					JOptionPane.showMessageDialog(null, "Campo Email obrigatório!");
-					return ;
-				}
-				
-				if(senha.length() == 0) {
-					JOptionPane.showMessageDialog(null, "Campo Senha obrigatório!");
-					return ;
-				}
 				int senhai = Integer.parseInt(senha);
 				
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");	
+				DateTimeFormatter formattertime = DateTimeFormatter.ofPattern("HH:mm");
 				LocalDate dn = LocalDate.parse(dataNascimento, formatter);
 				LocalDate dtEntrada = LocalDate.parse(dataEntrada, formatter);
-				DateTimeFormatter formattertime = DateTimeFormatter.ofPattern("HH:mm");
-				Long numidentificacaoL = Long.parseLong(numidentificacao);
 				LocalTime hrEntrada = LocalTime.parse(horaEntrada,formattertime);
 
+				Long numidentificacaoL = Long.parseLong(numidentificacao);
 				
-				//cricao de objeto 
 				Hospede hospede = new Hospede();
 				
-				//setando os valores
 				hospede.setPrimeironome(nome);
 				hospede.setSobrenome(sobrenome);
 				hospede.setNumidentificacao(numidentificacaoL);
@@ -368,9 +290,8 @@ public class TelaCheckIn extends JFrame {
 				hospede.setEmail(email);
 				hospede.setSenha(senhai);
 				
-				//instanciando a classe DAO
 				HospedeDAO dao = new HospedeDAO();
-				///inserindo na classe 
+
 				int id = dao.insertHospede(hospede);
 				hospede.setIdcliente(id);
 				
@@ -381,16 +302,17 @@ public class TelaCheckIn extends JFrame {
 				HospedagemDAO hospedagemdao = new HospedagemDAO();
 				
 				hospedagemdao.insertHospedagem(hospedagem);
-				
-				AvisoCheckInHospede frame = new AvisoCheckInHospede();
-				frame.setVisible(true);
-				//JOptionPane.showMessageDialog(null, "Cadastro Realizado!");
 
-				dispose();
+				dispose();//manter para fechar a tela cadastro
 				
 				FuncionalidadeCliente frame2 = new FuncionalidadeCliente();
 				frame2.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame2.setVisible(true);
+				
+				TelaAvisoSucessoCheckInHospede frame = new TelaAvisoSucessoCheckInHospede();
+				frame.setLocationRelativeTo(null);
+				frame.setVisible(true);
+				
 			}
 		});
 		btnCadastro_Cliente.setBackground(new Color(66, 142, 66));
@@ -415,12 +337,13 @@ public class TelaCheckIn extends JFrame {
 		btnSair_tela_cad_Cliente.setBounds(1323, 708, 176, 39);
 		contentPane.add(btnSair_tela_cad_Cliente);
 		
-		JLabel lblInformacaoSenha = new JLabel("Apenas números, com no Mínimo 8 caracteres  e Sem caracteres especiais.");
+		JLabel lblInformacaoSenha = new JLabel("Apenas números, com no Máximo 8 caracteres e Sem caracteres especiais.");
 		lblInformacaoSenha.setForeground(new Color(255, 0, 0));
-		lblInformacaoSenha.setBounds(811, 486, 353, 13);
+		lblInformacaoSenha.setBounds(811, 486, 383, 13);
 		contentPane.add(lblInformacaoSenha);
 		
 		txtSenha = new JTextField();
+		txtSenha.setToolTipText("Crie sua Senha Aqui");
 		txtSenha.setForeground(new Color(1, 50, 1));
 		txtSenha.setBackground(new Color(252, 251, 244));
 		txtSenha.setBounds(811, 506, 404, 29);
@@ -444,6 +367,7 @@ public class TelaCheckIn extends JFrame {
 			MaskFormatter formttTelef = new MaskFormatter("(##) #####-####");
 			formttTelef.setPlaceholder("");
 			textTelefone = new JFormattedTextField(formttTelef);
+			textTelefone.setToolTipText("Coloque o Número de Telefone Aqui");
 			textTelefone.setForeground(new Color(1, 50, 1));
 			textTelefone.setColumns(15);
 			textTelefone.setBorder(new LineBorder(new Color(1, 50, 1)));
@@ -463,6 +387,7 @@ public class TelaCheckIn extends JFrame {
 		contentPane.add(lblEmail);
 		
 		textEmail = new JTextField();
+		textEmail.setToolTipText("Coloque o Email Aqui");
 		textEmail.setForeground(new Color(1, 50, 1));
 		textEmail.setColumns(10);
 		textEmail.setBorder(new LineBorder(new Color(1, 50, 1)));

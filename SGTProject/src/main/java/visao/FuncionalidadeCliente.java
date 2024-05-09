@@ -22,7 +22,7 @@ public class FuncionalidadeCliente extends JFrame {
 
 	/**
 	 * Launch the application.
-	 */
+	 //Removendo o metodo main para poder só rodar pela tela inicial
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
