@@ -284,6 +284,7 @@ public class TelaCheckOut extends JFrame {
 		contentPane.add(lblNumQuarto, "cell 3 13,alignx left,aligny top");
 		
 		textNumQuarto = new JTextField();
+		textNumQuarto.setEditable(false);
 		contentPane.add(textNumQuarto, "cell 3 14,grow");
 		textNumQuarto.setColumns(10);
 		
