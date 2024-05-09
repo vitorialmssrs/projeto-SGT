@@ -92,10 +92,10 @@ public class TelaCheckOut extends JFrame {
 		btnSair_tela_cad_Cliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				setVisible(false);
-				
-				/*TelaCheckIn cadastrocliente = new TelaCheckIn();
-				cadastrocliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);*/
+				dispose();
+				FuncionalidadeCliente frame = new FuncionalidadeCliente();
+				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				frame.setVisible(true);
 			}
 		});
 		btnSair_tela_cad_Cliente.setForeground(new Color(252, 251, 244));
@@ -127,17 +127,32 @@ public class TelaCheckOut extends JFrame {
 		lblDataNascimento.setFont(new Font("Tahoma", Font.BOLD, 19));
 		contentPane.add(lblDataNascimento, "cell 7 4,alignx left,growy");
 		
-		textNumeroIdentificacao = new JTextField();
-		textNumeroIdentificacao.addFocusListener(new FocusAdapter() {
-			
-			
-
+		/*try {
+			MaskFormatter formatterNIden = new MaskFormatter("###.###.###-##");
+			formatterNIden.setPlaceholder("");
+			textNumeroIdentificacao = new JFormattedTextField(formatterNIden);
+			textNumeroIdentificacao.setToolTipText("Digite seu CPF...");
+			textNumeroIdentificacao.setForeground(new Color(102, 112, 133));
+			textNumeroIdentificacao.setFont(new Font("Corbel", Font.ITALIC, 15));
+			textNumeroIdentificacao.setBounds(10, 564, 458, 35);
+			contentPane.add(formattedTextFieldCPF);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}*/
+		
+		//textNumeroIdentificacao = new JTextField();
+		try {
+			MaskFormatter formatterNIden = new MaskFormatter("###.###.###-##");
+			formatterNIden.setPlaceholder("");
+			textNumeroIdentificacao = new JFormattedTextField(formatterNIden);
+			textNumeroIdentificacao.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
 				HospedeDAO dao = HospedeDAO.getInstancia();  
 				String numIdentificacao =  textNumeroIdentificacao.getText().trim();
 		        String s =((JTextField) e.getSource()).getText();   
-
+		        numIdentificacao = numIdentificacao.replace(".", "");
+		        numIdentificacao = numIdentificacao.replace("-", "");
 				Long numId = Long.valueOf(numIdentificacao);  
   
 				hosp = dao.buscarHospedePorCpf(numId);
@@ -161,12 +176,15 @@ public class TelaCheckOut extends JFrame {
 				}  
 			}
 		});
-		textNumeroIdentificacao.setToolTipText("");
+		textNumeroIdentificacao.setToolTipText("Coloque o seu CPF Aqui");
 		textNumeroIdentificacao.setForeground(new Color(1, 50, 1));
 		textNumeroIdentificacao.setBackground(new Color(252, 251, 244));
 		textNumeroIdentificacao.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textNumeroIdentificacao.setColumns(10);
 		contentPane.add(textNumeroIdentificacao, "cell 3 5,grow");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		TextDataNascimento = new JTextField();
 		TextDataNascimento.setForeground(new Color(1, 50, 1));
