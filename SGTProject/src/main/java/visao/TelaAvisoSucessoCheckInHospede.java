@@ -14,7 +14,7 @@ import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class AvisoCheckInHospede extends JFrame {
+public class TelaAvisoSucessoCheckInHospede extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -27,7 +27,7 @@ public class AvisoCheckInHospede extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AvisoCheckInHospede frame = new AvisoCheckInHospede();
+					TelaAvisoSucessoCheckInHospede frame = new TelaAvisoSucessoCheckInHospede();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,7 +39,7 @@ public class AvisoCheckInHospede extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AvisoCheckInHospede() {
+	public TelaAvisoSucessoCheckInHospede() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 330);
 		contentPane = new JPanel();
@@ -51,7 +51,7 @@ public class AvisoCheckInHospede extends JFrame {
 		
 		lblLogo = new JLabel("");
 		lblLogo.setBounds(180, 0, 136, 136);
-		lblLogo.setIcon(new ImageIcon(AvisoCheckInHospede.class.getResource("/imagens/LogoPI.png")));
+		lblLogo.setIcon(new ImageIcon(TelaAvisoSucessoCheckInHospede.class.getResource("/imagens/LogoPI.png")));
 		contentPane.add(lblLogo);
 		
 		JButton btnSair = new JButton("Sair");
@@ -61,7 +61,7 @@ public class AvisoCheckInHospede extends JFrame {
 	
 			}
 		});
-		btnSair.setIcon(new ImageIcon(AvisoCheckInHospede.class.getResource("/imagens/Vector (1).png")));
+		btnSair.setIcon(new ImageIcon(TelaAvisoSucessoCheckInHospede.class.getResource("/imagens/Vector (1).png")));
 		btnSair.setForeground(new Color(255, 255, 255));
 		btnSair.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnSair.setBackground(new Color(1, 50, 1));

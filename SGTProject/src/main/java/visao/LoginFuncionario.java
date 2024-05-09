@@ -183,7 +183,10 @@ public class LoginFuncionario extends JFrame {
 		JButton btnSair = new JButton("Sair");
 		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
+				dispose();
+				TelaInicial telaInicial = new TelaInicial();
+				telaInicial.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telaInicial.setVisible(true);
 			}
 		});
 		btnSair.setIcon(new ImageIcon(
