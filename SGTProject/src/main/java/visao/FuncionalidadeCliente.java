@@ -22,7 +22,7 @@ public class FuncionalidadeCliente extends JFrame {
 
 	/**
 	 * Launch the application.
-	 */
+	 //Removendo o metodo main para poder só rodar pela tela inicial
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -93,8 +93,9 @@ public class FuncionalidadeCliente extends JFrame {
 		JButton btnCheckout = new JButton("Check-out");
 		btnCheckout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+					dispose();
 					TelaCheckOut checkoutcliente = new TelaCheckOut();
-					checkoutcliente.setExtendedState(checkoutcliente.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+					checkoutcliente.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					checkoutcliente.setVisible(true);
 					checkoutcliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);				
 			}

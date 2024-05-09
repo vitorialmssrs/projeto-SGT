@@ -86,8 +86,9 @@ public class TelaInicial extends JFrame {
 		btnNewButton.setBounds(411, 627, 641, 85);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
+				dispose();
 				LoginFuncionario loginfuncionario = new LoginFuncionario();
-				loginfuncionario.setExtendedState(loginfuncionario.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+				loginfuncionario.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				loginfuncionario.setVisible(true);
 				loginfuncionario.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}
