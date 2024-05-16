@@ -90,7 +90,10 @@ public class FuncionalidadeFuncionario extends JFrame {
 		JButton btnSair_1 = new JButton("Sair");
 		btnSair_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
+				dispose();
+				TelaInicial telaInicial = new TelaInicial();
+				telaInicial.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telaInicial.setVisible(true);
 			}
 		});
 		

@@ -79,11 +79,11 @@ public class TelaAlterarCadastroCliente extends JFrame {
 		lblCaroFuncionario.setFont(new Font("Tahoma", Font.BOLD, 52));
 		contentPane.add(lblCaroFuncionario);
 		
-		JLabel lbl_Insira_Informacoes_Cadastro = new JLabel("Insira as informações para cadastro: ");
+		JLabel lbl_Insira_Informacoes_Cadastro = new JLabel("Insira as informações para alterar o cadastro: ");
 		lbl_Insira_Informacoes_Cadastro.setForeground(new Color(1, 50, 1));
 		lbl_Insira_Informacoes_Cadastro.setBackground(new Color(1, 50, 1));
 		lbl_Insira_Informacoes_Cadastro.setFont(new Font("Tahoma", Font.PLAIN, 27));
-		lbl_Insira_Informacoes_Cadastro.setBounds(592, 146, 474, 31);
+		lbl_Insira_Informacoes_Cadastro.setBounds(592, 146, 559, 31);
 		contentPane.add(lbl_Insira_Informacoes_Cadastro);
 		
 		JLabel lblNome_Cliente = new JLabel("* Primeiro nome:");
