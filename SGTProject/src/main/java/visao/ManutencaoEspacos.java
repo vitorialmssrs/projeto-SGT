@@ -57,81 +57,6 @@ public class ManutencaoEspacos extends JFrame {
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 40));
 		contentPane.add(lblTitulo);
 		
-		
-		JButton btnAcademia = new JButton("Academia");
-		btnAcademia.setBorder(new LineBorder(new Color(1, 50, 1)));
-		btnAcademia.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//Academia academia = new Academia ();
-				//academia.setViseble(true);
-			}
-		});
-		btnAcademia.setBackground(new Color(247, 246, 243));
-		btnAcademia.setForeground(new Color(1, 50, 1));
-		btnAcademia.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnAcademia.setBounds(94, 281, 181, 50);
-		contentPane.add(btnAcademia);
-		
-		JButton btnBrinquedoteca = new JButton("Brinquedoteca");
-		btnBrinquedoteca.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnBrinquedoteca.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnBrinquedoteca.setBackground(new Color(247, 246, 243));
-		btnBrinquedoteca.setForeground(new Color(1, 50, 1));
-		btnBrinquedoteca.setBounds(94, 429, 181, 50);
-		contentPane.add(btnBrinquedoteca);
-		
-		JButton btnPiscina = new JButton("Piscina");
-		btnPiscina.setBackground(new Color(247, 246, 243));
-		btnPiscina.setForeground(new Color(1, 50, 1));
-		btnPiscina.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnPiscina.setBounds(94, 571, 181, 50);
-		contentPane.add(btnPiscina);
-		
-		JButton btnQuiosque = new JButton("Quiosque");
-		btnQuiosque.setForeground(new Color(1, 50, 1));
-		btnQuiosque.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnQuiosque.setBackground(new Color(247, 246, 243));
-		btnQuiosque.setBounds(661, 281, 181, 50);
-		contentPane.add(btnQuiosque);
-		
-		JButton btnQuadraFut = new JButton("Quadra de Futebol");
-		btnQuadraFut.setForeground(new Color(1, 50, 1));
-		btnQuadraFut.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnQuadraFut.setBackground(new Color(247, 246, 243));
-		btnQuadraFut.setBounds(661, 429, 181, 50);
-		contentPane.add(btnQuadraFut);
-		
-		JButton btnQuadraVolei = new JButton("Quadra de vôlei");
-		btnQuadraVolei.setForeground(new Color(1, 50, 1));
-		btnQuadraVolei.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnQuadraVolei.setBackground(new Color(247, 246, 243));
-		btnQuadraVolei.setBounds(661, 571, 181, 50);
-		contentPane.add(btnQuadraVolei);
-		
-		JButton btnSalaoFesta = new JButton("Salão de Festas");
-		btnSalaoFesta.setForeground(new Color(1, 50, 1));
-		btnSalaoFesta.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnSalaoFesta.setBackground(new Color(247, 246, 243));
-		btnSalaoFesta.setBounds(1205, 281, 181, 50);
-		contentPane.add(btnSalaoFesta);
-		
-		JButton btnSalaJogos = new JButton("Sala de Jogos");
-		btnSalaJogos.setForeground(new Color(1, 50, 1));
-		btnSalaJogos.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnSalaJogos.setBackground(new Color(247, 246, 243));
-		btnSalaJogos.setBounds(1205, 429, 181, 50);
-		contentPane.add(btnSalaJogos);
-		
-		JButton btnSPA = new JButton("SPA");
-		btnSPA.setForeground(new Color(1, 50, 1));
-		btnSPA.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnSPA.setBackground(new Color(247, 246, 243));
-		btnSPA.setBounds(1205, 571, 181, 50);
-		contentPane.add(btnSPA);
-		
 		JButton btnSair = new JButton("<- |  Sair ");
 		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -235,5 +160,53 @@ public class ManutencaoEspacos extends JFrame {
 		lblLogo.setIcon(new ImageIcon(ManutencaoEspacos.class.getResource("/imagens/Châteu_Imperial-removebg-preview 4.png")));
 		lblLogo.setBounds(158, 11, 194, 172);
 		contentPane.add(lblLogo);
+		
+		JLabel lblNewLabel = new JLabel("Academia");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblNewLabel.setForeground(new Color(1, 50, 1));
+		lblNewLabel.setBounds(95, 292, 144, 27);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Brinquedoteca");
+		lblNewLabel_1.setForeground(new Color(1, 50, 1));
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblNewLabel_1.setBounds(94, 440, 163, 27);
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("Piscina");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblNewLabel_2.setForeground(new Color(1, 50, 1));
+		lblNewLabel_2.setBounds(95, 588, 144, 33);
+		contentPane.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("Quiosque");
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblNewLabel_3.setForeground(new Color(1, 50, 1));
+		lblNewLabel_3.setBounds(652, 293, 126, 27);
+		contentPane.add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_4 = new JLabel("Quadra de Futebol");
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblNewLabel_4.setForeground(new Color(1, 50, 1));
+		lblNewLabel_4.setBounds(654, 449, 181, 30);
+		contentPane.add(lblNewLabel_4);
+		
+		JLabel lblNewLabel_5 = new JLabel("Quadra de Vôlei");
+		lblNewLabel_5.setForeground(new Color(1, 50, 1));
+		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblNewLabel_5.setBounds(654, 582, 172, 21);
+		contentPane.add(lblNewLabel_5);
+		
+		JLabel lblNewLabel_6 = new JLabel("Salão de Festas");
+		lblNewLabel_6.setBounds(1214, 301, 46, 14);
+		contentPane.add(lblNewLabel_6);
+		
+		JLabel lblNewLabel_7 = new JLabel("Sala de jogos");
+		lblNewLabel_7.setBounds(1229, 447, 46, 14);
+		contentPane.add(lblNewLabel_7);
+		
+		JLabel lblNewLabel_8 = new JLabel("SPA");
+		lblNewLabel_8.setBounds(1229, 600, 46, 14);
+		contentPane.add(lblNewLabel_8);
 	}
 }
