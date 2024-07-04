@@ -1,7 +1,7 @@
 package visao;
 
 import java.awt.Color;
-import java.awt.EventQueue;
+//import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -36,27 +36,12 @@ public class AlterarFuncionario extends JFrame {
 	private JTextField textSenha;
 	private JTextField textTelefone;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AlterarFuncionario frame = new AlterarFuncionario();
-					frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
+	 * @param funcionarioLogado 
 	 */
-	public AlterarFuncionario() {
+	public AlterarFuncionario(Funcionario funcionarioLogado) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1920, 1080);
 		contentPane = new JPanel();
@@ -106,6 +91,7 @@ public class AlterarFuncionario extends JFrame {
 		textNomeFuncionario.setBackground(new Color(252, 251, 244));
 		textNomeFuncionario.setBounds(688, 286, 644, 21);
 		textNomeFuncionario.setBorder(new LineBorder(new Color(1, 50, 1)));
+		textNomeFuncionario.setText(funcionarioLogado.getNomeCompleto());
 		contentPane.add(textNomeFuncionario);
 		textNomeFuncionario.setColumns(10);
 
@@ -120,6 +106,7 @@ public class AlterarFuncionario extends JFrame {
 		textNumeroIndentificacao.setForeground(new Color(1, 50, 1));
 		textNumeroIndentificacao.setBackground(new Color(252, 251, 244));
 		textNumeroIndentificacao.setBounds(763, 330, 602, 21);
+		textNumeroIndentificacao.setText(String.valueOf(funcionarioLogado.getNumIndentificacao()));
 		contentPane.add(textNumeroIndentificacao);
 		textNumeroIndentificacao.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textNumeroIndentificacao.setColumns(10);
@@ -142,6 +129,7 @@ public class AlterarFuncionario extends JFrame {
 		textCepFuncionario.setForeground(new Color(1, 50, 1));
 		textCepFuncionario.setBackground(new Color(252, 251, 244));
 		textCepFuncionario.setBounds(600, 493, 129, 21);
+		textCepFuncionario.setText(String.valueOf(funcionarioLogado.getCep()));
 		contentPane.add(textCepFuncionario);
 		textCepFuncionario.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textCepFuncionario.setColumns(10);
@@ -158,6 +146,7 @@ public class AlterarFuncionario extends JFrame {
 		textDataFuncionario.setBackground(new Color(252, 251, 244));
 		textDataFuncionario.setBounds(719, 373, 143, 21);
 		textDataFuncionario.setBorder(new LineBorder(new Color(1, 50, 1)));
+		textDataFuncionario.setText(String.valueOf(funcionarioLogado.getDataNascismento()));
 		contentPane.add(textDataFuncionario);
 
 		textDataFuncionario.setColumns(10);
@@ -173,6 +162,7 @@ public class AlterarFuncionario extends JFrame {
 		textNumeroCasaFuncionario.setForeground(new Color(1, 50, 1));
 		textNumeroCasaFuncionario.setBackground(new Color(252, 251, 244));
 		textNumeroCasaFuncionario.setBounds(632, 535, 97, 19);
+		textNumeroCasaFuncionario.setText(String.valueOf(funcionarioLogado.getNumCasa()));
 		contentPane.add(textNumeroCasaFuncionario);
 		textNumeroCasaFuncionario.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textNumeroCasaFuncionario.setColumns(10);
@@ -189,6 +179,7 @@ public class AlterarFuncionario extends JFrame {
 		textTelefone.setBackground(new Color(252, 251, 244));
 		textTelefone.setBounds(633, 417, 168, 21);
 		textTelefone.setBorder(new LineBorder(new Color(1, 50, 1)));
+		textTelefone.setText(String.valueOf(funcionarioLogado.getTelefone()));
 		contentPane.add(textTelefone);
 		textTelefone.setColumns(10);
 
@@ -259,10 +250,11 @@ public class AlterarFuncionario extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				 int numIdentificacao = Integer.parseInt(textNumeroIndentificacao.getText());
+				// Long numIdentificacao = Long.parseLong(textNumeroIndentificacao.getText());
 				
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 				
+				String numIdentificacao = textNumeroIndentificacao.getText();
 				String nomeCompleto = textNomeFuncionario.getText();
 				String telefone = textTelefone.getText();
 				String cep = textCepFuncionario.getText();
@@ -272,14 +264,14 @@ public class AlterarFuncionario extends JFrame {
 				String senha = textSenha.getText();
 				
 				//Verifica se tem alguma coisa
-				if(nomeCompleto.isEmpty() ||  dataNascismento.isEmpty() || telefone.isEmpty() || cep.isEmpty() || numCasa.isEmpty()
+				if(nomeCompleto.isEmpty() || numIdentificacao.isEmpty() || dataNascismento.isEmpty() || telefone.isEmpty() || cep.isEmpty() || numCasa.isEmpty()
 						|| login.isEmpty() || senha.isEmpty()){
 					JOptionPane.showMessageDialog(null, "Preencha todos os campos!"); // SUBSTITUIR JOPTIONPANE por TELA
 					// DE MENSAGEM
 					/* exibir uma mensagem de erro*/
 				}else {
 					
-					int numIndentificacaoI = Integer.valueOf(numIdentificacao);
+					Long numIndentificacaoI = Long.valueOf(numIdentificacao);
 					int cepI = Integer.valueOf(cep);
 					int numCasaI = Integer.valueOf(numCasa);
 					LocalDate dataNascismentoI = LocalDate.parse(dataNascismento, formatter);
@@ -288,6 +280,7 @@ public class AlterarFuncionario extends JFrame {
 					
 					// Cria um novo obj com os novos valores atualizados
 					Funcionario funcionarioAtualizado = new Funcionario();
+					funcionarioAtualizado.setIdFuncionario(funcionarioLogado.getIdFuncionario());
 					funcionarioAtualizado.setNumIndentificacao(numIndentificacaoI);
 					funcionarioAtualizado.setNomeCompleto(nomeCompleto);
 					funcionarioAtualizado.setDataNascismento(dataNascismentoI);
@@ -299,7 +292,7 @@ public class AlterarFuncionario extends JFrame {
 	
 
 			        // Chamar o método para atualizar o funcionário utilizando o número de identificação
-			        boolean sucesso = funcioDAO.atualizarFuncionarioPorIndentificacao(numIdentificacao, funcionarioAtualizado);
+			        boolean sucesso = funcioDAO.atualizarFuncionarioPorIndentificacao(funcionarioAtualizado);
 			        
 			        // Exibir mensagem de sucesso ou erro
 			        if (sucesso) {

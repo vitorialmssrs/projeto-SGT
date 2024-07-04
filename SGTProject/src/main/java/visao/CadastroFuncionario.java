@@ -272,7 +272,11 @@ public void actionPerformed(ActionEvent e) {
 		/* exibir uma mensagem de erro*/
 	}else {
 		
-		int numIndentificacaoI = Integer.valueOf(numIdentificacao);
+		numIdentificacao = numIdentificacao.replace(".", "");
+		numIdentificacao = numIdentificacao.replace("-", "");
+		cep = cep.replace("-", "");
+		
+		Long numIndentificacaoI = Long.valueOf(numIdentificacao);
 		int cepI = Integer.valueOf(cep);
 		int numCasaI = Integer.valueOf(numCasa);
 		LocalDate dataNascismentoI = LocalDate.parse(dataNascismento, formatter);

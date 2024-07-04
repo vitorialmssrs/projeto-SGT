@@ -44,7 +44,7 @@ public class FuncionarioDAO {
 			PreparedStatement ps = conBD.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, end.getLogin());
 			ps.setString(2, end.getSenha());
-			ps.setInt(3, end.getNumIndentificacao());
+			ps.setLong(3, end.getNumIndentificacao());
 			ps.setString(4, end.getNomeCompleto());
 			ps.setDate(5, Date.valueOf(end.getDataNascismento()));
 			ps.setString(6, end.getTelefone());
@@ -87,7 +87,7 @@ public class FuncionarioDAO {
 
 				String Login = rs.getNString("login");
 				String Senha = rs.getNString("senha");
-				Integer NumIndentificacao = rs.getInt("num_identificacao");
+				Long NumIndentificacao = rs.getLong("num_identificacao");
 				String NomeCompleto = rs.getNString("nome_completo");
 				String Telefone = rs.getString("telefone");
 				Integer Cep = rs.getInt("cep");
@@ -116,8 +116,8 @@ public class FuncionarioDAO {
 		return funcionario;
 	}
 
-	public boolean atualizarFuncionarioPorIndentificacao(int numIndentificacao, Funcionario funcionarioAtualizado) {
-		String SQL = "UPDATE funcionarios SET login = ?, senha = ?, nome_completo=?, data_nascimento=?, telefone=?, cep=?, num_casa=? WHERE num_identificacao=?";
+	public boolean atualizarFuncionarioPorIndentificacao(Funcionario funcionarioAtualizado) {
+		String SQL = "UPDATE funcionarios SET login = ?, senha = ?, nome_completo=?, data_nascimento=?, telefone=?, cep=?, num_casa=?, num_identificacao=? WHERE id_funcionario=?";
 	    
 	    Conexao con = Conexao.getInstancia();
 	    Connection conBD = con.conectar();
@@ -133,7 +133,9 @@ public class FuncionarioDAO {
 			ps.setString(5, funcionarioAtualizado.getTelefone());
 			ps.setInt(6, funcionarioAtualizado.getCep());
 			ps.setInt(7, funcionarioAtualizado.getNumCasa());
-			ps.setInt(8, funcionarioAtualizado.getNumIndentificacao());
+			ps.setLong(8, funcionarioAtualizado.getNumIndentificacao());
+			ps.setInt(9, funcionarioAtualizado.getIdFuncionario());
+			
 			   
 	        rowsAffected = ps.executeUpdate();
 	    } catch (SQLException e) {
@@ -147,7 +149,7 @@ public class FuncionarioDAO {
 
 	public Funcionario efetuaLogin(String login, String senha) {
 
-		Funcionario f =  new Funcionario();
+		Funcionario f =   null;
 
 		String SQL = "SELECT * FROM funcionarios u WHERE u.login = ? AND u.senha = ?";
 
@@ -166,13 +168,14 @@ public class FuncionarioDAO {
 				Integer idFuncionario = rs.getInt("id_funcionario");
 				String Login = rs.getNString("login");
 				String Senha = rs.getNString("senha");
-				Integer NumIndentificacao = rs.getInt("num_identificacao");
+				Long NumIndentificacao = rs.getLong("num_identificacao");
 				String NomeCompleto = rs.getNString("nome_completo");
 				String Telefone = rs.getString("telefone");
 				Integer Cep = rs.getInt("cep");
 				Integer NumCasa = rs.getInt("num_casa");
 				LocalDate DataNascismento = rs.getDate("data_nascimento").toLocalDate();
 
+				f=new Funcionario();
 				f.setIdFuncionario(idFuncionario);
 				f.setLogin(Login);
 				f.setSenha(Senha);
