@@ -182,7 +182,7 @@ public class HospedeDAO implements IHospedeDao{
 		return retorno;
 	}
 	
-	public Hospede buscarHospedePorCpf(String numidentificacao) {
+	public Hospede buscarHospedePorCpf(Long numId) {
 		String SQL = "SELECT primeiro_nome, sobrenome, data_de_nascimento FROM clientes WHERE num_identificacao = ?"; // verificar
 
 		Conexao con = Conexao.getInstancia();
@@ -195,7 +195,7 @@ public class HospedeDAO implements IHospedeDao{
 
 			PreparedStatement ps = conBD.prepareStatement(SQL);
 
-			ps.setString(1, numidentificacao);
+			ps.setLong(1, numId);
 			
 
 			ResultSet retorno = ps.executeQuery();

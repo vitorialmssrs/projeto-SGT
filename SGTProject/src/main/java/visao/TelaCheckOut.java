@@ -47,7 +47,9 @@ public class TelaCheckOut extends JFrame {
 	private JTextField textHoraSaida;
 	private JTextField textDataSaida;
 	private JTextField textDataEntrada;
+	private JTextField textDataEntrada_1;
 	private JTextField textHoraEntrada;
+	private JTextField textHoraEntrada_1;
 	private JTextField textNumQuarto;
 	private Hospede hosp;
 
@@ -187,6 +189,7 @@ public class TelaCheckOut extends JFrame {
 		}
 		
 		TextDataNascimento = new JTextField();
+		TextDataNascimento.setEditable(false);
 		TextDataNascimento.setForeground(new Color(1, 50, 1));
 		TextDataNascimento.setBackground(new Color(252, 251, 244));
 		TextDataNascimento.setBorder(new LineBorder(new Color(1, 50, 1)));
@@ -205,6 +208,7 @@ public class TelaCheckOut extends JFrame {
 		contentPane.add(lblDataEntrada, "cell 7 6");
 		
 		textPrimeiroNome = new JTextField();
+		textPrimeiroNome.setEditable(false);
 		textPrimeiroNome.setForeground(new Color(1, 50, 1));
 		textPrimeiroNome.setBackground(new Color(252, 251, 244));
 		textPrimeiroNome.setBorder(new LineBorder(new Color(1, 50, 1)));
@@ -217,9 +221,12 @@ public class TelaCheckOut extends JFrame {
 		} catch (ParseException e) {
 		    e.printStackTrace();
 		}
-		textDataEntrada = new JTextField();
-		contentPane.add(textDataEntrada, "cell 7 7,grow");
-		textDataEntrada.setColumns(10);
+		textDataEntrada_1 = new JTextField();
+		textDataEntrada_1.setForeground(new Color(1, 50, 1));
+		textDataEntrada_1.setBackground(new Color(252, 251, 244));
+		textDataEntrada_1.setEditable(false);
+		contentPane.add(textDataEntrada_1, "cell 7 7,grow");
+		textDataEntrada_1.setColumns(10);
 		
 		
 		try {
@@ -228,9 +235,12 @@ public class TelaCheckOut extends JFrame {
 		} catch (ParseException e) {
 		    e.printStackTrace();
 		}
-		textHoraEntrada = new JTextField();
-		contentPane.add(textHoraEntrada, "cell 8 7,alignx left,growy");
-		textHoraEntrada.setColumns(10);
+		textHoraEntrada_1 = new JTextField();
+		textHoraEntrada_1.setForeground(new Color(1, 50, 1));
+		textHoraEntrada_1.setBackground(new Color(252, 251, 244));
+		textHoraEntrada_1.setEditable(false);
+		contentPane.add(textHoraEntrada_1, "cell 8 7,alignx left,growy");
+		textHoraEntrada_1.setColumns(10);
 		
 		JLabel lblSobrenomeCliente = new JLabel("* Sobrenome:");
 		lblSobrenomeCliente.setBackground(new Color(1, 50, 1));
@@ -245,38 +255,58 @@ public class TelaCheckOut extends JFrame {
 		contentPane.add(lblDataHoraSaida, "cell 7 9,alignx left,aligny bottom");
 		
 		textSobrenome = new JTextField();
+		textSobrenome.setEditable(false);
 		textSobrenome.setForeground(new Color(1, 50, 1));
 		textSobrenome.setBackground(new Color(252, 251, 244));
 		textSobrenome.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textSobrenome.setColumns(10);
 		contentPane.add(textSobrenome, "cell 3 11,grow");
-		
+		/*try {
+			MaskFormatter formttDNasc = new MaskFormatter("##/##/####");
+			formttDNasc.setPlaceholder("");
+			textDataNascimento = new JFormattedTextField(formttDNasc);
+			textDataNascimento.setToolTipText("Coloque sua Data de Nascimento Aqui");
+			textDataNascimento.setForeground(new Color(1, 50, 1));
+			textDataNascimento.setBackground(new Color(252, 251, 244));
+			textDataNascimento.setBounds(195, 484, 404, 29);
+			textDataNascimento.setBorder(new LineBorder(new Color(1, 50, 1)));
+			textDataNascimento.setColumns(10);
+			contentPane.add(textDataNascimento);
+		} catch(Exception e) {
+			e.printStackTrace();
+			}*/
 		
 		try {
-		    MaskFormatter mascaraDataSaida = new MaskFormatter("##/##/####");
-		    textDataSaida = new JFormattedTextField(mascaraDataSaida);
-		} catch (ParseException e) {
-		    e.printStackTrace();
-		}
-		textDataSaida = new JFormattedTextField();
-		textDataSaida.setForeground(new Color(1, 50, 1));
-		textDataSaida.setColumns(10);
-		textDataSaida.setBorder(new LineBorder(new Color(1, 50, 1)));
-		textDataSaida.setBackground(new Color(252, 251, 244));
-		contentPane.add(textDataSaida, "cell 7 11,grow");
+			MaskFormatter formttDS = new MaskFormatter("##/##/####");
+			formttDS.setPlaceholder("");
+			textDataSaida = new JFormattedTextField(formttDS);
+			textDataSaida.setToolTipText("Coloque a Data de Saida Aqui");
+			
+
+			//textDataNascimento.setBounds(195, 484, 404, 29);
+			
+			textDataSaida.setForeground(new Color(1, 50, 1));
+			textDataSaida.setBorder(new LineBorder(new Color(1, 50, 1)));
+			textDataSaida.setBackground(new Color(252, 251, 244));
+			textDataSaida.setColumns(10);
+			contentPane.add(textDataSaida, "cell 7 11,grow");
+		} catch(Exception e) {
+			e.printStackTrace();
+			}
 		
 		try {
-		    MaskFormatter mascaraHoraSaida = new MaskFormatter("##:##");
-		    textHoraSaida = new JFormattedTextField(mascaraHoraSaida);
-		} catch (ParseException e) {
-		    e.printStackTrace();
-		}
-		textHoraSaida = new JFormattedTextField();
-		textHoraSaida.setForeground(new Color(1, 50, 1));
-		textHoraSaida.setColumns(10);
-		textHoraSaida.setBorder(new LineBorder(new Color(1, 50, 1)));
-		textHoraSaida.setBackground(new Color(252, 251, 244));
-		contentPane.add(textHoraSaida, "cell 8 11,alignx left,growy");
+			MaskFormatter formttHS = new MaskFormatter("##:##");
+			formttHS.setPlaceholder("");
+			textHoraSaida = new JFormattedTextField(formttHS);
+			textHoraSaida.setToolTipText("Coloque Hora de Saida Aqui");
+			textHoraSaida.setForeground(new Color(1, 50, 1));
+			textHoraSaida.setBorder(new LineBorder(new Color(1, 50, 1)));
+			textHoraSaida.setBackground(new Color(252, 251, 244));
+			textHoraSaida.setColumns(10);
+			contentPane.add(textHoraSaida, "cell 8 11,alignx left,growy");
+		} catch(Exception e) {
+			e.printStackTrace();
+			}
 		
 		JLabel lblNumQuarto = new JLabel("* Número do Quarto: ");
 		lblNumQuarto.setForeground(new Color(1, 50, 1));
@@ -284,6 +314,9 @@ public class TelaCheckOut extends JFrame {
 		contentPane.add(lblNumQuarto, "cell 3 13,alignx left,aligny top");
 		
 		textNumQuarto = new JTextField();
+		textNumQuarto.setForeground(new Color(1, 50, 1));
+		textNumQuarto.setBackground(new Color(252, 251, 244));
+		textNumQuarto.setEditable(false);
 		contentPane.add(textNumQuarto, "cell 3 14,grow");
 		textNumQuarto.setColumns(10);
 		
