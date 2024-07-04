@@ -1,73 +1,65 @@
 package modelo;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 public class EspacoHotel {
-	//colocar todas as informações dos espaços e fazer os get e sets 
+	//colocar todas as informações dos espaços(informações das tabelas do banco de dados para listar em manutenção)
+	//e fazer os get e sets 
 	
-	private String academia; 
-	private String quiosque;
-	private String salaofesta;
-	private String quadrafutebol; 
-	private String salajogos;
-	private String quadravolei;
-	private String SPA; 
-	private String brinquedoteca;
-	private String piscina;
+	private int id; 
+	private String nome;
+	private LocalDate dataAbertura;
+	private LocalDate dataFechamento; 
+	private LocalTime horarioAbertura;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public LocalDate getDataAbertura() {
+		return dataAbertura;
+	}
+	public void setDataAbertura(LocalDate dataAbertura) {
+		this.dataAbertura = dataAbertura;
+	}
+	public LocalDate getDataFechamento() {
+		return dataFechamento;
+	}
+	public void setDataFechamento(LocalDate dataFechamento) {
+		this.dataFechamento = dataFechamento;
+	}
+	public LocalTime getHorarioAbertura() {
+		return horarioAbertura;
+	}
+	public void setHorarioAbertura(LocalTime horarioAbertura) {
+		this.horarioAbertura = horarioAbertura;
+	}
+	public LocalTime getHorarioFechamento() {
+		return horarioFechamento;
+	}
+	public void setHorarioFechamento(LocalTime horarioFechamento) {
+		this.horarioFechamento = horarioFechamento;
+	}
+	public int getCapacidade() {
+		return capacidade;
+	}
+	public void setCapacidade(int capacidade) {
+		this.capacidade = capacidade;
+	}
+	private LocalTime horarioFechamento;
+	private int capacidade; 
 	
-	public String getPiscina() {
-		return piscina;
-	}
-	public void setPiscina(String piscina) {
-		this.piscina = piscina;
-	}
-	public String getAcademia() {
-		return academia;
-	}
-	public void setAcademia(String academia) {
-		this.academia = academia;
-	}
-	public String getQuiosque() {
-		return quiosque;
-	}
-	public void setQuiosque(String quiosque) {
-		this.quiosque = quiosque;
-	}
-	public String getSalaoFesta() {
-		return salaofesta;
-	}
-	public void setSalaoFesta(String salaofesta) {
-		this.salaofesta = salaofesta;
-	}
-	public String getQuadraFutebol() {
-		return quadrafutebol;
-	}
-	public void setQuadraFutebol(String quadrafutebol) {
-		this.quadrafutebol = quadrafutebol;
-	}
-	public String getSalaJogos() {
-		return salajogos;
-	}
-	public void setSalaJogos(String salajogos) {
-		this.salajogos = salajogos;
-	}
-	public String getQuadraVolei() {
-		return quadravolei;
-	}
-	public void setQuadraVolei(String quadravolei) {
-		this.quadravolei = quadravolei;
-	}
-	public String getSPA() {
-		return SPA;
-	}
-	public void setSPA(String sPA) {
-		SPA = sPA;
-	}
-	public String getBrinquedoteca() {
-		return brinquedoteca;
-	}
-	public void setBrinquedoteca(String brinquedoteca) {
-		this.brinquedoteca = brinquedoteca;
-	}
-
-	
-
+@Override
+public String toString() {
+	// TODO Auto-generated method stub
+	return nome;
+}
 }

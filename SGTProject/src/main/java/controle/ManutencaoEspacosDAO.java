@@ -66,9 +66,12 @@ import modelo.ManutencaoEspacos;
 	try {
 	    PreparedStatement ps = conBD.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
 
+	    
+	    
 	    ps.setInt(1,end.getIdManutencaoEspacos());
 	    ps.setString(2,end.getTipoManutencao());
 	    ps.setDate(5, end.getDiaManutencao());
+	    
 	    
 	    // Executa a consulta
 	    ps.executeUpdate(); 
