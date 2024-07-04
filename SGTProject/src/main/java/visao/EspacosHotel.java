@@ -63,8 +63,8 @@ public class EspacosHotel extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\vivis\\OneDrive\\Área de Trabalho\\IMG PI\\LogoPI.png"));
-		lblNewLabel_1.setBounds(269, 0, 158, 160);
+		lblNewLabel_1.setIcon(new ImageIcon(EspacosHotel.class.getResource("/imagens/Châteu_Imperial-removebg-preview 4.png")));
+		lblNewLabel_1.setBounds(233, 11, 194, 172);
 		contentPane.add(lblNewLabel_1);
 		
 		JButton btnAcademia = new JButton("Academia");
