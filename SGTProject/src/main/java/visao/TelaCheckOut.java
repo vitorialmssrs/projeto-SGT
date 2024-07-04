@@ -330,6 +330,10 @@ public class TelaCheckOut extends JFrame {
 				textDataSaida.setText(" ");
 				textDataSaida.setText(" ");
 				textHoraSaida.setText(" ");	
+				textDataEntrada.setText(" ");
+				textHoraEntrada.setText(" ");
+				textNumQuarto.setText(" ");
+				TextDataNascimento.setText(" ");
 				
 			}
 		});
@@ -416,7 +420,7 @@ public class TelaCheckOut extends JFrame {
                 hospedagemdao.AtualizarCheckOut(hospedagem);
                 
               
-				JOptionPane.showMessageDialog(null, "CCheck-Out realizado com sucesso!");
+				JOptionPane.showMessageDialog(null, "Check-Out realizado com sucesso!");
 
                 dispose();	
 				
