@@ -11,7 +11,7 @@ import java.sql.Date;
 
 import modelo.Hospede;
 
-public class HospedeDAO {
+public class HospedeDAO implements IHospedeDao{
 
 	private static HospedeDAO instancia;
 
@@ -28,47 +28,31 @@ public class HospedeDAO {
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
 
-			//inicializa a variavel chave primaria antes de outra operação no banco 
 		int chavePrimariaGerada = Integer.MIN_VALUE;
-
-		//incializa um bloco de exceções 
+		
 		try {
-			//Cria um objeto PreparedStatement chamado ps usando a conexão com o banco de dados (conBD).
-			//O método prepareStatement recebe a string SQL (que representa a instrução SQL a ser executada) 
-			//e um segundo argumento Statement.RETURN_GENERATED_KEYS é uma constante que informa ao banco de dados para retornar as chaves primárias geradas 
+			
 			PreparedStatement ps = conBD.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
 			
-			//END Define o primeiro parâmetro (?) da instrução SQL com o valor do primeiro nome 
 			ps.setString(1, end.getPrimeironome());
 			ps.setString(2, end.getSobrenome());
-			ps.setString(3, end.getNumidentificacao());
+			ps.setLong(3, end.getNumidentificacao());
 			ps.setDate(4, Date.valueOf(end.getDatanascimento()));
 			ps.setString(5, end.getTelefone());
 			ps.setString(6, end.getEmail());
 			ps.setInt(7, end.getSenha());
 
-			//Executa a instrução SQL (uma operação de inserção) e armazena o número de linhas afetadas na variável ra.
-			int ra = ps.executeUpdate();
-
-			if (ra > 0) { 
-				
-				//Obtém um ResultSet (gk) contendo as chaves primárias geradas pela operação de inserção.
-				ResultSet gk = ps.getGeneratedKeys();
-				
-				if (gk.next()) { 
+			ps.executeUpdate();
+			ResultSet gk = ps.getGeneratedKeys();
+			if (gk.next()) { 
 					
-					//Se gk contém uma chave primária, define a variável chavePrimariaGerada com o valor da chave primária.
-					chavePrimariaGerada = gk.getInt(1);
-				}
+				chavePrimariaGerada = gk.getInt(1);
+				
 			}
-			
-		} catch (SQLException e) { //Captura qualquer exceção de tipo SQLException que possa ocorrer durante a execução do bloco try.
-			
-			e.printStackTrace(); //Imprime o rastreamento de pilha da exceção para o console (geralmente usado para depuração).
-			
-		} finally { //nicia o bloco finally, que será executado independentemente de o bloco try ou catch serem executados.
-			
-			con.fecharConexao(); //Fecha a conexão com o banco de dados (con).
+		} catch (SQLException e) { 
+			e.printStackTrace();
+		} finally { 
+			con.fecharConexao();
 		}
 		return chavePrimariaGerada;
 	}
@@ -96,32 +80,17 @@ public class HospedeDAO {
 				// Cria o objeto
 				Hospede end = new Hospede();
 
-				/*
-				 * primeiro_nome, sobrenome, num_identificacao, data_de_nascimento, telefone,
-				 * email
-				 */
-
-				// Pega os valores de cada coluna do registro
+				int idcliente = rs.getInt("id_cliente");
 				String PrimeiroNome = rs.getString("primeiro_nome");
 				String Sobrenome = rs.getString("sobrenome");
 				LocalDate Datanascimento = rs.getDate("data_de_nascimento").toLocalDate();
-				String Numidentificacao = rs.getString("num_identificacao");
+				Long Numidentificacao = rs.getLong("num_identificacao");
 				String Telefone = rs.getString("telefone");
 				String Email = rs.getString("email");
 				Integer senha = rs.getInt("senha");
-
-				// localdate ==> mais indicado para utilizar
-				// LocalTime
-				// LocalDateTime
-				/*
-				 * (Java)LocalTime <-> Time(BD) 
-				 * (Java)LocalDateTime <-> DateTime(BD)
-				 * (Java)LocalDate <-> Date(BD) 
-				 * Se estiver muito dificil usar a conversão,
-				 * separar em 3 input, para verificar e converter mais rapido
-				 **/
  
 				// seta oa valores no objeto java
+				end.setIdcliente(idcliente);
 				end.setPrimeironome(PrimeiroNome);
 				end.setSobrenome(Sobrenome);
 				end.setNumidentificacao(Numidentificacao);
@@ -143,34 +112,35 @@ public class HospedeDAO {
 		return hospedes;
 	}
 
-	public boolean atualizarHospede(Hospede end) {
+	public int atualizarHospedeporIdentificacao(Hospede atualizarHospede) {
 
 		/*
 		 * primeiro_nome, sobrenome, num_identificacao, data_de_nascimento, telefone,
 		 * email
 		 */
 		// verificar se o WHERE vai finalizar com n°identificação ou id_cliente
-		String SQL = "UPDATE clientes SET primeiro_nome = ?, sobrenome = ?, num_identificacao = ?, data_de_nascimento = ?, telefone = ?, email = ?, senha = ?, WHERE id_cliente = ?";
+		String SQL = "UPDATE clientes SET primeiro_nome = ?, sobrenome = ?, num_identificacao = ?, data_de_nascimento = ?, telefone = ?, email = ?, senha = ? WHERE id_cliente = ?";
 
 		// Abre conexão e cria a "ponte de conexão" com o MySQL
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
 
-		int retorno = 0;
+		int rowsAffected = 0;
 
 		try {
 
 			PreparedStatement ps = conBD.prepareStatement(SQL);
 
-			ps.setString(1, end.getPrimeironome());
-			ps.setString(2, end.getSobrenome());
-			ps.setString(3, end.getNumidentificacao());
-			ps.setDate(4, Date.valueOf(end.getDatanascimento()));
-			ps.setString(5, end.getTelefone());
-			ps.setString(6, end.getEmail());
-			ps.setInt(7, end.getSenha());
-
-			retorno = ps.executeUpdate();
+			ps.setString(1, atualizarHospede.getPrimeironome());
+			ps.setString(2, atualizarHospede.getSobrenome());
+			ps.setDate(3, Date.valueOf(atualizarHospede.getDatanascimento()));
+			ps.setString(4, atualizarHospede.getTelefone());
+			ps.setString(5, atualizarHospede.getEmail());
+			ps.setInt(6, atualizarHospede.getSenha());
+			ps.setLong(7, atualizarHospede.getNumidentificacao());
+			ps.setInt(8, atualizarHospede.getIdcliente());
+			
+			rowsAffected = ps.executeUpdate();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -178,14 +148,11 @@ public class HospedeDAO {
 			con.fecharConexao();
 		}
 
-		// IF Ternário: se o retorno for zero é pra considerar esse valor falso, senão é
-		// pra considerar verdadeiro
-		return retorno != 0;
+		return rowsAffected;
 	}
 
-	public boolean removerHospede(Hospede end) {
-
-		String SQL = "DELETE FROM clientes SET primeiro_nome = ?, sobrenome = ?, num_identificacao = ?, data_de_nascimento = ?, telefone = ?, email = ?, senha = ?, WHERE id_cliente = ?"; // verificar
+	public int removerHospede(Long numidentificacaoL, Integer senhai) {
+		String SQL = "DELETE FROM clientes WHERE num_identificacao = ? AND senha = ?"; // verificar
 
 		Conexao con = Conexao.getInstancia();
 
@@ -197,13 +164,8 @@ public class HospedeDAO {
 
 			PreparedStatement ps = conBD.prepareStatement(SQL);
 
-			ps.setString(1, end.getPrimeironome());
-			ps.setString(2, end.getSobrenome());
-			ps.setString(3, end.getNumidentificacao());
-			ps.setDate(4, Date.valueOf(end.getDatanascimento()));
-			ps.setString(5, end.getTelefone());
-			ps.setString(6, end.getEmail());
-			ps.setInt(7, end.getSenha());
+			ps.setLong(1, numidentificacaoL);
+			ps.setInt(2, senhai);
 
 			retorno = ps.executeUpdate();
 
@@ -217,6 +179,99 @@ public class HospedeDAO {
 		} finally {
 			con.fecharConexao();
 		}
-		return retorno != 0;
+		return retorno;
+	}
+	
+	public Hospede buscarHospedePorCpf(Long numId) {
+		String SQL = "SELECT primeiro_nome, sobrenome, data_de_nascimento FROM clientes WHERE num_identificacao = ?"; // verificar
+
+		Conexao con = Conexao.getInstancia();
+
+		Connection conBD = con.conectar();
+
+		Hospede hospede = null;
+		
+		try {
+
+			PreparedStatement ps = conBD.prepareStatement(SQL);
+
+			ps.setLong(1, numId);
+			
+
+			ResultSet retorno = ps.executeQuery();
+			
+			while (retorno.next()) {
+				String pm = retorno.getString("primeiro_nome");
+				String sob = retorno.getString("sobrenome");
+				String dn = retorno.getString("data_de_nascimento");
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			con.fecharConexao();
+		}
+		
+		return hospede;
+	}
+
+	@Override
+	public Hospede buscarHospedePorCpf(long cpf) {
+		Conexao con = Conexao.getInstancia();
+		Connection conBD = con.conectar();
+		Hospede h = null;
+		
+		String query = "SELECT * FROM clientes WHERE num_identificacao = ?";
+		
+		try {
+			PreparedStatement ps = conBD.prepareStatement(query);
+			ps.setLong(1, cpf);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				
+				h = new Hospede();
+
+				
+				String PrimeiroNome = rs.getString("primeiro_nome");
+				String Sobrenome = rs.getString("sobrenome");
+				LocalDate Datanascimento = rs.getDate("data_de_nascimento").toLocalDate();
+				Long Numidentificacao = rs.getLong("num_identificacao");
+				String Telefone = rs.getString("telefone");
+				String Email = rs.getString("email");
+				Integer senha = rs.getInt("senha");
+				Integer idCliente = rs.getInt("id_cliente");
+
+				h.setPrimeironome(PrimeiroNome);
+				h.setSobrenome(Sobrenome);
+				h.setNumidentificacao(Numidentificacao);
+				h.setDatanascimento(Datanascimento);
+				h.setTelefone(Telefone);
+				h.setEmail(Email);
+				h.setSenha(senha);
+				h.setIdcliente(idCliente);
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			con.fecharConexao();
+		}
+		
+		return h;
+	}
+
+	@Override
+	public boolean atualizarHospede(Hospede end) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean removerHospede(Hospede end) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

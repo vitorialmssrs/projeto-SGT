@@ -7,13 +7,13 @@ public interface IHospedeDao {
 	
 	//ASSINATURA DO METODO
 	
-	public int inserirHospede(Hospede end);
+	public int insertHospede(Hospede end);
 	
 	public ArrayList<Hospede> listarHospede();
 	
 	public boolean atualizarHospede(Hospede end);
 	
-	public Hospede buscarHospedePorCpf(int cpf);
+	public Hospede buscarHospedePorCpf(long cpf);
 	
 	public boolean removerHospede (Hospede end);
 }

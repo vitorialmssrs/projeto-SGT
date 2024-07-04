@@ -5,6 +5,7 @@ DROP DATABASE IF EXISTS mydb;
 
 CREATE DATABASE IF NOT EXISTS mydb;
 
+
 USE mydb;
 
 -- -----------------------------------------------------
@@ -14,7 +15,7 @@ DROP TABLE IF EXISTS clientes;
 
 CREATE TABLE IF NOT EXISTS clientes (
   id_cliente INT(11) NOT NULL AUTO_INCREMENT,
-  num_identificacao bigint(11) NOT NULL,
+  num_identificacao varchar(11) NOT NULL,
   primeiro_nome VARCHAR(100) NOT NULL,
   sobrenome VARCHAR(100) NOT NULL,
   data_de_nascimento DATE NOT NULL,
@@ -64,7 +65,7 @@ CREATE TABLE IF NOT EXISTS funcionarios (
 DROP TABLE IF EXISTS reservas_espacos;
 
 CREATE TABLE IF NOT EXISTS reservas_espacos (
-  id_reservas INT(7) NOT NULL,
+  id_reservas INT(7) NOT NULL auto_increment,
   dia_horario DATETIME NOT NULL,
   id_clientes INT(11) NOT NULL,
   espacos_hotel_id_espacos INT(11) NOT NULL,
@@ -73,8 +74,8 @@ CREATE TABLE IF NOT EXISTS reservas_espacos (
     id_clientes,
     espacos_hotel_id_espacos
   ),
-  CONSTRAINT fk_reservas_espacos_clientes1 FOREIGN KEY (id_clientes) REFERENCES clientes (id_cliente),
-  CONSTRAINT fk_reservas_espacos_espacos_hotel1 FOREIGN KEY (espacos_hotel_id_espacos) REFERENCES espacos_hotel (id_espacos)
+  CONSTRAINT fk_reservas_espacos_clientes1 FOREIGN KEY (id_clientes) REFERENCES clientes (id_cliente) ON DELETE CASCADE,
+  CONSTRAINT fk_reservas_espacos_espacos_hotel1 FOREIGN KEY (espacos_hotel_id_espacos) REFERENCES espacos_hotel (id_espacos) ON DELETE CASCADE
 );
 
 -- -----------------------------------------------------
@@ -83,14 +84,14 @@ CREATE TABLE IF NOT EXISTS reservas_espacos (
 DROP TABLE IF EXISTS hospedagens;
 
 CREATE TABLE IF NOT EXISTS hospedagens (
-  num_quarto INT(3) NOT NULL,
+  num_quarto INT(3) NOT NULL auto_increment,
   DataEntrada DATE NOT NULL,
-  DataSaida DATE NOT NULL,
+  DataSaida DATE,
   HoraEntrada TIME NOT NULL,
-  HoraSaida TIME NOT NULL,
+  HoraSaida TIME,
   clientes_id_cliente INT(11) NOT NULL,
   PRIMARY KEY (num_quarto),
-  CONSTRAINT fk_hospedagens_clientes1 FOREIGN KEY (clientes_id_cliente) REFERENCES clientes (id_cliente)
+  CONSTRAINT fk_hospedagens_clientes1 FOREIGN KEY (clientes_id_cliente) REFERENCES clientes (id_cliente) ON DELETE CASCADE
 );
 
 -- -----------------------------------------------------

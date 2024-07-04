@@ -3,9 +3,6 @@ package visao;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,7 +12,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import net.miginfocom.swing.MigLayout;
 
 public class TelaInicial extends JFrame {
 
@@ -30,7 +26,7 @@ public class TelaInicial extends JFrame {
 			public void run() {
 				try {
 					TelaInicial frame = new TelaInicial();
-					frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -73,8 +69,9 @@ public class TelaInicial extends JFrame {
 		btnCliente.setBounds(411, 488, 641, 80);
 		btnCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evento) {
+				dispose();
 				FuncionalidadeCliente funcionalidadeCliente = new FuncionalidadeCliente();
-				funcionalidadeCliente.setExtendedState(funcionalidadeCliente.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+				funcionalidadeCliente.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				funcionalidadeCliente.setVisible(true);
 				funcionalidadeCliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}
@@ -89,8 +86,9 @@ public class TelaInicial extends JFrame {
 		btnNewButton.setBounds(411, 627, 641, 85);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
+				dispose();
 				LoginFuncionario loginfuncionario = new LoginFuncionario();
-				loginfuncionario.setExtendedState(loginfuncionario.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+				loginfuncionario.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				loginfuncionario.setVisible(true);
 				loginfuncionario.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}

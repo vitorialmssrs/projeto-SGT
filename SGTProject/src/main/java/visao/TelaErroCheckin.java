@@ -69,7 +69,7 @@ public TelaErroCheckin() {
 	btnSair.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			
-			setVisible(false);
+			dispose();
 		}
 	});
 	contentPane.add(btnSair, "cell 2 7,alignx center");
