@@ -44,7 +44,7 @@ public class FuncionarioDAO {
 			PreparedStatement ps = conBD.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, end.getLogin());
 			ps.setString(2, end.getSenha());
-			ps.setInt(3, end.getNumIndentificacao());
+			ps.setLong(3, end.getNumIndentificacao());
 			ps.setString(4, end.getNomeCompleto());
 			ps.setDate(5, Date.valueOf(end.getDataNascismento()));
 			ps.setString(6, end.getTelefone());
@@ -87,7 +87,7 @@ public class FuncionarioDAO {
 
 				String Login = rs.getNString("login");
 				String Senha = rs.getNString("senha");
-				Integer NumIndentificacao = rs.getInt("num_identificacao");
+				Long NumIndentificacao = rs.getLong("num_identificacao");
 				String NomeCompleto = rs.getNString("nome_completo");
 				String Telefone = rs.getString("telefone");
 				Integer Cep = rs.getInt("cep");
@@ -133,7 +133,7 @@ public class FuncionarioDAO {
 			ps.setString(5, funcionarioAtualizado.getTelefone());
 			ps.setInt(6, funcionarioAtualizado.getCep());
 			ps.setInt(7, funcionarioAtualizado.getNumCasa());
-			ps.setInt(8, funcionarioAtualizado.getNumIndentificacao());
+			ps.setLong(8, funcionarioAtualizado.getNumIndentificacao());
 			   
 	        rowsAffected = ps.executeUpdate();
 	    } catch (SQLException e) {
@@ -166,7 +166,7 @@ public class FuncionarioDAO {
 				Integer idFuncionario = rs.getInt("id_funcionario");
 				String Login = rs.getNString("login");
 				String Senha = rs.getNString("senha");
-				Integer NumIndentificacao = rs.getInt("num_identificacao");
+				Long NumIndentificacao = rs.getLong("num_identificacao");
 				String NomeCompleto = rs.getNString("nome_completo");
 				String Telefone = rs.getString("telefone");
 				Integer Cep = rs.getInt("cep");

@@ -1,7 +1,8 @@
+//Cadastro Novo
 package visao;
 
 import java.awt.Color;
-import java.awt.EventQueue;
+//import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,6 +11,7 @@ import java.time.format.DateTimeFormatter;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -17,11 +19,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.text.MaskFormatter;
 
 import controle.FuncionarioDAO;
 import modelo.Funcionario;
-
-;
 
 public class CadastroFuncionario extends JFrame {
 
@@ -38,7 +39,7 @@ public class CadastroFuncionario extends JFrame {
 
 	/**
 	 * Launch the application.
-	 */
+	 //Removendo o metodo main para poder só rodar pela tela inicial
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -102,6 +103,7 @@ public class CadastroFuncionario extends JFrame {
 		contentPane.add(lblNomeFuncionario);
 
 		textNomeFuncionario = new JTextField();
+		textNomeFuncionario.setToolTipText("Coloque seu Nome Completo Aqui");
 		textNomeFuncionario.setForeground(new Color(1, 50, 1));
 		textNomeFuncionario.setBackground(new Color(252, 251, 244));
 		textNomeFuncionario.setBounds(688, 286, 644, 21);
@@ -116,13 +118,21 @@ public class CadastroFuncionario extends JFrame {
 		lblNumeroIndentificacao.setBounds(553, 327, 200, 21);
 		contentPane.add(lblNumeroIndentificacao);
 
-		textNumeroIndentificacao = new JTextField();
-		textNumeroIndentificacao.setForeground(new Color(1, 50, 1));
-		textNumeroIndentificacao.setBackground(new Color(252, 251, 244));
-		textNumeroIndentificacao.setBounds(763, 330, 602, 21);
-		contentPane.add(textNumeroIndentificacao);
-		textNumeroIndentificacao.setBorder(new LineBorder(new Color(1, 50, 1)));
-		textNumeroIndentificacao.setColumns(10);
+		try {
+			MaskFormatter formatterNIden = new MaskFormatter("###.###.###-##");
+			formatterNIden.setPlaceholder("");
+			textNumeroIndentificacao = new JFormattedTextField(formatterNIden);
+			textNumeroIndentificacao.setToolTipText("Coloque o CPF Aqui");
+			textNumeroIndentificacao.setForeground(new Color(1, 50, 1));
+			textNumeroIndentificacao.setBackground(new Color(252, 251, 244));
+			textNumeroIndentificacao.setBounds(763, 330, 602, 21);
+			textNumeroIndentificacao.setBorder(new LineBorder(new Color(1, 50, 1)));
+			textNumeroIndentificacao.setColumns(10);
+			contentPane.add(textNumeroIndentificacao);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		//textNumeroIndentificacao = new JTextField();
 
 		JLabel lblEndereco = new JLabel("Endereço");
 		lblEndereco.setBackground(new Color(1, 50, 1));
@@ -138,13 +148,21 @@ public class CadastroFuncionario extends JFrame {
 		lblCepFuncionario.setBounds(553, 493, 45, 21);
 		contentPane.add(lblCepFuncionario);
 
-		textCepFuncionario = new JTextField();
-		textCepFuncionario.setForeground(new Color(1, 50, 1));
-		textCepFuncionario.setBackground(new Color(252, 251, 244));
-		textCepFuncionario.setBounds(600, 493, 129, 21);
-		contentPane.add(textCepFuncionario);
-		textCepFuncionario.setBorder(new LineBorder(new Color(1, 50, 1)));
-		textCepFuncionario.setColumns(10);
+		try {
+			MaskFormatter formatterCep = new MaskFormatter("#####-###");
+			formatterCep.setPlaceholder("");
+			textCepFuncionario = new JFormattedTextField(formatterCep);
+			textCepFuncionario.setToolTipText("Coloque o Cep de sua Residencia Aqui");
+			textCepFuncionario.setForeground(new Color(1, 50, 1));
+			textCepFuncionario.setBackground(new Color(252, 251, 244));
+			textCepFuncionario.setBounds(600, 493, 129, 21);
+			textCepFuncionario.setBorder(new LineBorder(new Color(1, 50, 1)));
+			textCepFuncionario.setColumns(10);
+			contentPane.add(textCepFuncionario);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		//textCepFuncionario = new JTextField();
 
 		JLabel lblDataFuncionario = new JLabel("Data de Nascimento:");
 		lblDataFuncionario.setBackground(new Color(1, 50, 1));
@@ -153,15 +171,22 @@ public class CadastroFuncionario extends JFrame {
 		lblDataFuncionario.setBounds(553, 370, 176, 21);
 		contentPane.add(lblDataFuncionario);
 
-		textDataFuncionario = new JTextField();
-		textDataFuncionario.setForeground(new Color(1, 50, 1));
-		textDataFuncionario.setBackground(new Color(252, 251, 244));
-		textDataFuncionario.setBounds(719, 373, 143, 21);
-		textDataFuncionario.setBorder(new LineBorder(new Color(1, 50, 1)));
-		contentPane.add(textDataFuncionario);
-
-		textDataFuncionario.setColumns(10);
-
+		try {
+			MaskFormatter formatterDNasc = new MaskFormatter("##/##/####");
+			formatterDNasc.setPlaceholder("");
+			textDataFuncionario = new JFormattedTextField(formatterDNasc);
+			textDataFuncionario.setToolTipText("Coloque sua Data de Nascimento Aqui");
+			textDataFuncionario.setForeground(new Color(1, 50, 1));
+			textDataFuncionario.setBackground(new Color(252, 251, 244));
+			textDataFuncionario.setBounds(719, 373, 143, 21);
+			textDataFuncionario.setBorder(new LineBorder(new Color(1, 50, 1)));
+			textDataFuncionario.setColumns(10);
+			contentPane.add(textDataFuncionario);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		//textDataFuncionario = new JTextField();
+		
 		JLabel lblNumeroFuncionario = new JLabel("Número:");
 		lblNumeroFuncionario.setForeground(new Color(1, 50, 1));
 		lblNumeroFuncionario.setBackground(new Color(1, 50, 1));
@@ -170,6 +195,7 @@ public class CadastroFuncionario extends JFrame {
 		contentPane.add(lblNumeroFuncionario);
 
 		textNumeroCasaFuncionario = new JTextField();
+		textNumeroCasaFuncionario.setToolTipText("Coloque o Número da sua Casa Aqui");
 		textNumeroCasaFuncionario.setForeground(new Color(1, 50, 1));
 		textNumeroCasaFuncionario.setBackground(new Color(252, 251, 244));
 		textNumeroCasaFuncionario.setBounds(632, 535, 97, 19);
@@ -184,14 +210,22 @@ public class CadastroFuncionario extends JFrame {
 		lblTelefoneFuncionario.setBounds(553, 414, 97, 21);
 		contentPane.add(lblTelefoneFuncionario);
 
-		textTelefone = new JTextField();
-		textTelefone.setForeground(new Color(1, 50, 1));
-		textTelefone.setBackground(new Color(252, 251, 244));
-		textTelefone.setBounds(633, 417, 168, 21);
-		textTelefone.setBorder(new LineBorder(new Color(1, 50, 1)));
-		contentPane.add(textTelefone);
-		textTelefone.setColumns(10);
-
+		try {
+			MaskFormatter formttTele = new MaskFormatter("(##) #####-####");
+			formttTele.setPlaceholder("");
+			textTelefone = new JFormattedTextField(formttTele);
+			textTelefone.setToolTipText("Coloque o Número de Telefone Aqui");
+			textTelefone.setForeground(new Color(1, 50, 1));
+			textTelefone.setBackground(new Color(252, 251, 244));
+			textTelefone.setBounds(633, 417, 168, 21);
+			textTelefone.setBorder(new LineBorder(new Color(1, 50, 1)));
+			textTelefone.setColumns(10);
+			contentPane.add(textTelefone);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		//textTelefone = new JTextField();
+		
 		JButton btnLimpar = new JButton("Limpar");
 		btnLimpar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -237,7 +271,11 @@ public void actionPerformed(ActionEvent e) {
 		/* exibir uma mensagem de erro*/
 	}else {
 		
-		int numIndentificacaoI = Integer.valueOf(numIdentificacao);
+		numIdentificacao = numIdentificacao.replace(".", "");
+		numIdentificacao = numIdentificacao.replace("-", "");
+		cep = cep.replace("-", "");
+		
+		Long numIndentificacaoI = Long.valueOf(numIdentificacao);
 		int cepI = Integer.valueOf(cep);
 		int numCasaI = Integer.valueOf(numCasa);
 		LocalDate dataNascismentoI = LocalDate.parse(dataNascismento, formatter);
@@ -309,6 +347,7 @@ contentPane.add(btnCadastrar);
 		contentPane.add(lblSenha);
 		
 		textLogin = new JTextField();
+		textLogin.setToolTipText("Crie seu Login Aqui");
 		textLogin.setBackground(new Color(255, 255, 245));
 		textLogin.setBounds(612, 627, 644, 19);
 		contentPane.add(textLogin);
@@ -316,6 +355,7 @@ contentPane.add(btnCadastrar);
 		textLogin.setColumns(10);
 		
 		textSenha = new JTextField();
+		textSenha.setToolTipText("Crie sua Senha Aqui");
 		textSenha.setBackground(new Color(255, 255, 245));
 		textSenha.setBounds(612, 664, 289, 19);
 		contentPane.add(textSenha);

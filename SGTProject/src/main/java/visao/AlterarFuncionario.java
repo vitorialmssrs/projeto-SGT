@@ -279,7 +279,7 @@ public class AlterarFuncionario extends JFrame {
 					/* exibir uma mensagem de erro*/
 				}else {
 					
-					int numIndentificacaoI = Integer.valueOf(numIdentificacao);
+					Long numIndentificacaoI = Long.valueOf(numIdentificacao);
 					int cepI = Integer.valueOf(cep);
 					int numCasaI = Integer.valueOf(numCasa);
 					LocalDate dataNascismentoI = LocalDate.parse(dataNascismento, formatter);
