@@ -6,7 +6,7 @@ public class Funcionario{
 	private Integer idFuncionario;
 	private String login;
 	private String senha;
-	private Integer numIndentificacao;
+	private Long numIndentificacao;
 	private String nomeCompleto;
 	private LocalDate dataNascismento;
 	private String telefone;
@@ -30,11 +30,11 @@ public class Funcionario{
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	public Integer getNumIndentificacao() {
+	public Long getNumIndentificacao() {
 		return numIndentificacao;
 	}
-	public void setNumIndentificacao(Integer numIndentificacao) {
-		this.numIndentificacao = numIndentificacao;
+	public void setNumIndentificacao(Long numIndentificacao2) {
+		this.numIndentificacao = numIndentificacao2;
 	}
 	public String getNomeCompleto() {
 		return nomeCompleto;

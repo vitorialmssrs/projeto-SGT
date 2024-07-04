@@ -125,7 +125,7 @@ public class FuncionalidadeFuncionario extends JFrame {
 		JButton btnNewButton = new JButton("Alterar Perfil");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AlterarFuncionario alterar = new AlterarFuncionario();
+				AlterarFuncionario alterar = new AlterarFuncionario(funcionarioLogado);
 				alterar.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				alterar.setVisible(true);
 				alterar.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
