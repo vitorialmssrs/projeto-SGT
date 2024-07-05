@@ -66,10 +66,10 @@ public class FuncionalidadeFuncionario extends JFrame {
 		btnAtualizarEspaco.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				ManutencaoEspacos manutencaoespacos = new ManutencaoEspacos();
+				TelaManutencaoEspacos manutencaoespacos = new TelaManutencaoEspacos();
 				manutencaoespacos.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				manutencaoespacos.setVisible(true);
-				manutencaoespacos.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);	
+				//manutencaoespacos.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);	
 			}
 		});
 		btnAtualizarEspaco.setFont(new Font("Tahoma", Font.BOLD, 50));

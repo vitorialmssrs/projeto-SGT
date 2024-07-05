@@ -49,7 +49,7 @@ public TelaPopUpErroFuncionario() {
 	contentPane.setLayout(new MigLayout("", "[136][][136px]", "[139px][][][][][][][]"));
 	
 	JLabel lblLogo = new JLabel("");
-	lblLogo.setIcon(new ImageIcon(TelaConfimacaoCheckin.class.getResource("/imagens/LogoPI.png")));
+	lblLogo.setIcon(new ImageIcon(TelaPopUpConfimacaoCheckin.class.getResource("/imagens/LogoPI.png")));
 	contentPane.add(lblLogo, "cell 1 0,alignx center,aligny top");
 	
 	JLabel lblNewLabel_1 = new JLabel("Caro funcionário ocorreu um erro");
