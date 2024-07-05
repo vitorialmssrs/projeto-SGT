@@ -8,8 +8,10 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import controle.EspacosDAO;
+import controle.FuncionarioDAO;
 import controle.ManutencaoEspacosDAO;
 import modelo.EspacoHotel;
+import modelo.Funcionario;
 import modelo.ManutencaoEspacos;
 
 import java.awt.Color;
@@ -43,7 +45,7 @@ public class TelaManutencaoEspacos extends JFrame {
 	/**
 	 * Launch the application.*/
 	 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -79,12 +81,11 @@ public class TelaManutencaoEspacos extends JFrame {
 		JButton btnSair = new JButton("<- |  Sair ");
 		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+//colocado pra tela de login pois se usar esse metodo pra ir para a tela de funcionalidade da erro por conta do login
 				dispose();
-				FuncionalidadeFuncionario frame = new FuncionalidadeFuncionario();
+				LoginFuncionario frame = new LoginFuncionario();
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
-				
 				
 			}
 		});
