@@ -300,8 +300,8 @@ public void actionPerformed(ActionEvent e) {
 	// Fazer a INSERÇÃO
 	int valida = dao.inserirFuncionario(f);
 	if (valida == 1) {
-		JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!"); // SUBSTITUIR JOPTIONPANE por
-																		// TELA DE MENSAGEM
+		TelaPopUpCadastroFuncionario frame = new TelaPopUpCadastroFuncionario();
+		frame.setVisible(true);
 	} else {
 		JOptionPane.showMessageDialog(null, "Erro ao cadastrar!"); // SUBSTITUIR JOPTIONPANE por TELA DE
 																	// MENSAGEM
