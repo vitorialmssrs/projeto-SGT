@@ -329,10 +329,16 @@ public class AlterarFuncionario extends JFrame {
 				//Verifica se tem alguma coisa
 				if(nomeCompleto.isEmpty() || numIdentificacao.isEmpty() || dataNascismento.isEmpty() || telefone.isEmpty() || cep.isEmpty() || numCasa.isEmpty()
 						|| login.isEmpty() || senha.isEmpty()){
-					JOptionPane.showMessageDialog(null, "Preencha todos os campos!"); // SUBSTITUIR JOPTIONPANE por TELA
-					// DE MENSAGEM
-					/* exibir uma mensagem de erro*/
+					TelaPopUpErroFuncionarioCamposNaoPreenchidos frame = new TelaPopUpErroFuncionarioCamposNaoPreenchidos();
+					frame.setVisible(true);	/*exibir uma mensagem de erro preencha todos os campos*/
+					
 				}else {
+					
+					numIdentificacao = numIdentificacao.replace(".", "");
+					numIdentificacao = numIdentificacao.replace("-", "");
+					
+					cep = cep.replace("-", "");
+					
 					
 					Long numIndentificacaoI = Long.valueOf(numIdentificacao);
 					int cepI = Integer.valueOf(cep);
@@ -359,9 +365,14 @@ public class AlterarFuncionario extends JFrame {
 			        
 			        // Exibir mensagem de sucesso ou erro
 			        if (sucesso) {
-			            JOptionPane.showMessageDialog(null, "Funcionário atualizado com sucesso!");
+			        	TelaPopUpSucessoFuncionario frame = new TelaPopUpSucessoFuncionario();
+			        	frame.setVisible(true); //JOptionPane.showMessageDialog(null, "Funcionário atualizado com sucesso!");
+			        	
+			            
 			        } else {
-			            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao atualizar o funcionário.");
+			        	TelaPopUpErroFuncionario frame = new TelaPopUpErroFuncionario();
+			        	frame.setVisible(true);// JOptionPane.showMessageDialog(null, "Ocorreu um erro ao atualizar o funcionário.");
+			           
 			        }
 				}	
 			}

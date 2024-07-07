@@ -267,10 +267,10 @@ public void actionPerformed(ActionEvent e) {
 	//Verifica se tem alguma coisa
 	if(nomeCompleto.isEmpty() || numIdentificacao.isEmpty() || dataNascismento.isEmpty() || telefone.isEmpty() || cep.isEmpty() || numCasa.isEmpty()
 			|| login.isEmpty() || senha.isEmpty()){
-		JOptionPane.showMessageDialog(null, "Preencha todos os campos!"); // SUBSTITUIR JOPTIONPANE por TELA
-		// DE MENSAGEM
-		/* exibir uma mensagem de erro*/
-	}else {
+		
+		TelaPopUpErroFuncionarioCamposNaoPreenchidos frame = new TelaPopUpErroFuncionarioCamposNaoPreenchidos();
+		frame.setVisible(true);	/*exibir uma mensagem de erro preencha todos os campos*/
+	 }else {
 		
 		numIdentificacao = numIdentificacao.replace(".", "");
 		numIdentificacao = numIdentificacao.replace("-", "");
@@ -303,8 +303,8 @@ public void actionPerformed(ActionEvent e) {
 		TelaPopUpCadastroFuncionario frame = new TelaPopUpCadastroFuncionario();
 		frame.setVisible(true);
 	} else {
-		JOptionPane.showMessageDialog(null, "Erro ao cadastrar!"); // SUBSTITUIR JOPTIONPANE por TELA DE
-																	// MENSAGEM
+		TelaPopUpErroFuncionario frame = new TelaPopUpErroFuncionario();
+		frame.setVisible(true);	/*exibir uma mensagem de erro ao cadastrar*/
 	}
 		
 	}
