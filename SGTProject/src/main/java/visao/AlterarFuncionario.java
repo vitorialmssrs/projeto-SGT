@@ -329,9 +329,9 @@ public class AlterarFuncionario extends JFrame {
 				//Verifica se tem alguma coisa
 				if(nomeCompleto.isEmpty() || numIdentificacao.isEmpty() || dataNascismento.isEmpty() || telefone.isEmpty() || cep.isEmpty() || numCasa.isEmpty()
 						|| login.isEmpty() || senha.isEmpty()){
-					JOptionPane.showMessageDialog(null, "Preencha todos os campos!"); // SUBSTITUIR JOPTIONPANE por TELA
-					// DE MENSAGEM
-					/* exibir uma mensagem de erro*/
+					TelaPopUpErroFuncionarioCamposNaoPreenchidos frame = new TelaPopUpErroFuncionarioCamposNaoPreenchidos();
+					frame.setVisible(true);	/*exibir uma mensagem de erro preencha todos os campos*/
+					
 				}else {
 					
 					Long numIndentificacaoI = Long.valueOf(numIdentificacao);
