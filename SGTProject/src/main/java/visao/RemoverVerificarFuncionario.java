@@ -153,10 +153,14 @@ public class RemoverVerificarFuncionario extends JFrame {
 					int retorno = funcioDAO.removerFuncionario(login, senha);
 					
 					if (retorno == 0) {
-						JOptionPane.showMessageDialog(null, "Erro ao EXCLUIR!"); // SUBSTITUIR JOPTIONPANE por TELA DE
-						// MENSAGEM// mensagem erro
-					} else {JOptionPane.showMessageDialog(null, "EXCLUIDO com sucesso!"); // SUBSTITUIR JOPTIONPANE por
-					// TELA DE MENSAGEM// mensagem de sucesso
+						TelaPopUpErroFuncionario frame = new TelaPopUpErroFuncionario();
+			        	frame.setVisible(true);//JOptionPane.showMessageDialog(null, "Erro ao EXCLUIR!"); 
+						
+					} else {TelaPopUpSucessoFuncionario frame = new TelaPopUpSucessoFuncionario();
+		        	frame.setVisible(true);//JOptionPane.showMessageDialog(null, "EXCLUIDO com sucesso!");
+		        	
+					
+						
 					}
 					
 				}
