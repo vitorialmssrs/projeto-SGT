@@ -1,14 +1,15 @@
 package visao;
+<<<<<<< HEAD
 
 import java.awt.EventQueue;
+=======
+>>>>>>> manutencaoEspacosCadastro
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 
 import controle.EspacosDAO;
-import controle.FuncionarioDAO;
 import controle.ManutencaoEspacosDAO;
 import modelo.EspacoHotel;
 import modelo.Funcionario;
@@ -27,8 +28,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
-import javax.swing.ImageIcon;
-import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 
 public class TelaManutencaoEspacos extends JFrame {
