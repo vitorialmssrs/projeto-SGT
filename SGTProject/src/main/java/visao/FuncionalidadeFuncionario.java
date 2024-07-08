@@ -66,7 +66,7 @@ public class FuncionalidadeFuncionario extends JFrame {
 		btnAtualizarEspaco.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				TelaManutencaoEspacos manutencaoespacos = new TelaManutencaoEspacos();
+				TelaManutencaoEspacos manutencaoespacos = new TelaManutencaoEspacos(fun);
 				manutencaoespacos.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				manutencaoespacos.setVisible(true);
 				//manutencaoespacos.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);	

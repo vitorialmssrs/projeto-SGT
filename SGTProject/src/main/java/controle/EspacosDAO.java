@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 
 import modelo.EspacoHotel;
-import visao.EspacosHotel;
+import visao.TelaEspacosHotelCliente;
 
 //criar o DAO para segunda e fazer a conexão com banco de dados 
 	/**
