@@ -158,9 +158,8 @@ public class TelaAlteracaoInformacoesEspacos extends JFrame {
 				textHoraF.setText(saida);
 				
 				//Capacidade
-				String capacidade = textCapacidade.getText();
-				int Capacidade = Integer.valueOf(capacidade);
-				espaco.setCapacidade(Capacidade);
+				 int capacidade = espaco.getCapacidade();
+                 textCapacidade.setText(String.valueOf(capacidade));
 				
 			}
 		});
