@@ -10,7 +10,14 @@ public class AlteracaoInformacoesEspacos {
 	private Integer diaFechamento;
 	private String horaAbert;
 	private LocalDate horaFech;
+	private Integer capacidade;
 
+	public Integer getCapacidade() {
+		return capacidade;
+	}
+	public void setCapacidade(Integer capacidade) {
+		this.capacidade = capacidade;
+	}
 	public Integer getIdManutencaoEspacos() {
 		return idManutencaoEspacos;
 	}
