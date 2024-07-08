@@ -1,4 +1,4 @@
-package visao;
+3package visao;
 
 import java.awt.EventQueue;
 
@@ -150,7 +150,6 @@ public class TelaManutencaoEspacos extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				ManutencaoEspacos manuEspaco = new ManutencaoEspacos();
-				manuEspaco.setTipoManutencao((String) comboBoxOperacao.getSelectedItem());
 				manuEspaco.setEspacos((EspacoHotel) comboBoxEspaco.getSelectedItem());
 				
 				manuEspaco.setFuncionario(funcionario);
