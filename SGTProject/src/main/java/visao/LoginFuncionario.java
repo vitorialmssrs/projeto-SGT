@@ -99,9 +99,9 @@ public class LoginFuncionario extends JFrame {
 		panelCinza.add(textCPF);
 		textCPF.setColumns(10);
 
-		JLabel lblCPF = new JLabel("CPF:");
+		JLabel lblCPF = new JLabel("Login:");
 		lblCPF.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblCPF.setBounds(87, 271, 56, 13);
+		lblCPF.setBounds(87, 267, 56, 20);
 		panelCinza.add(lblCPF);
 
 		JLabel lblAtencao = new JLabel("*");
