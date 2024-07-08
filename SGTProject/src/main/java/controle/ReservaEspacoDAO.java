@@ -34,8 +34,6 @@ public class ReservaEspacoDAO implements IReservaEspacoDAO {
 			PreparedStatement ps = conBD.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
 			
 			ps.setTimestamp(1, Timestamp.valueOf(end.getDiahorario()));
-			
-			
 
 			ResultSet rs = ps.getGeneratedKeys();
 			if (rs.next()) {
