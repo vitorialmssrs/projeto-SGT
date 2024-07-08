@@ -22,6 +22,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
@@ -35,34 +36,17 @@ public class TelaManutencaoEspacos extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textDiaA;
-	private JTextField textDiaF;
-	private JTextField textCapacidade;
 	private JTextField textHoraA;
 	private JTextField textHoraF;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField txtDescricao;
 
 	/**
 	 * Launch the application.*/
 	 
-	/*public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ManutencaoEspacos frame = new ManutencaoEspacos();
-					frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	/**
 	 * Create the frame.
 	 */
-	public TelaManutencaoEspacos() {
+	public TelaManutencaoEspacos(Funcionario funcionario) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1920, 1080);
 		contentPane = new JPanel();
@@ -72,8 +56,8 @@ public class TelaManutencaoEspacos extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblTitulo = new JLabel("Selecione qual manutenção você deseja fazer no espaço:");
-		lblTitulo.setBounds(362, 65, 1229, 49);
+		JLabel lblTitulo = new JLabel("Coloque as informações para o conserto do espaço desejado");
+		lblTitulo.setBounds(362, 65, 1312, 49);
 		lblTitulo.setForeground(new Color(1, 50, 1));
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 40));
 		contentPane.add(lblTitulo);
@@ -97,9 +81,9 @@ public class TelaManutencaoEspacos extends JFrame {
 		contentPane.add(btnSair);
 		
 		JLabel lblNewLabel = new JLabel("Selecione o espaço!");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblNewLabel.setForeground(new Color(1, 50, 1));
-		lblNewLabel.setBounds(119, 212, 189, 27);
+		lblNewLabel.setBounds(351, 194, 189, 27);
 		contentPane.add(lblNewLabel);
 		
 		JComboBox<EspacoHotel> comboBoxEspaco = new JComboBox<EspacoHotel>();
@@ -112,103 +96,87 @@ public class TelaManutencaoEspacos extends JFrame {
 		
 				
 	
-		comboBoxEspaco.setBounds(119, 252, 154, 32);
+		comboBoxEspaco.setBounds(351, 234, 189, 32);
 		contentPane.add(comboBoxEspaco);
 		
-		JLabel lblNewLabel_1 = new JLabel("Selecione qual operação deseja realizar");
-		lblNewLabel_1.setForeground(new Color(1, 50, 1));
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel_1.setBounds(119, 384, 367, 32);
-		contentPane.add(lblNewLabel_1);
-		
-		JComboBox<String> comboBoxOperacao = new JComboBox<String>();{
-			
-			comboBoxOperacao.addItem("");
-			comboBoxOperacao.addItem("Alterar informação de funcionamento");
-			comboBoxOperacao.addItem("Solicitação de limpeza");
-			comboBoxOperacao.addItem("Solicitação de conserto");
-			
-		}
-		comboBoxOperacao.setBounds(119, 431, 201, 32);
-		contentPane.add(comboBoxOperacao);
-		
 		textDiaA = new JTextField();
-		textDiaA.setBounds(657, 248, 86, 20);
+		textDiaA.setBounds(587, 230, 100, 22);
 		contentPane.add(textDiaA);
 		textDiaA.setColumns(10);
 		
-		textDiaF = new JTextField();
-		textDiaF.setBounds(657, 314, 86, 20);
-		contentPane.add(textDiaF);
-		textDiaF.setColumns(10);
-		
-		textCapacidade = new JTextField();
-		textCapacidade.setBounds(657, 365, 86, 20);
-		contentPane.add(textCapacidade);
-		textCapacidade.setColumns(10);
-		
 		textHoraA = new JTextField();
-		textHoraA.setBounds(657, 414, 86, 20);
+		textHoraA.setBounds(351, 322, 100, 22);
 		contentPane.add(textHoraA);
 		textHoraA.setColumns(10);
 		
 		textHoraF = new JTextField();
-		textHoraF.setBounds(657, 465, 86, 20);
+		textHoraF.setBounds(587, 335, 100, 22);
 		contentPane.add(textHoraF);
 		textHoraF.setColumns(10);
 		
-		JLabel lblNewLabel_2 = new JLabel("Dia abertura");
-		lblNewLabel_2.setBounds(657, 212, 86, 14);
+		JLabel lblNewLabel_2 = new JLabel("Dia para reservar o espaço para o conserto");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblNewLabel_2.setForeground(new Color(1, 50, 1));
+		lblNewLabel_2.setBounds(587, 194, 388, 25);
 		contentPane.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_3 = new JLabel("Dia fechamento");
-		lblNewLabel_3.setBounds(653, 279, 91, 14);
-		contentPane.add(lblNewLabel_3);
-		
 		JLabel lblNewLabel_4 = new JLabel("Hora abertura");
-		lblNewLabel_4.setBounds(657, 389, 86, 14);
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblNewLabel_4.setForeground(new Color(1, 50, 1));
+		lblNewLabel_4.setBounds(351, 297, 148, 27);
 		contentPane.add(lblNewLabel_4);
 		
-		JLabel lblNewLabel_5 = new JLabel("hora fechamento");
-		lblNewLabel_5.setBounds(657, 440, 86, 14);
+		JLabel lblNewLabel_5 = new JLabel("Hora prevista para o termino do conserto ");
+		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblNewLabel_5.setForeground(new Color(1, 50, 1));
+		lblNewLabel_5.setBounds(587, 297, 401, 27);
 		contentPane.add(lblNewLabel_5);
 		
-		JLabel lblNewLabel_6 = new JLabel("Capacidade");
-		lblNewLabel_6.setBounds(667, 345, 76, 14);
-		contentPane.add(lblNewLabel_6);
-		
-		JLabel lblNewLabel_7 = new JLabel("Escreva o que precisa ser feito a limpeza");
-		lblNewLabel_7.setBounds(891, 212, 231, 27);
-		contentPane.add(lblNewLabel_7);
-		
-		textField = new JTextField();
-		textField.setBounds(891, 250, 189, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
-		
-		textField_1 = new JTextField();
-		textField_1.setBounds(891, 365, 189, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		txtDescricao = new JTextField();
+		txtDescricao.setBounds(581, 455, 189, 83);
+		contentPane.add(txtDescricao);
+		txtDescricao.setColumns(10);
 		
 		JLabel lblNewLabel_8 = new JLabel("Escreva o que precisa ser consertado");
-		lblNewLabel_8.setBounds(891, 333, 180, 14);
+		lblNewLabel_8.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblNewLabel_8.setForeground(new Color(1, 50, 1));
+		lblNewLabel_8.setBounds(444, 387, 346, 27);
 		contentPane.add(lblNewLabel_8);
 		
-		JButton btnCadastrar = new JButton("Cadastrar");
+		JButton btnCadastrar = new JButton("Cadastrar conserto");
+		btnCadastrar.setForeground(new Color(1, 50, 1));
+		btnCadastrar.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				ManutencaoEspacos manuEspaco = new ManutencaoEspacos();
 				manuEspaco.setTipoManutencao((String) comboBoxOperacao.getSelectedItem());
-				manuEspaco.setEspacosHotel((EspacoHotel) comboBoxEspaco.getSelectedItem());
+				manuEspaco.setEspacos((EspacoHotel) comboBoxEspaco.getSelectedItem());
+				
+				manuEspaco.setFuncionario(funcionario);
 				
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 				LocalDate date = LocalDate.parse( textDiaA.getText(), formatter);
 				manuEspaco.setDiaManutencao(date);
 				
+				DateTimeFormatter formatterH = DateTimeFormatter.ofPattern("HH:mm");
+				LocalTime timeI = LocalTime.parse(textHoraA.getText(), formatterH);
+				manuEspaco.setHoraInicio(timeI);
+				
+				DateTimeFormatter formatterI = DateTimeFormatter.ofPattern("HH:mm");
+				LocalTime timeF = LocalTime.parse(textHoraF.getText(), formatterH);
+				manuEspaco.setHoraFinal(timeF);
+		
+				manuEspaco.setDescricao(txtDescricao.getText());
+				
 				ManutencaoEspacosDAO manutDAO = ManutencaoEspacosDAO.getInstancia();
-				manutDAO.inserirManutencao(manuEspaco);
+				int espacoId = manutDAO.inserirManutencao(manuEspaco);
+				
+				if(espacoId >0 ) {
+					JOptionPane.showMessageDialog(null, "cadastro realizado com sucesso");
+				}else {
+					JOptionPane.showMessageDialog(null, "erro");
+				}
 				
 				
 			}

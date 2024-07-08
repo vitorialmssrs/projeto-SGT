@@ -52,9 +52,9 @@ import modelo.ManutencaoEspacos;
 	return instancia;
 }
 
-	public int inserirManutencao (ManutencaoEspacos end) {
+	public int inserirManutencao (ManutencaoEspacos manut) {
 
-	String SQL = "INSERT INTO ManutencaoEspacos (idManutencaoEspacos, tipoManutencao, diaManutencao) VALUES ( ?, ?, ?)";
+	String SQL =  "INSERT INTO manutencao_espaco ( tipo_Manutencao, dia, hora_inicio, hora_final, espacos_hotel_id_espacos, funcionarios_id_funcionario, descricaomanutencao ) VALUES ( ?, ?, ?, ?, ?, ?, ?)";
 
 	//Abre conexao e cria a "ponte de conexao" com o MySQL
 	Conexao con = Conexao.getInstancia();
@@ -68,9 +68,13 @@ import modelo.ManutencaoEspacos;
 
 	    
 	    
-	    ps.setInt(1,end.getIdManutencaoEspacos());
-	    ps.setString(2,end.getTipoManutencao());
-	    ps.setDate(5, end.getDiaManutencao());
+	    ps.setString(1,manut.getTipoManutencao());
+	    ps.setDate(2, Date.valueOf(manut.getDiaManutencao()));
+	    ps.setTime(3, Time.valueOf(manut.getHoraInicio()));
+	    ps.setTime(4,Time.valueOf( manut.getHoraFinal()));
+	    ps.setInt(5, manut.getEspacos().getId());
+	    ps.setInt(6, manut.getFuncionario().getIdFuncionario());
+	    ps.setString(7,manut.getDescricao());
 	    
 	    
 	    // Executa a consulta
@@ -99,7 +103,7 @@ import modelo.ManutencaoEspacos;
 
 	// Comando SQL a ser executado
 	
-	String SQL = "INSERT INTO ManutencaoEspacos (idManutencaoEspacos, tipoManutencao, diaManutencao) VALUES ( ?, ?, ?)";
+	String SQL = "INSERT INTO ManutencaoEspacos (idManutencaoEspacos, tipo_Manutencao, diaManutencao, hora_inicio, hora_final ) VALUES ( ?, ?, ?, ?, ?)";
 
 	// Cria a "ponte de conexao" com MYSQL
 	
@@ -119,12 +123,17 @@ import modelo.ManutencaoEspacos;
 			// Pega os valores de cada coluna do registro
 			Integer idManutencaoEspacos = rs.getInt("idManutencaoEspacos");
 			String TipoManutencao = rs.getString("tipoManutencao");
-			Time DiaManutencao = rs.getTime("DiaManutencao");
+			Date DiaManutencao = rs.getDate("DiaManutencao");
+			Time horaIncio = rs.getTime("hora_inicio");
+			Time horaFinal = rs.getTime("hora_final");
 					
 			// Seta os valores no obj java
-			end.setDiaManutencao(null);
-			end.setIdManutencaoEspacos(idManutencaoEspacos);
 			end.setTipoManutencao(SQL);
+			end.setDiaManutencao(null);
+			end.setHoraInicio(null);
+			end.setHoraFinal(null);
+			end.setFuncionario(null);
+		
 			
 			// Adiciona obj no arraylist
 			manutencao.add(end); 
@@ -142,9 +151,11 @@ import modelo.ManutencaoEspacos;
 
 	
 	public ArrayList<ManutencaoEspacos> listarManutencaoEspacos() {
-	    ArrayList<ManutencaoEspacos> listaManutencaoEspacos = new ArrayList<ManutencaoEspacos>();
+		return null;
+	}
+	  //  ArrayList<ManutencaoEspacos> listaManutencaoEspacos = new ArrayList<ManutencaoEspacos>();
 	    
-	    // Comando SQL para selecionar os dados da tabela LimpezaEspacos
+	 /*   // Comando SQL para selecionar os dados da tabela LimpezaEspacos
 	    String SQL = "SELECT * FROM ManutencaoEspacos";
 	    
 	    // Cria a "ponte de conexão" com o banco de dados MySQL
@@ -158,7 +169,7 @@ import modelo.ManutencaoEspacos;
 	        while (rs.next()) {
 	        	ManutencaoEspacos manutencaoEspacos = new ManutencaoEspacos();
 	        	manutencaoEspacos.setDiaManutencao(null);
-	        	manutencaoEspacos.setIdManutencaoEspacos(null);
+	        	manutencaoEspacos.set
 	        	manutencaoEspacos.setTipoManutencao(SQL);
 	       
 	            
@@ -171,9 +182,21 @@ import modelo.ManutencaoEspacos;
 	    }
 	    
 	    return listaManutencaoEspacos;
+	}*/
+
+	@Override
+	public boolean atualizarLManutencaoEspacos(ManutencaoEspacos end) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean removerManutencaoEspacos(ManutencaoEspacos end) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
-	public boolean atualizarLManutencaoEspacos(ManutencaoEspacos end) {
+	/*public boolean atualizarLManutencaoEspacos(ManutencaoEspacos end) {
 	    String SQL = "UPDATE ManutencaoEspacos SET idManutencaoEspacos = ?, tipoManutencao = ?, diaManutencao = ? WHERE idManutencaoEspacos = ?";
 	    
 	    Conexao con = Conexao.getInstancia();
@@ -222,6 +245,6 @@ import modelo.ManutencaoEspacos;
 	}
 
 
-	
+	*/
 
 }
