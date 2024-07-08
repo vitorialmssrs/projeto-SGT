@@ -51,7 +51,7 @@ public class EspacosHotel extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblTitulo = new JLabel("Qual espaço você deseja reservar?");
-		lblTitulo.setBounds(449, 39, 696, 49);
+		lblTitulo.setBounds(449, 39, 750, 49);
 		lblTitulo.setForeground(new Color(1, 50, 1));
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 40));
 		contentPane.add(lblTitulo);
@@ -71,8 +71,10 @@ public class EspacosHotel extends JFrame {
 		btnAcademia.setBorder(new LineBorder(new Color(1, 50, 1)));
 		btnAcademia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Academia academia = new Academia ();
-				//academia.setViseble(true);
+				dispose();
+				TelaEscolhaEspacoCliente frame = new TelaEscolhaEspacoCliente();
+				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				frame.setVisible(true);
 			}
 		});
 		btnAcademia.setBackground(new Color(247, 246, 243));

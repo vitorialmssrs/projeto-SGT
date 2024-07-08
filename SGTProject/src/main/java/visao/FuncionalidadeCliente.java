@@ -106,6 +106,15 @@ public class FuncionalidadeCliente extends JFrame {
 		panelOpcoes.add(btnCheckout, "cell 1 3,grow");
 
 		JButton btnReservasEspacos = new JButton("Reservas Espaços");
+		btnReservasEspacos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				EspacosHotel espacoshotel = new EspacosHotel();
+				espacoshotel.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				espacoshotel.setVisible(true);
+				espacoshotel.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);	
+			}
+		});
 		btnReservasEspacos.setForeground(new Color(255, 255, 255));
 		btnReservasEspacos.setBackground(new Color(109, 164, 109));
 		btnReservasEspacos.setFont(new Font("Tahoma", Font.BOLD, 60));
