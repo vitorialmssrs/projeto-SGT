@@ -15,7 +15,7 @@ import java.awt.Font;
 import java.awt.Color;
 import java.awt.Toolkit;
 
-public class TelaConfimacaoCheckin extends JFrame {
+public class TelaPopUpConfimacaoCheckin extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -27,7 +27,7 @@ public class TelaConfimacaoCheckin extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaConfimacaoCheckin frame = new TelaConfimacaoCheckin();
+					TelaPopUpConfimacaoCheckin frame = new TelaPopUpConfimacaoCheckin();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,8 +39,8 @@ public class TelaConfimacaoCheckin extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaConfimacaoCheckin() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(TelaConfimacaoCheckin.class.getResource("/imagens/LogoPI.png")));
+	public TelaPopUpConfimacaoCheckin() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(TelaPopUpConfimacaoCheckin.class.getResource("/imagens/LogoPI.png")));
 		setBackground(new Color(255, 255, 245));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 691, 390);
@@ -52,7 +52,7 @@ public class TelaConfimacaoCheckin extends JFrame {
 		contentPane.setLayout(new MigLayout("", "[136px][][][][][][][]", "[139px][][][][][][][]"));
 		
 		JLabel lblLogo = new JLabel("");
-		lblLogo.setIcon(new ImageIcon(TelaConfimacaoCheckin.class.getResource("/imagens/LogoPI.png")));
+		lblLogo.setIcon(new ImageIcon(TelaPopUpConfimacaoCheckin.class.getResource("/imagens/LogoPI.png")));
 		contentPane.add(lblLogo, "cell 1 0 2 1,alignx center,aligny top");
 		
 		JLabel lblNewLabel_1 = new JLabel("Caro cliente seu check-in ");

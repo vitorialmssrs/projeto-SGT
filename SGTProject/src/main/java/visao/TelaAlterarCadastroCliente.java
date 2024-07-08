@@ -329,13 +329,6 @@ public class TelaAlterarCadastroCliente extends JFrame {
 		textEmail.setBounds(811, 425, 404, 29);
 		contentPane.add(textEmail);
 		
-		textPrimeiroNome.setText("Otavio");
-		textSobrenome.setText("Silva");
-		textCPF.setText("12345678945");
-		textDataNascimento.setText("20/01/2024");
-		txtSenha.setText("12345656");	
-		textTelefone.setText("(47) 98456-1425");
-		textEmail.setText("jvdjhfdj@gmail.com");
 	}
 
 }

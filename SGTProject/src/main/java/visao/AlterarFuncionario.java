@@ -1,7 +1,7 @@
 package visao;
 
 import java.awt.Color;
-import java.awt.EventQueue;
+//import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,6 +10,7 @@ import java.time.format.DateTimeFormatter;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -17,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.text.MaskFormatter;
 
 import controle.FuncionarioDAO;
 import modelo.Funcionario;
@@ -36,27 +38,12 @@ public class AlterarFuncionario extends JFrame {
 	private JTextField textSenha;
 	private JTextField textTelefone;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AlterarFuncionario frame = new AlterarFuncionario();
-					frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
+	 * @param funcionarioLogado 
 	 */
-	public AlterarFuncionario() {
+	public AlterarFuncionario(Funcionario funcionarioLogado) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1920, 1080);
 		contentPane = new JPanel();
@@ -106,6 +93,7 @@ public class AlterarFuncionario extends JFrame {
 		textNomeFuncionario.setBackground(new Color(252, 251, 244));
 		textNomeFuncionario.setBounds(688, 286, 644, 21);
 		textNomeFuncionario.setBorder(new LineBorder(new Color(1, 50, 1)));
+		textNomeFuncionario.setText(funcionarioLogado.getNomeCompleto());
 		contentPane.add(textNomeFuncionario);
 		textNomeFuncionario.setColumns(10);
 
@@ -116,13 +104,29 @@ public class AlterarFuncionario extends JFrame {
 		lblNumeroIndentificacao.setBounds(553, 327, 200, 21);
 		contentPane.add(lblNumeroIndentificacao);
 
-		textNumeroIndentificacao = new JTextField();
+		try {
+			MaskFormatter formttDEntrada = new MaskFormatter("###.###.###-##");
+			formttDEntrada.setPlaceholder("");
+			textNumeroIndentificacao = new JFormattedTextField(formttDEntrada);
+			textNumeroIndentificacao.setToolTipText("Coloque o CPF Aqui");
+			textNumeroIndentificacao.setForeground(new Color(1, 50, 1));
+			textNumeroIndentificacao.setBackground(new Color(252, 251, 244));
+			textNumeroIndentificacao.setBounds(763, 330, 602, 21);
+			textNumeroIndentificacao.setText(String.valueOf(funcionarioLogado.getNumIndentificacao()));
+			textNumeroIndentificacao.setBorder(new LineBorder(new Color(1, 50, 1)));
+			textNumeroIndentificacao.setColumns(10);
+			contentPane.add(textNumeroIndentificacao);
+		} catch(Exception e) {
+			e.printStackTrace();
+			}
+		/*textNumeroIndentificacao = new JTextField();
 		textNumeroIndentificacao.setForeground(new Color(1, 50, 1));
 		textNumeroIndentificacao.setBackground(new Color(252, 251, 244));
 		textNumeroIndentificacao.setBounds(763, 330, 602, 21);
+		textNumeroIndentificacao.setText(String.valueOf(funcionarioLogado.getNumIndentificacao()));
 		contentPane.add(textNumeroIndentificacao);
 		textNumeroIndentificacao.setBorder(new LineBorder(new Color(1, 50, 1)));
-		textNumeroIndentificacao.setColumns(10);
+		textNumeroIndentificacao.setColumns(10);*/
 
 		JLabel lblEndereco = new JLabel("Endereço");
 		lblEndereco.setBackground(new Color(1, 50, 1));
@@ -138,13 +142,30 @@ public class AlterarFuncionario extends JFrame {
 		lblCepFuncionario.setBounds(553, 493, 45, 21);
 		contentPane.add(lblCepFuncionario);
 
-		textCepFuncionario = new JTextField();
+		try {
+			MaskFormatter formttDEntrada = new MaskFormatter("#####-###");
+			formttDEntrada.setPlaceholder("");
+			textCepFuncionario = new JFormattedTextField(formttDEntrada);
+			textCepFuncionario.setToolTipText("Coloque o CEP da sua Residencia Aqui");
+			textCepFuncionario.setForeground(new Color(1, 50, 1));
+			textCepFuncionario.setBackground(new Color(252, 251, 244));
+			textCepFuncionario.setBounds(600, 493, 129, 21);
+			textCepFuncionario.setText(String.valueOf(funcionarioLogado.getCep()));
+			textCepFuncionario.setBorder(new LineBorder(new Color(1, 50, 1)));
+			textCepFuncionario.setColumns(10);
+			contentPane.add(textCepFuncionario);
+		} catch(Exception e) {
+			e.printStackTrace();
+			}
+		
+		/*textCepFuncionario = new JTextField();
 		textCepFuncionario.setForeground(new Color(1, 50, 1));
 		textCepFuncionario.setBackground(new Color(252, 251, 244));
 		textCepFuncionario.setBounds(600, 493, 129, 21);
+		textCepFuncionario.setText(String.valueOf(funcionarioLogado.getCep()));
 		contentPane.add(textCepFuncionario);
 		textCepFuncionario.setBorder(new LineBorder(new Color(1, 50, 1)));
-		textCepFuncionario.setColumns(10);
+		textCepFuncionario.setColumns(10);*/
 
 		JLabel lblDataFuncionario = new JLabel("Data de Nascimento:");
 		lblDataFuncionario.setBackground(new Color(1, 50, 1));
@@ -153,13 +174,28 @@ public class AlterarFuncionario extends JFrame {
 		lblDataFuncionario.setBounds(553, 370, 176, 21);
 		contentPane.add(lblDataFuncionario);
 
+		/*try {
+			MaskFormatter formttDEntrada = new MaskFormatter("##/##/####");
+			formttDEntrada.setPlaceholder("");
+			textDataFuncionario = new JFormattedTextField(formttDEntrada);
+			textDataFuncionario.setToolTipText("Coloque a Data de Nascimento Aqui");
+			textDataFuncionario.setForeground(new Color(1, 50, 1));
+			textDataFuncionario.setBackground(new Color(252, 251, 244));
+			textDataFuncionario.setBounds(719, 373, 143, 21);
+			textDataFuncionario.setText(String.valueOf(funcionarioLogado.getDataNascismento()));
+			textDataFuncionario.setBorder(new LineBorder(new Color(1, 50, 1)));
+			textDataFuncionario.setColumns(10);
+			contentPane.add(textDataFuncionario);
+		} catch(Exception e) {
+			e.printStackTrace();
+			}*/
 		textDataFuncionario = new JTextField();
 		textDataFuncionario.setForeground(new Color(1, 50, 1));
 		textDataFuncionario.setBackground(new Color(252, 251, 244));
 		textDataFuncionario.setBounds(719, 373, 143, 21);
 		textDataFuncionario.setBorder(new LineBorder(new Color(1, 50, 1)));
+		textDataFuncionario.setText(String.valueOf(funcionarioLogado.getDataNascismento()));
 		contentPane.add(textDataFuncionario);
-
 		textDataFuncionario.setColumns(10);
 
 		JLabel lblNumeroFuncionario = new JLabel("Número:");
@@ -173,6 +209,7 @@ public class AlterarFuncionario extends JFrame {
 		textNumeroCasaFuncionario.setForeground(new Color(1, 50, 1));
 		textNumeroCasaFuncionario.setBackground(new Color(252, 251, 244));
 		textNumeroCasaFuncionario.setBounds(632, 535, 97, 19);
+		textNumeroCasaFuncionario.setText(String.valueOf(funcionarioLogado.getNumCasa()));
 		contentPane.add(textNumeroCasaFuncionario);
 		textNumeroCasaFuncionario.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textNumeroCasaFuncionario.setColumns(10);
@@ -184,13 +221,30 @@ public class AlterarFuncionario extends JFrame {
 		lblTelefoneFuncionario.setBounds(553, 414, 97, 21);
 		contentPane.add(lblTelefoneFuncionario);
 
-		textTelefone = new JTextField();
+		/*textTelefone = new JTextField();
 		textTelefone.setForeground(new Color(1, 50, 1));
 		textTelefone.setBackground(new Color(252, 251, 244));
 		textTelefone.setBounds(633, 417, 168, 21);
 		textTelefone.setBorder(new LineBorder(new Color(1, 50, 1)));
+		textTelefone.setText(String.valueOf(funcionarioLogado.getTelefone()));
 		contentPane.add(textTelefone);
-		textTelefone.setColumns(10);
+		textTelefone.setColumns(10);*/
+		
+		try {
+			MaskFormatter formttDEntrada = new MaskFormatter("(##) #####-####");
+			formttDEntrada.setPlaceholder("");
+			textTelefone = new JFormattedTextField(formttDEntrada);
+			textTelefone.setToolTipText("Coloque o seu Telefone Aqui");
+			textTelefone.setForeground(new Color(1, 50, 1));
+			textTelefone.setBackground(new Color(252, 251, 244));
+			textTelefone.setBounds(633, 417, 168, 21);
+			textTelefone.setText(String.valueOf(funcionarioLogado.getTelefone()));
+			textTelefone.setBorder(new LineBorder(new Color(1, 50, 1)));
+			textTelefone.setColumns(10);
+			contentPane.add(textTelefone);
+		} catch(Exception e) {
+			e.printStackTrace();
+			}
 
 		JButton btnLimpar = new JButton("Limpar");
 		btnLimpar.addActionListener(new ActionListener() {
@@ -259,10 +313,11 @@ public class AlterarFuncionario extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				 int numIdentificacao = Integer.parseInt(textNumeroIndentificacao.getText());
+				// Long numIdentificacao = Long.parseLong(textNumeroIndentificacao.getText());
 				
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 				
+				String numIdentificacao = textNumeroIndentificacao.getText();
 				String nomeCompleto = textNomeFuncionario.getText();
 				String telefone = textTelefone.getText();
 				String cep = textCepFuncionario.getText();
@@ -272,14 +327,20 @@ public class AlterarFuncionario extends JFrame {
 				String senha = textSenha.getText();
 				
 				//Verifica se tem alguma coisa
-				if(nomeCompleto.isEmpty() ||  dataNascismento.isEmpty() || telefone.isEmpty() || cep.isEmpty() || numCasa.isEmpty()
+				if(nomeCompleto.isEmpty() || numIdentificacao.isEmpty() || dataNascismento.isEmpty() || telefone.isEmpty() || cep.isEmpty() || numCasa.isEmpty()
 						|| login.isEmpty() || senha.isEmpty()){
-					JOptionPane.showMessageDialog(null, "Preencha todos os campos!"); // SUBSTITUIR JOPTIONPANE por TELA
-					// DE MENSAGEM
-					/* exibir uma mensagem de erro*/
+					TelaPopUpErroFuncionarioCamposNaoPreenchidos frame = new TelaPopUpErroFuncionarioCamposNaoPreenchidos();
+					frame.setVisible(true);	/*exibir uma mensagem de erro preencha todos os campos*/
+					
 				}else {
 					
-					int numIndentificacaoI = Integer.valueOf(numIdentificacao);
+					numIdentificacao = numIdentificacao.replace(".", "");
+					numIdentificacao = numIdentificacao.replace("-", "");
+					
+					cep = cep.replace("-", "");
+					
+					
+					Long numIndentificacaoI = Long.valueOf(numIdentificacao);
 					int cepI = Integer.valueOf(cep);
 					int numCasaI = Integer.valueOf(numCasa);
 					LocalDate dataNascismentoI = LocalDate.parse(dataNascismento, formatter);
@@ -288,6 +349,7 @@ public class AlterarFuncionario extends JFrame {
 					
 					// Cria um novo obj com os novos valores atualizados
 					Funcionario funcionarioAtualizado = new Funcionario();
+					funcionarioAtualizado.setIdFuncionario(funcionarioLogado.getIdFuncionario());
 					funcionarioAtualizado.setNumIndentificacao(numIndentificacaoI);
 					funcionarioAtualizado.setNomeCompleto(nomeCompleto);
 					funcionarioAtualizado.setDataNascismento(dataNascismentoI);
@@ -299,13 +361,18 @@ public class AlterarFuncionario extends JFrame {
 	
 
 			        // Chamar o método para atualizar o funcionário utilizando o número de identificação
-			        boolean sucesso = funcioDAO.atualizarFuncionarioPorIndentificacao(numIdentificacao, funcionarioAtualizado);
+			        boolean sucesso = funcioDAO.atualizarFuncionarioPorIndentificacao(funcionarioAtualizado);
 			        
 			        // Exibir mensagem de sucesso ou erro
 			        if (sucesso) {
-			            JOptionPane.showMessageDialog(null, "Funcionário atualizado com sucesso!");
+			        	TelaPopUpSucessoFuncionario frame = new TelaPopUpSucessoFuncionario();
+			        	frame.setVisible(true); //JOptionPane.showMessageDialog(null, "Funcionário atualizado com sucesso!");
+			        	
+			            
 			        } else {
-			            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao atualizar o funcionário.");
+			        	TelaPopUpErroFuncionario frame = new TelaPopUpErroFuncionario();
+			        	frame.setVisible(true);// JOptionPane.showMessageDialog(null, "Ocorreu um erro ao atualizar o funcionário.");
+			           
 			        }
 				}	
 			}

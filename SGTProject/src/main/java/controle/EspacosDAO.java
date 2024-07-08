@@ -5,11 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 
 import modelo.EspacoHotel;
-import visao.EspacosHotel;
+import visao.TelaEspacosHotelCliente;
 
 //criar o DAO para segunda e fazer a conexão com banco de dados 
 	/**
@@ -51,11 +53,93 @@ import visao.EspacosHotel;
 			}
 			return instancia;
 		}
+		
+		//array para listar as informações para espaços no combo box de manutenção que está no banco de dados
+		public ArrayList<EspacoHotel> listarEspacos() {
+
+			// Arraylist para armazenar resultado do select
+			ArrayList<EspacoHotel> espacos = new ArrayList<EspacoHotel>();
+
+			// Comando SQL a ser executado
+			String SQL = "SELECT * FROM espacos_hotel";
+
+			// Cria a "ponte de conexao" com MYSQL
+			Conexao con = Conexao.getInstancia();
+			Connection conBD = con.conectar();
+
+			try {
+				PreparedStatement ps = conBD.prepareStatement(SQL);
+
+				ResultSet rs = ps.executeQuery();
+
+				while (rs.next()) {
+					// Criar objeto
+					EspacoHotel end = new EspacoHotel();
+
+					// Pega os valores de cada coluna do registro
+					
+					int id_espacos = rs.getInt("id_espacos");
+					String nome_espaco = rs.getString("nome_espaco");
+					LocalDate dia_semana_abertura = rs.getDate("dia_semana_abertura").toLocalDate();
+					LocalDate dia_semana_fechamento = rs.getDate("dia_semana_fechamento").toLocalDate();
+					LocalTime horario_abertura = rs.getTime("horario_abertura").toLocalTime();
+					LocalTime horario_fechamento = rs.getTime("horario_fechamento").toLocalTime();
+					int capacidade = rs.getInt("capacidade");
+					// Seta os valores no obj java
+					
+					end.setId(id_espacos);
+					end.setNome(nome_espaco);
+					end.setCapacidade(capacidade);
+					end.setDataAbertura(dia_semana_abertura);
+					end.setDataFechamento(dia_semana_fechamento);
+					end.setHorarioAbertura(horario_fechamento);
+					end.setHorarioFechamento(horario_fechamento);
+				
+
+					// Adiciona obj no arraylist
+					espacos.add(end);
+
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				con.fecharConexao();
+			}
+
+			return espacos;
+		}
+
+		@Override
+		public int inserirEspacos(EspacoHotel end) {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		@Override
+		public ArrayList<EspacoHotel> insertEspacos2() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public boolean atualizarEspaco(EspacoHotel end) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public boolean removerEspaco(EspacoHotel end) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		
 		/**
 		 * Utilizar essa forma de INSERT somente quando a chave primaria Ã©
 		 * AUTO_INCREMENT no BD
 		 * 
-		 */
+		 *//*
 		public int inserirEspacos(EspacoHotel end) {
 
 			String SQL = "INSERT INTO EspacoHotel (academia, quiosque, salao_festa, quadra_futebol, sala_jogos, quadra_volei, SPA, brinquedoteca, piscina ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -159,67 +243,9 @@ import visao.EspacosHotel;
 
 			return espacos;
 		}
-		
-		public ArrayList<EspacoHotel> listarEspacos() {
-
-			// Arraylist para armazenar resultado do select
-			ArrayList<EspacoHotel> espacos = new ArrayList<EspacoHotel>();
-
-			// Comando SQL a ser executado
-			String SQL = "SELECT * FROM espacos";
-
-			// Cria a "ponte de conexao" com MYSQL
-			Conexao con = Conexao.getInstancia();
-			Connection conBD = con.conectar();
-
-			try {
-				PreparedStatement ps = conBD.prepareStatement(SQL);
-
-				ResultSet rs = ps.executeQuery();
-
-				while (rs.next()) {
-					// Criar objeto
-					EspacoHotel end = new EspacoHotel();
-
-					// Pega os valores de cada coluna do registro
-					
-					String academia = rs.getString("Academia");
-					String brinquedoteca = rs.getString("brinquedoteca");
-					String piscina = rs.getString("Piscina");
-					String quadrafutebol = rs.getString("Quadra de Futebol");
-					String quadravolei = rs.getString("Quadra de vôlei");
-					String quiosque = rs.getString("Quiosque");
-					String salajogos = rs.getString("Sala de jogos");
-					String salaofesta = rs.getString("Salão de festas");
-					String spa = rs.getString("SPA");
-
-					// Seta os valores no obj java
-					
-					end.setAcademia(academia);
-					end.setBrinquedoteca(brinquedoteca);
-					end.setPiscina(piscina);
-					end.setQuadraFutebol(quadrafutebol);
-					end.setQuadraVolei(quadravolei);
-					end.setQuiosque(quiosque);
-					end.setSalaJogos(salajogos);
-					end.setSalaoFesta(salaofesta);
-					end.setSPA(spa);
-
-					// Adiciona obj no arraylist
-					espacos.add(end);
-
-				}
-
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				con.fecharConexao();
-			}
-
-			return espacos;
-		}
-
+		*/
 	
+	/*
 		public boolean atualizarEspaco(EspacoHotel end) {
 			//arrumar a sintese de update or ou end
 			String SQL = "UPDATE espacos SET academia = ?, quiosque = ?, salao_festa = ?, quadra_futebol = ?, sala_jogos = ?, quadra_volei = ?, SPA = ?, brinquedoteca = ?, piscina = ?   WHERE academia = ?, quiosque = ?, salao_festa = ?, quadra_futebol = ?, sala_jogos = ?, quadra_volei = ?, SPA = ?, brinquedoteca = ?, piscina = ? "; 
@@ -293,7 +319,7 @@ import visao.EspacosHotel;
 		
 		}
 
-		
+		*/
 	}
 	
 	

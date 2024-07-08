@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+import javax.swing.text.MaskFormatter;
 
 import controle.FuncionarioDAO;
 
@@ -16,6 +18,8 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -115,10 +119,22 @@ public class RemoverVerificarFuncionario extends JFrame {
 		textSenha.setBounds(622, 561, 303, 26);
 		contentPane.add(textSenha);
 		
-		textIdentificacao = new JTextField();
+		try {
+			MaskFormatter formttDEntrada = new MaskFormatter("###.###.###-##");
+			formttDEntrada.setPlaceholder("");
+			textIdentificacao = new JFormattedTextField(formttDEntrada);
+			textIdentificacao.setToolTipText("Coloque o CPF Aqui");
+			textIdentificacao.setBounds(761, 406, 303, 26);
+			textIdentificacao.setColumns(10);
+			contentPane.add(textIdentificacao);
+		} catch(Exception e) {
+			e.printStackTrace();
+			}
+		
+		/*textIdentificacao = new JTextField();
 		textIdentificacao.setColumns(10);
 		textIdentificacao.setBounds(761, 406, 303, 26);
-		contentPane.add(textIdentificacao);
+		contentPane.add(textIdentificacao);*/
 		
 		textLogin = new JTextField();
 		textLogin.setColumns(10);
@@ -137,10 +153,14 @@ public class RemoverVerificarFuncionario extends JFrame {
 					int retorno = funcioDAO.removerFuncionario(login, senha);
 					
 					if (retorno == 0) {
-						JOptionPane.showMessageDialog(null, "Erro ao EXCLUIR!"); // SUBSTITUIR JOPTIONPANE por TELA DE
-						// MENSAGEM// mensagem erro
-					} else {JOptionPane.showMessageDialog(null, "EXCLUIDO com sucesso!"); // SUBSTITUIR JOPTIONPANE por
-					// TELA DE MENSAGEM// mensagem de sucesso
+						TelaPopUpErroFuncionario frame = new TelaPopUpErroFuncionario();
+			        	frame.setVisible(true);//JOptionPane.showMessageDialog(null, "Erro ao EXCLUIR!"); 
+						
+					} else {TelaPopUpSucessoFuncionario frame = new TelaPopUpSucessoFuncionario();
+		        	frame.setVisible(true);//JOptionPane.showMessageDialog(null, "EXCLUIDO com sucesso!");
+		        	
+					
+						
 					}
 					
 				}

@@ -267,12 +267,16 @@ public void actionPerformed(ActionEvent e) {
 	//Verifica se tem alguma coisa
 	if(nomeCompleto.isEmpty() || numIdentificacao.isEmpty() || dataNascismento.isEmpty() || telefone.isEmpty() || cep.isEmpty() || numCasa.isEmpty()
 			|| login.isEmpty() || senha.isEmpty()){
-		JOptionPane.showMessageDialog(null, "Preencha todos os campos!"); // SUBSTITUIR JOPTIONPANE por TELA
-		// DE MENSAGEM
-		/* exibir uma mensagem de erro*/
-	}else {
 		
-		int numIndentificacaoI = Integer.valueOf(numIdentificacao);
+		TelaPopUpErroFuncionarioCamposNaoPreenchidos frame = new TelaPopUpErroFuncionarioCamposNaoPreenchidos();
+		frame.setVisible(true);	/*exibir uma mensagem de erro preencha todos os campos*/
+	 }else {
+		
+		numIdentificacao = numIdentificacao.replace(".", "");
+		numIdentificacao = numIdentificacao.replace("-", "");
+		cep = cep.replace("-", "");
+		
+		Long numIndentificacaoI = Long.valueOf(numIdentificacao);
 		int cepI = Integer.valueOf(cep);
 		int numCasaI = Integer.valueOf(numCasa);
 		LocalDate dataNascismentoI = LocalDate.parse(dataNascismento, formatter);
@@ -296,11 +300,11 @@ public void actionPerformed(ActionEvent e) {
 	// Fazer a INSERÇÃO
 	int valida = dao.inserirFuncionario(f);
 	if (valida == 1) {
-		JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!"); // SUBSTITUIR JOPTIONPANE por
-																		// TELA DE MENSAGEM
+		TelaPopUpCadastroFuncionario frame = new TelaPopUpCadastroFuncionario();
+		frame.setVisible(true);
 	} else {
-		JOptionPane.showMessageDialog(null, "Erro ao cadastrar!"); // SUBSTITUIR JOPTIONPANE por TELA DE
-																	// MENSAGEM
+		TelaPopUpErroFuncionario frame = new TelaPopUpErroFuncionario();
+		frame.setVisible(true);	/*exibir uma mensagem de erro ao cadastrar*/
 	}
 		
 	}

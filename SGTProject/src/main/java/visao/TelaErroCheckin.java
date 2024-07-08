@@ -49,7 +49,7 @@ public TelaErroCheckin() {
 	contentPane.setLayout(new MigLayout("", "[136px][][][][][][][]", "[139px][][][][][][][]"));
 	
 	JLabel lblLogo = new JLabel("");
-	lblLogo.setIcon(new ImageIcon(TelaConfimacaoCheckin.class.getResource("/imagens/LogoPI.png")));
+	lblLogo.setIcon(new ImageIcon(TelaPopUpConfimacaoCheckin.class.getResource("/imagens/LogoPI.png")));
 	contentPane.add(lblLogo, "cell 1 0 2 1,alignx center,aligny top");
 	
 	JLabel lblNewLabel_1 = new JLabel("Caro cliente houve um erro");
@@ -69,7 +69,7 @@ public TelaErroCheckin() {
 	btnSair.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			
-			setVisible(false);
+			dispose();
 		}
 	});
 	contentPane.add(btnSair, "cell 2 7,alignx center");
