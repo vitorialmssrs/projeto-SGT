@@ -95,6 +95,7 @@ import modelo.ManutencaoEspacos;
 	return chavePrimariaGerada;
 
 }
+	
 	public ArrayList<ManutencaoEspacos> inserirManutencao() {
 
 	// Arraylist para armazenar resultado do select

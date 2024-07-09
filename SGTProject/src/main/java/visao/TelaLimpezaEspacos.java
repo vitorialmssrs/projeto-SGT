@@ -163,7 +163,7 @@ public class TelaLimpezaEspacos extends JFrame {
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 				try {
 				    LocalDate date = LocalDate.parse(textDiaA.getText(), formatter);
-				    limpEspaco.setDiaManutencao(date);
+				    limpEspaco.setDia(date);
 				} catch (DateTimeParseException e1) {
 				    JOptionPane.showMessageDialog(null, "Formato de data inválido. Use o formato dd/MM/yyyy.");
 				   

@@ -10,7 +10,7 @@ public class LimpezaEspacos {
 	private  EspacoHotel espacos;
 	private Funcionario funcionario;
 	private String tipoManutencao;
-	private LocalDate diaManutencao;
+	private LocalDate dia;
 	private LocalTime horaInicio;
 	private LocalTime horaFinal;
 
@@ -32,11 +32,11 @@ public class LimpezaEspacos {
 	public void setTipoManutencao(String tipoManutencao) {
 		this.tipoManutencao = tipoManutencao;
 	}
-	public LocalDate getDiaManutencao() {
-		return diaManutencao;
+	public LocalDate getDia() {
+		return dia;
 	}
-	public void setDiaManutencao(LocalDate diaManutencao) {
-		this.diaManutencao = diaManutencao;
+	public void setDia(LocalDate dia) {
+		this.dia = dia;
 	}
 	public LocalTime getHoraInicio() {
 		return horaInicio;
