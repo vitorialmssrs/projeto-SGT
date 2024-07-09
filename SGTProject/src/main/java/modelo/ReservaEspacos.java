@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 public class ReservaEspacos {
 
 	private EspacoHotel reserva;
-	private Hospede cliente;
+	private Integer cliente;
 	private Integer idReservas;
 	private LocalDateTime diahorario;
 	
@@ -27,11 +27,11 @@ public class ReservaEspacos {
 	public void setReserva(EspacoHotel reserva) {
 		this.reserva = reserva;
 	}
-	public Hospede getCliente() {
+	public Integer getCliente() {
 		return cliente;
 	}
-	public void setCliente(Hospede cliente) {
-		this.cliente = cliente;
+	public void setCliente(Integer id) {
+		this.cliente = id;
 	}
 	
 	

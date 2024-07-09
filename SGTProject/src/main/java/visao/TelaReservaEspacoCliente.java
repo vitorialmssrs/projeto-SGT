@@ -12,10 +12,12 @@ import org.w3c.dom.Text;
 
 import controle.EspacosDAO;
 import controle.FuncionarioDAO;
+import controle.HospedeDAO;
 import controle.ManutencaoEspacosDAO;
 import controle.ReservaEspacoDAO;
 import modelo.EspacoHotel;
 import modelo.Funcionario;
+import modelo.Hospede;
 import modelo.ManutencaoEspacos;
 import modelo.ReservaEspacos;
 
@@ -159,23 +161,32 @@ public class TelaReservaEspacoCliente extends JFrame {
 		JButton btnConfirmar = new JButton("Confirmar\r\n");
 		btnConfirmar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try {
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu HH:mm");	
 				String dia = textData.getText();
 				String hora = textHorario.getText();
 				LocalDateTime diadate = LocalDateTime.parse(dia+" "+hora, formatter);
+				
+				ReservaEspacos hospede = new ReservaEspacos();
 				
 				ReservaEspacos res = new ReservaEspacos();
 				res.setDiahorario(diadate);
 				
 				ReservaEspacoDAO reserva = ReservaEspacoDAO.getInstancia();
 				int resdao = reserva.inserirReservaEspaco(res);
-				if(resdao == 0) {
+				
+				int id = reserva.inserirReservaEspaco(hospede);
+				hospede.setCliente(id);
+				
+				if(resdao != Integer.MIN_VALUE) {
 					TelaPopUpSucessoCliente suscli = new TelaPopUpSucessoCliente();
-					suscli.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					suscli.setVisible(true);
 				}else {
 					TelaPopUpErroCliente errcli = new TelaPopUpErroCliente();
-					errcli.setExtendedState(JFrame.MAXIMIZED_BOTH);
+					errcli.setVisible(true);
+				}}catch(Exception ex) {
+					ex.printStackTrace();
+					TelaPopUpErroCliente errcli = new TelaPopUpErroCliente();
 					errcli.setVisible(true);
 				}
 			}

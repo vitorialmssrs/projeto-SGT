@@ -1,7 +1,6 @@
 package controle;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,7 +24,7 @@ public class ReservaEspacoDAO implements IReservaEspacoDAO {
 	}
 	@Override
 	public int inserirReservaEspaco(ReservaEspacos end) {
-		String SQL = "INSERT INTO reservas_espacos (id_reservas, dia_horario, id_clientes, espaco_hotel_id_espacos) VALUES (?,?,?,?)";
+		String SQL = "INSERT INTO reservas_espacos (dia_horario, id_clientes, espaco_hotel_id_espacos) VALUES (?,?,?)";
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
 
@@ -34,15 +33,18 @@ public class ReservaEspacoDAO implements IReservaEspacoDAO {
 			PreparedStatement ps = conBD.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
 			
 			ps.setTimestamp(1, Timestamp.valueOf(end.getDiahorario()));
-			ps.setInt(2, end.getCliente().getIdcliente());
+			ps.setInt(2, end.getCliente());
 			ps.setInt(3, end.getReserva().getId());
-
+			
+			int affectedRows = ps.executeUpdate();
+			
+		if(affectedRows > 0) {
 			ResultSet rs = ps.getGeneratedKeys();
 			if (rs.next()) {
 				chavePrimariaGerada = rs.getInt(1);
 			}
-			
-			return ps.executeUpdate();
+			//return ps.executeUpdate();
+		 }
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
