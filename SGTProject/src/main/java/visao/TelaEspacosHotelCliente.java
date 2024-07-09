@@ -15,7 +15,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class EspacosHotel extends JFrame {
+public class TelaEspacosHotelCliente extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -27,7 +27,7 @@ public class EspacosHotel extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					EspacosHotel frame = new EspacosHotel();
+					TelaEspacosHotelCliente frame = new TelaEspacosHotelCliente();
 					frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -40,7 +40,7 @@ public class EspacosHotel extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public EspacosHotel() {
+	public TelaEspacosHotelCliente() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1920, 1080);
 		contentPane = new JPanel();
@@ -63,7 +63,7 @@ public class EspacosHotel extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(EspacosHotel.class.getResource("/imagens/Châteu_Imperial-removebg-preview 4.png")));
+		lblNewLabel_1.setIcon(new ImageIcon(TelaEspacosHotelCliente.class.getResource("/imagens/Châteu_Imperial-removebg-preview 4.png")));
 		lblNewLabel_1.setBounds(233, 11, 194, 172);
 		contentPane.add(lblNewLabel_1);
 		
