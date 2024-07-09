@@ -30,7 +30,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
-public class TelaManutencaoEspacos extends JFrame {
+public class TelaManutencaoEspacosConserto extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -45,7 +45,7 @@ public class TelaManutencaoEspacos extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaManutencaoEspacos(Funcionario funcionario) {
+	public TelaManutencaoEspacosConserto(Funcionario funcionario) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1920, 1080);
 		contentPane = new JPanel();
@@ -55,7 +55,7 @@ public class TelaManutencaoEspacos extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblTitulo = new JLabel("Coloque as informações para o conserto do espaço desejado");
+		JLabel lblTitulo = new JLabel("Preencha as informações para o conserto do espaço desejado");
 		lblTitulo.setBounds(362, 65, 1312, 49);
 		lblTitulo.setForeground(new Color(1, 50, 1));
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 40));
@@ -132,7 +132,7 @@ public class TelaManutencaoEspacos extends JFrame {
 		contentPane.add(lblNewLabel_5);
 		
 		txtDescricao = new JTextField();
-		txtDescricao.setBounds(581, 455, 189, 83);
+		txtDescricao.setBounds(444, 455, 326, 83);
 		contentPane.add(txtDescricao);
 		txtDescricao.setColumns(10);
 		

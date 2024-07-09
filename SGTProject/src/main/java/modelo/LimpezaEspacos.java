@@ -2,46 +2,57 @@ package modelo;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class LimpezaEspacos {
 	
-	private int idlimpeza;
-	private String tipolimpeza;
-	private Time horarioinicio;
-	private Time horariofinal;
-	private Date dia;
+	private  EspacoHotel espacos;
+	private Funcionario funcionario;
+	private String tipoManutencao;
+	private LocalDate diaManutencao;
+	private LocalTime horaInicio;
+	private LocalTime horaFinal;
+
+	public EspacoHotel getEspacos() {
+		return espacos;
+	}
+	public void setEspacos(EspacoHotel espacos) {
+		this.espacos = espacos;
+	}
+	public Funcionario getFuncionario() {
+		return funcionario;
+	}
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
+	}
+	public String getTipoManutencao() {
+		return tipoManutencao;
+	}
+	public void setTipoManutencao(String tipoManutencao) {
+		this.tipoManutencao = tipoManutencao;
+	}
+	public LocalDate getDiaManutencao() {
+		return diaManutencao;
+	}
+	public void setDiaManutencao(LocalDate diaManutencao) {
+		this.diaManutencao = diaManutencao;
+	}
+	public LocalTime getHoraInicio() {
+		return horaInicio;
+	}
+	public void setHoraInicio(LocalTime horaInicio) {
+		this.horaInicio = horaInicio;
+	}
+	public LocalTime getHoraFinal() {
+		return horaFinal;
+	}
+	public void setHoraFinal(LocalTime horaFinal) {
+		this.horaFinal = horaFinal;
+	}
+
+
 	
-	
-	public int getIdlimpeza() {
-		return idlimpeza;
-	}
-	public void setIdlimpeza(int idlimpeza) {
-		this.idlimpeza = idlimpeza;
-	}
-	public String getTipolimpeza() {
-		return tipolimpeza;
-	}
-	public void setTipolimpeza(String tipolimpeza) {
-		this.tipolimpeza = tipolimpeza;
-	}
-	public Time getHorarioinicio() {
-		return horarioinicio;
-	}
-	public void setHorarioinicio(Time horarioinicio) {
-		this.horarioinicio = horarioinicio;
-	}
-	public Time getHorariofinal() {
-		return horariofinal;
-	}
-	public void setHorariofinal(Time horariofinal) {
-		this.horariofinal = horariofinal;
-	}
-	public Date getDia() {
-		return dia;
-	}
-	public void setDia(Date dia) {
-		this.dia = dia;
-	}
 	
 	
 	
