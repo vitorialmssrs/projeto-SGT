@@ -13,9 +13,11 @@ import org.w3c.dom.Text;
 import controle.EspacosDAO;
 import controle.FuncionarioDAO;
 import controle.ManutencaoEspacosDAO;
+import controle.ReservaEspacoDAO;
 import modelo.EspacoHotel;
 import modelo.Funcionario;
 import modelo.ManutencaoEspacos;
+import modelo.ReservaEspacos;
 
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -36,7 +38,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 import java.awt.GridLayout;
 
-public class TelaEscolhaEspacoCliente extends JFrame {
+public class TelaReservaEspacoCliente extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -63,7 +65,7 @@ public class TelaEscolhaEspacoCliente extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaEscolhaEspacoCliente() {
+	public TelaReservaEspacoCliente() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1920, 1080);
 		contentPane = new JPanel();
@@ -78,7 +80,7 @@ public class TelaEscolhaEspacoCliente extends JFrame {
 		panel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(TelaEscolhaEspacoCliente.class.getResource("/imagens/Hotel 2.png")));
+		lblNewLabel.setIcon(new ImageIcon(TelaReservaEspacoCliente.class.getResource("/imagens/Hotel 2.png")));
 		lblNewLabel.setBounds(0, 0, 947, 1031);
 		panel.add(lblNewLabel);
 		
@@ -148,7 +150,7 @@ public class TelaEscolhaEspacoCliente extends JFrame {
 				frame.setVisible(true);
 			}
 		});
-		btnSair.setIcon(new ImageIcon(TelaEscolhaEspacoCliente.class.getResource("/imagens/Vector sair.png")));
+		btnSair.setIcon(new ImageIcon(TelaReservaEspacoCliente.class.getResource("/imagens/Vector sair.png")));
 		btnSair.setBounds(714, 924, 157, 40);
 		btnSair.setBackground(new Color(66, 142, 66));
 		btnSair.setForeground(new Color(252, 251, 244));
@@ -162,6 +164,20 @@ public class TelaEscolhaEspacoCliente extends JFrame {
 				String hora = textHorario.getText();
 				LocalDateTime diadate = LocalDateTime.parse(dia+" "+hora, formatter);
 				
+				ReservaEspacos res = new ReservaEspacos();
+				res.setDiahorario(diadate);
+				
+				ReservaEspacoDAO reserva = ReservaEspacoDAO.getInstancia();
+				int resdao = reserva.inserirReservaEspaco(res);
+				if(resdao == 0) {
+					TelaPopUpSucessoCliente suscli = new TelaPopUpSucessoCliente();
+					suscli.setExtendedState(JFrame.MAXIMIZED_BOTH);
+					suscli.setVisible(true);
+				}else {
+					TelaPopUpErroCliente errcli = new TelaPopUpErroCliente();
+					errcli.setExtendedState(JFrame.MAXIMIZED_BOTH);
+					errcli.setVisible(true);
+				}
 			}
 		});
 		btnConfirmar.setBackground(new Color(109, 164, 109));

@@ -263,7 +263,7 @@ public class TelaCheckIn extends JFrame {
 				
 				if(nome.isEmpty()||sobrenome.isEmpty()||numidentificacao.isEmpty()||
 dataNascimento.isEmpty()||dataEntrada.isEmpty()||horaEntrada.isEmpty()||telefone.isEmpty()||email.isEmpty()||senha.isEmpty()) {
-					TelaErroCheckin frame = new TelaErroCheckin();
+					TelaPopUpErroCliente frame = new TelaPopUpErroCliente();
 					frame.setVisible(true);
 				}
 				
@@ -309,7 +309,7 @@ dataNascimento.isEmpty()||dataEntrada.isEmpty()||horaEntrada.isEmpty()||telefone
 				frame2.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame2.setVisible(true);
 				
-				TelaAvisoSucessoCheckInHospede frame = new TelaAvisoSucessoCheckInHospede();
+				TelaPopUpSucessoCliente frame = new TelaPopUpSucessoCliente();
 				frame.setLocationRelativeTo(null);
 				frame.setVisible(true);
 				

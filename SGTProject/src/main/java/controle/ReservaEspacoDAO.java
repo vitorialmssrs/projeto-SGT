@@ -25,7 +25,7 @@ public class ReservaEspacoDAO implements IReservaEspacoDAO {
 	}
 	@Override
 	public int inserirReservaEspaco(ReservaEspacos end) {
-		String SQL = "INSERT INTO reservas_espacos (id_reservas, dia_horario, id_clientes,espaco_hotel_id_espacos) VALUES (?,?,?,?)";
+		String SQL = "INSERT INTO reservas_espacos (id_reservas, dia_horario, id_clientes, espaco_hotel_id_espacos) VALUES (?,?,?,?)";
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
 

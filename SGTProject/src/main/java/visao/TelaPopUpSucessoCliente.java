@@ -14,7 +14,7 @@ import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class TelaAvisoSucessoCheckInHospede extends JFrame {
+public class TelaPopUpSucessoCliente extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -27,7 +27,7 @@ public class TelaAvisoSucessoCheckInHospede extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaAvisoSucessoCheckInHospede frame = new TelaAvisoSucessoCheckInHospede();
+					TelaPopUpSucessoCliente frame = new TelaPopUpSucessoCliente();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,7 +39,7 @@ public class TelaAvisoSucessoCheckInHospede extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaAvisoSucessoCheckInHospede() {
+	public TelaPopUpSucessoCliente() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 330);
 		contentPane = new JPanel();
@@ -51,7 +51,7 @@ public class TelaAvisoSucessoCheckInHospede extends JFrame {
 		
 		lblLogo = new JLabel("");
 		lblLogo.setBounds(180, 0, 136, 136);
-		lblLogo.setIcon(new ImageIcon(TelaAvisoSucessoCheckInHospede.class.getResource("/imagens/LogoPI.png")));
+		lblLogo.setIcon(new ImageIcon(TelaPopUpSucessoCliente.class.getResource("/imagens/LogoPI.png")));
 		contentPane.add(lblLogo);
 		
 		JButton btnSair = new JButton("Sair");
@@ -61,21 +61,21 @@ public class TelaAvisoSucessoCheckInHospede extends JFrame {
 	
 			}
 		});
-		btnSair.setIcon(new ImageIcon(TelaAvisoSucessoCheckInHospede.class.getResource("/imagens/Vector (1).png")));
+		btnSair.setIcon(new ImageIcon(TelaPopUpSucessoCliente.class.getResource("/imagens/Vector (1).png")));
 		btnSair.setForeground(new Color(255, 255, 255));
 		btnSair.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnSair.setBackground(new Color(1, 50, 1));
-		btnSair.setBounds(180, 240, 113, 31);
+		btnSair.setBounds(203, 241, 113, 31);
 		contentPane.add(btnSair);
 		
-		JLabel lblTexto1 = new JLabel("Caro cliente seu check-in");
+		JLabel lblTexto1 = new JLabel("Caro cliente sua ação");
 		lblTexto1.setBackground(new Color(1, 50, 1));
 		lblTexto1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTexto1.setFont(new Font("Tahoma", Font.BOLD, 23));
 		lblTexto1.setBounds(82, 161, 334, 31);
 		contentPane.add(lblTexto1);
 		
-		JLabel lblTexto2 = new JLabel("foi realizado com sucesso!");
+		JLabel lblTexto2 = new JLabel("ocorreu com sucesso!");
 		lblTexto2.setForeground(new Color(1, 50, 1));
 		lblTexto2.setFont(new Font("Tahoma", Font.BOLD, 23));
 		lblTexto2.setHorizontalAlignment(SwingConstants.CENTER);

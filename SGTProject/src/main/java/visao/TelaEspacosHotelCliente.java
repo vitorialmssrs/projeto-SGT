@@ -72,7 +72,7 @@ public class TelaEspacosHotelCliente extends JFrame {
 		btnAcademia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				TelaEscolhaEspacoCliente frame = new TelaEscolhaEspacoCliente();
+				TelaReservaEspacoCliente frame = new TelaReservaEspacoCliente();
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
 			}
