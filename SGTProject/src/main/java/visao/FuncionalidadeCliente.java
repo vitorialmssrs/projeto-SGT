@@ -109,7 +109,7 @@ public class FuncionalidadeCliente extends JFrame {
 		btnReservasEspacos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				EspacosHotel espacoshotel = new EspacosHotel();
+				TelaEspacosHotelCliente espacoshotel = new TelaEspacosHotelCliente();
 				espacoshotel.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				espacoshotel.setVisible(true);
 				espacoshotel.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);	

@@ -1,9 +1,6 @@
 package visao;
-<<<<<<< HEAD
 
 import java.awt.EventQueue;
-=======
->>>>>>> manutencaoEspacosCadastro
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
