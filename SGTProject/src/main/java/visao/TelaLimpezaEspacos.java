@@ -20,6 +20,7 @@ import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
@@ -32,7 +33,7 @@ public class TelaLimpezaEspacos extends JFrame {
 	private JTextField textDiaA;
 	private JTextField textHoraA;
 	private JTextField textHoraF;
-	private JTextField txtDescricao;
+	private JTextField txtTipoLimp;
 
 	/**
 	 * Launch the application.*/
@@ -50,7 +51,7 @@ public class TelaLimpezaEspacos extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblTitulo = new JLabel("Coloque as informações para o conserto do espaço desejado");
+		JLabel lblTitulo = new JLabel("Preencha as informações para solicitar limpeza");
 		lblTitulo.setBounds(362, 65, 1312, 49);
 		lblTitulo.setForeground(new Color(1, 50, 1));
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 40));
@@ -108,7 +109,7 @@ public class TelaLimpezaEspacos extends JFrame {
 		contentPane.add(textHoraF);
 		textHoraF.setColumns(10);
 		
-		JLabel lblNewLabel_2 = new JLabel("Dia para reservar o espaço para o conserto");
+		JLabel lblNewLabel_2 = new JLabel("Dia para reservar o espaço para a limpeza\r\n");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblNewLabel_2.setForeground(new Color(1, 50, 1));
 		lblNewLabel_2.setBounds(587, 194, 388, 25);
@@ -120,24 +121,24 @@ public class TelaLimpezaEspacos extends JFrame {
 		lblNewLabel_4.setBounds(351, 297, 148, 27);
 		contentPane.add(lblNewLabel_4);
 		
-		JLabel lblNewLabel_5 = new JLabel("Hora prevista para o termino do conserto ");
+		JLabel lblNewLabel_5 = new JLabel("Hora prevista para o termino da limpeza");
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblNewLabel_5.setForeground(new Color(1, 50, 1));
 		lblNewLabel_5.setBounds(587, 297, 401, 27);
 		contentPane.add(lblNewLabel_5);
 		
-		txtDescricao = new JTextField();
-		txtDescricao.setBounds(581, 455, 189, 83);
-		contentPane.add(txtDescricao);
-		txtDescricao.setColumns(10);
+		txtTipoLimp = new JTextField();
+		txtTipoLimp.setBounds(444, 455, 326, 83);
+		contentPane.add(txtTipoLimp);
+		txtTipoLimp.setColumns(10);
 		
-		JLabel lblNewLabel_8 = new JLabel("Escreva o que precisa ser consertado");
+		JLabel lblNewLabel_8 = new JLabel("Escreva o que precisa ser limpado");
 		lblNewLabel_8.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblNewLabel_8.setForeground(new Color(1, 50, 1));
 		lblNewLabel_8.setBounds(444, 387, 346, 27);
 		contentPane.add(lblNewLabel_8);
 		
-		JButton btnCadastrar = new JButton("Cadastrar conserto");
+		JButton btnCadastrar = new JButton("Cadastrar limpeza");
 		btnCadastrar.setForeground(new Color(1, 50, 1));
 		btnCadastrar.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnCadastrar.addActionListener(new ActionListener() {
@@ -148,7 +149,7 @@ public class TelaLimpezaEspacos extends JFrame {
 				
 				limpEspaco.setFuncionario(funcionario);
 				
-				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		/*		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 				LocalDate date = LocalDate.parse( textDiaA.getText(), formatter);
 				limpEspaco.setDiaManutencao(date);
 				
@@ -158,9 +159,34 @@ public class TelaLimpezaEspacos extends JFrame {
 				
 				DateTimeFormatter formatterI = DateTimeFormatter.ofPattern("HH:mm");
 				LocalTime timeF = LocalTime.parse(textHoraF.getText(), formatterH);
-				limpEspaco.setHoraFinal(timeF);
+				limpEspaco.setHoraFinal(timeF);*/
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+				try {
+				    LocalDate date = LocalDate.parse(textDiaA.getText(), formatter);
+				    limpEspaco.setDiaManutencao(date);
+				} catch (DateTimeParseException e1) {
+				    JOptionPane.showMessageDialog(null, "Formato de data inválido. Use o formato dd/MM/yyyy.");
+				   
+				}
+
+				DateTimeFormatter formatterH = DateTimeFormatter.ofPattern("HH:mm");
+				try {
+				    LocalTime timeI = LocalTime.parse(textHoraA.getText(), formatterH);
+				    limpEspaco.setHoraInicio(timeI);
+				} catch (DateTimeParseException e2) {
+				    JOptionPane.showMessageDialog(null, "Formato de hora de início inválido. Use o formato HH:mm.");
+				    
+				}
+
+				try {
+				    LocalTime timeF = LocalTime.parse(textHoraF.getText(), formatterH);
+				    limpEspaco.setHoraFinal(timeF);
+				} catch (DateTimeParseException e3) {
+				    JOptionPane.showMessageDialog(null, "Formato de hora final inválido. Use o formato HH:mm.");
+				  
+				}
 		
-				limpEspaco.setDescricao(txtDescricao.getText());
+				limpEspaco.setTipoManutencao(txtTipoLimp.getText());
 				
 				LimpezaDAO limpDAO = LimpezaDAO.getInstancia();
 				int espacoId = limpDAO.inserirLimpeza(limpEspaco);

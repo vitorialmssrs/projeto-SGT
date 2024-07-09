@@ -13,8 +13,7 @@ public class LimpezaEspacos {
 	private LocalDate diaManutencao;
 	private LocalTime horaInicio;
 	private LocalTime horaFinal;
-	private String descricao;
-	
+
 	public EspacoHotel getEspacos() {
 		return espacos;
 	}
@@ -50,12 +49,6 @@ public class LimpezaEspacos {
 	}
 	public void setHoraFinal(LocalTime horaFinal) {
 		this.horaFinal = horaFinal;
-	}
-	public String getDescricao() {
-		return descricao;
-	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
 	}
 
 

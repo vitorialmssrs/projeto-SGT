@@ -31,7 +31,7 @@ public class LimpezaDAO implements ILimpezaDAO {
 	
 	public int inserirLimpeza(LimpezaEspacos limp) {
 
-		String SQL = "INSERT INTO limpeza_espaco ( tipolimpeza, horarioinicio, horariofinal, dia, espacos_hotel_id_espacos, funcionarios_id_funcionario, descricao_Limpeza) VALUES (?, ?, ?, ?, ?, ?, ?)";
+		String SQL = "INSERT INTO limpeza_espaco ( tipo_limpeza, horario_inicio, horario_final, dia, espacos_hotel_id_espacos, funcionarios_id_funcionario) VALUES (?, ?, ?, ?, ?, ?)";
 
 		//Abre conexao e cria a "ponte de conexao" com o MySQL
 		Conexao con = Conexao.getInstancia();
@@ -48,7 +48,7 @@ public class LimpezaDAO implements ILimpezaDAO {
 		    ps.setDate(4, Date.valueOf(limp.getDiaManutencao()));
 		    ps.setInt(5, limp.getEspacos().getId());
 		    ps.setInt(6, limp.getFuncionario().getIdFuncionario());
-		    ps.setString(7,limp.getDescricao());
+		
 		    
 		    
 		    // Executa a consulta
@@ -83,7 +83,7 @@ public class LimpezaDAO implements ILimpezaDAO {
 
 		// Comando SQL a ser executado
 		
-		String SQL = "INSERT INTO limpeza_espaco (idManutencaoEspacos, tipo_Manutencao, diaManutencao, hora_inicio, hora_final ) VALUES ( ?, ?, ?, ?, ?)";
+		String SQL = "INSERT INTO limpeza_espaco (idManutencaoEspacos, tipo_limpeza, dia, hora_inicio, hora_final ) VALUES ( ?, ?, ?, ?, ?)";
 
 		// Cria a "ponte de conexao" com MYSQL
 		
