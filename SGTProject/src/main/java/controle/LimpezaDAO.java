@@ -28,31 +28,32 @@ public class LimpezaDAO implements ILimpezaDAO {
 		return instancia;
 	}
 	
-	public int inserirLimpeza(LimpezaEspacos end) {
+	public int inserirLimpeza(LimpezaEspacos limp) {
 
-		String SQL = "INSERT INTO LimpezaEspacos (idlimpeza, tipolimpeza, horarioinicio, horariofinal, dia) VALUES (?, ?, ?, ?, ?)";
+		String SQL = "INSERT INTO limpeza_espaco ( tipo_limpeza, horario_inicio, horario_final, dia, espacos_hotel_id_espacos, funcionarios_id_funcionario) VALUES (?, ?, ?, ?, ?, ?)";
 
 		//Abre conexao e cria a "ponte de conexao" com o MySQL
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
 
 		int chavePrimariaGerada = Integer.MIN_VALUE;
-		
 
 		try {
 		    PreparedStatement ps = conBD.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
-
-		    ps.setInt(1,end.getIdlimpeza());
-		    ps.setString(2,end.getTipolimpeza());
-		    ps.setTime(3,end.getHorarioinicio());
-		    ps.setTime(4, end.getHorariofinal());
-		    ps.setDate(5, end.getDia());
 		    
+		    ps.setString(1,limp.getTipoManutencao());
+		    ps.setTime(2, Time.valueOf(limp.getHoraInicio()));
+		    ps.setTime(3,Time.valueOf( limp.getHoraFinal()));	    
+		    ps.setDate(4, Date.valueOf(limp.getDia()));
+		    ps.setInt(5, limp.getEspacos().getId());
+		    ps.setInt(6, limp.getFuncionario().getIdFuncionario());
+				    
 		    // Executa a consulta
 		    ps.executeUpdate(); 
 		    
 		    // Obtém as chaves primárias geradas
 		    ResultSet generatedKeys = ps.getGeneratedKeys();
+		    
 		    if (generatedKeys.next()) {
 		        chavePrimariaGerada = generatedKeys.getInt(1);
 		    }
@@ -66,6 +67,8 @@ public class LimpezaDAO implements ILimpezaDAO {
 
 
 }
+	
+	
 	public ArrayList<LimpezaEspacos> inserirLimpeza() {
 
 		// Arraylist para armazenar resultado do select
@@ -74,7 +77,7 @@ public class LimpezaDAO implements ILimpezaDAO {
 
 		// Comando SQL a ser executado
 		
-		String SQL = "SELECT * FROM espacos";
+		String SQL = "INSERT INTO limpeza_espaco (id_limpeza, tipo_limpeza, dia, hora_inicio, hora_final ) VALUES ( ?, ?, ?, ?, ?)";
 
 		// Cria a "ponte de conexao" com MYSQL
 		
@@ -90,31 +93,26 @@ public class LimpezaDAO implements ILimpezaDAO {
 				
 				// Criar objeto
 				
-				LimpezaEspacos end = new LimpezaEspacos();
+				LimpezaEspacos limp = new LimpezaEspacos();
 
 				// Pega os valores de cada coluna do registro
+				Integer idLimpeza = rs.getInt("id_limpeza");
+				String TipoManutencao = rs.getString("tipo_limpeza");
+				Date DiaManutencao = rs.getDate("dia");
+				Time horaIncio = rs.getTime("hora_inicio");
+				Time horaFinal = rs.getTime("hora_final");
 				
-				Integer idlimpeza = rs.getInt("idlimpeza");
-				String tipolimpeza = rs.getString("tipolimpeza");
-				Time horarioinicio = rs.getTime("horarioinicio");
-				Time horariofinal = rs.getTime("horariofinal");
-				Date dia = rs.getDate("dia");
-				
-			
-
-				
+						
 				// Seta os valores no obj java
-	
-				end.setIdlimpeza(idlimpeza);
-				end.setTipolimpeza(tipolimpeza);
-				end.setHorarioinicio(horarioinicio);
-				end.setHorariofinal(horariofinal);
-				end.setDia(dia);
-				
+				limp.setTipoManutencao(SQL);
+				limp.setDia(null);
+				limp.setHoraInicio(null);
+				limp.setHoraFinal(null);
+				limp.setFuncionario(null);
+			
 				
 				// Adiciona obj no arraylist
-				limpeza.add(end); 
-
+				limpeza.add(limp); 
 			}
 
 		} catch (SQLException e) {
@@ -127,10 +125,10 @@ public class LimpezaDAO implements ILimpezaDAO {
 	}
 	
 	public ArrayList<LimpezaEspacos> listarLimpezaEspacos() {
-	    ArrayList<LimpezaEspacos> listaLimpezaEspacos = new ArrayList<LimpezaEspacos>();
+	   /* ArrayList<LimpezaEspacos> listaLimpezaEspacos = new ArrayList<LimpezaEspacos>();
 	    
 	    // Comando SQL para selecionar os dados da tabela LimpezaEspacos
-	    String SQL = "SELECT * FROM LimpezaEspacos";
+	    String SQL = "SELECT * FROM limpeza_espaco";
 	    
 	    // Cria a "ponte de conexão" com o banco de dados MySQL
 	    Conexao con = Conexao.getInstancia();
@@ -142,11 +140,14 @@ public class LimpezaDAO implements ILimpezaDAO {
 	        
 	        while (rs.next()) {
 	            LimpezaEspacos limpezaEspacos = new LimpezaEspacos();
-	            limpezaEspacos.setIdlimpeza(rs.getInt("idlimpeza"));
-	            limpezaEspacos.setTipolimpeza(rs.getString("tipolimpeza"));
-	            limpezaEspacos.setHorarioinicio(rs.getTime("horarioinicio"));
-	            limpezaEspacos.setHorariofinal(rs.getTime("horariofinal"));
+	            
+	            
+	            limpezaEspacos.setTipoManutencao(rs.getString("tipoManutencao"));
+	            limpezaEspacos.setHoraInicio(rs.getTime("horarioinicio"));
+	            limpezaEspacos.setHoraFinal(rs.getTime("horariofinal"));
 	            limpezaEspacos.setDia(rs.getDate("dia"));
+	            limpezaEspacos.setTipoManutencao(rs.getString("idEspacos"));
+
 	            
 	            listaLimpezaEspacos.add(limpezaEspacos);
 	        }
@@ -155,13 +156,25 @@ public class LimpezaDAO implements ILimpezaDAO {
 	    } finally {
 	        con.fecharConexao();
 	    }
-	    
-	    return listaLimpezaEspacos;
+	    */
+	    return listarLimpezaEspacos();
+	}
+
+	@Override
+	public boolean atualizarLimpezaEspacos(LimpezaEspacos end) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean removerLimpezaEspacos(LimpezaEspacos end) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	
-	public boolean atualizarLimpezaEspacos(LimpezaEspacos end) {
-	    String SQL = "UPDATE LimpezaEspacos SET tipolimpeza = ?, horarioinicio = ?, horariofinal = ?, dia = ? WHERE idlimpeza = ?";
+	//public boolean atualizarLimpezaEspacos(LimpezaEspacos limp) {
+	/*    String SQL = "UPDATE limpeza_espaco SET tipolimpeza = ?, horarioinicio = ?, horariofinal = ?, dia = ? WHERE idlimpeza = ?";
 	    
 	    Conexao con = Conexao.getInstancia();
 	    Connection conBD = con.conectar();
@@ -171,11 +184,13 @@ public class LimpezaDAO implements ILimpezaDAO {
 	    try {
 	        PreparedStatement ps = conBD.prepareStatement(SQL);
 	        
-	        ps.setString(1, end.getTipolimpeza());
-	        ps.setTime(2, end.getHorarioinicio());
-	        ps.setTime(3, end.getHorariofinal());
-	        ps.setDate(4, end.getDia());
-	        ps.setInt(5, end.getIdlimpeza());
+	        ps.setString(1,limp.getTipoManutencao());
+		    ps.setTime(2, Time.valueOf(limp.getHoraInicio()));
+		    ps.setTime(3,Time.valueOf( limp.getHoraFinal()));	    
+		    ps.setDate(4, Date.valueOf(limp.getDiaManutencao()));
+		    ps.setInt(5, limp.getEspacos().getId());
+		    ps.setInt(6, limp.getFuncionario().getIdFuncionario());
+		  
 	        
 	        retorno = ps.executeUpdate();
 	    } catch (SQLException e) {
@@ -184,11 +199,11 @@ public class LimpezaDAO implements ILimpezaDAO {
 	        con.fecharConexao();
 	    }
 	    
-	    return retorno != 0;
-	}
+	    return retorno != 0;*/
+	
 
-	public boolean removerLimpezaEspacos(LimpezaEspacos end) {
-	    String SQL = "DELETE FROM LimpezaEspacos WHERE idlimpeza = ?";
+	//public boolean removerLimpezaEspacos(LimpezaEspacos end) {
+	    /*String SQL = "DELETE FROM limpeza_espaco WHERE idlimpeza = ?";
 	    
 	    Conexao con = Conexao.getInstancia();
 	    Connection conBD = con.conectar();
@@ -198,7 +213,7 @@ public class LimpezaDAO implements ILimpezaDAO {
 	    try {
 	        PreparedStatement ps = conBD.prepareStatement(SQL);
 	        
-	        ps.setInt(1, end.getIdlimpeza());
+	      //  ps.setInt(1, end.getIdlimpeza());
 	        
 	        retorno = ps.executeUpdate();
 	    } catch (SQLException e) {
@@ -208,7 +223,7 @@ public class LimpezaDAO implements ILimpezaDAO {
 	    }
 	    
 	    return retorno != 0;
-	}
-
+	    }*/
 	
 }
+	
