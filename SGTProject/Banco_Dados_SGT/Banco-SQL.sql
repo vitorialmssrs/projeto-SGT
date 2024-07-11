@@ -107,6 +107,7 @@ CREATE TABLE IF NOT EXISTS manutencao_espaco (
   tipo_manutencao varchar(100) NOT NULL,
   espacos_hotel_id_espacos INT(11) NOT NULL,
   funcionarios_id_funcionario INT(7) NOT NULL,
+  descricaomanutencao varchar(100) NOT NULL,
   PRIMARY KEY (id_manutencao_espaco),
   CONSTRAINT fk_limpeza_espacos_espacos_hotel1 FOREIGN KEY (espacos_hotel_id_espacos) REFERENCES espacos_hotel (id_espacos),
   CONSTRAINT fk_manutencao_espaco_funcionarios1 FOREIGN KEY (funcionarios_id_funcionario) REFERENCES funcionarios (id_funcionario)
@@ -2020,7 +2021,8 @@ insert into
     hora_final,
     tipo_manutencao,
     espacos_hotel_id_espacos,
-    funcionarios_id_funcionario
+    funcionarios_id_funcionario,
+    descricaomanutencao
   )
 values
   (
@@ -2029,7 +2031,8 @@ values
     '06:30',
     'concerto piso',
     1,
-    21
+    21,
+    'lampada quebrada'
   );
 
 insert into
@@ -2039,7 +2042,8 @@ insert into
     hora_final,
     tipo_manutencao,
     espacos_hotel_id_espacos,
-    funcionarios_id_funcionario
+    funcionarios_id_funcionario,
+    descricaomanutencao
   )
 values
   (
@@ -2048,7 +2052,8 @@ values
     '08:00',
     'concerto lampada',
     2,
-    22
+    22,
+    'chão quebrado'
   );
 
 insert into
@@ -2058,7 +2063,8 @@ insert into
     hora_final,
     tipo_manutencao,
     espacos_hotel_id_espacos,
-    funcionarios_id_funcionario
+    funcionarios_id_funcionario,
+    descricaomanutencao
   )
 values
   (
@@ -2067,7 +2073,8 @@ values
     '16:30',
     'concerto piso',
     3,
-    23
+    23,
+    'pia quebrada'
   );
 
 insert into
@@ -2077,7 +2084,8 @@ insert into
     hora_final,
     tipo_manutencao,
     espacos_hotel_id_espacos,
-    funcionarios_id_funcionario
+    funcionarios_id_funcionario,
+    descricaomanutencao
   )
 values
   (
@@ -2086,7 +2094,8 @@ values
     '08:00',
     'concerto supino',
     4,
-    24
+    24,
+    'maquina sem corda'
   );
 
 insert into
@@ -2096,7 +2105,8 @@ insert into
     hora_final,
     tipo_manutencao,
     espacos_hotel_id_espacos,
-    funcionarios_id_funcionario
+    funcionarios_id_funcionario,
+    descricaomanutencao
   )
 values
   (
@@ -2105,7 +2115,8 @@ values
     '06:30',
     'concerto ar condicionado',
     5,
-    25
+    25,
+    'ar condicionado pegou fogo'
   );
 
 insert into
@@ -2115,7 +2126,8 @@ insert into
     hora_final,
     tipo_manutencao,
     espacos_hotel_id_espacos,
-    funcionarios_id_funcionario
+    funcionarios_id_funcionario,
+    descricaomanutencao
   )
 values
   (
@@ -2124,7 +2136,8 @@ values
     '18:00',
     'concerto piso',
     6,
-    26
+    26,
+    'piso rachado grande'
   );
 
 insert into
@@ -2134,7 +2147,8 @@ insert into
     hora_final,
     tipo_manutencao,
     espacos_hotel_id_espacos,
-    funcionarios_id_funcionario
+    funcionarios_id_funcionario,
+    descricaomanutencao
   )
 values
   (
@@ -2143,7 +2157,8 @@ values
     '06:30',
     'concerto lampada',
     7,
-    27
+    27,
+    'teto queimado'
   );
 
 insert into
@@ -2153,7 +2168,8 @@ insert into
     hora_final,
     tipo_manutencao,
     espacos_hotel_id_espacos,
-    funcionarios_id_funcionario
+    funcionarios_id_funcionario,
+    descricaomanutencao
   )
 values
   (
@@ -2162,7 +2178,8 @@ values
     '08:00',
     'concerto piso',
     8,
-    28
+    28,
+    'falta piso metade da sala'
   );
 
 insert into
@@ -2172,7 +2189,8 @@ insert into
     hora_final,
     tipo_manutencao,
     espacos_hotel_id_espacos,
-    funcionarios_id_funcionario
+    funcionarios_id_funcionario,
+    descricaomanutencao
   )
 values
   (
@@ -2181,7 +2199,8 @@ values
     '16:30',
     'concerto janela',
     9,
-    29
+    29,
+    'jogaram bola de futebol na janela'
   );
 
 insert into
@@ -2191,7 +2210,8 @@ insert into
     hora_final,
     tipo_manutencao,
     espacos_hotel_id_espacos,
-    funcionarios_id_funcionario
+    funcionarios_id_funcionario,
+    descricaomanutencao
   )
 values
   (
@@ -2200,7 +2220,8 @@ values
     '08:00',
     'concerto piso',
     10,
-    30
+    30,
+    'quebraram piso com halter'
   );
 
 insert into
@@ -2210,7 +2231,8 @@ insert into
     hora_final,
     tipo_manutencao,
     espacos_hotel_id_espacos,
-    funcionarios_id_funcionario
+    funcionarios_id_funcionario,
+    descricaomanutencao
   )
 values
   (
@@ -2219,7 +2241,8 @@ values
     '06:30',
     'concerto piso',
     11,
-    31
+    31,
+    'sala em manutenção para troca de equipamentos de academia'
   );
 
 insert into
@@ -2229,7 +2252,8 @@ insert into
     hora_final,
     tipo_manutencao,
     espacos_hotel_id_espacos,
-    funcionarios_id_funcionario
+    funcionarios_id_funcionario,
+    descricaomanutencao
   )
 values
   (
@@ -2238,7 +2262,8 @@ values
     '16:00',
     'concerto janela',
     12,
-    32
+    32,
+    'jogaram bola de boliche na janela'
   );
 
 insert into
@@ -2248,7 +2273,8 @@ insert into
     hora_final,
     tipo_manutencao,
     espacos_hotel_id_espacos,
-    funcionarios_id_funcionario
+    funcionarios_id_funcionario,
+    descricaomanutencao
   )
 values
   (
@@ -2257,7 +2283,8 @@ values
     '06:30',
     'concerto piso',
     13,
-    33
+    33,
+    'fogo na piscina'
   );
 
 insert into
@@ -2267,7 +2294,8 @@ insert into
     hora_final,
     tipo_manutencao,
     espacos_hotel_id_espacos,
-    funcionarios_id_funcionario
+    funcionarios_id_funcionario,
+    descricaomanutencao
   )
 values
   (
@@ -2276,7 +2304,8 @@ values
     '08:00',
     'concerto piso',
     14,
-    34
+    34,
+    'gorfaram no local'
   );
 
 insert into
@@ -2286,7 +2315,8 @@ insert into
     hora_final,
     tipo_manutencao,
     espacos_hotel_id_espacos,
-    funcionarios_id_funcionario
+    funcionarios_id_funcionario,
+    descricaomanutencao
   )
 values
   (
@@ -2295,7 +2325,8 @@ values
     '06:30',
     'concerto lampada',
     15,
-    35
+    35,
+    'falta lampada nos quartos'
   );
 
 insert into
@@ -2305,7 +2336,8 @@ insert into
     hora_final,
     tipo_manutencao,
     espacos_hotel_id_espacos,
-    funcionarios_id_funcionario
+    funcionarios_id_funcionario,
+    descricaomanutencao
   )
 values
   (
@@ -2314,7 +2346,8 @@ values
     '08:00',
     'concerto janela',
     16,
-    36
+    36,
+    'jogaram denovo uma bola de boliche, ja falei pra tirar de perto'
   );
 
 insert into
@@ -2324,7 +2357,8 @@ insert into
     hora_final,
     tipo_manutencao,
     espacos_hotel_id_espacos,
-    funcionarios_id_funcionario
+    funcionarios_id_funcionario,
+    descricaomanutencao
   )
 values
   (
@@ -2333,7 +2367,8 @@ values
     '16:30',
     'concerto piso',
     17,
-    37
+    37,
+    'troca piso do banheiro'
   );
 
 insert into
@@ -2343,7 +2378,8 @@ insert into
     hora_final,
     tipo_manutencao,
     espacos_hotel_id_espacos,
-    funcionarios_id_funcionario
+    funcionarios_id_funcionario,
+    descricaomanutencao
   )
 values
   (
@@ -2352,7 +2388,8 @@ values
     '08:00',
     'concerto supino',
     18,
-    38
+    38,
+    'arrancaram os encaixe dos alter, não sei como'
   );
 
 insert into
@@ -2362,7 +2399,8 @@ insert into
     hora_final,
     tipo_manutencao,
     espacos_hotel_id_espacos,
-    funcionarios_id_funcionario
+    funcionarios_id_funcionario,
+    descricaomanutencao
   )
 values
   (
@@ -2371,7 +2409,8 @@ values
     '06:30',
     'concerto piso',
     19,
-    39
+    39,
+    'deixaram a criança mecher com o piso quebrado, e tão colocando a culpa no Pedro'
   );
 
 insert into
@@ -2381,7 +2420,8 @@ insert into
     hora_final,
     tipo_manutencao,
     espacos_hotel_id_espacos,
-    funcionarios_id_funcionario
+    funcionarios_id_funcionario,
+    descricaomanutencao
   )
 values
   (
@@ -2390,7 +2430,8 @@ values
     '08:00',
     'concerto ar condicionado',
     20,
-    40
+    40,
+    'as crianças estão colocando fogo nos ar condicionado'
   );
 
 -- Limpeza_espaco
