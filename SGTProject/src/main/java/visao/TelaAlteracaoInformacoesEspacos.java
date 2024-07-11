@@ -310,7 +310,10 @@ public class TelaAlteracaoInformacoesEspacos extends JFrame {
 		JButton btnSair_1 = new JButton("<- | Sair");
 		btnSair_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
+				
+				FuncionalidadeFuncionario funcionalidade = new FuncionalidadeFuncionario(null);//aqui so funciona null
+				funcionalidade.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				funcionalidade.setVisible(true);
 			}
 		});
 		btnSair_1.setForeground(new Color(252, 251, 244));
