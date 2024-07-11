@@ -182,6 +182,21 @@ public class TelaManutencaoEspacosConserto extends JFrame {
 		btnCadastrar.setBounds(527, 640, 220, 49);
 		contentPane.add(btnCadastrar);
 		
+		JButton btnSair_1 = new JButton("<- | Sair");
+		btnSair_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				FuncionalidadeFuncionario funcionalidade = new FuncionalidadeFuncionario(funcionario);
+				funcionalidade.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				funcionalidade.setVisible(true);
+				
+			}
+		});
+		btnSair_1.setForeground(new Color(252, 251, 244));
+		btnSair_1.setFont(new Font("Tahoma", Font.BOLD, 17));
+		btnSair_1.setBackground(new Color(1, 50, 1));
+		btnSair_1.setBounds(947, 644, 176, 39);
+		contentPane.add(btnSair_1);
 		
 	}
 	}

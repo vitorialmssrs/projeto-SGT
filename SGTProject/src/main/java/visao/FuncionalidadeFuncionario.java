@@ -77,7 +77,7 @@ public class FuncionalidadeFuncionario extends JFrame {
 		btnAlteracaoEspaco.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				TelaAlteracaoInformacoesEspacos alterarespacos = new TelaAlteracaoInformacoesEspacos();
+				TelaAlteracaoInformacoesEspacos alterarespacos = new TelaAlteracaoInformacoesEspacos(fun);
 				alterarespacos.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				alterarespacos.setVisible(true);
 			}
