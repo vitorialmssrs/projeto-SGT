@@ -129,7 +129,7 @@ public class LoginFuncionario extends JFrame {
 		lblAtecaoSenha.setBounds(70, 375, 12, 13);
 		panelCinza.add(lblAtecaoSenha);
 
-		JLabel lblRecadoSenha = new JLabel("Apenas números, com no Mínimo 8 caracteres e Sem caracteres especiais");
+		JLabel lblRecadoSenha = new JLabel("A senha deve conter no Mínimo 8 caracteres");
 		lblRecadoSenha.setForeground(new Color(242, 48, 48));
 		lblRecadoSenha.setBackground(new Color(242, 48, 48));
 		lblRecadoSenha.setFont(new Font("Tahoma", Font.PLAIN, 13));
