@@ -1,0 +1,1 @@
+SELECT * FROM mydb.limpeza_espaco;

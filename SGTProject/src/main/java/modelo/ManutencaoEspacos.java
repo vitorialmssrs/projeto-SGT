@@ -5,7 +5,7 @@ import java.time.LocalTime;
 
 public class ManutencaoEspacos {
 	
-	private  EspacoHotel espacos;
+	private EspacoHotel espacos;
 	private Funcionario funcionario;
 	private String tipoManutencao;
 	private LocalDate diaManutencao;

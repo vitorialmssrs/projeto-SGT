@@ -6,11 +6,14 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import controle.AlteracaoInformacoesEspacosDAO;
 import controle.EspacosDAO;
+import modelo.AlteracaoInformacoesEspacos;
 import modelo.EspacoHotel;
 
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import javax.swing.JButton;
@@ -225,15 +228,83 @@ public class TelaAlteracaoInformacoesEspacos extends JFrame {
 		lblNewLabel_9.setBounds(940, 283, 376, 33);
 		contentPane.add(lblNewLabel_9);
 		
-		JButton btnSalvar = new JButton("Salvar");
+		JButton btnSalvar = new JButton("Salvar alterações");
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			}
+								
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyyyy");
+				
+				String diaAbertura = textDiaA.getText();
+				String diafechamento = textDiaF.getText();
+				String horaAB = textHoraA.getText();
+				String horaF = textHoraF.getText();
+				String capacidade = textCapacidade.getText();
+
+				
+				//Verifica se tem alguma coisa
+				if(diaAbertura.isEmpty() || diafechamento.isEmpty() || horaAB.isEmpty() || horaF.isEmpty() || capacidade.isEmpty()) { 
+					
+					TelaPopUpErroFuncionarioCamposNaoPreenchidos frame = new TelaPopUpErroFuncionarioCamposNaoPreenchidos();
+					frame.setVisible(true);	/*exibir uma mensagem de erro preencha todos os campos*/
+					
+				}else {
+					
+					diaAbertura = diaAbertura.replace("/", "");
+					diaAbertura = diaAbertura.replace("/", "");
+					
+					diafechamento = diafechamento.replace("/", "");
+					diafechamento = diafechamento.replace("/", "");
+					
+					horaAB = horaAB.replace(":", "");
+					horaAB = horaAB.replace(":", "");
+					
+					horaF = horaF.replace(":", "");
+					horaF = horaF.replace(":", "");
+					
+										
+					LocalDate diaAberturaI = LocalDate.parse(diaAbertura, formatter);
+					LocalDate diafechamentoI = LocalDate.parse(diafechamento, formatter);
+					int capacidadeI = Integer.valueOf(capacidade);
+					LocalTime horaABI = LocalTime.parse(horaAB);
+					LocalTime horaFI = LocalTime.parse(horaF);
+					
+					
+					AlteracaoInformacoesEspacosDAO altDAO = AlteracaoInformacoesEspacosDAO.getInstancia();
+					
+					// Cria um novo obj com os novos valores atualizados
+					AlteracaoInformacoesEspacos altEspaco = new AlteracaoInformacoesEspacos();
+					
+					altEspaco.setFuncionario(altEspaco.getFuncionario());
+					altEspaco.setDiaAbertura(diaAberturaI);
+					altEspaco.setDiaFechamento(diafechamentoI);
+					altEspaco.setCapacidade(capacidadeI);
+					altEspaco.setHoraAbert(horaABI);
+					altEspaco.setHoraFech(horaFI);
+	
+			        
+			        // Exibir mensagem de sucesso ou erro
+			        boolean sucesso = altDAO.atualizarAlteracao(altEspaco);
+					if (sucesso) {
+			        	//TelaPopUpSucessoFuncionario frame = new TelaPopUpSucessoFuncionario();
+			        	//frame.setVisible(true); 
+			        	JOptionPane.showMessageDialog(null, "Espaço atualizado com sucesso!");
+			        	
+			            
+			        } else {
+			        	//TelaPopUpErroFuncionario frame = new TelaPopUpErroFuncionario();
+			        	//frame.setVisible(true); 
+			        	JOptionPane.showMessageDialog(null, "Ocorreu um erro ao atualizar o espaço."); 
+			        } 
+				}	
+				}
+				
 		});
+				
+				
 		btnSalvar.setForeground(new Color(252, 251, 244));
 		btnSalvar.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnSalvar.setBackground(new Color(66, 142, 66));
-		btnSalvar.setBounds(447, 660, 176, 39);
+		btnSalvar.setBounds(447, 660, 234, 39);
 		contentPane.add(btnSalvar);
 		
 		JButton btnSair_1 = new JButton("<- | Sair");
