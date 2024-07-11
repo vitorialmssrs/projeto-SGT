@@ -1,59 +1,73 @@
 package modelo;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class AlteracaoInformacoesEspacos {
-	
-	private Integer idManutencaoEspacos;
-	private String espacos;
+
+	private Funcionario funcionario;
+	private EspacoHotel espacos;
+	private Integer id_espacos;
 	private LocalDate diaAbertura;
-	private Integer diaFechamento;
-	private String horaAbert;
-	private LocalDate horaFech;
+	private LocalDate diaFechamento;
+	private LocalTime horaAbert;
+	private LocalTime horaFech;
 	private Integer capacidade;
 
+	
+	
+	public Integer getId_espacos() {
+		return id_espacos;
+	}
+	public void setId_espacos(Integer id_espacos) {
+		this.id_espacos = id_espacos;
+	}
+	
+	public EspacoHotel getEspacos() {
+		return espacos;
+	} 
+	public void setEspacos(EspacoHotel espacos) {
+		this.espacos = espacos;
+	}
 	public Integer getCapacidade() {
 		return capacidade;
 	}
 	public void setCapacidade(Integer capacidade) {
 		this.capacidade = capacidade;
 	}
-	public Integer getIdManutencaoEspacos() {
-		return idManutencaoEspacos;
+	
+	public Funcionario getFuncionario() {
+		return funcionario;
 	}
-	public void setIdManutencaoEspacos(Integer idManutencaoEspacos) {
-		this.idManutencaoEspacos = idManutencaoEspacos;
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
 	}
-	public String getEspacos() {
-		return espacos;
-	}
-	public void setEspacos(String espacos) {
-		this.espacos = espacos;
-	}
+
 	public LocalDate getDiaAbertura() {
 		return diaAbertura;
 	}
 	public void setDiaAbertura(LocalDate diaAbertura) {
 		this.diaAbertura = diaAbertura;
 	}
-	public Integer getDiaFechamento() {
+	public LocalDate getDiaFechamento() {
 		return diaFechamento;
 	}
-	public void setDiaFechamento(Integer diaFechamento) {
+	public void setDiaFechamento(LocalDate diaFechamento) {
 		this.diaFechamento = diaFechamento;
 	}
-	public String getHoraAbert() {
+	public LocalTime getHoraAbert() {
 		return horaAbert;
 	}
-	public void setHoraAbert(String horaAbert) {
+	public void setHoraAbert(LocalTime horaAbert) {
 		this.horaAbert = horaAbert;
 	}
-	public LocalDate getHoraFech() {
+	public LocalTime getHoraFech() {
 		return horaFech;
 	}
-	public void setHoraFech(LocalDate horaFech) {
+	public void setHoraFech(LocalTime horaFech) {
 		this.horaFech = horaFech;
 	}
+	
 
 	
 }
