@@ -49,24 +49,24 @@ public class TelaInicial extends JFrame {
 		contentPane.setLayout(null);
 
 		JLabel lblLogo = new JLabel("");
-		lblLogo.setBounds(626, 96, 206, 191);
+		lblLogo.setBounds(815, 99, 206, 191);
 		lblLogo.setIcon(new ImageIcon(TelaInicial.class.getResource("/imagens/Châteu_Imperial-removebg-preview 4.png")));
 		contentPane.add(lblLogo);
 
 		JLabel lblBemVindos = new JLabel("Bem-vindo ao Chateau Imperial");
-		lblBemVindos.setBounds(411, 331, 641, 49);
+		lblBemVindos.setBounds(600, 334, 641, 49);
 		lblBemVindos.setForeground(new Color(1, 50, 1));
 		lblBemVindos.setFont(new Font("Tahoma", Font.BOLD, 40));
 		contentPane.add(lblBemVindos);
 
 		JLabel lblNewLabel = new JLabel("Escolha uma das opções:");
-		lblNewLabel.setBounds(576, 402, 281, 72);
+		lblNewLabel.setBounds(765, 405, 281, 72);
 		lblNewLabel.setForeground(new Color(1, 50, 1));
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		contentPane.add(lblNewLabel);
 
 		JButton btnCliente = new JButton("Cliente");
-		btnCliente.setBounds(411, 488, 641, 80);
+		btnCliente.setBounds(600, 491, 641, 80);
 		btnCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evento) {
 				dispose();
@@ -83,7 +83,7 @@ public class TelaInicial extends JFrame {
 		contentPane.add(btnCliente);
 
 		JButton btnNewButton = new JButton("Funcionário");
-		btnNewButton.setBounds(411, 627, 641, 85);
+		btnNewButton.setBounds(600, 630, 641, 85);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				dispose();

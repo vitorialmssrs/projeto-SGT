@@ -84,50 +84,36 @@ public class TelaCheckOut extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		
-		JLabel lbl_Insira_Informacoes_Cadastro = new JLabel("Insira as informações abaixo para realizar o check-out: ");
-		lbl_Insira_Informacoes_Cadastro.setForeground(new Color(1, 50, 1));
-		lbl_Insira_Informacoes_Cadastro.setBackground(new Color(1, 50, 1));
-		lbl_Insira_Informacoes_Cadastro.setFont(new Font("Tahoma", Font.PLAIN, 27));
-		
-		JButton btnSair_tela_cad_Cliente = new JButton("<- | Sair");
-		btnSair_tela_cad_Cliente.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				dispose();
-				FuncionalidadeCliente frame = new FuncionalidadeCliente();
-				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				frame.setVisible(true);
-			}
-		});
-		btnSair_tela_cad_Cliente.setForeground(new Color(252, 251, 244));
-		btnSair_tela_cad_Cliente.setBackground(new Color(1, 50, 1));
-		btnSair_tela_cad_Cliente.setFont(new Font("Tahoma", Font.BOLD, 17));
-		contentPane.setLayout(new MigLayout("", "[300px][10px][27px][25px,grow][50][45][179.00px][268.00px,grow][159.00,grow][50][176px]", "[60][61px][11px][56px][21px][33px][35][33px][21px][35][12px][33px][21px][35][39px][17.00][50.00][39px]"));
+		contentPane.setLayout(new MigLayout("", "[270][25px,grow][50][179.00px][268.00px,grow][159.00,grow][50][176px]", "[60][61px][11px][56px][21px][33px][35][33px][21px][35][12px][33px][21px][35][39px][17.00][50.00][39px][][][][][][]"));
 		
 		JLabel lblIcone = new JLabel("");
 		lblIcone.setIcon(new ImageIcon(TelaCheckOut.class.getResource("/imagens/LogoPI.png")));
-		contentPane.add(lblIcone, "cell 4 1,alignx center");
+		contentPane.add(lblIcone, "cell 1 1,alignx center");
 		
 		JLabel lblAgradecemosPorSua = new JLabel("Agradecemos por sua estadia!");
 		lblAgradecemosPorSua.setForeground(new Color(1, 50, 1));
 		lblAgradecemosPorSua.setFont(new Font("Tahoma", Font.BOLD, 52));
 		lblAgradecemosPorSua.setBackground(new Color(1, 50, 1));
-		contentPane.add(lblAgradecemosPorSua, "cell 5 1 5 1");
-		contentPane.add(lbl_Insira_Informacoes_Cadastro, "cell 5 3 4 1,growx,aligny top");
+		contentPane.add(lblAgradecemosPorSua, "cell 2 1 4 1");
+		
+		JLabel lbl_Insira_Informacoes_Cadastro = new JLabel("Insira as informações abaixo para realizar o check-out: ");
+		lbl_Insira_Informacoes_Cadastro.setForeground(new Color(1, 50, 1));
+		lbl_Insira_Informacoes_Cadastro.setBackground(new Color(1, 50, 1));
+		lbl_Insira_Informacoes_Cadastro.setFont(new Font("Tahoma", Font.PLAIN, 27));
+		contentPane.add(lbl_Insira_Informacoes_Cadastro, "cell 2 3 4 1,growx,aligny top");
 		
 		JLabel lblCPFCliente = new JLabel("* CPF / CRNM / RNN / RNE:");
 		lblCPFCliente.setForeground(new Color(1, 50, 1));
 		lblCPFCliente.setBackground(new Color(1, 50, 1));
 		lblCPFCliente.setFont(new Font("Tahoma", Font.BOLD, 19));
-		contentPane.add(lblCPFCliente, "cell 3 4,grow");
+		contentPane.add(lblCPFCliente, "cell 1 4,grow");
 		
 		
 		JLabel lblDataNascimento = new JLabel("* Data de nascimento:");
 		lblDataNascimento.setBackground(new Color(1, 50, 1));
 		lblDataNascimento.setForeground(new Color(1, 50, 1));
 		lblDataNascimento.setFont(new Font("Tahoma", Font.BOLD, 19));
-		contentPane.add(lblDataNascimento, "cell 7 4,alignx left,growy");
+		contentPane.add(lblDataNascimento, "cell 4 4,alignx left,growy");
 		
 		/*try {
 			MaskFormatter formatterNIden = new MaskFormatter("###.###.###-##");
@@ -183,7 +169,7 @@ public class TelaCheckOut extends JFrame {
 		textNumeroIdentificacao.setBackground(new Color(252, 251, 244));
 		textNumeroIdentificacao.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textNumeroIdentificacao.setColumns(10);
-		contentPane.add(textNumeroIdentificacao, "cell 3 5,grow");
+		contentPane.add(textNumeroIdentificacao, "cell 1 5,grow");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -194,18 +180,18 @@ public class TelaCheckOut extends JFrame {
 		TextDataNascimento.setBackground(new Color(252, 251, 244));
 		TextDataNascimento.setBorder(new LineBorder(new Color(1, 50, 1)));
 		TextDataNascimento.setColumns(10);
-		contentPane.add(TextDataNascimento, "cell 7 5,grow");
+		contentPane.add(TextDataNascimento, "cell 4 5,grow");
 		
 		JLabel lblNome_Cliente = new JLabel("* Primeiro nome:");
 		lblNome_Cliente.setBackground(new Color(1, 50, 1));
 		lblNome_Cliente.setForeground(new Color(1, 50, 1));
 		lblNome_Cliente.setFont(new Font("Tahoma", Font.BOLD, 19));
-		contentPane.add(lblNome_Cliente, "cell 3 6,grow");
+		contentPane.add(lblNome_Cliente, "cell 1 6,grow");
 		
 		JLabel lblDataEntrada = new JLabel("* Data e hora de Entrada:");
 		lblDataEntrada.setForeground(new Color(1, 50, 1));
 		lblDataEntrada.setFont(new Font("Tahoma", Font.BOLD, 19));
-		contentPane.add(lblDataEntrada, "cell 7 6");
+		contentPane.add(lblDataEntrada, "cell 4 6");
 		
 		textPrimeiroNome = new JTextField();
 		textPrimeiroNome.setEditable(false);
@@ -213,19 +199,13 @@ public class TelaCheckOut extends JFrame {
 		textPrimeiroNome.setBackground(new Color(252, 251, 244));
 		textPrimeiroNome.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textPrimeiroNome.setColumns(10);
-		contentPane.add(textPrimeiroNome, "cell 3 7,grow");
+		contentPane.add(textPrimeiroNome, "cell 1 7,grow");
 		
-		try {
-		    MaskFormatter mascaraDataEntrada = new MaskFormatter("##/##/####");
-		    textDataEntrada = new JFormattedTextField(mascaraDataEntrada);
-		} catch (ParseException e) {
-		    e.printStackTrace();
-		}
 		textDataEntrada_1 = new JTextField();
 		textDataEntrada_1.setForeground(new Color(1, 50, 1));
 		textDataEntrada_1.setBackground(new Color(252, 251, 244));
 		textDataEntrada_1.setEditable(false);
-		contentPane.add(textDataEntrada_1, "cell 7 7,grow");
+		contentPane.add(textDataEntrada_1, "cell 4 7,grow");
 		textDataEntrada_1.setColumns(10);
 		
 		
@@ -239,20 +219,20 @@ public class TelaCheckOut extends JFrame {
 		textHoraEntrada_1.setForeground(new Color(1, 50, 1));
 		textHoraEntrada_1.setBackground(new Color(252, 251, 244));
 		textHoraEntrada_1.setEditable(false);
-		contentPane.add(textHoraEntrada_1, "cell 8 7,alignx left,growy");
+		contentPane.add(textHoraEntrada_1, "cell 5 7,alignx left,growy");
 		textHoraEntrada_1.setColumns(10);
 		
 		JLabel lblSobrenomeCliente = new JLabel("* Sobrenome:");
 		lblSobrenomeCliente.setBackground(new Color(1, 50, 1));
 		lblSobrenomeCliente.setForeground(new Color(1, 50, 1));
 		lblSobrenomeCliente.setFont(new Font("Tahoma", Font.BOLD, 19));
-		contentPane.add(lblSobrenomeCliente, "cell 3 9,growx,aligny center");
+		contentPane.add(lblSobrenomeCliente, "cell 1 9,growx,aligny center");
 		
 		JLabel lblDataHoraSaida = new JLabel("* Data e hora de saída:");
 		lblDataHoraSaida.setForeground(new Color(1, 50, 1));
 		lblDataHoraSaida.setBackground(new Color(1, 50, 1));
 		lblDataHoraSaida.setFont(new Font("Tahoma", Font.BOLD, 19));
-		contentPane.add(lblDataHoraSaida, "cell 7 9,alignx left,aligny bottom");
+		contentPane.add(lblDataHoraSaida, "cell 4 9,alignx left,aligny bottom");
 		
 		textSobrenome = new JTextField();
 		textSobrenome.setEditable(false);
@@ -260,7 +240,7 @@ public class TelaCheckOut extends JFrame {
 		textSobrenome.setBackground(new Color(252, 251, 244));
 		textSobrenome.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textSobrenome.setColumns(10);
-		contentPane.add(textSobrenome, "cell 3 11,grow");
+		contentPane.add(textSobrenome, "cell 1 11,grow");
 		/*try {
 			MaskFormatter formttDNasc = new MaskFormatter("##/##/####");
 			formttDNasc.setPlaceholder("");
@@ -289,7 +269,7 @@ public class TelaCheckOut extends JFrame {
 			textDataSaida.setBorder(new LineBorder(new Color(1, 50, 1)));
 			textDataSaida.setBackground(new Color(252, 251, 244));
 			textDataSaida.setColumns(10);
-			contentPane.add(textDataSaida, "cell 7 11,grow");
+			contentPane.add(textDataSaida, "cell 4 11,grow");
 		} catch(Exception e) {
 			e.printStackTrace();
 			}
@@ -303,7 +283,7 @@ public class TelaCheckOut extends JFrame {
 			textHoraSaida.setBorder(new LineBorder(new Color(1, 50, 1)));
 			textHoraSaida.setBackground(new Color(252, 251, 244));
 			textHoraSaida.setColumns(10);
-			contentPane.add(textHoraSaida, "cell 8 11,alignx left,growy");
+			contentPane.add(textHoraSaida, "cell 5 11,alignx left,growy");
 		} catch(Exception e) {
 			e.printStackTrace();
 			}
@@ -311,13 +291,13 @@ public class TelaCheckOut extends JFrame {
 		JLabel lblNumQuarto = new JLabel("* Número do Quarto: ");
 		lblNumQuarto.setForeground(new Color(1, 50, 1));
 		lblNumQuarto.setFont(new Font("Tahoma", Font.BOLD, 19));
-		contentPane.add(lblNumQuarto, "cell 3 13,alignx left,aligny top");
+		contentPane.add(lblNumQuarto, "cell 1 13,alignx left,aligny top");
 		
 		textNumQuarto = new JTextField();
 		textNumQuarto.setForeground(new Color(1, 50, 1));
 		textNumQuarto.setBackground(new Color(252, 251, 244));
 		textNumQuarto.setEditable(false);
-		contentPane.add(textNumQuarto, "cell 3 14,grow");
+		contentPane.add(textNumQuarto, "cell 1 14,grow");
 		textNumQuarto.setColumns(10);
 		
 		JButton btnLimpar_info_cliente = new JButton("Limpar");
@@ -341,7 +321,7 @@ public class TelaCheckOut extends JFrame {
 		btnLimpar_info_cliente.setForeground(new Color(252, 251, 244));
 		btnLimpar_info_cliente.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnLimpar_info_cliente.setBackground(new Color(109, 164, 109));
-		contentPane.add(btnLimpar_info_cliente, "cell 4 16,grow");
+		contentPane.add(btnLimpar_info_cliente, "cell 2 16,grow");
 		
 		JButton btnCadastro_Cliente = new JButton("Check-out");
 		btnCadastro_Cliente.addActionListener(new ActionListener() {
@@ -430,8 +410,22 @@ public class TelaCheckOut extends JFrame {
 		btnCadastro_Cliente.setForeground(new Color(252, 251, 244));
 		btnCadastro_Cliente.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnCadastro_Cliente.setBackground(new Color(66, 142, 66));
-		contentPane.add(btnCadastro_Cliente, "cell 7 16,grow");
-		contentPane.add(btnSair_tela_cad_Cliente, "cell 10 17,grow");
+		contentPane.add(btnCadastro_Cliente, "cell 4 16,alignx center,growy");
+		
+		JButton btnSair_tela_cad_Cliente = new JButton("<- | Sair");
+		btnSair_tela_cad_Cliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				dispose();
+				FuncionalidadeCliente frame = new FuncionalidadeCliente();
+				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				frame.setVisible(true);
+			}
+		});
+		btnSair_tela_cad_Cliente.setForeground(new Color(252, 251, 244));
+		btnSair_tela_cad_Cliente.setBackground(new Color(1, 50, 1));
+		btnSair_tela_cad_Cliente.setFont(new Font("Tahoma", Font.BOLD, 17));
+		contentPane.add(btnSair_tela_cad_Cliente, "cell 5 21 1 3,alignx center,growy");
 	}
 
 	/**criado para ser adicionado em hospede

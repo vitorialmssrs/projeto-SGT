@@ -50,7 +50,7 @@ public class FuncionalidadeFuncionario extends JFrame {
 		JPanel panelOpcoes = new JPanel();
 		panelOpcoes.setBackground(new Color(227, 236, 226));
 		contentPane.add(panelOpcoes);
-		panelOpcoes.setLayout(new MigLayout("", "[100][300][150]", "[50][100][50][50][150][150][150][150][150][150]"));
+		panelOpcoes.setLayout(new MigLayout("", "[100][300][150]", "[50][100][50][50][150][150][150][150][150][150][150]"));
 		
 		JLabel lblCaro = new JLabel("Caro Funcionario");
 		lblCaro.setForeground(new Color(1, 50, 1));
@@ -95,16 +95,16 @@ public class FuncionalidadeFuncionario extends JFrame {
 		btnSolicitarLimpeza.setBackground(new Color(109, 164, 109));
 		btnSolicitarLimpeza.setForeground(new Color(255, 255, 255));
 		btnSolicitarLimpeza.setFont(new Font("Tahoma", Font.BOLD, 50));
-		panelOpcoes.add(btnSolicitarLimpeza, "cell 1 3,growx");
+		panelOpcoes.add(btnSolicitarLimpeza, "cell 1 4,grow");
 		btnAlteracaoEspaco.setForeground(Color.WHITE);
 		btnAlteracaoEspaco.setFont(new Font("Tahoma", Font.BOLD, 50));
 		btnAlteracaoEspaco.setBackground(new Color(109, 164, 109));
-		panelOpcoes.add(btnAlteracaoEspaco, "cell 1 4,grow");
+		panelOpcoes.add(btnAlteracaoEspaco, "cell 1 5,grow");
 		btnAtualizarEspaco.setFont(new Font("Tahoma", Font.BOLD, 45));
 		btnAtualizarEspaco.setBackground(new Color(109, 164, 109));
 		btnAtualizarEspaco.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\projeto-SGT\\SGTProject\\src\\main\\resources\\img\\Icons atualizacao espaco.png"));
 		btnAtualizarEspaco.setForeground(new Color(255, 255, 255));
-		panelOpcoes.add(btnAtualizarEspaco, "cell 1 5,grow");
+		panelOpcoes.add(btnAtualizarEspaco, "cell 1 6,grow");
 		
 		JButton btnPerfil = new JButton("Excluir Perfil");
 		btnPerfil.addActionListener(new ActionListener() {
@@ -129,7 +129,7 @@ public class FuncionalidadeFuncionario extends JFrame {
 		});
 		btnNewButton_1.setForeground(new Color(252, 251, 244));
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 50));
-		panelOpcoes.add(btnNewButton_1, "flowy,cell 1 6,grow");
+		panelOpcoes.add(btnNewButton_1, "flowy,cell 1 7,grow");
 		
 		JButton btnNewButton = new JButton("Alterar Perfil");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -144,11 +144,11 @@ public class FuncionalidadeFuncionario extends JFrame {
 		btnNewButton.setForeground(new Color(252, 251, 244));
 		btnNewButton.setBackground(new Color(126, 191, 131));
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 50));
-		panelOpcoes.add(btnNewButton, "cell 1 7,grow");
+		panelOpcoes.add(btnNewButton, "cell 1 8,grow");
 		btnPerfil.setForeground(new Color(255, 255, 255));
 		btnPerfil.setBackground(new Color(61, 115, 84));
 		btnPerfil.setFont(new Font("Tahoma", Font.BOLD, 50));
-		panelOpcoes.add(btnPerfil, "cell 1 8,grow");
+		panelOpcoes.add(btnPerfil, "cell 1 9,grow");
 		
 		JButton btnSair_1 = new JButton("Sair");
 		btnSair_1.addActionListener(new ActionListener() {
@@ -163,6 +163,6 @@ public class FuncionalidadeFuncionario extends JFrame {
 		btnSair_1.setForeground(new Color(1, 50, 1));
 		btnSair_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnSair_1.setBackground(new Color(227, 236, 226));
-		panelOpcoes.add(btnSair_1, "cell 2 9,alignx center");
+		panelOpcoes.add(btnSair_1, "cell 2 10,alignx center");
 	}
 }

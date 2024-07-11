@@ -51,7 +51,7 @@ public class TelaEspacosHotelCliente extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblTitulo = new JLabel("Qual espaço você deseja reservar?");
-		lblTitulo.setBounds(449, 39, 750, 49);
+		lblTitulo.setBounds(636, 86, 750, 49);
 		lblTitulo.setForeground(new Color(1, 50, 1));
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 40));
 		contentPane.add(lblTitulo);
@@ -59,12 +59,12 @@ public class TelaEspacosHotelCliente extends JFrame {
 		JLabel lblNewLabel = new JLabel("Selecione a opção que você deseja");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 25));
 		lblNewLabel.setForeground(new Color(1, 50, 1));
-		lblNewLabel.setBounds(552, 90, 486, 49);
+		lblNewLabel.setBounds(739, 137, 486, 49);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(TelaEspacosHotelCliente.class.getResource("/imagens/Châteu_Imperial-removebg-preview 4.png")));
-		lblNewLabel_1.setBounds(233, 11, 194, 172);
+		lblNewLabel_1.setBounds(420, 58, 194, 172);
 		contentPane.add(lblNewLabel_1);
 		
 		JButton btnAcademia = new JButton("Academia");
@@ -80,7 +80,7 @@ public class TelaEspacosHotelCliente extends JFrame {
 		btnAcademia.setBackground(new Color(247, 246, 243));
 		btnAcademia.setForeground(new Color(1, 50, 1));
 		btnAcademia.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnAcademia.setBounds(94, 281, 181, 50);
+		btnAcademia.setBounds(420, 371, 181, 50);
 		contentPane.add(btnAcademia);
 		
 		JButton btnBrinquedoteca = new JButton("Brinquedoteca");
@@ -95,7 +95,7 @@ public class TelaEspacosHotelCliente extends JFrame {
 		btnBrinquedoteca.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnBrinquedoteca.setBackground(new Color(247, 246, 243));
 		btnBrinquedoteca.setForeground(new Color(1, 50, 1));
-		btnBrinquedoteca.setBounds(94, 429, 181, 50);
+		btnBrinquedoteca.setBounds(420, 519, 181, 50);
 		contentPane.add(btnBrinquedoteca);
 		
 		JButton btnPiscina = new JButton("Piscina");
@@ -110,7 +110,7 @@ public class TelaEspacosHotelCliente extends JFrame {
 		btnPiscina.setBackground(new Color(247, 246, 243));
 		btnPiscina.setForeground(new Color(1, 50, 1));
 		btnPiscina.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnPiscina.setBounds(94, 571, 181, 50);
+		btnPiscina.setBounds(420, 661, 181, 50);
 		contentPane.add(btnPiscina);
 		
 		JButton btnQuiosque = new JButton("Quiosque");
@@ -125,7 +125,7 @@ public class TelaEspacosHotelCliente extends JFrame {
 		btnQuiosque.setForeground(new Color(1, 50, 1));
 		btnQuiosque.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnQuiosque.setBackground(new Color(247, 246, 243));
-		btnQuiosque.setBounds(661, 281, 181, 50);
+		btnQuiosque.setBounds(875, 371, 181, 50);
 		contentPane.add(btnQuiosque);
 		
 		JButton btnQuadraFut = new JButton("Quadra de Futebol");
@@ -140,7 +140,7 @@ public class TelaEspacosHotelCliente extends JFrame {
 		btnQuadraFut.setForeground(new Color(1, 50, 1));
 		btnQuadraFut.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnQuadraFut.setBackground(new Color(247, 246, 243));
-		btnQuadraFut.setBounds(661, 429, 181, 50);
+		btnQuadraFut.setBounds(875, 519, 181, 50);
 		contentPane.add(btnQuadraFut);
 		
 		JButton btnQuadraVolei = new JButton("Quadra de vôlei");
@@ -155,7 +155,7 @@ public class TelaEspacosHotelCliente extends JFrame {
 		btnQuadraVolei.setForeground(new Color(1, 50, 1));
 		btnQuadraVolei.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnQuadraVolei.setBackground(new Color(247, 246, 243));
-		btnQuadraVolei.setBounds(661, 571, 181, 50);
+		btnQuadraVolei.setBounds(875, 661, 181, 50);
 		contentPane.add(btnQuadraVolei);
 		
 		JButton btnSalaoFesta = new JButton("Salão de Festas");
@@ -170,7 +170,7 @@ public class TelaEspacosHotelCliente extends JFrame {
 		btnSalaoFesta.setForeground(new Color(1, 50, 1));
 		btnSalaoFesta.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnSalaoFesta.setBackground(new Color(247, 246, 243));
-		btnSalaoFesta.setBounds(1205, 281, 181, 50);
+		btnSalaoFesta.setBounds(1378, 371, 181, 50);
 		contentPane.add(btnSalaoFesta);
 		
 		JButton btnSalaJogos = new JButton("Sala de Jogos");
@@ -185,7 +185,7 @@ public class TelaEspacosHotelCliente extends JFrame {
 		btnSalaJogos.setForeground(new Color(1, 50, 1));
 		btnSalaJogos.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnSalaJogos.setBackground(new Color(247, 246, 243));
-		btnSalaJogos.setBounds(1205, 429, 181, 50);
+		btnSalaJogos.setBounds(1378, 519, 181, 50);
 		contentPane.add(btnSalaJogos);
 		
 		JButton btnSPA = new JButton("SPA");
@@ -200,7 +200,7 @@ public class TelaEspacosHotelCliente extends JFrame {
 		btnSPA.setForeground(new Color(1, 50, 1));
 		btnSPA.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnSPA.setBackground(new Color(247, 246, 243));
-		btnSPA.setBounds(1205, 571, 181, 50);
+		btnSPA.setBounds(1378, 661, 181, 50);
 		contentPane.add(btnSPA);
 		
 		JButton btnSair = new JButton("<- |  Sair ");
@@ -225,13 +225,16 @@ public class TelaEspacosHotelCliente extends JFrame {
 				 * 
 				 * 
 				 */
-				setVisible(false);
+				dispose();
+				FuncionalidadeCliente frame = new FuncionalidadeCliente();
+				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				frame.setVisible(true);
 			}
 		});
 		btnSair.setBackground(new Color(227, 236, 229));
 		btnSair.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnSair.setForeground(new Color(1, 50, 1));
-		btnSair.setBounds(1389, 704, 126, 27);
+		btnSair.setBounds(1587, 899, 126, 49);
 		contentPane.add(btnSair);
 	}
 }

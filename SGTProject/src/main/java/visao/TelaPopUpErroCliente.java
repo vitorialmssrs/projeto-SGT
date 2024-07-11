@@ -57,7 +57,7 @@ public TelaPopUpErroCliente() {
 	lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 30));
 	contentPane.add(lblNewLabel_1, "cell 1 2 2 1,alignx center");
 	
-	JLabel lblNewLabel_2 = new JLabel("ao confirmar a reserva");
+	JLabel lblNewLabel_2 = new JLabel("ao finalizar sua ação");
 	lblNewLabel_2.setForeground(new Color(1, 50, 1));
 	lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 30));
 	contentPane.add(lblNewLabel_2, "cell 1 3 2 1,alignx center");

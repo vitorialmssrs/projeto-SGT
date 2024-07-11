@@ -61,24 +61,6 @@ public class TelaAlteracaoInformacoesEspacos extends JFrame {
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 40));
 		contentPane.add(lblTitulo);
 		
-		JButton btnSair = new JButton("<- |  Sair ");
-		btnSair.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				dispose();
-				/**FuncionalidadeFuncionario frame = new FuncionalidadeFuncionario();
-				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				frame.setVisible(true);**/
-				
-			}
-		});
-	
-		btnSair.setBackground(new Color(227, 236, 229));
-		btnSair.setFont(new Font("Tahoma", Font.BOLD, 18));
-		btnSair.setForeground(new Color(1, 50, 1));
-		btnSair.setBounds(994, 903, 244, 60);
-		contentPane.add(btnSair);
-		
 		JLabel lblNewLabel = new JLabel("Selecione o espaço.");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblNewLabel.setForeground(new Color(1, 50, 1));
@@ -173,29 +155,6 @@ public class TelaAlteracaoInformacoesEspacos extends JFrame {
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblNewLabel_5.setBounds(940, 489, 244, 27);
 		contentPane.add(lblNewLabel_5);
-		
-		JButton btnCadastrar = new JButton("Cadastrar");
-		btnCadastrar.setForeground(new Color(1, 50, 1));
-		btnCadastrar.setFont(new Font("Tahoma", Font.BOLD, 18));
-		btnCadastrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				/**
-				ManutencaoEspacos manuEspaco = new ManutencaoEspacos();
-				manuEspaco.setTipoManutencao((String) comboBoxOperacao.getSelectedItem());
-				manuEspaco.setEspacosHotel((EspacoHotel) comboBoxEspaco.getSelectedItem());
-				
-				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-				LocalDate date = LocalDate.parse( textDiaA.getText(), formatter);
-				manuEspaco.setDiaManutencao(date);
-				
-				ManutencaoEspacosDAO manutDAO = ManutencaoEspacosDAO.getInstancia();
-				manutDAO.inserirManutencao(manuEspaco);
-				**/
-				
-			}
-		});
-		btnCadastrar.setBounds(687, 896, 263, 75);
-		contentPane.add(btnCadastrar);
 		
 		JLabel lblNewLabel_6 = new JLabel("");
 		lblNewLabel_6.setIcon(new ImageIcon(TelaManutencaoEspacosConserto.class.getResource("/imagens/Châteu_Imperial-removebg-preview 4.png")));
