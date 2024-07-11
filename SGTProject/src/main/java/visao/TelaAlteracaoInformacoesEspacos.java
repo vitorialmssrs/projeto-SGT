@@ -10,6 +10,7 @@ import controle.AlteracaoInformacoesEspacosDAO;
 import controle.EspacosDAO;
 import modelo.AlteracaoInformacoesEspacos;
 import modelo.EspacoHotel;
+import modelo.Funcionario;
 
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -41,25 +42,10 @@ public class TelaAlteracaoInformacoesEspacos extends JFrame {
 	
 	/**
 	 * Launch the application.*/
-	 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaAlteracaoInformacoesEspacos frame = new TelaAlteracaoInformacoesEspacos();
-					frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	/**
 	 * Create the frame.
 	 */
-	public TelaAlteracaoInformacoesEspacos() {
+	public TelaAlteracaoInformacoesEspacos(Funcionario funcionario) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1920, 1080);
 		contentPane = new JPanel();
@@ -309,9 +295,8 @@ public class TelaAlteracaoInformacoesEspacos extends JFrame {
 		
 		JButton btnSair_1 = new JButton("<- | Sair");
 		btnSair_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				FuncionalidadeFuncionario funcionalidade = new FuncionalidadeFuncionario(null);//aqui so funciona null
+			public void actionPerformed(ActionEvent e) {		
+				FuncionalidadeFuncionario funcionalidade = new FuncionalidadeFuncionario(funcionario);
 				funcionalidade.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				funcionalidade.setVisible(true);
 			}
