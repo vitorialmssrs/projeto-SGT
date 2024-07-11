@@ -7,9 +7,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 import modelo.EspacoHotel;
+import modelo.Funcionario;
 import modelo.ManutencaoEspacos;
 
 	public class ManutencaoEspacosDAO implements IManutencaoEspacoDAO{
@@ -104,7 +107,7 @@ import modelo.ManutencaoEspacos;
 
 	// Comando SQL a ser executado
 	
-	String SQL = "INSERT INTO ManutencaoEspacos (idManutencaoEspacos, tipo_Manutencao, diaManutencao, hora_inicio, hora_final ) VALUES ( ?, ?, ?, ?, ?)";
+	String SQL = "INSERT INTO ManutencaoEspacos (idManutencaoEspacos, tipo_Manutencao, diaManutencao, hora_inicio, hora_final, funcionario_id_funcionario, descricaomanutencao ) VALUES ( ?, ?, ?, ?, ?, ?, ?)";
 
 	// Cria a "ponte de conexao" com MYSQL
 	
@@ -124,16 +127,19 @@ import modelo.ManutencaoEspacos;
 			// Pega os valores de cada coluna do registro
 			Integer idManutencaoEspacos = rs.getInt("idManutencaoEspacos");
 			String TipoManutencao = rs.getString("tipoManutencao");
-			Date DiaManutencao = rs.getDate("DiaManutencao");
-			Time horaIncio = rs.getTime("hora_inicio");
-			Time horaFinal = rs.getTime("hora_final");
+			LocalDate DiaManutencao = rs.getDate("DiaManutencao").toLocalDate();
+			LocalTime horaIncio = rs.getTime("hora_inicio").toLocalTime();
+			LocalTime horaFinal = rs.getTime("hora_final").toLocalTime();
+			Integer funcionario = rs.getInt("funcionario_id_funcionario");
+			String descricao = rs.getString("descricaomanutencao");
 					
 			// Seta os valores no obj java
-			end.setTipoManutencao(SQL);
-			end.setDiaManutencao(null);
-			end.setHoraInicio(null);
-			end.setHoraFinal(null);
-			end.setFuncionario(null);
+			end.setTipoManutencao(TipoManutencao);
+			end.setDiaManutencao(DiaManutencao);
+			end.setHoraInicio(horaIncio);
+			end.setHoraFinal(horaFinal);
+		//	end.setFuncionario(funcionario);
+			end.setDescricao(descricao);
 		
 			
 			// Adiciona obj no arraylist

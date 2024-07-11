@@ -22,6 +22,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.text.MaskFormatter;
 
+import controle.Conexao;
 import controle.HospedagemDAO;
 import controle.HospedeDAO;
 import modelo.Hospedagem;
@@ -142,7 +143,9 @@ public class TelaCheckOut extends JFrame {
 		        numIdentificacao = numIdentificacao.replace(".", "");
 		        numIdentificacao = numIdentificacao.replace("-", "");
 				Long numId = Long.valueOf(numIdentificacao);  
-  
+				
+				//HospedeDAO.setConnection(Conexao.conectar());
+				
 				hosp = dao.buscarHospedePorCpf(numId);
 				if(hosp!=null) {  
 					  
