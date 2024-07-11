@@ -51,7 +51,7 @@ public class TelaEspacosHotelCliente extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblTitulo = new JLabel("Qual espaço você deseja reservar?");
-		lblTitulo.setBounds(449, 39, 696, 49);
+		lblTitulo.setBounds(449, 39, 750, 49);
 		lblTitulo.setForeground(new Color(1, 50, 1));
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 40));
 		contentPane.add(lblTitulo);
@@ -71,8 +71,10 @@ public class TelaEspacosHotelCliente extends JFrame {
 		btnAcademia.setBorder(new LineBorder(new Color(1, 50, 1)));
 		btnAcademia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Academia academia = new Academia ();
-				//academia.setViseble(true);
+				dispose();
+				TelaReservaEspacoCliente frame = new TelaReservaEspacoCliente();
+				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				frame.setVisible(true);
 			}
 		});
 		btnAcademia.setBackground(new Color(247, 246, 243));
@@ -84,6 +86,10 @@ public class TelaEspacosHotelCliente extends JFrame {
 		JButton btnBrinquedoteca = new JButton("Brinquedoteca");
 		btnBrinquedoteca.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaReservaEspacoCliente frame = new TelaReservaEspacoCliente();
+				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				frame.setVisible(true);
 			}
 		});
 		btnBrinquedoteca.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -93,6 +99,14 @@ public class TelaEspacosHotelCliente extends JFrame {
 		contentPane.add(btnBrinquedoteca);
 		
 		JButton btnPiscina = new JButton("Piscina");
+		btnPiscina.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaReservaEspacoCliente frame = new TelaReservaEspacoCliente();
+				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				frame.setVisible(true);
+			}
+		});
 		btnPiscina.setBackground(new Color(247, 246, 243));
 		btnPiscina.setForeground(new Color(1, 50, 1));
 		btnPiscina.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -100,6 +114,14 @@ public class TelaEspacosHotelCliente extends JFrame {
 		contentPane.add(btnPiscina);
 		
 		JButton btnQuiosque = new JButton("Quiosque");
+		btnQuiosque.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaReservaEspacoCliente frame = new TelaReservaEspacoCliente();
+				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				frame.setVisible(true);
+			}
+		});
 		btnQuiosque.setForeground(new Color(1, 50, 1));
 		btnQuiosque.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnQuiosque.setBackground(new Color(247, 246, 243));
@@ -107,6 +129,14 @@ public class TelaEspacosHotelCliente extends JFrame {
 		contentPane.add(btnQuiosque);
 		
 		JButton btnQuadraFut = new JButton("Quadra de Futebol");
+		btnQuadraFut.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaReservaEspacoCliente frame = new TelaReservaEspacoCliente();
+				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				frame.setVisible(true);
+			}
+		});
 		btnQuadraFut.setForeground(new Color(1, 50, 1));
 		btnQuadraFut.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnQuadraFut.setBackground(new Color(247, 246, 243));
@@ -114,6 +144,14 @@ public class TelaEspacosHotelCliente extends JFrame {
 		contentPane.add(btnQuadraFut);
 		
 		JButton btnQuadraVolei = new JButton("Quadra de vôlei");
+		btnQuadraVolei.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaReservaEspacoCliente frame = new TelaReservaEspacoCliente();
+				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				frame.setVisible(true);
+			}
+		});
 		btnQuadraVolei.setForeground(new Color(1, 50, 1));
 		btnQuadraVolei.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnQuadraVolei.setBackground(new Color(247, 246, 243));
@@ -121,6 +159,14 @@ public class TelaEspacosHotelCliente extends JFrame {
 		contentPane.add(btnQuadraVolei);
 		
 		JButton btnSalaoFesta = new JButton("Salão de Festas");
+		btnSalaoFesta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaReservaEspacoCliente frame = new TelaReservaEspacoCliente();
+				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				frame.setVisible(true);
+			}
+		});
 		btnSalaoFesta.setForeground(new Color(1, 50, 1));
 		btnSalaoFesta.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnSalaoFesta.setBackground(new Color(247, 246, 243));
@@ -128,6 +174,14 @@ public class TelaEspacosHotelCliente extends JFrame {
 		contentPane.add(btnSalaoFesta);
 		
 		JButton btnSalaJogos = new JButton("Sala de Jogos");
+		btnSalaJogos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaReservaEspacoCliente frame = new TelaReservaEspacoCliente();
+				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				frame.setVisible(true);
+			}
+		});
 		btnSalaJogos.setForeground(new Color(1, 50, 1));
 		btnSalaJogos.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnSalaJogos.setBackground(new Color(247, 246, 243));
@@ -135,6 +189,14 @@ public class TelaEspacosHotelCliente extends JFrame {
 		contentPane.add(btnSalaJogos);
 		
 		JButton btnSPA = new JButton("SPA");
+		btnSPA.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaReservaEspacoCliente frame = new TelaReservaEspacoCliente();
+				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				frame.setVisible(true);
+			}
+		});
 		btnSPA.setForeground(new Color(1, 50, 1));
 		btnSPA.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnSPA.setBackground(new Color(247, 246, 243));

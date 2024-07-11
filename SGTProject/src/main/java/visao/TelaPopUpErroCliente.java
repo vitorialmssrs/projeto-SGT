@@ -16,7 +16,7 @@ import javax.swing.border.EmptyBorder;
 import net.miginfocom.swing.MigLayout;
 import java.awt.Toolkit;
 
-public class TelaErroCheckin extends JFrame {
+public class TelaPopUpErroCliente extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -28,7 +28,7 @@ public class TelaErroCheckin extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaErroCheckin frame = new TelaErroCheckin();
+					TelaPopUpErroCliente frame = new TelaPopUpErroCliente();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -36,8 +36,8 @@ public class TelaErroCheckin extends JFrame {
 			}
 		});
 	}
-public TelaErroCheckin() {
-	setIconImage(Toolkit.getDefaultToolkit().getImage(TelaErroCheckin.class.getResource("/imagens/LogoPI.png")));
+public TelaPopUpErroCliente() {
+	setIconImage(Toolkit.getDefaultToolkit().getImage(TelaPopUpErroCliente.class.getResource("/imagens/LogoPI.png")));
 	setBackground(new Color(255, 255, 245));
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	setBounds(100, 100, 691, 390);
@@ -57,7 +57,7 @@ public TelaErroCheckin() {
 	lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 30));
 	contentPane.add(lblNewLabel_1, "cell 1 2 2 1,alignx center");
 	
-	JLabel lblNewLabel_2 = new JLabel("ao realizar seu check-in");
+	JLabel lblNewLabel_2 = new JLabel("ao confirmar a reserva");
 	lblNewLabel_2.setForeground(new Color(1, 50, 1));
 	lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 30));
 	contentPane.add(lblNewLabel_2, "cell 1 3 2 1,alignx center");
