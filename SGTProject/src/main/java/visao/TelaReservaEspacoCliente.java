@@ -93,7 +93,7 @@ public class TelaReservaEspacoCliente extends JFrame {
 		JLabel lblTitulo = new JLabel("Qual dia e horario você deseja reservar?");
 		lblTitulo.setForeground(new Color(1, 50, 1));
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 40));
-		lblTitulo.setBounds(77, 83, 837, 49);
+		lblTitulo.setBounds(51, 87, 837, 49);
 		panel_1.add(lblTitulo);
 		
 		JLabel lblData = new JLabel("Data\r\n");
@@ -153,7 +153,7 @@ public class TelaReservaEspacoCliente extends JFrame {
 			}
 		});
 		btnSair.setIcon(new ImageIcon(TelaReservaEspacoCliente.class.getResource("/imagens/Vector sair.png")));
-		btnSair.setBounds(714, 924, 157, 40);
+		btnSair.setBounds(598, 785, 157, 40);
 		btnSair.setBackground(new Color(66, 142, 66));
 		btnSair.setForeground(new Color(252, 251, 244));
 		panel_1.add(btnSair);
@@ -162,7 +162,7 @@ public class TelaReservaEspacoCliente extends JFrame {
 		btnConfirmar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu HH:mm");	
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");	
 				String dia = textData.getText();
 				String hora = textHorario.getText();
 				LocalDateTime diadate = LocalDateTime.parse(dia+" "+hora, formatter);
@@ -171,12 +171,14 @@ public class TelaReservaEspacoCliente extends JFrame {
 				
 				ReservaEspacos res = new ReservaEspacos();
 				res.setDiahorario(diadate);
-				
+
 				ReservaEspacoDAO reserva = ReservaEspacoDAO.getInstancia();
-				int resdao = reserva.inserirReservaEspaco(res);
-				
 				int id = reserva.inserirReservaEspaco(hospede);
 				hospede.setCliente(id);
+				
+				int resdao = reserva.inserirReservaEspaco(res);
+				
+				
 				
 				if(resdao != Integer.MIN_VALUE) {
 					TelaPopUpSucessoCliente suscli = new TelaPopUpSucessoCliente();
@@ -184,10 +186,11 @@ public class TelaReservaEspacoCliente extends JFrame {
 				}else {
 					TelaPopUpErroCliente errcli = new TelaPopUpErroCliente();
 					errcli.setVisible(true);
-				}}catch(Exception ex) {
+				}
+				} catch(Exception ex) {
 					ex.printStackTrace();
-					TelaPopUpErroCliente errcli = new TelaPopUpErroCliente();
-					errcli.setVisible(true);
+					/*TelaPopUpErroCliente errcli = new TelaPopUpErroCliente();
+					errcli.setVisible(true);*/
 				}
 			}
 		});
