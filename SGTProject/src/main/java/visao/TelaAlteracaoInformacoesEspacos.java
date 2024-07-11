@@ -209,7 +209,7 @@ public class TelaAlteracaoInformacoesEspacos extends JFrame {
 		contentPane.add(btnCadastrar);
 		
 		JLabel lblNewLabel_6 = new JLabel("");
-		lblNewLabel_6.setIcon(new ImageIcon(TelaManutencaoEspacos.class.getResource("/imagens/Châteu_Imperial-removebg-preview 4.png")));
+		lblNewLabel_6.setIcon(new ImageIcon(TelaManutencaoEspacosConserto.class.getResource("/imagens/Châteu_Imperial-removebg-preview 4.png")));
 		lblNewLabel_6.setBounds(113, 79, 226, 174);
 		contentPane.add(lblNewLabel_6);
 		

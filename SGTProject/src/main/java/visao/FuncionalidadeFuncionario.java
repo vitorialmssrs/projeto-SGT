@@ -62,18 +62,18 @@ public class FuncionalidadeFuncionario extends JFrame {
 		lblEscolha.setFont(new Font("Tahoma", Font.BOLD, 30));
 		panelOpcoes.add(lblEscolha, "cell 1 2,alignx center");
 		
-		JButton btnAtualizarEspaco = new JButton("Espaços");
+		JButton btnAtualizarEspaco = new JButton("Solicitar conserto");
 		btnAtualizarEspaco.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				TelaManutencaoEspacos manutencaoespacos = new TelaManutencaoEspacos(fun);
+				TelaManutencaoEspacosConserto manutencaoespacos = new TelaManutencaoEspacosConserto(fun);
 				manutencaoespacos.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				manutencaoespacos.setVisible(true);
 				//manutencaoespacos.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);	
 			}
 		});
 		
-		JButton btnAlteracaoEspaco = new JButton("Alterar \r\nEspaços");
+		JButton btnAlteracaoEspaco = new JButton("Alterar dados dos \r\nEspaços");
 		btnAlteracaoEspaco.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -82,6 +82,20 @@ public class FuncionalidadeFuncionario extends JFrame {
 				alterarespacos.setVisible(true);
 			}
 		});
+		
+		JButton btnSolicitarLimpeza = new JButton("Solicitar limpeza");
+		btnSolicitarLimpeza.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaLimpezaEspacos limpezaEspaco = new TelaLimpezaEspacos(fun);
+				limpezaEspaco.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				limpezaEspaco.setVisible(true);
+			}
+		});
+		btnSolicitarLimpeza.setBackground(new Color(109, 164, 109));
+		btnSolicitarLimpeza.setForeground(new Color(255, 255, 255));
+		btnSolicitarLimpeza.setFont(new Font("Tahoma", Font.BOLD, 50));
+		panelOpcoes.add(btnSolicitarLimpeza, "cell 1 3,growx");
 		btnAlteracaoEspaco.setForeground(Color.WHITE);
 		btnAlteracaoEspaco.setFont(new Font("Tahoma", Font.BOLD, 50));
 		btnAlteracaoEspaco.setBackground(new Color(109, 164, 109));
