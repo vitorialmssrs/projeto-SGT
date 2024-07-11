@@ -1802,8 +1802,8 @@ insert into
 values
   (
     52867785212,
-    'uelementj',
-    'c8zZ05a',
+    'te',
+    '123',
     'Fidelity Matisse',
     '2002-07-12',
     '(52) 69169-40001',
