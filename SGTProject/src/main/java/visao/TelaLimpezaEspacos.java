@@ -57,28 +57,10 @@ public class TelaLimpezaEspacos extends JFrame {
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 40));
 		contentPane.add(lblTitulo);
 		
-		JButton btnSair = new JButton("<- |  Sair ");
-		btnSair.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-//colocado pra tela de login pois se usar esse metodo pra ir para a tela de funcionalidade da erro por conta do login
-				dispose();
-				LoginFuncionario frame = new LoginFuncionario();
-				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				frame.setVisible(true);
-				
-			}
-		});
-	
-		btnSair.setBackground(new Color(227, 236, 229));
-		btnSair.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnSair.setForeground(new Color(1, 50, 1));
-		btnSair.setBounds(1590, 890, 126, 27);
-		contentPane.add(btnSair);
-		
 		JLabel lblNewLabel = new JLabel("Selecione o espaço!");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblNewLabel.setForeground(new Color(1, 50, 1));
-		lblNewLabel.setBounds(351, 194, 189, 27);
+		lblNewLabel.setBounds(510, 257, 189, 27);
 		contentPane.add(lblNewLabel);
 		
 		JComboBox<EspacoHotel> comboBoxEspaco = new JComboBox<EspacoHotel>();
@@ -91,55 +73,56 @@ public class TelaLimpezaEspacos extends JFrame {
 		
 				
 	
-		comboBoxEspaco.setBounds(351, 234, 189, 32);
+		comboBoxEspaco.setBounds(510, 301, 189, 32);
 		contentPane.add(comboBoxEspaco);
 		
 		textDiaA = new JTextField();
-		textDiaA.setBounds(587, 230, 100, 22);
+		textDiaA.setBounds(905, 306, 100, 22);
 		contentPane.add(textDiaA);
 		textDiaA.setColumns(10);
 		
 		textHoraA = new JTextField();
-		textHoraA.setBounds(351, 322, 100, 22);
+		textHoraA.setBounds(510, 430, 100, 22);
 		contentPane.add(textHoraA);
 		textHoraA.setColumns(10);
 		
 		textHoraF = new JTextField();
-		textHoraF.setBounds(587, 335, 100, 22);
+		textHoraF.setBounds(905, 430, 100, 22);
 		contentPane.add(textHoraF);
 		textHoraF.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Dia para reservar o espaço para a limpeza\r\n");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblNewLabel_2.setForeground(new Color(1, 50, 1));
-		lblNewLabel_2.setBounds(587, 194, 388, 25);
+		lblNewLabel_2.setBounds(905, 258, 388, 25);
 		contentPane.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_4 = new JLabel("Hora abertura");
+		JLabel lblNewLabel_4 = new JLabel("Hora Inicio da Limpeza");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblNewLabel_4.setForeground(new Color(1, 50, 1));
-		lblNewLabel_4.setBounds(351, 297, 148, 27);
+		lblNewLabel_4.setBounds(510, 377, 203, 27);
 		contentPane.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("Hora prevista para o termino da limpeza");
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblNewLabel_5.setForeground(new Color(1, 50, 1));
-		lblNewLabel_5.setBounds(587, 297, 401, 27);
+		lblNewLabel_5.setBounds(905, 377, 401, 27);
 		contentPane.add(lblNewLabel_5);
 		
 		txtTipoLimp = new JTextField();
-		txtTipoLimp.setBounds(444, 455, 326, 83);
+		txtTipoLimp.setBounds(758, 557, 326, 83);
 		contentPane.add(txtTipoLimp);
 		txtTipoLimp.setColumns(10);
 		
 		JLabel lblNewLabel_8 = new JLabel("Escreva o que precisa ser limpado");
 		lblNewLabel_8.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblNewLabel_8.setForeground(new Color(1, 50, 1));
-		lblNewLabel_8.setBounds(444, 387, 346, 27);
+		lblNewLabel_8.setBounds(758, 504, 346, 27);
 		contentPane.add(lblNewLabel_8);
 		
 		JButton btnCadastrar = new JButton("Cadastrar limpeza");
-		btnCadastrar.setForeground(new Color(1, 50, 1));
+		btnCadastrar.setBackground(new Color(1, 50, 1));
+		btnCadastrar.setForeground(new Color(252, 251, 244));
 		btnCadastrar.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -200,7 +183,7 @@ public class TelaLimpezaEspacos extends JFrame {
 				
 			}
 		});
-		btnCadastrar.setBounds(527, 640, 220, 49);
+		btnCadastrar.setBounds(510, 699, 220, 49);
 		contentPane.add(btnCadastrar);
 		
 		
@@ -216,7 +199,7 @@ public class TelaLimpezaEspacos extends JFrame {
 		btnSair_1.setForeground(new Color(252, 251, 244));
 		btnSair_1.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnSair_1.setBackground(new Color(1, 50, 1));
-		btnSair_1.setBounds(943, 644, 176, 39);
+		btnSair_1.setBounds(1139, 709, 176, 39);
 		contentPane.add(btnSair_1);
 	}
 	}
