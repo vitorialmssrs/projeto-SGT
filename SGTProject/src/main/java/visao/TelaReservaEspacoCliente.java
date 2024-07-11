@@ -147,13 +147,13 @@ public class TelaReservaEspacoCliente extends JFrame {
 		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				FuncionalidadeCliente frame = new FuncionalidadeCliente();
+				TelaEspacosHotelCliente frame = new TelaEspacosHotelCliente();
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
 			}
 		});
 		btnSair.setIcon(new ImageIcon(TelaReservaEspacoCliente.class.getResource("/imagens/Vector sair.png")));
-		btnSair.setBounds(598, 785, 157, 40);
+		btnSair.setBounds(651, 839, 157, 40);
 		btnSair.setBackground(new Color(66, 142, 66));
 		btnSair.setForeground(new Color(252, 251, 244));
 		panel_1.add(btnSair);

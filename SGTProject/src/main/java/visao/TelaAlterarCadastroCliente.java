@@ -73,7 +73,7 @@ public class TelaAlterarCadastroCliente extends JFrame {
 		
 		
 		JLabel lblCaroFuncionario = new JLabel("Caro cliente,");
-		lblCaroFuncionario.setBounds(592, 71, 466, 61);
+		lblCaroFuncionario.setBounds(704, 71, 466, 61);
 		lblCaroFuncionario.setForeground(new Color(1, 50, 1));
 		lblCaroFuncionario.setBackground(new Color(1, 50, 1));
 		lblCaroFuncionario.setFont(new Font("Tahoma", Font.BOLD, 52));
@@ -83,28 +83,28 @@ public class TelaAlterarCadastroCliente extends JFrame {
 		lbl_Insira_Informacoes_Cadastro.setForeground(new Color(1, 50, 1));
 		lbl_Insira_Informacoes_Cadastro.setBackground(new Color(1, 50, 1));
 		lbl_Insira_Informacoes_Cadastro.setFont(new Font("Tahoma", Font.PLAIN, 27));
-		lbl_Insira_Informacoes_Cadastro.setBounds(592, 146, 559, 31);
+		lbl_Insira_Informacoes_Cadastro.setBounds(704, 146, 559, 31);
 		contentPane.add(lbl_Insira_Informacoes_Cadastro);
 		
 		JLabel lblNome_Cliente = new JLabel("* Primeiro nome:");
 		lblNome_Cliente.setBackground(new Color(1, 50, 1));
 		lblNome_Cliente.setForeground(new Color(1, 50, 1));
 		lblNome_Cliente.setFont(new Font("Tahoma", Font.BOLD, 19));
-		lblNome_Cliente.setBounds(195, 325, 202, 21);
+		lblNome_Cliente.setBounds(357, 326, 202, 21);
 		contentPane.add(lblNome_Cliente);
 		
 		JLabel lblSobrenomeCliente = new JLabel("* Sobrenome:");
 		lblSobrenomeCliente.setBackground(new Color(1, 50, 1));
 		lblSobrenomeCliente.setForeground(new Color(1, 50, 1));
 		lblSobrenomeCliente.setFont(new Font("Tahoma", Font.BOLD, 19));
-		lblSobrenomeCliente.setBounds(811, 327, 165, 22);
+		lblSobrenomeCliente.setBounds(973, 328, 165, 22);
 		contentPane.add(lblSobrenomeCliente);
 		
 
 		textDataNascimento = new JTextField();
 		textDataNascimento.setForeground(new Color(1, 50, 1));
 		textDataNascimento.setBackground(new Color(252, 251, 244));
-		textDataNascimento.setBounds(195, 425, 404, 29);
+		textDataNascimento.setBounds(357, 426, 404, 29);
 		contentPane.add(textDataNascimento);
 		textDataNascimento.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textDataNascimento.setColumns(10);
@@ -114,14 +114,14 @@ public class TelaAlterarCadastroCliente extends JFrame {
 		lblTelefone.setBackground(new Color(1, 50, 1));
 		lblTelefone.setForeground(new Color(1, 50, 1));
 		lblTelefone.setFont(new Font("Tahoma", Font.BOLD, 19));
-		lblTelefone.setBounds(195, 465, 236, 21);
+		lblTelefone.setBounds(357, 466, 236, 21);
 		contentPane.add(lblTelefone);
 		
 		textCPF = new JTextField();
 		textCPF.setToolTipText("");
 		textCPF.setForeground(new Color(1, 50, 1));
 		textCPF.setBackground(new Color(252, 251, 244));
-		textCPF.setBounds(195, 291, 404, 29);
+		textCPF.setBounds(357, 292, 404, 29);
 		contentPane.add(textCPF);
 		textCPF.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textCPF.setColumns(10);
@@ -129,7 +129,7 @@ public class TelaAlterarCadastroCliente extends JFrame {
 		textPrimeiroNome = new JTextField();
 		textPrimeiroNome.setForeground(new Color(1, 50, 1));
 		textPrimeiroNome.setBackground(new Color(252, 251, 244));
-		textPrimeiroNome.setBounds(195, 353, 404, 29);
+		textPrimeiroNome.setBounds(357, 354, 404, 29);
 		contentPane.add(textPrimeiroNome);
 		textPrimeiroNome.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textPrimeiroNome.setColumns(10);
@@ -139,20 +139,20 @@ public class TelaAlterarCadastroCliente extends JFrame {
 		lblSenhaCad.setBackground(new Color(1, 50, 1));
 		lblSenhaCad.setForeground(new Color(1, 50, 1));
 		lblSenhaCad.setFont(new Font("Tahoma", Font.BOLD, 19));
-		lblSenhaCad.setBounds(811, 465, 340, 21);
+		lblSenhaCad.setBounds(973, 466, 340, 21);
 		contentPane.add(lblSenhaCad);
 		
 		JLabel lblCPFCliente = new JLabel("* CPF / CRNM / RNN / RNE:");
 		lblCPFCliente.setForeground(new Color(1, 50, 1));
 		lblCPFCliente.setBackground(new Color(1, 50, 1));
 		lblCPFCliente.setFont(new Font("Tahoma", Font.BOLD, 19));
-		lblCPFCliente.setBounds(195, 261, 300, 18);
+		lblCPFCliente.setBounds(357, 262, 300, 18);
 		contentPane.add(lblCPFCliente);
 		
 		textSobrenome = new JTextField();
 		textSobrenome.setForeground(new Color(1, 50, 1));
 		textSobrenome.setBackground(new Color(252, 251, 244));
-		textSobrenome.setBounds(811, 353, 404, 29);
+		textSobrenome.setBounds(973, 354, 404, 29);
 		textSobrenome.setBorder(new LineBorder(new Color(1, 50, 1)));
 		contentPane.add(textSobrenome);
 		textSobrenome.setColumns(10);
@@ -177,7 +177,7 @@ public class TelaAlterarCadastroCliente extends JFrame {
 		btnLimpar_info_cliente.setForeground(new Color(252, 251, 244));
 		btnLimpar_info_cliente.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnLimpar_info_cliente.setBackground(new Color(109, 164, 109));
-		btnLimpar_info_cliente.setBounds(423, 638, 176, 39);
+		btnLimpar_info_cliente.setBounds(596, 638, 176, 39);
 		contentPane.add(btnLimpar_info_cliente);
 		
 		JButton btnCadastro_Cliente = new JButton("Alterar Informações");
@@ -244,12 +244,16 @@ public class TelaAlterarCadastroCliente extends JFrame {
 				
 				if(confirm == 0) {
 					//Alterar mensagens para tela de erro/sucesso
-					JOptionPane.showMessageDialog(null, "Cadastro do Cliente: " + nome + " Alterado com sucesso");
+					TelaPopUpErroCliente frame = new TelaPopUpErroCliente();
+					frame.setLocationRelativeTo(null);
+					frame.setVisible(true);
 					//AvisoCheckInHospede frame = new AvisoCheckInHospede();
 					//frame.setVisible(true);
 							}
 				else {
-					JOptionPane.showMessageDialog(null, "Ocorreu um erro na Alteração do Cadastro: " + nome + ", Tente novamente");
+					TelaPopUpSucessoCliente frame = new TelaPopUpSucessoCliente();
+					frame.setLocationRelativeTo(null);
+					frame.setVisible(true);
 							}
 				
 				dispose();
@@ -262,7 +266,7 @@ public class TelaAlterarCadastroCliente extends JFrame {
 		btnCadastro_Cliente.setBackground(new Color(66, 142, 66));
 		btnCadastro_Cliente.setForeground(new Color(252, 251, 244));
 		btnCadastro_Cliente.setFont(new Font("Tahoma", Font.BOLD, 17));
-		btnCadastro_Cliente.setBounds(739, 638, 212, 39);
+		btnCadastro_Cliente.setBounds(935, 638, 212, 39);
 		contentPane.add(btnCadastro_Cliente);
 		
 		JButton btnSair_tela_cad_Cliente = new JButton("<- | Sair");
@@ -278,32 +282,32 @@ public class TelaAlterarCadastroCliente extends JFrame {
 		btnSair_tela_cad_Cliente.setForeground(new Color(252, 251, 244));
 		btnSair_tela_cad_Cliente.setBackground(new Color(1, 50, 1));
 		btnSair_tela_cad_Cliente.setFont(new Font("Tahoma", Font.BOLD, 17));
-		btnSair_tela_cad_Cliente.setBounds(1323, 708, 176, 39);
+		btnSair_tela_cad_Cliente.setBounds(1435, 802, 176, 39);
 		contentPane.add(btnSair_tela_cad_Cliente);
 		
-		JLabel lblInformacaoSenha = new JLabel("Apenas números, com no Mínimo 8 caracteres  e Sem caracteres especiais.");
+		JLabel lblInformacaoSenha = new JLabel("Apenas números, com no Máximo 8 caracteres  e Sem caracteres especiais.");
 		lblInformacaoSenha.setForeground(new Color(255, 0, 0));
-		lblInformacaoSenha.setBounds(811, 488, 373, 13);
+		lblInformacaoSenha.setBounds(973, 489, 518, 13);
 		contentPane.add(lblInformacaoSenha);
 		
 		txtSenha = new JTextField();
 		txtSenha.setForeground(new Color(1, 50, 1));
 		txtSenha.setBackground(new Color(252, 251, 244));
-		txtSenha.setBounds(811, 508, 404, 29);
+		txtSenha.setBounds(973, 509, 404, 29);
 		contentPane.add(txtSenha);
 		txtSenha.setBorder(new LineBorder(new Color(1, 50, 1)));
 		txtSenha.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(TelaAlterarCadastroCliente.class.getResource("/imagens/LogoPI.png")));
-		lblNewLabel.setBounds(437, 62, 145, 128);
+		lblNewLabel.setBounds(549, 62, 145, 128);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblDataNascimento_1 = new JLabel("* Data de nascimento:");
 		lblDataNascimento_1.setForeground(new Color(1, 50, 1));
 		lblDataNascimento_1.setFont(new Font("Tahoma", Font.BOLD, 19));
 		lblDataNascimento_1.setBackground(new Color(1, 50, 1));
-		lblDataNascimento_1.setBounds(195, 393, 236, 21);
+		lblDataNascimento_1.setBounds(357, 394, 236, 21);
 		contentPane.add(lblDataNascimento_1);
 		
 		textTelefone = new JTextField();
@@ -311,14 +315,14 @@ public class TelaAlterarCadastroCliente extends JFrame {
 		textTelefone.setColumns(10);
 		textTelefone.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textTelefone.setBackground(new Color(252, 251, 244));
-		textTelefone.setBounds(195, 497, 404, 29);
+		textTelefone.setBounds(357, 498, 404, 29);
 		contentPane.add(textTelefone);
 		
 		JLabel lblEmail = new JLabel("* Email: ");
 		lblEmail.setForeground(new Color(1, 50, 1));
 		lblEmail.setFont(new Font("Tahoma", Font.BOLD, 19));
 		lblEmail.setBackground(new Color(1, 50, 1));
-		lblEmail.setBounds(811, 393, 340, 21);
+		lblEmail.setBounds(973, 394, 340, 21);
 		contentPane.add(lblEmail);
 		
 		textEmail = new JTextField();
@@ -326,7 +330,7 @@ public class TelaAlterarCadastroCliente extends JFrame {
 		textEmail.setColumns(10);
 		textEmail.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textEmail.setBackground(new Color(252, 251, 244));
-		textEmail.setBounds(811, 425, 404, 29);
+		textEmail.setBounds(973, 426, 404, 29);
 		contentPane.add(textEmail);
 		
 	}
