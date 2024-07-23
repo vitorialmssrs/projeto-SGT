@@ -13,9 +13,14 @@ public class AlteracaoInformacoesEspacos {
 	private LocalTime horaAbert;
 	private LocalTime horaFech;
 	private Integer capacidade;
-
+	private String nome;
 	
-	
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 	public Integer getId_espacos() {
 		return id_espacos;
 	}

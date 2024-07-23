@@ -1,6 +1,6 @@
 package visao;
 
-import java.awt.EventQueue;
+//import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -29,6 +29,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
+import java.time.format.DateTimeParseException;
 
 public class TelaAlteracaoInformacoesEspacos extends JFrame {
 
@@ -173,78 +174,61 @@ public class TelaAlteracaoInformacoesEspacos extends JFrame {
 		lblNewLabel_9.setBounds(940, 283, 376, 33);
 		contentPane.add(lblNewLabel_9);
 		
+		
 		JButton btnSalvar = new JButton("Salvar alterações");
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 								
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyyyy");
+		//DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyyyy");
+		DateTimeFormatter formatterDate = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		DateTimeFormatter formatterTime = DateTimeFormatter.ofPattern("HH:mm");
 				
-				String diaAbertura = textDiaA.getText();
-				String diafechamento = textDiaF.getText();
-				String horaAB = textHoraA.getText();
-				String horaF = textHoraF.getText();
-				String capacidade = textCapacidade.getText();
+		String diaAbertura = textDiaA.getText();
+        String diafechamento = textDiaF.getText();
+        String horaAB = textHoraA.getText();
+        String horaF = textHoraF.getText();
+        String capacidade = textCapacidade.getText();
 
-				
-				//Verifica se tem alguma coisa
-				if(diaAbertura.isEmpty() || diafechamento.isEmpty() || horaAB.isEmpty() || horaF.isEmpty() || capacidade.isEmpty()) { 
-					
-					TelaPopUpErroFuncionarioCamposNaoPreenchidos frame = new TelaPopUpErroFuncionarioCamposNaoPreenchidos();
-					frame.setVisible(true);	/*exibir uma mensagem de erro preencha todos os campos*/
-					
-				}else {
-					
-					diaAbertura = diaAbertura.replace("/", "");
-					diaAbertura = diaAbertura.replace("/", "");
-					
-					diafechamento = diafechamento.replace("/", "");
-					diafechamento = diafechamento.replace("/", "");
-					
-					horaAB = horaAB.replace(":", "");
-					horaAB = horaAB.replace(":", "");
-					
-					horaF = horaF.replace(":", "");
-					horaF = horaF.replace(":", "");
-					
-										
-					LocalDate diaAberturaI = LocalDate.parse(diaAbertura, formatter);
-					LocalDate diafechamentoI = LocalDate.parse(diafechamento, formatter);
-					int capacidadeI = Integer.valueOf(capacidade);
-					LocalTime horaABI = LocalTime.parse(horaAB);
-					LocalTime horaFI = LocalTime.parse(horaF);
-					
-					
-					AlteracaoInformacoesEspacosDAO altDAO = AlteracaoInformacoesEspacosDAO.getInstancia();
-					
-					// Cria um novo obj com os novos valores atualizados
-					AlteracaoInformacoesEspacos altEspaco = new AlteracaoInformacoesEspacos();
-					
-					altEspaco.setFuncionario(altEspaco.getFuncionario());
-					altEspaco.setDiaAbertura(diaAberturaI);
-					altEspaco.setDiaFechamento(diafechamentoI);
-					altEspaco.setCapacidade(capacidadeI);
-					altEspaco.setHoraAbert(horaABI);
-					altEspaco.setHoraFech(horaFI);
-	
-			        
-			        // Exibir mensagem de sucesso ou erro
-			        boolean sucesso = altDAO.atualizarAlteracao(altEspaco);
-					if (sucesso) {
-			        	//TelaPopUpSucessoFuncionario frame = new TelaPopUpSucessoFuncionario();
-			        	//frame.setVisible(true); 
-			        	JOptionPane.showMessageDialog(null, "Espaço atualizado com sucesso!");
-			        	
-			            
-			        } else {
-			        	//TelaPopUpErroFuncionario frame = new TelaPopUpErroFuncionario();
-			        	//frame.setVisible(true); 
-			        	JOptionPane.showMessageDialog(null, "Ocorreu um erro ao atualizar o espaço."); 
-			        } 
-				}	
-				}
-				
-		});
-				
+        // Verifica se tem alguma coisa
+        if (diaAbertura.isEmpty() || diafechamento.isEmpty() || horaAB.isEmpty() || horaF.isEmpty() || capacidade.isEmpty()) {
+            TelaPopUpErroFuncionarioCamposNaoPreenchidos frame = new TelaPopUpErroFuncionarioCamposNaoPreenchidos();
+            frame.setVisible(true);  // Exibir uma mensagem de erro preencha todos os campos
+        } else {
+            try {
+                LocalDate diaAberturaI = LocalDate.parse(diaAbertura, formatterDate);
+                LocalDate diafechamentoI = LocalDate.parse(diafechamento, formatterDate);
+                LocalTime horaABI = LocalTime.parse(horaAB, formatterTime);
+                LocalTime horaFI = LocalTime.parse(horaF, formatterTime);
+                int capacidadeI = Integer.parseInt(capacidade);
+
+                AlteracaoInformacoesEspacosDAO altDAO = AlteracaoInformacoesEspacosDAO.getInstancia();
+
+                // Cria um novo obj com os novos valores atualizados
+                AlteracaoInformacoesEspacos altEspaco = new AlteracaoInformacoesEspacos();
+                altEspaco.setFuncionario(funcionario);  // Ajuste conforme necessário
+                altEspaco.setDiaAbertura(diaAberturaI);
+                altEspaco.setDiaFechamento(diafechamentoI);
+                altEspaco.setCapacidade(capacidadeI);
+                altEspaco.setHoraAbert(horaABI);
+                altEspaco.setHoraFech(horaFI);
+
+                // Exibir mensagem de sucesso ou erro
+                boolean sucesso = altDAO.atualizarAlteracao(altEspaco);
+                if (sucesso) {
+                    JOptionPane.showMessageDialog(null, "Espaço atualizado com sucesso!");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Ocorreu um erro ao atualizar o espaço.");
+                }
+            } catch (DateTimeParseException ex) {
+                JOptionPane.showMessageDialog(null, "Formato de data ou hora inválido. Use o formato dd/MM/yyyy para datas e HH:mm para horas.");
+                ex.printStackTrace();
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "Capacidade deve ser um número válido.");
+                ex.printStackTrace();
+            }
+        }
+    }
+});
 				
 		btnSalvar.setForeground(new Color(252, 251, 244));
 		btnSalvar.setFont(new Font("Tahoma", Font.BOLD, 17));

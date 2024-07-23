@@ -2,70 +2,103 @@ package controle;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
-
+import java.util.ArrayList;
+import java.util.List;
 import modelo.AlteracaoInformacoesEspacos;
 
 public class AlteracaoInformacoesEspacosDAO implements IAlteracaoInformacoesEspaco {
+    private static AlteracaoInformacoesEspacosDAO instancia;
 
+    private AlteracaoInformacoesEspacosDAO() {
+        // Construtor privado para o padrão Singleton
+    }
 
-	public int inserirAlteracao(AlteracaoInformacoesEspacos end) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    public static AlteracaoInformacoesEspacosDAO getInstancia() {
+        if (instancia == null) {
+            instancia = new AlteracaoInformacoesEspacosDAO();
+        }
+        return instancia;
+    }
 
+    public int inserirAlteracao(AlteracaoInformacoesEspacos end) {
+        // Implementação para inserir uma nova alteração
+        return 0;
+    }
 
-	public boolean atualizarAlteracao(AlteracaoInformacoesEspacos altE) {
-		String SQL = "UPDATE espacos_hotel SET id_espacos =?, nome_espaco = ?, dia_semana_abertura = ?, dia_semana_fechamento = ?, horario_abertura = ?, horario_fechamento = ?, capacidade = ?, funcionarios_id_funcionario = ? WHERE id_espacos = ?";
-					
-		Conexao con = Conexao.getInstancia();
-		Connection conBD = con.conectar();
-		
-		boolean sucesso = false;
-		 try { PreparedStatement ps = conBD.prepareStatement(SQL);
+    public boolean atualizarAlteracao(AlteracaoInformacoesEspacos altE) {
+        String SQL = "UPDATE espacos_hotel SET id_espacos = ?, nome_espaco = ?, dia_semana_abertura = ?, dia_semana_fechamento = ?, horario_abertura = ?, horario_fechamento = ?, capacidade = ?, funcionarios_id_funcionario = ? WHERE id_espacos = ?";
+
+        Conexao con = Conexao.getInstancia();
+        Connection conBD = con.conectar();
+        
+       int rowsAffected = 0;
+        
+        //boolean sucesso = false;
+        try {
+            PreparedStatement ps = conBD.prepareStatement(SQL);
 
             ps.setInt(1, altE.getId_espacos()); // Supondo que getIdEspacoHotel() retorna uma String
-           
-            // Converter LocalDate para java.sql.Date
-            java.sql.Date sqlDate = java.sql.Date.valueOf(altE.getDiaAbertura());
-            ps.setDate(2, sqlDate);
-
-            java.sql.Date sqlDate2 = java.sql.Date.valueOf(altE.getDiaFechamento());
-            ps.setDate(3, sqlDate2);
-
-            ps.setTime(4, Time.valueOf(altE.getHoraAbert()));
-            ps.setTime(5, Time.valueOf(altE.getHoraFech()));
-            ps.setInt(6, altE.getFuncionario().getIdFuncionario()); 
+            ps.setString(2, altE.getEspacos().getNome());
+            ps.setDate(3, java.sql.Date.valueOf(altE.getDiaAbertura()));
+            ps.setDate(4, java.sql.Date.valueOf(altE.getDiaFechamento()));
+            ps.setTime(5, Time.valueOf(altE.getHoraAbert()));
+            ps.setTime(6, Time.valueOf(altE.getHoraFech()));
             ps.setInt(7, altE.getCapacidade());
-          //  ps.setInt(8, altE.getId());
+            ps.setInt(8, altE.getFuncionario().getIdFuncionario());
+            ps.setInt(9, altE.getId_espacos());
 
-            // Executa a consulta
-            
-            int linhasAfetadas = ps.executeUpdate();
-            sucesso = (linhasAfetadas > 0);
+            //int linhasAfetadas = ps.executeUpdate();
+            rowsAffected = ps.executeUpdate();
+            //sucesso = (linhasAfetadas > 0);
             
         } catch (SQLException e) {
             e.printStackTrace();
-            
         } finally {
-        	con.fecharConexao();
+            con.fecharConexao();
         }
 
-        return sucesso;
-	}
-	
+        return rowsAffected > 0;
+        //return sucesso;
+    }
 
-	
-	public boolean removerAlteracao(AlteracaoInformacoesEspacos end) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    public boolean removerAlteracao(AlteracaoInformacoesEspacos end) {
+        // Implementação para remover uma alteração
+        return false;
+    }
 
+    public List<AlteracaoInformacoesEspacos> getAllEspacos() {
+        List<AlteracaoInformacoesEspacos> espacos = new ArrayList<>();
+        String SQL = "SELECT * FROM espacos_hotel"; // Ajuste conforme o nome da sua tabela
 
-	public static AlteracaoInformacoesEspacosDAO getInstancia() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        Conexao con = Conexao.getInstancia();
+        Connection conBD = con.conectar();
 
+        try (PreparedStatement ps = conBD.prepareStatement(SQL);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                AlteracaoInformacoesEspacos espaco = new AlteracaoInformacoesEspacos();
+                espaco.setId_espacos(rs.getInt("id_espacos"));
+                espaco.setNome(rs.getString("nome_espaco"));
+                espaco.setDiaAbertura(rs.getDate("dia_semana_abertura"));
+                espaco.setDiaFechamento(rs.getDate("dia_semana_fechamento"));
+                espaco.setHoraAbertura(rs.getTime("horario_abertura"));
+                espaco.setHoraFechamento(rs.getTime("horario_fechamento"));
+                espaco.setCapacidade(rs.getInt("capacidade"));
+                // Se necessário, defina o funcionário associado ao espaço
+                // espaco.setFuncionario(buscarFuncionarioPorId(rs.getInt("funcionarios_id_funcionario")));
+
+                espacos.add(espaco);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            con.fecharConexao();
+        }
+
+        return espacos;
+    }
 }
