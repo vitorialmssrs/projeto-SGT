@@ -194,7 +194,7 @@ public class AlterarFuncionario extends JFrame {
 		textDataFuncionario.setBackground(new Color(252, 251, 244));
 		textDataFuncionario.setBounds(719, 373, 143, 21);
 		textDataFuncionario.setBorder(new LineBorder(new Color(1, 50, 1)));
-		textDataFuncionario.setText(String.valueOf(funcionarioLogado.getDataNascismento()));
+		textDataFuncionario.setText(String.valueOf(funcionarioLogado.getDataNascismento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))));
 		contentPane.add(textDataFuncionario);
 		textDataFuncionario.setColumns(10);
 
