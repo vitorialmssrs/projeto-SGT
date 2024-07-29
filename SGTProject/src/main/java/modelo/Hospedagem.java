@@ -6,10 +6,6 @@ import java.time.LocalTime;
 public class Hospedagem {
 
 	private Integer numQuarto;
-	/*
-	 * private LocalDateTime checkin; private LocalDateTime checkout;
-	 */
-	// DataEntrada,DataSaida,HoraEntrada,HoraSaida
 	private LocalDate DataEntrada;
 	private LocalDate DataSaida;
 	private LocalTime HoraEntrada;

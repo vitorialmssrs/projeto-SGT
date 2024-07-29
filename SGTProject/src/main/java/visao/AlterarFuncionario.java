@@ -336,12 +336,11 @@ public class AlterarFuncionario extends JFrame {
 					
 					numIdentificacao = numIdentificacao.replace(".", "");
 					numIdentificacao = numIdentificacao.replace("-", "");
-					
 					cep = cep.replace("-", "");
 					
 					
 					Long numIndentificacaoI = Long.valueOf(numIdentificacao);
-					int cepI = Integer.valueOf(cep);
+					int cepI = Integer.parseInt(cep);
 					int numCasaI = Integer.valueOf(numCasa);
 					LocalDate dataNascismentoI = LocalDate.parse(dataNascismento, formatter);
 					

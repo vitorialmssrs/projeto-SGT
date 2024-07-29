@@ -142,7 +142,7 @@ public class TelaCheckOut extends JFrame {
 		        String s =((JTextField) e.getSource()).getText();   
 		        numIdentificacao = numIdentificacao.replace(".", "");
 		        numIdentificacao = numIdentificacao.replace("-", "");
-				Long numId = Long.valueOf(numIdentificacao);  
+				Long numId = Long.parseLong(numIdentificacao);  
 				
 				//HospedeDAO.setConnection(Conexao.conectar());
 				

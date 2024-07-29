@@ -1804,7 +1804,7 @@ values
     52867785212,
     'te',
     '123',
-    'Fidelity Matisse',
+    'Funcionario Teste',
     '2002-07-12',
     '(52) 69169-40001',
     '02479135',
