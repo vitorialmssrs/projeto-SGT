@@ -47,9 +47,9 @@ public class TelaCheckOut extends JFrame {
 	private JTextField textSobrenome;
 	private JTextField textHoraSaida;
 	private JTextField textDataSaida;
-	private JTextField textDataEntrada;
+	//private JTextField textDataEntrada;
 	private JTextField textDataEntrada_1;
-	private JTextField textHoraEntrada;
+	//private JTextField textHoraEntrada;
 	private JTextField textHoraEntrada_1;
 	private JTextField textNumQuarto;
 	private Hospede hosp;
@@ -159,8 +159,9 @@ public class TelaCheckOut extends JFrame {
 					HospedagemDAO hospedagemDao = new HospedagemDAO();
 					Hospedagem hospedagem = hospedagemDao.buscarHospedagemPorHospede(hosp);
 					
-					textDataEntrada.setText(hospedagem.getDataEntrada().toString());
-					textHoraEntrada.setText(hospedagem.getHoraEntrada().toString());
+					
+					textDataEntrada_1.setText(hospedagem.getDataEntrada().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+					textHoraEntrada_1.setText(hospedagem.getHoraEntrada().toString());
 					textNumQuarto.setText(hospedagem.getNumQuarto().toString());
 					
 					 			  
@@ -212,12 +213,12 @@ public class TelaCheckOut extends JFrame {
 		textDataEntrada_1.setColumns(10);
 		
 		
-		try {
+		/*try {
 		    MaskFormatter mascaraHoraEntrada = new MaskFormatter("##/##/####");
 		    textHoraEntrada = new JFormattedTextField(mascaraHoraEntrada);
 		} catch (ParseException e) {
 		    e.printStackTrace();
-		}
+		}*/
 		textHoraEntrada_1 = new JTextField();
 		textHoraEntrada_1.setForeground(new Color(1, 50, 1));
 		textHoraEntrada_1.setBackground(new Color(252, 251, 244));
@@ -313,8 +314,8 @@ public class TelaCheckOut extends JFrame {
 				textDataSaida.setText(" ");
 				textDataSaida.setText(" ");
 				textHoraSaida.setText(" ");	
-				textDataEntrada.setText(" ");
-				textHoraEntrada.setText(" ");
+				textDataEntrada_1.setText(" ");
+				textHoraEntrada_1.setText(" ");
 				textNumQuarto.setText(" ");
 				TextDataNascimento.setText(" ");
 				

@@ -107,7 +107,8 @@ public class HospedagemDAO {
 
 
 			ResultSet rs = ps.executeQuery();
-
+			
+			System.out.println(ps);
 			while (rs.next()) {
 
 				hospedagem = new Hospedagem();
