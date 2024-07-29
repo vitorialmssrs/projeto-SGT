@@ -182,13 +182,10 @@ public class HospedeDAO implements IHospedeDao{
 		return retorno;
 	}
 	
-	public Hospede buscarHospedePorCpf(Long numId) {
+	/*public Hospede buscarHospedePorCpf(Long numId) {
 		String SQL = "SELECT primeiro_nome, sobrenome, data_de_nascimento FROM clientes WHERE num_identificacao = ?"; // verificar
-
 		Conexao con = Conexao.getInstancia();
-
 		Connection conBD = con.conectar();
-
 		Hospede hospede = null;
 		
 		try {
@@ -213,7 +210,7 @@ public class HospedeDAO implements IHospedeDao{
 		}
 		
 		return hospede;
-	}
+	}*/
 
 	@Override
 	public Hospede buscarHospedePorCpf(long cpf) {

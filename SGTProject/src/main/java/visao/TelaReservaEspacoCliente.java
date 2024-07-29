@@ -181,6 +181,7 @@ public class TelaReservaEspacoCliente extends JFrame {
 				
 				
 				if(resdao != Integer.MIN_VALUE) {
+					dispose();//verificar qual tela levar
 					TelaPopUpSucessoCliente suscli = new TelaPopUpSucessoCliente();
 					suscli.setVisible(true);
 				}else {
