@@ -404,9 +404,15 @@ public class TelaCheckOut extends JFrame {
                 hospedagemdao.AtualizarCheckOut(hospedagem);
                 
               
-				JOptionPane.showMessageDialog(null, "Check-Out realizado com sucesso!");
-
-                dispose();	
+                dispose();//manter para fechar a tela cadastro
+				
+				FuncionalidadeCliente frame2 = new FuncionalidadeCliente();
+				frame2.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				frame2.setVisible(true);
+				
+				TelaPopUpSucessoCliente frame = new TelaPopUpSucessoCliente();
+				frame.setLocationRelativeTo(null);
+				frame.setVisible(true);
 				
 			}
 		});
