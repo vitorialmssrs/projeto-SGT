@@ -83,10 +83,10 @@ public class AlteracaoInformacoesEspacosDAO implements IAlteracaoInformacoesEspa
                 AlteracaoInformacoesEspacos espaco = new AlteracaoInformacoesEspacos();
                 espaco.setId_espacos(rs.getInt("id_espacos"));
                 espaco.setNome(rs.getString("nome_espaco"));
-                espaco.setDiaAbertura(rs.getDate("dia_semana_abertura"));
-                espaco.setDiaFechamento(rs.getDate("dia_semana_fechamento"));
-                espaco.setHoraAbertura(rs.getTime("horario_abertura"));
-                espaco.setHoraFechamento(rs.getTime("horario_fechamento"));
+                espaco.setDiaAbertura(rs.getDate("dia_semana_abertura").toLocalDate());
+                espaco.setDiaFechamento(rs.getDate("dia_semana_fechamento").toLocalDate());
+                espaco.setHoraAbert(rs.getTime("horario_abertura").toLocalTime());
+                espaco.setHoraFech(rs.getTime("horario_fechamento").toLocalTime());
                 espaco.setCapacidade(rs.getInt("capacidade"));
                 // Se necessário, defina o funcionário associado ao espaço
                 // espaco.setFuncionario(buscarFuncionarioPorId(rs.getInt("funcionarios_id_funcionario")));
