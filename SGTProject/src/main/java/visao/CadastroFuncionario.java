@@ -237,10 +237,12 @@ public class CadastroFuncionario extends JFrame {
 				textCepFuncionario.setText(" ");
 				textDataFuncionario.setText(" ");
 				textNumeroCasaFuncionario.setText(" ");
-				textTelefone.setText(" ");
 				textLogin.setText(" ");
 				textSenha.setText(" ");
-
+				textCepFuncionario.setText(" ");
+				textTelefone.setText(" ");
+				
+				
 			}
 		});
 		btnLimpar.setForeground(new Color(252, 251, 244));
