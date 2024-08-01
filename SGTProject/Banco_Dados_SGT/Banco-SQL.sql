@@ -104,7 +104,7 @@ CREATE TABLE IF NOT EXISTS manutencao_espaco (
   dia DATE NOT NULL,
   hora_inicio TIME NOT NULL,
   hora_final TIME NOT NULL,
-  tipo_manutencao varchar(100) NOT NULL,
+  tipo_manutencao varchar(100),
   espacos_hotel_id_espacos INT(11) NOT NULL,
   funcionarios_id_funcionario INT(7) NOT NULL,
   descricaomanutencao varchar(100) NOT NULL,
