@@ -146,12 +146,11 @@ public class TelaAlterarCadastroCliente extends JFrame {
 				@Override
 				public void focusLost(FocusEvent e) {
 					HospedeDAO dao = HospedeDAO.getInstancia();  
-					String numIdentificacao =  textCPF.getText().trim();
+					String numIdentificacao =  textCPF.getText().trim(); 
 			        numIdentificacao = numIdentificacao.replace(".", "");
 			        numIdentificacao = numIdentificacao.replace("-", "");
 					Long numId = Long.parseLong(numIdentificacao);  
-					
-					//HospedeDAO.setConnection(Conexao.conectar());
+
 					
 					hosp = dao.buscarHospedePorCpf(numId);
 					if(hosp!=null) {  
@@ -165,18 +164,11 @@ public class TelaAlterarCadastroCliente extends JFrame {
 						textPrimeiroNome.setText(hosp.getPrimeironome());  
 						textSobrenome.setText(hosp.getSobrenome());  
 						
-					 /* 
+					//.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
 					//conversão para data de nascimento de LocalDate para String  
 					String dataNasc = String.valueOf(hosp.getDatanascimento());  
-					TextDataNascimento.setText(dataNasc);
+					textDataNascimento.setText(dataNasc);
 					
-					HospedagemDAO hospedagemDao = new HospedagemDAO();
-					Hospedagem hospedagem = hospedagemDao.buscarHospedagemPorHospede(hosp);
-					
-					
-					textDataEntrada_1.setText(hospedagem.getDataEntrada().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-					textHoraEntrada_1.setText(hospedagem.getHoraEntrada().toString());
-					textNumQuarto.setText(hospedagem.getNumQuarto().toString());*/
 					}
 					
 				}
