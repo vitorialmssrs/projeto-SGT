@@ -153,7 +153,7 @@ public class TelaCheckOut extends JFrame {
 					textSobrenome.setText(hosp.getSobrenome());  
 					  
 					//conversão para data de nascimento de LocalDate para String  
-					String dataNasc = String.valueOf(hosp.getDatanascimento());  
+					String dataNasc = String.valueOf(hosp.getDatanascimento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));  
 					TextDataNascimento.setText(dataNasc);
 					
 					HospedagemDAO hospedagemDao = new HospedagemDAO();

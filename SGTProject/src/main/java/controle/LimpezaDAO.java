@@ -30,7 +30,7 @@ public class LimpezaDAO implements ILimpezaDAO {
 	
 	public int inserirLimpeza(LimpezaEspacos limp) {
 
-		String SQL = "INSERT INTO limpeza_espaco ( tipo_limpeza, horario_inicio, horario_final, dia, espacos_hotel_id_espacos, funcionarios_id_funcionario) VALUES (?, ?, ?, ?, ?, ?)";
+		String SQL = "INSERT INTO limpeza_espaco ( tipo_limpeza, horario_inicio, horario_final, dia, descricaoLimpeza,  espacos_hotel_id_espacos, funcionarios_id_funcionario) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 		//Abre conexao e cria a "ponte de conexao" com o MySQL
 		Conexao con = Conexao.getInstancia();
@@ -45,8 +45,9 @@ public class LimpezaDAO implements ILimpezaDAO {
 		    ps.setTime(2, Time.valueOf(limp.getHoraInicio()));
 		    ps.setTime(3,Time.valueOf( limp.getHoraFinal()));	    
 		    ps.setDate(4, Date.valueOf(limp.getDia()));
-		    ps.setInt(5, limp.getEspacos().getId());
-		    ps.setInt(6, limp.getFuncionario().getIdFuncionario());
+		    ps.setString(5, limp.getDescricao());
+		    ps.setInt(6, limp.getEspacos().getId());
+		    ps.setInt(7, limp.getFuncionario().getIdFuncionario());
 				    
 		    // Executa a consulta
 		    ps.executeUpdate(); 
@@ -77,7 +78,7 @@ public class LimpezaDAO implements ILimpezaDAO {
 
 		// Comando SQL a ser executado
 		
-		String SQL = "INSERT INTO limpeza_espaco (id_limpeza, tipo_limpeza, dia, hora_inicio, hora_final ) VALUES ( ?, ?, ?, ?, ?)";
+		String SQL = "INSERT INTO limpeza_espaco (id_limpeza, tipo_limpeza, dia, hora_inicio, hora_final, descricaoLimpeza) VALUES ( ?, ?, ?, ?, ?, ?)";
 
 		// Cria a "ponte de conexao" com MYSQL
 		
@@ -101,6 +102,7 @@ public class LimpezaDAO implements ILimpezaDAO {
 				Date DiaManutencao = rs.getDate("dia");
 				Time horaIncio = rs.getTime("hora_inicio");
 				Time horaFinal = rs.getTime("hora_final");
+				String descricao = rs.getString("descricaoLimpeza");
 				
 						
 				// Seta os valores no obj java
@@ -108,6 +110,7 @@ public class LimpezaDAO implements ILimpezaDAO {
 				limp.setDia(null);
 				limp.setHoraInicio(null);
 				limp.setHoraFinal(null);
+				limp.setDescricao(null);
 				limp.setFuncionario(null);
 			
 				
