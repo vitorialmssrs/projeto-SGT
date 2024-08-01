@@ -59,7 +59,7 @@ public class TelaAlterarCadastroCliente extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaAlterarCadastroCliente() {
+	public TelaAlterarCadastroCliente(Hospede hosp) {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(TelaAlterarCadastroCliente.class.getResource("/imagens/LogoPI.png")));
 		setBackground(new Color(255, 255, 245));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -105,6 +105,7 @@ public class TelaAlterarCadastroCliente extends JFrame {
 		textDataNascimento.setForeground(new Color(1, 50, 1));
 		textDataNascimento.setBackground(new Color(252, 251, 244));
 		textDataNascimento.setBounds(357, 426, 404, 29);
+		textDataNascimento.setText(String.valueOf(hosp.getDatanascimento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))));
 		contentPane.add(textDataNascimento);
 		textDataNascimento.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textDataNascimento.setColumns(10);
@@ -117,19 +118,37 @@ public class TelaAlterarCadastroCliente extends JFrame {
 		lblTelefone.setBounds(357, 466, 236, 21);
 		contentPane.add(lblTelefone);
 		
-		textCPF = new JTextField();
+		try {
+			MaskFormatter formttNIden = new MaskFormatter("###.###.###-##");
+			formttNIden.setPlaceholder("");
+			textCPF = new JFormattedTextField(formttNIden);
+			textCPF.setToolTipText("Coloque o CPF Aqui");
+			textCPF.setForeground(new Color(1, 50, 1));
+			textCPF.setBackground(new Color(252, 251, 244));
+			textCPF.setBounds(357, 292, 404, 29);
+			textCPF.setBorder(new LineBorder(new Color(1, 50, 1)));
+			textCPF.setColumns(10);
+			contentPane.add(textCPF);
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+			}
+		
+		/*textCPF = new JTextField();
 		textCPF.setToolTipText("");
 		textCPF.setForeground(new Color(1, 50, 1));
 		textCPF.setBackground(new Color(252, 251, 244));
 		textCPF.setBounds(357, 292, 404, 29);
 		contentPane.add(textCPF);
 		textCPF.setBorder(new LineBorder(new Color(1, 50, 1)));
-		textCPF.setColumns(10);
+		textPrimeiroNome.setText(hosp.getPrimeironome());
+		textCPF.setColumns(10);*/
 		
 		textPrimeiroNome = new JTextField();
 		textPrimeiroNome.setForeground(new Color(1, 50, 1));
 		textPrimeiroNome.setBackground(new Color(252, 251, 244));
 		textPrimeiroNome.setBounds(357, 354, 404, 29);
+		textPrimeiroNome.setText(hosp.getPrimeironome());
 		contentPane.add(textPrimeiroNome);
 		textPrimeiroNome.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textPrimeiroNome.setColumns(10);
@@ -149,11 +168,13 @@ public class TelaAlterarCadastroCliente extends JFrame {
 		lblCPFCliente.setBounds(357, 262, 300, 18);
 		contentPane.add(lblCPFCliente);
 		
+		
 		textSobrenome = new JTextField();
 		textSobrenome.setForeground(new Color(1, 50, 1));
 		textSobrenome.setBackground(new Color(252, 251, 244));
 		textSobrenome.setBounds(973, 354, 404, 29);
 		textSobrenome.setBorder(new LineBorder(new Color(1, 50, 1)));
+		textPrimeiroNome.setText(hosp.getSobrenome());
 		contentPane.add(textSobrenome);
 		textSobrenome.setColumns(10);
 		
@@ -310,13 +331,30 @@ public class TelaAlterarCadastroCliente extends JFrame {
 		lblDataNascimento_1.setBounds(357, 394, 236, 21);
 		contentPane.add(lblDataNascimento_1);
 		
-		textTelefone = new JTextField();
+		try {
+			MaskFormatter formttDT = new MaskFormatter("##/##/####");
+			formttDT.setPlaceholder("");
+			textTelefone = new JFormattedTextField(formttDT);
+			textTelefone.setToolTipText("Coloque o CPF Aqui");
+			textTelefone.setForeground(new Color(1, 50, 1));
+			textTelefone.setBackground(new Color(252, 251, 244));
+			textTelefone.setBounds(357, 498, 404, 29);
+			textTelefone.setBorder(new LineBorder(new Color(1, 50, 1)));
+			textTelefone.setText(String.valueOf(hosp.getTelefone().formatted(DateTimeFormatter.ofPattern("dd/MM/yyyy"))));
+			textTelefone.setColumns(10);
+			contentPane.add(textTelefone);
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+			}
+		
+		/*textTelefone = new JTextField();
 		textTelefone.setForeground(new Color(1, 50, 1));
 		textTelefone.setColumns(10);
 		textTelefone.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textTelefone.setBackground(new Color(252, 251, 244));
 		textTelefone.setBounds(357, 498, 404, 29);
-		contentPane.add(textTelefone);
+		contentPane.add(textTelefone);*/
 		
 		JLabel lblEmail = new JLabel("* Email: ");
 		lblEmail.setForeground(new Color(1, 50, 1));
@@ -331,6 +369,7 @@ public class TelaAlterarCadastroCliente extends JFrame {
 		textEmail.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textEmail.setBackground(new Color(252, 251, 244));
 		textEmail.setBounds(973, 426, 404, 29);
+		textPrimeiroNome.setText(hosp.getEmail());
 		contentPane.add(textEmail);
 		
 	}
