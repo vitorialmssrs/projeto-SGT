@@ -132,17 +132,7 @@ public class TelaLimpezaEspacos extends JFrame {
 				
 				limpEspaco.setFuncionario(funcionario);
 				
-		/*		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-				LocalDate date = LocalDate.parse( textDiaA.getText(), formatter);
-				limpEspaco.setDiaManutencao(date);
-				
-				DateTimeFormatter formatterH = DateTimeFormatter.ofPattern("HH:mm");
-				LocalTime timeI = LocalTime.parse(textHoraA.getText(), formatterH);
-				limpEspaco.setHoraInicio(timeI);
-				
-				DateTimeFormatter formatterI = DateTimeFormatter.ofPattern("HH:mm");
-				LocalTime timeF = LocalTime.parse(textHoraF.getText(), formatterH);
-				limpEspaco.setHoraFinal(timeF);*/
+	
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 				try {
 				    LocalDate date = LocalDate.parse(textDiaA.getText(), formatter);
