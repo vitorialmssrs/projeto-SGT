@@ -29,7 +29,7 @@ public class AlteracaoInformacoesEspacosDAO implements IAlteracaoInformacoesEspa
     }
 
     public boolean atualizarAlteracao(AlteracaoInformacoesEspacos altE) {
-        String SQL = "UPDATE espacos_hotel SET id_espacos = ?, nome_espaco = ?, dia_semana_abertura = ?, dia_semana_fechamento = ?, horario_abertura = ?, horario_fechamento = ?, capacidade = ?, funcionarios_id_funcionario = ? WHERE id_espacos = ?";
+        String SQL = "UPDATE espacos_hotel SET id_espacos = ?, dia_semana_abertura = ?, dia_semana_fechamento = ?, horario_abertura = ?, horario_fechamento = ?, capacidade = ? WHERE id_espacos = ?";
 
         Conexao con = Conexao.getInstancia();
         Connection conBD = con.conectar();
@@ -41,14 +41,12 @@ public class AlteracaoInformacoesEspacosDAO implements IAlteracaoInformacoesEspa
             PreparedStatement ps = conBD.prepareStatement(SQL);
 
             ps.setInt(1, altE.getId_espacos()); // Supondo que getIdEspacoHotel() retorna uma String
-            ps.setString(2, altE.getEspacos().getNome());
-            ps.setDate(3, java.sql.Date.valueOf(altE.getDiaAbertura()));
-            ps.setDate(4, java.sql.Date.valueOf(altE.getDiaFechamento()));
-            ps.setTime(5, Time.valueOf(altE.getHoraAbert()));
-            ps.setTime(6, Time.valueOf(altE.getHoraFech()));
-            ps.setInt(7, altE.getCapacidade());
-            ps.setInt(8, altE.getFuncionario().getIdFuncionario());
-            ps.setInt(9, altE.getId_espacos());
+            ps.setDate(2, java.sql.Date.valueOf(altE.getDiaAbertura()));
+            ps.setDate(3, java.sql.Date.valueOf(altE.getDiaFechamento()));
+            ps.setTime(4, Time.valueOf(altE.getHoraAbert()));
+            ps.setTime(5, Time.valueOf(altE.getHoraFech()));
+            ps.setInt(6, altE.getCapacidade());
+            ps.setInt(7, altE.getId_espacos());
 
             //int linhasAfetadas = ps.executeUpdate();
             rowsAffected = ps.executeUpdate();
