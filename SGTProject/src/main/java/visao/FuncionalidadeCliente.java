@@ -130,7 +130,7 @@ public class FuncionalidadeCliente extends JFrame {
 			}
 		});
 		
-		JButton btnAlterarCadastro = new JButton("Alterar Cadastro");
+		JButton btnAlterarCadastro = new JButton("Alterar Checkin");
 		btnAlterarCadastro.setBackground(new Color(126, 191, 131));
 		btnAlterarCadastro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

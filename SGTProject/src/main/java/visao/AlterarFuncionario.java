@@ -92,7 +92,8 @@ public class AlterarFuncionario extends JFrame {
 		textNomeFuncionario.setForeground(new Color(1, 50, 1));
 		textNomeFuncionario.setBackground(new Color(252, 251, 244));
 		textNomeFuncionario.setBounds(688, 286, 644, 21);
-		textNomeFuncionario.setBorder(new LineBorder(new Color(1, 50, 1)));
+		textNomeFuncionario.setBorder(new LineBorder(new Color(30, 32, 37), 1));
+		textNomeFuncionario.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		textNomeFuncionario.setText(funcionarioLogado.getNomeCompleto());
 		contentPane.add(textNomeFuncionario);
 		textNomeFuncionario.setColumns(10);
@@ -112,6 +113,7 @@ public class AlterarFuncionario extends JFrame {
 			textNumeroIndentificacao.setForeground(new Color(1, 50, 1));
 			textNumeroIndentificacao.setBackground(new Color(252, 251, 244));
 			textNumeroIndentificacao.setBounds(763, 330, 602, 21);
+			textNumeroIndentificacao.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 			textNumeroIndentificacao.setText(String.valueOf(funcionarioLogado.getNumIndentificacao()));
 			textNumeroIndentificacao.setBorder(new LineBorder(new Color(1, 50, 1)));
 			textNumeroIndentificacao.setColumns(10);
@@ -150,6 +152,7 @@ public class AlterarFuncionario extends JFrame {
 			textCepFuncionario.setForeground(new Color(1, 50, 1));
 			textCepFuncionario.setBackground(new Color(252, 251, 244));
 			textCepFuncionario.setBounds(600, 493, 129, 21);
+			textCepFuncionario.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 			textCepFuncionario.setText(String.valueOf(funcionarioLogado.getCep()));
 			textCepFuncionario.setBorder(new LineBorder(new Color(1, 50, 1)));
 			textCepFuncionario.setColumns(10);
@@ -193,7 +196,8 @@ public class AlterarFuncionario extends JFrame {
 		textDataFuncionario.setForeground(new Color(1, 50, 1));
 		textDataFuncionario.setBackground(new Color(252, 251, 244));
 		textDataFuncionario.setBounds(719, 373, 143, 21);
-		textDataFuncionario.setBorder(new LineBorder(new Color(1, 50, 1)));
+		textDataFuncionario.setBorder(new LineBorder(new Color(30, 32, 37), 1));
+		textDataFuncionario.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		textDataFuncionario.setText(String.valueOf(funcionarioLogado.getDataNascismento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))));
 		contentPane.add(textDataFuncionario);
 		textDataFuncionario.setColumns(10);
@@ -209,9 +213,10 @@ public class AlterarFuncionario extends JFrame {
 		textNumeroCasaFuncionario.setForeground(new Color(1, 50, 1));
 		textNumeroCasaFuncionario.setBackground(new Color(252, 251, 244));
 		textNumeroCasaFuncionario.setBounds(632, 535, 97, 19);
+		textNumeroCasaFuncionario.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		textNumeroCasaFuncionario.setText(String.valueOf(funcionarioLogado.getNumCasa()));
 		contentPane.add(textNumeroCasaFuncionario);
-		textNumeroCasaFuncionario.setBorder(new LineBorder(new Color(1, 50, 1)));
+		textNumeroCasaFuncionario.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		textNumeroCasaFuncionario.setColumns(10);
 
 		JLabel lblTelefoneFuncionario = new JLabel("Telefone:");
@@ -238,6 +243,7 @@ public class AlterarFuncionario extends JFrame {
 			textTelefone.setForeground(new Color(1, 50, 1));
 			textTelefone.setBackground(new Color(252, 251, 244));
 			textTelefone.setBounds(633, 417, 168, 21);
+			textTelefone.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 			textTelefone.setText(String.valueOf(funcionarioLogado.getTelefone()));
 			textTelefone.setBorder(new LineBorder(new Color(1, 50, 1)));
 			textTelefone.setColumns(10);
@@ -298,6 +304,7 @@ public class AlterarFuncionario extends JFrame {
 		textLogin = new JTextField();
 		textLogin.setBackground(new Color(255, 255, 245));
 		textLogin.setBounds(612, 627, 644, 19);
+		textLogin.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(textLogin);
 		textLogin.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textLogin.setColumns(10);
@@ -305,6 +312,7 @@ public class AlterarFuncionario extends JFrame {
 		textSenha = new JTextField();
 		textSenha.setBackground(new Color(255, 255, 245));
 		textSenha.setBounds(612, 664, 289, 19);
+		textSenha.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(textSenha);
 		textSenha.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textSenha.setColumns(10);

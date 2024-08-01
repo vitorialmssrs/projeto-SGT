@@ -3,6 +3,7 @@ package visao;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 import controle.EspacosDAO;
 import controle.LimpezaDAO;
@@ -33,7 +34,7 @@ public class TelaLimpezaEspacos extends JFrame {
 	private JTextField textDiaA;
 	private JTextField textHoraA;
 	private JTextField textHoraF;
-	private JTextField txtTipoLimp;
+	private JTextField txtDescricaoLimp;
 
 	/**
 	 * Launch the application.*/
@@ -78,16 +79,19 @@ public class TelaLimpezaEspacos extends JFrame {
 		
 		textDiaA = new JTextField();
 		textDiaA.setBounds(905, 306, 100, 22);
+		textDiaA.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(textDiaA);
 		textDiaA.setColumns(10);
 		
 		textHoraA = new JTextField();
 		textHoraA.setBounds(510, 430, 100, 22);
+		textHoraA.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(textHoraA);
 		textHoraA.setColumns(10);
 		
 		textHoraF = new JTextField();
 		textHoraF.setBounds(905, 430, 100, 22);
+		textHoraF.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(textHoraF);
 		textHoraF.setColumns(10);
 		
@@ -111,6 +115,7 @@ public class TelaLimpezaEspacos extends JFrame {
 		
 		txtTipoLimp = new JTextField();
 		txtTipoLimp.setBounds(758, 557, 326, 83);
+		txtTipoLimp.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(txtTipoLimp);
 		txtTipoLimp.setColumns(10);
 		
@@ -132,17 +137,7 @@ public class TelaLimpezaEspacos extends JFrame {
 				
 				limpEspaco.setFuncionario(funcionario);
 				
-		/*		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-				LocalDate date = LocalDate.parse( textDiaA.getText(), formatter);
-				limpEspaco.setDiaManutencao(date);
-				
-				DateTimeFormatter formatterH = DateTimeFormatter.ofPattern("HH:mm");
-				LocalTime timeI = LocalTime.parse(textHoraA.getText(), formatterH);
-				limpEspaco.setHoraInicio(timeI);
-				
-				DateTimeFormatter formatterI = DateTimeFormatter.ofPattern("HH:mm");
-				LocalTime timeF = LocalTime.parse(textHoraF.getText(), formatterH);
-				limpEspaco.setHoraFinal(timeF);*/
+	
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 				try {
 				    LocalDate date = LocalDate.parse(textDiaA.getText(), formatter);
@@ -169,7 +164,9 @@ public class TelaLimpezaEspacos extends JFrame {
 				  
 				}
 		
-				limpEspaco.setTipoManutencao(txtTipoLimp.getText());
+				limpEspaco.setTipoManutencao(txtDescricaoLimp.getText());
+				limpEspaco.setDescricao(txtDescricaoLimp.getText());
+				limpEspaco.setTipoManutencao(((EspacoHotel) comboBoxEspaco.getSelectedItem()).getNome());
 				
 				LimpezaDAO limpDAO = LimpezaDAO.getInstancia();
 				int espacoId = limpDAO.inserirLimpeza(limpEspaco);

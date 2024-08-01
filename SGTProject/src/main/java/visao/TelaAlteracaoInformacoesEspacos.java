@@ -4,7 +4,9 @@ package visao;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 import controle.AlteracaoInformacoesEspacosDAO;
 import controle.EspacosDAO;
@@ -13,8 +15,10 @@ import modelo.EspacoHotel;
 import modelo.Funcionario;
 
 import java.awt.Color;
+
+
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+
 
 import java.awt.Font;
 import javax.swing.JButton;
@@ -50,7 +54,7 @@ public class TelaAlteracaoInformacoesEspacos extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1920, 1080);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(247, 246, 243));
+		contentPane.setBackground(new Color(255, 255, 245));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -70,27 +74,32 @@ public class TelaAlteracaoInformacoesEspacos extends JFrame {
 		
 		textDiaA = new JTextField();
 		textDiaA.setBounds(448, 429, 159, 32);
+		textDiaA.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(textDiaA);
 		textDiaA.setColumns(10);
 		
 		textDiaF = new JTextField();
 		textDiaF.setBounds(447, 527, 159, 32);
+		textDiaF.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(textDiaF);
 		textDiaF.setColumns(10);
 		
 		textHoraA = new JTextField();
 		textHoraA.setBounds(949, 425, 159, 32);
+		textHoraA.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(textHoraA);
 		textHoraA.setColumns(10);
 		
 		textHoraF = new JTextField();
 		textHoraF.setBounds(949, 527, 159, 32);
+		textHoraF.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(textHoraF);
 		textHoraF.setColumns(10);
 		
 		textCapacidade = new JTextField();
 		textCapacidade.setBackground(new Color(255, 255, 255));
 		textCapacidade.setBounds(949, 327, 159, 32);
+		textCapacidade.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(textCapacidade);
 		textCapacidade.setColumns(10);
 		
@@ -138,7 +147,7 @@ public class TelaAlteracaoInformacoesEspacos extends JFrame {
 		
 		comboBoxEspaco.setBounds(447, 313, 263, 49);
 		contentPane.add(comboBoxEspaco);
-	
+		
 		JLabel lblNewLabel_2 = new JLabel("Dia da abertura ");
 		lblNewLabel_2.setForeground(new Color(1, 50, 1));
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 18));
@@ -205,6 +214,8 @@ public class TelaAlteracaoInformacoesEspacos extends JFrame {
 
                 // Cria um novo obj com os novos valores atualizados
                 AlteracaoInformacoesEspacos altEspaco = new AlteracaoInformacoesEspacos();
+                EspacoHotel espaco = (EspacoHotel) comboBoxEspaco.getSelectedItem();
+                altEspaco.setId_espacos(espaco.getId());
                 altEspaco.setFuncionario(funcionario);  // Ajuste conforme necessário
                 altEspaco.setDiaAbertura(diaAberturaI);
                 altEspaco.setDiaFechamento(diafechamentoI);
@@ -215,16 +226,24 @@ public class TelaAlteracaoInformacoesEspacos extends JFrame {
                 // Exibir mensagem de sucesso ou erro
                 boolean sucesso = altDAO.atualizarAlteracao(altEspaco);
                 if (sucesso) {
-                    JOptionPane.showMessageDialog(null, "Espaço atualizado com sucesso!");
+                	TelaPopUpSucessoFuncionario frame = new TelaPopUpSucessoFuncionario();
+                	frame.setVisible(true);
+                	//JOptionPane.showMessageDialog(null, "Espaço atualizado com sucesso!");
                 } else {
-                    JOptionPane.showMessageDialog(null, "Ocorreu um erro ao atualizar o espaço.");
+                	TelaPopUpErroFuncionario frame = new TelaPopUpErroFuncionario();
+                	frame.setVisible(true);
+                	//JOptionPane.showMessageDialog(null, "Ocorreu um erro ao atualizar o espaço.");
                 }
             } catch (DateTimeParseException ex) {
-                JOptionPane.showMessageDialog(null, "Formato de data ou hora inválido. Use o formato dd/MM/yyyy para datas e HH:mm para horas.");
-                ex.printStackTrace();
+            	TelaPopUpErroFuncionario frame = new TelaPopUpErroFuncionario();
+            	frame.setVisible(true);
+                //JOptionPane.showMessageDialog(null, "Formato de data ou hora inválido. Use o formato dd/MM/yyyy para datas e HH:mm para horas.");
+                //ex.printStackTrace();
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(null, "Capacidade deve ser um número válido.");
-                ex.printStackTrace();
+            	TelaPopUpErroFuncionario frame = new TelaPopUpErroFuncionario();
+            	frame.setVisible(true);
+                //JOptionPane.showMessageDialog(null, "Capacidade deve ser um número válido.");
+                //ex.printStackTrace();
             }
         }
     }

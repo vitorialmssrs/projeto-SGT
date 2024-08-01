@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 import controle.EspacosDAO;
 import controle.ManutencaoEspacosDAO;
@@ -79,16 +80,19 @@ public class TelaManutencaoEspacosConserto extends JFrame {
 		
 		textDiaA = new JTextField();
 		textDiaA.setBounds(967, 358, 100, 22);
+		textDiaA.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(textDiaA);
 		textDiaA.setColumns(10);
 		
 		textHoraA = new JTextField();
 		textHoraA.setBounds(538, 466, 100, 22);
+		textHoraA.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(textHoraA);
 		textHoraA.setColumns(10);
 		
 		textHoraF = new JTextField();
 		textHoraF.setBounds(967, 466, 100, 22);
+		textHoraF.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(textHoraF);
 		textHoraF.setColumns(10);
 		
@@ -145,7 +149,7 @@ public class TelaManutencaoEspacosConserto extends JFrame {
 				manuEspaco.setHoraFinal(timeF);
 		
 				manuEspaco.setDescricao(txtDescricao.getText());
-				//manuEspaco.setTipoManutencao(comboBoxEspaco.getSelectedItem());
+				manuEspaco.setTipoManutencao(((EspacoHotel) comboBoxEspaco.getSelectedItem()).getNome());
 				
 				ManutencaoEspacosDAO manutDAO = ManutencaoEspacosDAO.getInstancia();
 				int espacoId = manutDAO.inserirManutencao(manuEspaco);

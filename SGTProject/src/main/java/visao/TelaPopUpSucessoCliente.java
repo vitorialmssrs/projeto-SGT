@@ -71,15 +71,15 @@ public class TelaPopUpSucessoCliente extends JFrame {
 		JLabel lblTexto1 = new JLabel("Caro cliente sua ação");
 		lblTexto1.setBackground(new Color(1, 50, 1));
 		lblTexto1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTexto1.setFont(new Font("Tahoma", Font.BOLD, 23));
+		lblTexto1.setFont(new Font("Tahoma", Font.BOLD, 30));
 		lblTexto1.setBounds(82, 161, 334, 31);
 		contentPane.add(lblTexto1);
 		
 		JLabel lblTexto2 = new JLabel("ocorreu com sucesso!");
 		lblTexto2.setForeground(new Color(1, 50, 1));
-		lblTexto2.setFont(new Font("Tahoma", Font.BOLD, 23));
+		lblTexto2.setFont(new Font("Tahoma", Font.BOLD, 30));
 		lblTexto2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTexto2.setBounds(92, 202, 324, 28);
+		lblTexto2.setBounds(80, 202, 348, 28);
 		contentPane.add(lblTexto2);
 	}
 }

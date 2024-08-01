@@ -40,13 +40,13 @@ public TelaPopUpErroCliente() {
 	setIconImage(Toolkit.getDefaultToolkit().getImage(TelaPopUpErroCliente.class.getResource("/imagens/LogoPI.png")));
 	setBackground(new Color(255, 255, 245));
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	setBounds(100, 100, 691, 390);
+	setBounds(100, 100, 500, 330);
 	contentPane = new JPanel();
 	contentPane.setBackground(new Color(255, 255, 245));
 	contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 	setContentPane(contentPane);
-	contentPane.setLayout(new MigLayout("", "[136px][][][][][][][]", "[139px][][][][][][][]"));
+	contentPane.setLayout(new MigLayout("", "[136px][][][][][][][]", "[139px][][][][][][][][]"));
 	
 	JLabel lblLogo = new JLabel("");
 	lblLogo.setIcon(new ImageIcon(TelaPopUpConfimacaoCheckin.class.getResource("/imagens/LogoPI.png")));
