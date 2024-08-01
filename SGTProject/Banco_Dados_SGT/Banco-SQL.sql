@@ -124,6 +124,7 @@ CREATE TABLE IF NOT EXISTS limpeza_espaco (
   horario_inicio TIME NOT NULL,
   horario_final TIME NOT NULL,
   dia DATE NOT NULL,
+  descricaomanutencao varchar(100) NOT NULL,
   espacos_hotel_id_espacos INT(7) NOT NULL,
   funcionarios_id_funcionario INT(7) NOT NULL,
   PRIMARY KEY (id_limpeza),
