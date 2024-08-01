@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -12,18 +11,21 @@ import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.text.MaskFormatter;
 
+import controle.HospedagemDAO;
 import controle.HospedeDAO;
+import modelo.Hospedagem;
 import modelo.Hospede;
 
 import javax.swing.ImageIcon;
 import java.awt.Toolkit;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 
 public class TelaAlterarCadastroCliente extends JFrame {
@@ -37,6 +39,7 @@ public class TelaAlterarCadastroCliente extends JFrame {
 	private JTextField txtSenha;
 	private JTextField textTelefone;
 	private JTextField textEmail;
+	Hospede hosp;
 
 	/**
 	 * Launch the application.
@@ -59,7 +62,7 @@ public class TelaAlterarCadastroCliente extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaAlterarCadastroCliente(Hospede hosp) {
+	public TelaAlterarCadastroCliente() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(TelaAlterarCadastroCliente.class.getResource("/imagens/LogoPI.png")));
 		setBackground(new Color(255, 255, 245));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -100,15 +103,32 @@ public class TelaAlterarCadastroCliente extends JFrame {
 		lblSobrenomeCliente.setBounds(973, 328, 165, 22);
 		contentPane.add(lblSobrenomeCliente);
 		
+		try {
+			MaskFormatter formttDT = new MaskFormatter("##/##/####");
+			formttDT.setPlaceholder("");
+			textDataNascimento = new JFormattedTextField(formttDT);
+			textDataNascimento.setEnabled(false);
+			textDataNascimento.setToolTipText("Coloque o CPF Aqui");
+			textDataNascimento.setForeground(new Color(1, 50, 1));
+			textDataNascimento.setBackground(new Color(252, 251, 244));
+			textDataNascimento.setBounds(357, 426, 404, 29);
+			//textDataNascimento.setText(String.valueOf(hosp.getDatanascimento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))));
+			textDataNascimento.setBorder(new LineBorder(new Color(1, 50, 1)));
+			textDataNascimento.setColumns(10);
+			contentPane.add(textDataNascimento);
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+			}
 
-		textDataNascimento = new JTextField();
+		/*textDataNascimento = new JTextField();
 		textDataNascimento.setForeground(new Color(1, 50, 1));
 		textDataNascimento.setBackground(new Color(252, 251, 244));
 		textDataNascimento.setBounds(357, 426, 404, 29);
 		textDataNascimento.setText(String.valueOf(hosp.getDatanascimento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))));
 		contentPane.add(textDataNascimento);
 		textDataNascimento.setBorder(new LineBorder(new Color(1, 50, 1)));
-		textDataNascimento.setColumns(10);
+		textDataNascimento.setColumns(10);*/
 
 		
 		JLabel lblTelefone = new JLabel("* Telefone:");
@@ -122,6 +142,45 @@ public class TelaAlterarCadastroCliente extends JFrame {
 			MaskFormatter formttNIden = new MaskFormatter("###.###.###-##");
 			formttNIden.setPlaceholder("");
 			textCPF = new JFormattedTextField(formttNIden);
+			textCPF.addFocusListener(new FocusAdapter() {
+				@Override
+				public void focusLost(FocusEvent e) {
+					HospedeDAO dao = HospedeDAO.getInstancia();  
+					String numIdentificacao =  textCPF.getText().trim();
+			        numIdentificacao = numIdentificacao.replace(".", "");
+			        numIdentificacao = numIdentificacao.replace("-", "");
+					Long numId = Long.parseLong(numIdentificacao);  
+					
+					//HospedeDAO.setConnection(Conexao.conectar());
+					
+					hosp = dao.buscarHospedePorCpf(numId);
+					if(hosp!=null) {  
+						textPrimeiroNome.setEnabled(true);
+						textDataNascimento.setEnabled(true);
+						textTelefone.setEnabled(true);
+						textSobrenome.setEnabled(true);
+						textEmail.setEnabled(true);
+						txtSenha.setEnabled(true);
+						
+						textPrimeiroNome.setText(hosp.getPrimeironome());  
+						textSobrenome.setText(hosp.getSobrenome());  
+						
+					 /* 
+					//conversão para data de nascimento de LocalDate para String  
+					String dataNasc = String.valueOf(hosp.getDatanascimento());  
+					TextDataNascimento.setText(dataNasc);
+					
+					HospedagemDAO hospedagemDao = new HospedagemDAO();
+					Hospedagem hospedagem = hospedagemDao.buscarHospedagemPorHospede(hosp);
+					
+					
+					textDataEntrada_1.setText(hospedagem.getDataEntrada().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+					textHoraEntrada_1.setText(hospedagem.getHoraEntrada().toString());
+					textNumQuarto.setText(hospedagem.getNumQuarto().toString());*/
+					}
+					
+				}
+			});
 			textCPF.setToolTipText("Coloque o CPF Aqui");
 			textCPF.setForeground(new Color(1, 50, 1));
 			textCPF.setBackground(new Color(252, 251, 244));
@@ -145,10 +204,11 @@ public class TelaAlterarCadastroCliente extends JFrame {
 		textCPF.setColumns(10);*/
 		
 		textPrimeiroNome = new JTextField();
+		textPrimeiroNome.setEnabled(false);
 		textPrimeiroNome.setForeground(new Color(1, 50, 1));
 		textPrimeiroNome.setBackground(new Color(252, 251, 244));
 		textPrimeiroNome.setBounds(357, 354, 404, 29);
-		textPrimeiroNome.setText(hosp.getPrimeironome());
+		//textPrimeiroNome.setText(hosp.getPrimeironome());
 		contentPane.add(textPrimeiroNome);
 		textPrimeiroNome.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textPrimeiroNome.setColumns(10);
@@ -170,11 +230,12 @@ public class TelaAlterarCadastroCliente extends JFrame {
 		
 		
 		textSobrenome = new JTextField();
+		textSobrenome.setEnabled(false);
 		textSobrenome.setForeground(new Color(1, 50, 1));
 		textSobrenome.setBackground(new Color(252, 251, 244));
 		textSobrenome.setBounds(973, 354, 404, 29);
 		textSobrenome.setBorder(new LineBorder(new Color(1, 50, 1)));
-		textPrimeiroNome.setText(hosp.getSobrenome());
+		//textPrimeiroNome.setText(hosp.getSobrenome());
 		contentPane.add(textSobrenome);
 		textSobrenome.setColumns(10);
 		
@@ -217,7 +278,7 @@ public class TelaAlterarCadastroCliente extends JFrame {
 				String email = textEmail.getText();
 				String senha = txtSenha.getText();
 				
-				MaskFormatter mascaranumidentificacao = null;
+				/*MaskFormatter mascaranumidentificacao = null;
 				try {
 					mascaranumidentificacao = new MaskFormatter("###.###.###-##");
 				} catch (ParseException e1) {
@@ -245,7 +306,7 @@ public class TelaAlterarCadastroCliente extends JFrame {
 					}
 					textTelefone = new JFormattedTextField(mascaraTelefone);
 						contentPane.add(textTelefone);
-						textTelefone.setColumns(15);
+						textTelefone.setColumns(15);*/
 						
 				numidentificacao = numidentificacao.replace(".", "");
 				numidentificacao = numidentificacao.replace("-", "");
@@ -312,6 +373,7 @@ public class TelaAlterarCadastroCliente extends JFrame {
 		contentPane.add(lblInformacaoSenha);
 		
 		txtSenha = new JTextField();
+		txtSenha.setEnabled(false);
 		txtSenha.setForeground(new Color(1, 50, 1));
 		txtSenha.setBackground(new Color(252, 251, 244));
 		txtSenha.setBounds(973, 509, 404, 29);
@@ -332,15 +394,16 @@ public class TelaAlterarCadastroCliente extends JFrame {
 		contentPane.add(lblDataNascimento_1);
 		
 		try {
-			MaskFormatter formttDT = new MaskFormatter("##/##/####");
+			MaskFormatter formttDT = new MaskFormatter("(##) #####-####");
 			formttDT.setPlaceholder("");
 			textTelefone = new JFormattedTextField(formttDT);
+			textTelefone.setEnabled(false);
 			textTelefone.setToolTipText("Coloque o CPF Aqui");
 			textTelefone.setForeground(new Color(1, 50, 1));
 			textTelefone.setBackground(new Color(252, 251, 244));
 			textTelefone.setBounds(357, 498, 404, 29);
 			textTelefone.setBorder(new LineBorder(new Color(1, 50, 1)));
-			textTelefone.setText(String.valueOf(hosp.getTelefone().formatted(DateTimeFormatter.ofPattern("dd/MM/yyyy"))));
+			//textTelefone.setText(String.valueOf(hosp.getTelefone()));
 			textTelefone.setColumns(10);
 			contentPane.add(textTelefone);
 			
@@ -364,14 +427,17 @@ public class TelaAlterarCadastroCliente extends JFrame {
 		contentPane.add(lblEmail);
 		
 		textEmail = new JTextField();
+		textEmail.setEnabled(false);
 		textEmail.setForeground(new Color(1, 50, 1));
 		textEmail.setColumns(10);
 		textEmail.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textEmail.setBackground(new Color(252, 251, 244));
 		textEmail.setBounds(973, 426, 404, 29);
-		textPrimeiroNome.setText(hosp.getEmail());
+		//textPrimeiroNome.setText(hosp.getEmail());
 		contentPane.add(textEmail);
 		
 	}
+
+	
 
 }
