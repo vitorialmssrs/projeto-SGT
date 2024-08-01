@@ -3,6 +3,7 @@ package visao;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 import controle.EspacosDAO;
 import controle.LimpezaDAO;
@@ -78,16 +79,19 @@ public class TelaLimpezaEspacos extends JFrame {
 		
 		textDiaA = new JTextField();
 		textDiaA.setBounds(905, 306, 100, 22);
+		textDiaA.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(textDiaA);
 		textDiaA.setColumns(10);
 		
 		textHoraA = new JTextField();
 		textHoraA.setBounds(510, 430, 100, 22);
+		textHoraA.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(textHoraA);
 		textHoraA.setColumns(10);
 		
 		textHoraF = new JTextField();
 		textHoraF.setBounds(905, 430, 100, 22);
+		textHoraF.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(textHoraF);
 		textHoraF.setColumns(10);
 		
@@ -111,6 +115,7 @@ public class TelaLimpezaEspacos extends JFrame {
 		
 		txtTipoLimp = new JTextField();
 		txtTipoLimp.setBounds(758, 557, 326, 83);
+		txtTipoLimp.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(txtTipoLimp);
 		txtTipoLimp.setColumns(10);
 		

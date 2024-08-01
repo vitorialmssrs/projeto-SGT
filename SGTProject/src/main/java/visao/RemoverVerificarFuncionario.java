@@ -12,7 +12,7 @@ import controle.FuncionarioDAO;
 
 import java.awt.Color;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+
 
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -86,6 +86,7 @@ public class RemoverVerificarFuncionario extends JFrame {
 		
 		textNome = new JTextField();
 		textNome.setBounds(708, 364, 662, 26);
+		textNome.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(textNome);
 		textNome.setColumns(10);
 		
@@ -117,12 +118,14 @@ public class RemoverVerificarFuncionario extends JFrame {
 		textSenha = new JTextField();
 		textSenha.setColumns(10);
 		textSenha.setBounds(622, 561, 303, 26);
+		textSenha.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(textSenha);
 		
 		try {
 			MaskFormatter formttDEntrada = new MaskFormatter("###.###.###-##");
 			formttDEntrada.setPlaceholder("");
 			textIdentificacao = new JFormattedTextField(formttDEntrada);
+			textIdentificacao.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 			textIdentificacao.setToolTipText("Coloque o CPF Aqui");
 			textIdentificacao.setBounds(761, 406, 303, 26);
 			textIdentificacao.setColumns(10);
@@ -139,6 +142,7 @@ public class RemoverVerificarFuncionario extends JFrame {
 		textLogin = new JTextField();
 		textLogin.setColumns(10);
 		textLogin.setBounds(622, 518, 303, 26);
+		textLogin.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(textLogin);
 		
 		JButton btnNewButton = new JButton("EXCLUIR");

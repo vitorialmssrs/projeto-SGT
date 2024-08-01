@@ -96,6 +96,7 @@ public class LoginFuncionario extends JFrame {
 		textCPF.setBackground(new Color(252, 251, 244));
 		textCPF.setForeground(new Color(1, 50, 1));
 		textCPF.setBounds(70, 294, 633, 32);
+		textCPF.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		panelCinza.add(textCPF);
 		textCPF.setColumns(10);
 
@@ -114,6 +115,7 @@ public class LoginFuncionario extends JFrame {
 		textSenha.setForeground(new Color(1, 50, 1));
 		textSenha.setBackground(new Color(252, 251, 244));
 		textSenha.setBounds(70, 422, 633, 32);
+		textSenha.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		panelCinza.add(textSenha);
 		textSenha.setColumns(10);
 

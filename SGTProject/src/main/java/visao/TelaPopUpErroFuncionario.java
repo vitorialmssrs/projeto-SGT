@@ -40,7 +40,7 @@ public TelaPopUpErroFuncionario() {
 	setIconImage(Toolkit.getDefaultToolkit().getImage(TelaPopUpErroFuncionario.class.getResource("/imagens/LogoPI.png")));
 	setBackground(new Color(255, 255, 245));
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	setBounds(100, 100, 691, 390);
+	setBounds(100, 100, 500, 330);
 	contentPane = new JPanel();
 	contentPane.setBackground(new Color(255, 255, 245));
 	contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -52,12 +52,12 @@ public TelaPopUpErroFuncionario() {
 	lblLogo.setIcon(new ImageIcon(TelaPopUpConfimacaoCheckin.class.getResource("/imagens/LogoPI.png")));
 	contentPane.add(lblLogo, "cell 1 0,alignx center,aligny top");
 	
-	JLabel lblNewLabel_1 = new JLabel("Caro funcionário ocorreu um erro");
+	JLabel lblNewLabel_1 = new JLabel("Caro funcionário ocorreu um ");
 	lblNewLabel_1.setForeground(new Color(1, 50, 1));
 	lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 30));
 	contentPane.add(lblNewLabel_1, "cell 1 2,alignx center");
 	
-	JLabel lblNewLabel_2 = new JLabel("tente novamente");
+	JLabel lblNewLabel_2 = new JLabel("erro tente novamente");
 	lblNewLabel_2.setForeground(new Color(1, 50, 1));
 	lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 30));
 	contentPane.add(lblNewLabel_2, "cell 1 3,alignx center");
