@@ -13,7 +13,14 @@ public class LimpezaEspacos {
 	private LocalDate dia;
 	private LocalTime horaInicio;
 	private LocalTime horaFinal;
+	private String descricao;
 
+	public String getDescricao() {
+		return descricao;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 	public EspacoHotel getEspacos() {
 		return espacos;
 	}

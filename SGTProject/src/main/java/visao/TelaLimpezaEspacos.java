@@ -33,7 +33,7 @@ public class TelaLimpezaEspacos extends JFrame {
 	private JTextField textDiaA;
 	private JTextField textHoraA;
 	private JTextField textHoraF;
-	private JTextField txtTipoLimp;
+	private JTextField txtDescricaoLimp;
 
 	/**
 	 * Launch the application.*/
@@ -109,10 +109,10 @@ public class TelaLimpezaEspacos extends JFrame {
 		lblNewLabel_5.setBounds(905, 377, 401, 27);
 		contentPane.add(lblNewLabel_5);
 		
-		txtTipoLimp = new JTextField();
-		txtTipoLimp.setBounds(758, 557, 326, 83);
-		contentPane.add(txtTipoLimp);
-		txtTipoLimp.setColumns(10);
+		txtDescricaoLimp = new JTextField();
+		txtDescricaoLimp.setBounds(758, 557, 326, 83);
+		contentPane.add(txtDescricaoLimp);
+		txtDescricaoLimp.setColumns(10);
 		
 		JLabel lblNewLabel_8 = new JLabel("Escreva o que precisa ser limpado");
 		lblNewLabel_8.setFont(new Font("Tahoma", Font.BOLD, 16));
@@ -132,17 +132,7 @@ public class TelaLimpezaEspacos extends JFrame {
 				
 				limpEspaco.setFuncionario(funcionario);
 				
-		/*		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-				LocalDate date = LocalDate.parse( textDiaA.getText(), formatter);
-				limpEspaco.setDiaManutencao(date);
-				
-				DateTimeFormatter formatterH = DateTimeFormatter.ofPattern("HH:mm");
-				LocalTime timeI = LocalTime.parse(textHoraA.getText(), formatterH);
-				limpEspaco.setHoraInicio(timeI);
-				
-				DateTimeFormatter formatterI = DateTimeFormatter.ofPattern("HH:mm");
-				LocalTime timeF = LocalTime.parse(textHoraF.getText(), formatterH);
-				limpEspaco.setHoraFinal(timeF);*/
+	
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 				try {
 				    LocalDate date = LocalDate.parse(textDiaA.getText(), formatter);
@@ -169,7 +159,9 @@ public class TelaLimpezaEspacos extends JFrame {
 				  
 				}
 		
-				limpEspaco.setTipoManutencao(txtTipoLimp.getText());
+				limpEspaco.setTipoManutencao(txtDescricaoLimp.getText());
+				limpEspaco.setDescricao(txtDescricaoLimp.getText());
+				limpEspaco.setTipoManutencao(((EspacoHotel) comboBoxEspaco.getSelectedItem()).getNome());
 				
 				LimpezaDAO limpDAO = LimpezaDAO.getInstancia();
 				int espacoId = limpDAO.inserirLimpeza(limpEspaco);
