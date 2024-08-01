@@ -124,7 +124,7 @@ CREATE TABLE IF NOT EXISTS limpeza_espaco (
   horario_inicio TIME NOT NULL,
   horario_final TIME NOT NULL,
   dia DATE NOT NULL,
-  descricaomanutencao varchar(100) NOT NULL,
+  descricaoLimpeza varchar(100) NOT NULL,
   espacos_hotel_id_espacos INT(7) NOT NULL,
   funcionarios_id_funcionario INT(7) NOT NULL,
   PRIMARY KEY (id_limpeza),
@@ -2438,10 +2438,11 @@ values
 -- Limpeza_espaco
 insert into
   limpeza_espaco (
-    dia,
+     dia,
     horario_inicio,
     horario_final,
     tipo_limpeza,
+    descricaoLimpeza,
     espacos_hotel_id_espacos,
     funcionarios_id_funcionario
   )
@@ -2451,16 +2452,18 @@ values
     '06:00',
     '06:30',
     'limpeza piscina',
+    'limpar agua',
     1,
     21
   );
 
 insert into
   limpeza_espaco (
-    dia,
+     dia,
     horario_inicio,
     horario_final,
     tipo_limpeza,
+    descricaoLimpeza,
     espacos_hotel_id_espacos,
     funcionarios_id_funcionario
   )
@@ -2470,6 +2473,7 @@ values
     '07:30',
     '08:00',
     'limpeza salão de festa',
+    'lavar louça e varrer chão',
     2,
     22
   );
@@ -2480,6 +2484,7 @@ insert into
     horario_inicio,
     horario_final,
     tipo_limpeza,
+    descricaoLimpeza,
     espacos_hotel_id_espacos,
     funcionarios_id_funcionario
   )
@@ -2489,16 +2494,18 @@ values
     '16:00',
     '16:30',
     'limpeza quadra de futebol',
+    'limpar banheiro',
     3,
     23
   );
 
 insert into
   limpeza_espaco (
-    dia,
+     dia,
     horario_inicio,
     horario_final,
     tipo_limpeza,
+    descricaoLimpeza,
     espacos_hotel_id_espacos,
     funcionarios_id_funcionario
   )
@@ -2508,16 +2515,18 @@ values
     '07:30',
     '08:00',
     'limpeza brinquedoteca',
+      'limpar banheiro',
     4,
     24
   );
 
 insert into
   limpeza_espaco (
-    dia,
+     dia,
     horario_inicio,
     horario_final,
     tipo_limpeza,
+    descricaoLimpeza,
     espacos_hotel_id_espacos,
     funcionarios_id_funcionario
   )
@@ -2527,16 +2536,18 @@ values
     '06:00',
     '06:30',
     'limpeza quiosque',
+      'limpar banheiro e mesa',
     5,
     25
   );
 
 insert into
   limpeza_espaco (
-    dia,
+     dia,
     horario_inicio,
     horario_final,
     tipo_limpeza,
+    descricaoLimpeza,
     espacos_hotel_id_espacos,
     funcionarios_id_funcionario
   )
@@ -2546,16 +2557,18 @@ values
     '17:30',
     '18:00',
     'limpeza quadra de volei',
+      'limpar banheiro',
     6,
     26
   );
 
 insert into
   limpeza_espaco (
-    dia,
+   dia,
     horario_inicio,
     horario_final,
     tipo_limpeza,
+    descricaoLimpeza,
     espacos_hotel_id_espacos,
     funcionarios_id_funcionario
   )
@@ -2565,16 +2578,18 @@ values
     '06:00',
     '06:30',
     'limpeza sala de jogos',
+      'limpar banheiro e tirar o pó',
     7,
     27
   );
 
 insert into
   limpeza_espaco (
-    dia,
+     dia,
     horario_inicio,
     horario_final,
     tipo_limpeza,
+    descricaoLimpeza,
     espacos_hotel_id_espacos,
     funcionarios_id_funcionario
   )
@@ -2584,16 +2599,18 @@ values
     '07:30',
     '08:00',
     'limpeza quiosque',
+      'limpar banheiro e churrasqueira',
     8,
     28
   );
 
 insert into
   limpeza_espaco (
-    dia,
+     dia,
     horario_inicio,
     horario_final,
     tipo_limpeza,
+    descricaoLimpeza,
     espacos_hotel_id_espacos,
     funcionarios_id_funcionario
   )
@@ -2603,6 +2620,7 @@ values
     '16:00',
     '16:30',
     'limpeza academia',
+      'limpar banheiro e aparelhos',
     9,
     29
   );
@@ -2613,6 +2631,7 @@ insert into
     horario_inicio,
     horario_final,
     tipo_limpeza,
+    descricaoLimpeza,
     espacos_hotel_id_espacos,
     funcionarios_id_funcionario
   )
@@ -2622,16 +2641,18 @@ values
     '07:30',
     '08:00',
     'limpeza piscina',
+      'limpar chuveiro',
     10,
     30
   );
 
 insert into
   limpeza_espaco (
-    dia,
+	dia,
     horario_inicio,
     horario_final,
     tipo_limpeza,
+    descricaoLimpeza,
     espacos_hotel_id_espacos,
     funcionarios_id_funcionario
   )
@@ -2641,6 +2662,7 @@ values
     '06:00',
     '06:30',
     'limpeza brinquedoteca',
+      'tirar o pó',
     11,
     31
   );
@@ -2651,6 +2673,7 @@ insert into
     horario_inicio,
     horario_final,
     tipo_limpeza,
+    descricaoLimpeza,
     espacos_hotel_id_espacos,
     funcionarios_id_funcionario
   )
@@ -2660,16 +2683,18 @@ values
     '17:30',
     '16:00',
     'limpeza salão de festa',
+      'limpar mesas e lavar a louça',
     12,
     32
   );
 
 insert into
   limpeza_espaco (
-    dia,
+   dia,
     horario_inicio,
     horario_final,
     tipo_limpeza,
+    descricaoLimpeza,
     espacos_hotel_id_espacos,
     funcionarios_id_funcionario
   )
@@ -2679,16 +2704,18 @@ values
     '06:00',
     '06:30',
     'limpeza brinquedoteca',
+      'limpar banheiro e brinquedos',
     13,
     33
   );
 
 insert into
   limpeza_espaco (
-    dia,
+   dia,
     horario_inicio,
     horario_final,
     tipo_limpeza,
+    descricaoLimpeza,
     espacos_hotel_id_espacos,
     funcionarios_id_funcionario
   )
@@ -2698,16 +2725,18 @@ values
     '07:30',
     '08:00',
     'limpeza quiosque',
+      'limpar mesas e lavar o chão',
     14,
     34
   );
 
 insert into
   limpeza_espaco (
-    dia,
+     dia,
     horario_inicio,
     horario_final,
     tipo_limpeza,
+    descricaoLimpeza,
     espacos_hotel_id_espacos,
     funcionarios_id_funcionario
   )
@@ -2717,6 +2746,7 @@ values
     '06:00',
     '06:30',
     'limpeza quadra de volei',
+	'limpar mesas e lavar o chão',
     15,
     35
   );
@@ -2727,6 +2757,7 @@ insert into
     horario_inicio,
     horario_final,
     tipo_limpeza,
+    descricaoLimpeza,
     espacos_hotel_id_espacos,
     funcionarios_id_funcionario
   )
@@ -2736,6 +2767,7 @@ values
     '07:30',
     '08:00',
     'limpeza SPA',
+	'limpar mesas e lavar o chão',    
     16,
     36
   );
@@ -2746,6 +2778,7 @@ insert into
     horario_inicio,
     horario_final,
     tipo_limpeza,
+    descricaoLimpeza,
     espacos_hotel_id_espacos,
     funcionarios_id_funcionario
   )
@@ -2754,17 +2787,19 @@ values
     '2023-06-09',
     '16:00',
     '16:30',
-    'limpeza quiosque',
+    'limpeza quiosque',      
+    'limpar mesas e lavar o chão',
     17,
     37
   );
 
 insert into
   limpeza_espaco (
-    dia,
+     dia,
     horario_inicio,
     horario_final,
     tipo_limpeza,
+    descricaoLimpeza,
     espacos_hotel_id_espacos,
     funcionarios_id_funcionario
   )
@@ -2774,16 +2809,18 @@ values
     '07:30',
     '08:00',
     'limpeza piscina',
+	'lavar as boias',
     18,
     38
   );
 
 insert into
   limpeza_espaco (
-    dia,
+     dia,
     horario_inicio,
     horario_final,
     tipo_limpeza,
+    descricaoLimpeza,
     espacos_hotel_id_espacos,
     funcionarios_id_funcionario
   )
@@ -2793,6 +2830,7 @@ values
     '06:00',
     '06:30',
     'limpeza academia',
+    'limpar recepção e lavar o chão',
     19,
     39
   );
@@ -2803,6 +2841,7 @@ insert into
     horario_inicio,
     horario_final,
     tipo_limpeza,
+    descricaoLimpeza,
     espacos_hotel_id_espacos,
     funcionarios_id_funcionario
   )
@@ -2812,6 +2851,7 @@ values
     '07:30',
     '08:00',
     'limpeza brinquedoteca',
+    'lavar o chão',
     20,
     40
   );
