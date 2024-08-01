@@ -145,7 +145,7 @@ public class TelaManutencaoEspacosConserto extends JFrame {
 				manuEspaco.setHoraFinal(timeF);
 		
 				manuEspaco.setDescricao(txtDescricao.getText());
-				//manuEspaco.setTipoManutencao(comboBoxEspaco.getSelectedItem());
+				manuEspaco.setTipoManutencao(((EspacoHotel) comboBoxEspaco.getSelectedItem()).getNome());
 				
 				ManutencaoEspacosDAO manutDAO = ManutencaoEspacosDAO.getInstancia();
 				int espacoId = manutDAO.inserirManutencao(manuEspaco);
