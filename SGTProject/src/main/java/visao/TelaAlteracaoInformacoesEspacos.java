@@ -205,6 +205,8 @@ public class TelaAlteracaoInformacoesEspacos extends JFrame {
 
                 // Cria um novo obj com os novos valores atualizados
                 AlteracaoInformacoesEspacos altEspaco = new AlteracaoInformacoesEspacos();
+                EspacoHotel espaco = (EspacoHotel) comboBoxEspaco.getSelectedItem();
+                altEspaco.setId_espacos(espaco.getId());
                 altEspaco.setFuncionario(funcionario);  // Ajuste conforme necessário
                 altEspaco.setDiaAbertura(diaAberturaI);
                 altEspaco.setDiaFechamento(diafechamentoI);
