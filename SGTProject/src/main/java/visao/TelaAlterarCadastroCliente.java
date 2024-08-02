@@ -162,12 +162,10 @@ public class TelaAlterarCadastroCliente extends JFrame {
 						txtSenha.setEnabled(true);
 						
 						textPrimeiroNome.setText(hosp.getPrimeironome());  
-						textSobrenome.setText(hosp.getSobrenome());  
-						
-					//.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
-					//conversão para data de nascimento de LocalDate para String  
-					String dataNasc = String.valueOf(hosp.getDatanascimento());  
-					textDataNascimento.setText(dataNasc);
+						textSobrenome.setText(hosp.getSobrenome());
+						textTelefone.setText(hosp.getTelefone());  
+						textDataNascimento.setText(hosp.getDatanascimento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+						textEmail.setText(hosp.getEmail());  
 					
 					}
 					
@@ -325,16 +323,19 @@ public class TelaAlterarCadastroCliente extends JFrame {
 					//frame.setVisible(true);
 							}
 				else {
+					
+					dispose();
+					
 					TelaPopUpSucessoCliente frame = new TelaPopUpSucessoCliente();
 					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
+					
+					FuncionalidadeCliente frame2 = new FuncionalidadeCliente();
+					frame2.setExtendedState(JFrame.MAXIMIZED_BOTH);
+					frame2.setVisible(true);
 							}
 				
-				dispose();
 				
-				FuncionalidadeCliente frame2 = new FuncionalidadeCliente();
-				frame2.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				frame2.setVisible(true);
 			}
 		});
 		btnCadastro_Cliente.setBackground(new Color(66, 142, 66));
