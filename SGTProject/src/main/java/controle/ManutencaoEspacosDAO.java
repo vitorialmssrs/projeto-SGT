@@ -124,14 +124,15 @@ import modelo.ManutencaoEspacos;
 
 			// Pega os valores de cada coluna do registro
 			Integer idManutencaoEspacos = rs.getInt("idManutencaoEspacos");
-			String TipoManutencao = rs.getString("tipoManutencao");
-			LocalDate DiaManutencao = rs.getDate("DiaManutencao").toLocalDate();
+			String TipoManutencao = rs.getString("tipo_manutencao");
+			LocalDate DiaManutencao = rs.getDate("dia").toLocalDate();
 			LocalTime horaIncio = rs.getTime("hora_inicio").toLocalTime();
 			LocalTime horaFinal = rs.getTime("hora_final").toLocalTime();
-			Integer funcionario = rs.getInt("funcionario_id_funcionario");
+			//Integer funcionario = rs.getInt("funcionario_id_funcionario");
 			String descricao = rs.getString("descricaomanutencao");
 					
 			// Seta os valores no obj java
+			end.setIdmanutencao(idManutencaoEspacos);
 			end.setTipoManutencao(TipoManutencao);
 			end.setDiaManutencao(DiaManutencao);
 			end.setHoraInicio(horaIncio);

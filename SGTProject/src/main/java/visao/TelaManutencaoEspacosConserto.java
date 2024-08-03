@@ -142,7 +142,7 @@ public class TelaManutencaoEspacosConserto extends JFrame {
 				LocalTime timeI = LocalTime.parse(textHoraA.getText(), formatterH);
 				manuEspaco.setHoraInicio(timeI);
 				
-				DateTimeFormatter formatterI = DateTimeFormatter.ofPattern("HH:mm");
+				//DateTimeFormatter formatterI = DateTimeFormatter.ofPattern("HH:mm");
 				LocalTime timeF = LocalTime.parse(textHoraF.getText(), formatterH);
 				manuEspaco.setHoraFinal(timeF);
 		

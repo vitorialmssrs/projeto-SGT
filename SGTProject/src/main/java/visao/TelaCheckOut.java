@@ -134,7 +134,7 @@ public class TelaCheckOut extends JFrame {
 			public void focusLost(FocusEvent e) {
 				HospedeDAO dao = HospedeDAO.getInstancia();  
 				String numIdentificacao =  textNumeroIdentificacao.getText().trim();
-		        String s =((JTextField) e.getSource()).getText();   
+		        //String s =((JTextField) e.getSource()).getText();   
 		        numIdentificacao = numIdentificacao.replace(".", "");
 		        numIdentificacao = numIdentificacao.replace("-", "");
 				Long numId = Long.parseLong(numIdentificacao);  

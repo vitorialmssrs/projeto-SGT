@@ -80,7 +80,7 @@ public class HospedeDAO implements IHospedeDao{
 				// Cria o objeto
 				Hospede end = new Hospede();
 
-				int idcliente = rs.getInt("id_cliente");
+				Integer idcliente = rs.getInt("id_cliente");
 				String PrimeiroNome = rs.getString("primeiro_nome");
 				String Sobrenome = rs.getString("sobrenome");
 				LocalDate Datanascimento = rs.getDate("data_de_nascimento").toLocalDate();
