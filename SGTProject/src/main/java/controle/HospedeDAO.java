@@ -114,12 +114,8 @@ public class HospedeDAO implements IHospedeDao{
 
 	public int atualizarHospedeporIdentificacao(Hospede atualizarHospede) {
 
-		/*
-		 * primeiro_nome, sobrenome, num_identificacao, data_de_nascimento, telefone,
-		 * email
-		 */
 		// verificar se o WHERE vai finalizar com n°identificação ou id_cliente
-		String SQL = "UPDATE clientes SET primeiro_nome = ?, sobrenome = ?, num_identificacao = ?, data_de_nascimento = ?, telefone = ?, email = ?, senha = ? WHERE id_cliente = ?";
+		String SQL = "UPDATE clientes SET primeiro_nome = ?, sobrenome = ?, num_identificacao = ?, data_de_nascimento = ?, telefone = ?, email = ? WHERE senha = ? AND id_cliente = ?";
 
 		// Abre conexão e cria a "ponte de conexão" com o MySQL
 		Conexao con = Conexao.getInstancia();
@@ -133,11 +129,11 @@ public class HospedeDAO implements IHospedeDao{
 
 			ps.setString(1, atualizarHospede.getPrimeironome());
 			ps.setString(2, atualizarHospede.getSobrenome());
-			ps.setDate(3, Date.valueOf(atualizarHospede.getDatanascimento()));
-			ps.setString(4, atualizarHospede.getTelefone());
-			ps.setString(5, atualizarHospede.getEmail());
-			ps.setInt(6, atualizarHospede.getSenha());
-			ps.setLong(7, atualizarHospede.getNumidentificacao());
+			ps.setLong(3, atualizarHospede.getNumidentificacao());
+			ps.setDate(4, Date.valueOf(atualizarHospede.getDatanascimento()));
+			ps.setString(5, atualizarHospede.getTelefone());
+			ps.setString(6, atualizarHospede.getEmail());
+			ps.setInt(7, atualizarHospede.getSenha());
 			ps.setInt(8, atualizarHospede.getIdcliente());
 			
 			rowsAffected = ps.executeUpdate();
