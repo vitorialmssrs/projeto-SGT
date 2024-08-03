@@ -17,9 +17,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.text.MaskFormatter;
 
-import controle.HospedagemDAO;
 import controle.HospedeDAO;
-import modelo.Hospedagem;
 import modelo.Hospede;
 
 import javax.swing.ImageIcon;
@@ -267,42 +265,13 @@ public class TelaAlterarCadastroCliente extends JFrame {
 				String telefone = textTelefone.getText();
 				String email = textEmail.getText();
 				String senha = txtSenha.getText();
-				
-				/*MaskFormatter mascaranumidentificacao = null;
-				try {
-					mascaranumidentificacao = new MaskFormatter("###.###.###-##");
-				} catch (ParseException e1) {
-  					e1.printStackTrace();
-					}
-						textCPF = new JFormattedTextField(mascaranumidentificacao);
-						contentPane.add(textCPF);
-						textCPF.setColumns(15);
-				
-				MaskFormatter mascaraDataNascimento = null;
-				try {
-					mascaraDataNascimento = new MaskFormatter("##/##/####");
-				} catch (ParseException e1) {
-  					e1.printStackTrace();
-					}
-				textDataNascimento = new JFormattedTextField(mascaraDataNascimento);
-						contentPane.add(textDataNascimento);
-						textDataNascimento.setColumns(10);
-			
-				MaskFormatter mascaraTelefone = null;
-				try {
-					mascaraTelefone = new MaskFormatter("(##) #####-####");
-				} catch (ParseException e1) {
-  					e1.printStackTrace();
-					}
-					textTelefone = new JFormattedTextField(mascaraTelefone);
-						contentPane.add(textTelefone);
-						textTelefone.setColumns(15);*/
 						
 				numidentificacao = numidentificacao.replace(".", "");
 				numidentificacao = numidentificacao.replace("-", "");
-				int senhai = Integer.parseInt(senha);
 				
+				int senhai = Integer.parseInt(senha);
 				LocalDate dn = LocalDate.parse(dataNascimento, formatter);
+				
 				
 				atualizarHospede.setPrimeironome(nome);
 				atualizarHospede.setSobrenome(sobrenome);
@@ -311,6 +280,7 @@ public class TelaAlterarCadastroCliente extends JFrame {
 				atualizarHospede.setTelefone(telefone);
 				atualizarHospede.setEmail(email);
 				atualizarHospede.setSenha(senhai);
+				atualizarHospede.setIdcliente(hosp.getIdcliente());
 				
 				int confirm = hospededao.atualizarHospedeporIdentificacao(atualizarHospede);
 				
@@ -357,7 +327,7 @@ public class TelaAlterarCadastroCliente extends JFrame {
 		btnSair_tela_cad_Cliente.setForeground(new Color(252, 251, 244));
 		btnSair_tela_cad_Cliente.setBackground(new Color(1, 50, 1));
 		btnSair_tela_cad_Cliente.setFont(new Font("Tahoma", Font.BOLD, 17));
-		btnSair_tela_cad_Cliente.setBounds(1435, 802, 176, 39);
+		btnSair_tela_cad_Cliente.setBounds(1430, 727, 176, 39);
 		contentPane.add(btnSair_tela_cad_Cliente);
 		
 		JLabel lblInformacaoSenha = new JLabel("Apenas números, com no Máximo 8 caracteres  e Sem caracteres especiais.");
