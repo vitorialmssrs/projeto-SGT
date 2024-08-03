@@ -11,8 +11,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-import modelo.EspacoHotel;
-import modelo.Funcionario;
 import modelo.ManutencaoEspacos;
 
 	public class ManutencaoEspacosDAO implements IManutencaoEspacoDAO{
