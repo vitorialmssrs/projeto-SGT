@@ -372,11 +372,13 @@ public class AlterarFuncionario extends JFrame {
 			        // Exibir mensagem de sucesso ou erro
 			        if (sucesso) {
 			        	TelaPopUpSucessoFuncionario frame = new TelaPopUpSucessoFuncionario();
+			        	frame.setLocationRelativeTo(null);
 			        	frame.setVisible(true); //JOptionPane.showMessageDialog(null, "Funcionário atualizado com sucesso!");
 			        	
 			            
 			        } else {
 			        	TelaPopUpErroFuncionario frame = new TelaPopUpErroFuncionario();
+			        	frame.setLocationRelativeTo(null);
 			        	frame.setVisible(true);// JOptionPane.showMessageDialog(null, "Ocorreu um erro ao atualizar o funcionário.");
 			           
 			        }

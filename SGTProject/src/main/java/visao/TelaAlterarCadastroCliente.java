@@ -202,7 +202,7 @@ public class TelaAlterarCadastroCliente extends JFrame {
 		textPrimeiroNome.setColumns(10);
 		
 				
-		JLabel lblSenhaCad = new JLabel("* Crie uma senha para o cadastro: ");
+		JLabel lblSenhaCad = new JLabel("* Coloque a senha usada no cadastro: ");
 		lblSenhaCad.setBackground(new Color(1, 50, 1));
 		lblSenhaCad.setForeground(new Color(1, 50, 1));
 		lblSenhaCad.setFont(new Font("Tahoma", Font.BOLD, 19));
@@ -296,13 +296,13 @@ public class TelaAlterarCadastroCliente extends JFrame {
 					
 					dispose();
 					
-					TelaPopUpSucessoCliente frame = new TelaPopUpSucessoCliente();
-					frame.setLocationRelativeTo(null);
-					frame.setVisible(true);
-					
 					FuncionalidadeCliente frame2 = new FuncionalidadeCliente();
 					frame2.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					frame2.setVisible(true);
+					
+					TelaPopUpSucessoCliente frame = new TelaPopUpSucessoCliente();
+					frame.setLocationRelativeTo(null);
+					frame.setVisible(true);
 							}
 				
 				
@@ -330,7 +330,7 @@ public class TelaAlterarCadastroCliente extends JFrame {
 		btnSair_tela_cad_Cliente.setBounds(1430, 727, 176, 39);
 		contentPane.add(btnSair_tela_cad_Cliente);
 		
-		JLabel lblInformacaoSenha = new JLabel("Apenas números, com no Máximo 8 caracteres  e Sem caracteres especiais.");
+		JLabel lblInformacaoSenha = new JLabel("Apenas números, com no Máximo 8 caracteres e Sem caracteres especiais.");
 		lblInformacaoSenha.setForeground(new Color(255, 0, 0));
 		lblInformacaoSenha.setBounds(973, 489, 518, 13);
 		contentPane.add(lblInformacaoSenha);

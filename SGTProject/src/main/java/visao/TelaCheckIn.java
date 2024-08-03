@@ -342,14 +342,29 @@ dataNascimento.isEmpty()||dataEntrada.isEmpty()||horaEntrada.isEmpty()||telefone
 		lblInformacaoSenha.setBounds(1114, 486, 458, 13);
 		contentPane.add(lblInformacaoSenha);
 		
-		txtSenha = new JTextField();
+		try {
+			MaskFormatter formttDNasc = new MaskFormatter("########");
+			formttDNasc.setPlaceholder("");
+			txtSenha = new JFormattedTextField(formttDNasc);
+			txtSenha.setToolTipText("Crie sua Senha Aqui");
+			txtSenha.setForeground(new Color(1, 50, 1));
+			txtSenha.setBackground(new Color(252, 251, 244));
+			txtSenha.setBounds(1114, 506, 404, 29);
+			txtSenha.setBorder(new LineBorder(new Color(30, 32, 37), 1));
+			txtSenha.setColumns(10);
+			contentPane.add(txtSenha);
+		} catch(Exception e) {
+			e.printStackTrace();
+			}
+		
+		/*txtSenha = new JTextField();
 		txtSenha.setToolTipText("Crie sua Senha Aqui");
 		txtSenha.setForeground(new Color(1, 50, 1));
 		txtSenha.setBackground(new Color(252, 251, 244));
 		txtSenha.setBounds(1114, 506, 404, 29);
 		contentPane.add(txtSenha);
 		txtSenha.setBorder(new LineBorder(new Color(1, 50, 1)));
-		txtSenha.setColumns(10);
+		txtSenha.setColumns(10);*/
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(TelaCheckIn.class.getResource("/imagens/LogoPI.png")));
