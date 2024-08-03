@@ -109,8 +109,8 @@ CREATE TABLE IF NOT EXISTS manutencao_espaco (
   funcionarios_id_funcionario INT(7) NOT NULL,
   descricaomanutencao varchar(100) NOT NULL,
   PRIMARY KEY (id_manutencao_espaco),
-  CONSTRAINT fk_limpeza_espacos_espacos_hotel1 FOREIGN KEY (espacos_hotel_id_espacos) REFERENCES espacos_hotel (id_espacos),
-  CONSTRAINT fk_manutencao_espaco_funcionarios1 FOREIGN KEY (funcionarios_id_funcionario) REFERENCES funcionarios (id_funcionario)
+  CONSTRAINT fk_manutencao_espaco_espacos_hotel1 FOREIGN KEY (espacos_hotel_id_espacos) REFERENCES espacos_hotel (id_espacos),
+  CONSTRAINT fk_manutencao_espaco_funcionarios1 FOREIGN KEY (funcionarios_id_funcionario) REFERENCES funcionarios (id_funcionario) ON DELETE CASCADE
 );
 
 -- -----------------------------------------------------
@@ -129,7 +129,7 @@ CREATE TABLE IF NOT EXISTS limpeza_espaco (
   funcionarios_id_funcionario INT(7) NOT NULL,
   PRIMARY KEY (id_limpeza),
   CONSTRAINT fk_limpeza_espaco_espacos_hotel1 FOREIGN KEY (espacos_hotel_id_espacos) REFERENCES espacos_hotel (id_espacos),
-  CONSTRAINT fk_limpeza_espaco_funcionarios1 FOREIGN KEY (funcionarios_id_funcionario) REFERENCES funcionarios (id_funcionario)
+  CONSTRAINT fk_limpeza_espaco_funcionarios1 FOREIGN KEY (funcionarios_id_funcionario) REFERENCES funcionarios (id_funcionario) ON DELETE CASCADE
 );
 
 -- -----------------------

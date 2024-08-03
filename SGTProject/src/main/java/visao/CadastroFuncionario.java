@@ -299,9 +299,11 @@ public void actionPerformed(ActionEvent e) {
 	int valida = dao.inserirFuncionario(f);
 	if (valida == 1) {
 		TelaPopUpCadastroFuncionario frame = new TelaPopUpCadastroFuncionario();
+		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 	} else {
 		TelaPopUpErroFuncionario frame = new TelaPopUpErroFuncionario();
+		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);	/*exibir uma mensagem de erro ao cadastrar*/
 	}
 		

@@ -12,8 +12,15 @@ public class ManutencaoEspacos {
 	private LocalTime horaInicio;
 	private LocalTime horaFinal;
 	private String descricao;
+	private Integer idmanutencao;
 	
 	
+	public Integer getIdmanutencao() {
+		return idmanutencao;
+	}
+	public void setIdmanutencao(Integer idmanutencao) {
+		this.idmanutencao = idmanutencao;
+	}
 	public LocalTime getHoraInicio() {
 		return horaInicio;
 	}
