@@ -1,11 +1,9 @@
  package visao;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -22,19 +20,16 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.text.MaskFormatter;
 
-import controle.Conexao;
 import controle.HospedagemDAO;
 import controle.HospedeDAO;
 import modelo.Hospedagem;
 import modelo.Hospede;
 
-import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
 import java.awt.Toolkit;
 import net.miginfocom.swing.MigLayout;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
-import java.sql.Time;
 
 
 public class TelaCheckOut extends JFrame {

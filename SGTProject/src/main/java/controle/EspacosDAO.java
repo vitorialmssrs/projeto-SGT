@@ -4,14 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
 
 import modelo.EspacoHotel;
-import visao.TelaEspacosHotelCliente;
+
 
 //criar o DAO para segunda e fazer a conexão com banco de dados 
 	/**
@@ -92,7 +92,7 @@ import visao.TelaEspacosHotelCliente;
 					end.setCapacidade(capacidade);
 					end.setDataAbertura(dia_semana_abertura);
 					end.setDataFechamento(dia_semana_fechamento);
-					end.setHorarioAbertura(horario_fechamento);
+					end.setHorarioAbertura(horario_abertura);
 					end.setHorarioFechamento(horario_fechamento);
 				
 
