@@ -206,7 +206,7 @@ public class TelaAlterarCadastroCliente extends JFrame {
 		lblSenhaCad.setBackground(new Color(1, 50, 1));
 		lblSenhaCad.setForeground(new Color(1, 50, 1));
 		lblSenhaCad.setFont(new Font("Tahoma", Font.BOLD, 19));
-		lblSenhaCad.setBounds(973, 466, 340, 21);
+		lblSenhaCad.setBounds(973, 466, 425, 21);
 		contentPane.add(lblSenhaCad);
 		
 		JLabel lblCPFCliente = new JLabel("* CPF / CRNM / RNN / RNE:");
