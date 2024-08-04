@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.text.MaskFormatter;
 
 import controle.EspacosDAO;
 import controle.LimpezaDAO;
@@ -25,7 +26,9 @@ import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 
 public class TelaLimpezaEspacos extends JFrame {
 
@@ -34,7 +37,7 @@ public class TelaLimpezaEspacos extends JFrame {
 	private JTextField textDiaA;
 	private JTextField textHoraA;
 	private JTextField textHoraF;
-	private JTextField txtDescricaoLimp;
+	private JTextField txtTipoLimp;
 
 	/**
 	 * Launch the application.*/
@@ -46,14 +49,14 @@ public class TelaLimpezaEspacos extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1920, 1080);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(247, 246, 243));
+		contentPane.setBackground(new Color(255, 255, 245));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblTitulo = new JLabel("Preencha as informações para solicitar limpeza");
-		lblTitulo.setBounds(362, 65, 1312, 49);
+		lblTitulo.setBounds(404, 134, 1312, 49);
 		lblTitulo.setForeground(new Color(1, 50, 1));
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 40));
 		contentPane.add(lblTitulo);
@@ -61,7 +64,7 @@ public class TelaLimpezaEspacos extends JFrame {
 		JLabel lblNewLabel = new JLabel("Selecione o espaço!");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblNewLabel.setForeground(new Color(1, 50, 1));
-		lblNewLabel.setBounds(510, 257, 189, 27);
+		lblNewLabel.setBounds(415, 258, 189, 27);
 		contentPane.add(lblNewLabel);
 		
 		JComboBox<EspacoHotel> comboBoxEspaco = new JComboBox<EspacoHotel>();
@@ -74,26 +77,66 @@ public class TelaLimpezaEspacos extends JFrame {
 		
 				
 	
-		comboBoxEspaco.setBounds(510, 301, 189, 32);
+		comboBoxEspaco.setBounds(415, 302, 189, 32);
 		contentPane.add(comboBoxEspaco);
 		
+		try {
+			MaskFormatter formttDEntrada = new MaskFormatter("##/##/####");
+			formttDEntrada.setPlaceholder("");
+			textDiaA = new JFormattedTextField(formttDEntrada);
+			textDiaA.setToolTipText("Coloque o Dia de Limpeza Aqui");
+			textDiaA.setBounds(905, 306, 100, 22);
+			textDiaA.setBorder(new LineBorder(new Color(30, 32, 37), 1));
+			textDiaA.setColumns(10);
+			contentPane.add(textDiaA);
+		} catch(Exception e) {
+			e.printStackTrace();
+			}
+		/*
 		textDiaA = new JTextField();
 		textDiaA.setBounds(905, 306, 100, 22);
 		textDiaA.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(textDiaA);
-		textDiaA.setColumns(10);
+		textDiaA.setColumns(10);*/
 		
+		
+		 try {
+			MaskFormatter formttDEntrada = new MaskFormatter("##:##");
+			formttDEntrada.setPlaceholder("");
+			textHoraA = new JFormattedTextField(formttDEntrada);
+			textHoraA.setToolTipText("Coloque a Hora de Inicio Aqui");
+			textHoraA.setBounds(415, 431, 100, 22);
+			textHoraA.setBorder(new LineBorder(new Color(30, 32, 37), 1));
+			textHoraA.setColumns(10);
+			contentPane.add(textHoraA);
+		} catch(Exception e) {
+			e.printStackTrace();
+			}
+		/*	
 		textHoraA = new JTextField();
-		textHoraA.setBounds(510, 430, 100, 22);
+		textHoraA.setBounds(415, 431, 100, 22);
 		textHoraA.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(textHoraA);
-		textHoraA.setColumns(10);
+		textHoraA.setColumns(10);*/
 		
+		 try {
+				MaskFormatter formttDEntrada = new MaskFormatter("##:##");
+				formttDEntrada.setPlaceholder("");
+				textHoraF = new JFormattedTextField(formttDEntrada);
+				textHoraF.setToolTipText("Coloque a Hora de Fim Aqui");
+				textHoraF.setBounds(905, 430, 100, 22);
+				textHoraF.setBorder(new LineBorder(new Color(30, 32, 37), 1));
+				textHoraF.setColumns(10);
+				contentPane.add(textHoraF);
+			} catch(Exception e) {
+				e.printStackTrace();
+				}
+		 /*
 		textHoraF = new JTextField();
 		textHoraF.setBounds(905, 430, 100, 22);
 		textHoraF.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(textHoraF);
-		textHoraF.setColumns(10);
+		textHoraF.setColumns(10);*/
 		
 		JLabel lblNewLabel_2 = new JLabel("Dia para reservar o espaço para a limpeza\r\n");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 16));
@@ -104,7 +147,7 @@ public class TelaLimpezaEspacos extends JFrame {
 		JLabel lblNewLabel_4 = new JLabel("Hora Inicio da Limpeza");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblNewLabel_4.setForeground(new Color(1, 50, 1));
-		lblNewLabel_4.setBounds(510, 377, 203, 27);
+		lblNewLabel_4.setBounds(415, 378, 203, 27);
 		contentPane.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("Hora prevista para o termino da limpeza");
@@ -114,7 +157,7 @@ public class TelaLimpezaEspacos extends JFrame {
 		contentPane.add(lblNewLabel_5);
 		
 		txtTipoLimp = new JTextField();
-		txtTipoLimp.setBounds(758, 557, 326, 83);
+		txtTipoLimp.setBounds(415, 558, 326, 83);
 		txtTipoLimp.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(txtTipoLimp);
 		txtTipoLimp.setColumns(10);
@@ -122,7 +165,7 @@ public class TelaLimpezaEspacos extends JFrame {
 		JLabel lblNewLabel_8 = new JLabel("Escreva o que precisa ser limpado");
 		lblNewLabel_8.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblNewLabel_8.setForeground(new Color(1, 50, 1));
-		lblNewLabel_8.setBounds(758, 504, 346, 27);
+		lblNewLabel_8.setBounds(414, 504, 346, 27);
 		contentPane.add(lblNewLabel_8);
 		
 		JButton btnCadastrar = new JButton("Cadastrar limpeza");
@@ -164,17 +207,23 @@ public class TelaLimpezaEspacos extends JFrame {
 				  
 				}
 		
-				limpEspaco.setTipoManutencao(txtDescricaoLimp.getText());
-				limpEspaco.setDescricao(txtDescricaoLimp.getText());
+				limpEspaco.setTipoManutencao(txtTipoLimp.getText());
+				limpEspaco.setDescricao(txtTipoLimp.getText());
 				limpEspaco.setTipoManutencao(((EspacoHotel) comboBoxEspaco.getSelectedItem()).getNome());
 				
 				LimpezaDAO limpDAO = LimpezaDAO.getInstancia();
 				int espacoId = limpDAO.inserirLimpeza(limpEspaco);
 				
 				if(espacoId >0 ) {
-					JOptionPane.showMessageDialog(null, "cadastro realizado com sucesso");
+					TelaPopUpSucessoFuncionario frame = new TelaPopUpSucessoFuncionario();
+					//TelaPopUpCadastroFuncionario frame = new TelaPopUpCadastroFuncionario();
+					frame.setLocationRelativeTo(null);
+					frame.setVisible(true);
 				}else {
-					JOptionPane.showMessageDialog(null, "erro");
+					TelaPopUpErroFuncionario frame = new TelaPopUpErroFuncionario();
+					//TelaPopUpCadastroFuncionario frame = new TelaPopUpCadastroFuncionario();
+					frame.setLocationRelativeTo(null);
+					frame.setVisible(true);
 				}
 				
 				
@@ -199,5 +248,12 @@ public class TelaLimpezaEspacos extends JFrame {
 		btnSair_1.setBackground(new Color(1, 50, 1));
 		btnSair_1.setBounds(1139, 709, 176, 39);
 		contentPane.add(btnSair_1);
+		
+		JLabel lblLogo = new JLabel("");
+		lblLogo.setIcon(new ImageIcon(TelaLimpezaEspacos.class.getResource("/imagens/Châteu_Imperial-removebg-preview 4.png")));
+		lblLogo.setBounds(185, 65, 220, 210);
+		contentPane.add(lblLogo);
+		
+		
 	}
 	}

@@ -29,6 +29,7 @@ public class TelaPopUpErroFuncionarioCamposNaoPreenchidos extends JFrame {
 			public void run() {
 				try {
 					TelaPopUpErroFuncionarioCamposNaoPreenchidos frame = new TelaPopUpErroFuncionarioCamposNaoPreenchidos();
+					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,7 +41,7 @@ public TelaPopUpErroFuncionarioCamposNaoPreenchidos() {
 	setIconImage(Toolkit.getDefaultToolkit().getImage(TelaPopUpErroFuncionarioCamposNaoPreenchidos.class.getResource("/imagens/LogoPI.png")));
 	setBackground(new Color(255, 255, 245));
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	setBounds(100, 100, 691, 390);
+	setBounds(100, 100, 500, 330);
 	contentPane = new JPanel();
 	contentPane.setBackground(new Color(255, 255, 245));
 	contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
