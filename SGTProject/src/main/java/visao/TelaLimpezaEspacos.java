@@ -37,7 +37,6 @@ public class TelaLimpezaEspacos extends JFrame {
 	private JTextField textDiaA;
 	private JTextField textHoraA;
 	private JTextField textHoraF;
-	private JTextField txtDescricaoLimp;
 	private JTextField txtTipoLimp;
 
 	/**
@@ -85,7 +84,7 @@ public class TelaLimpezaEspacos extends JFrame {
 			MaskFormatter formttDEntrada = new MaskFormatter("##/##/####");
 			formttDEntrada.setPlaceholder("");
 			textDiaA = new JFormattedTextField(formttDEntrada);
-			textDiaA.setToolTipText("Coloque o Dia de Conserto Aqui");
+			textDiaA.setToolTipText("Coloque o Dia de Limpeza Aqui");
 			textDiaA.setBounds(905, 306, 100, 22);
 			textDiaA.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 			textDiaA.setColumns(10);
@@ -123,12 +122,12 @@ public class TelaLimpezaEspacos extends JFrame {
 		 try {
 				MaskFormatter formttDEntrada = new MaskFormatter("##:##");
 				formttDEntrada.setPlaceholder("");
-				textHoraA = new JFormattedTextField(formttDEntrada);
-				textHoraA.setToolTipText("Coloque a Hora de Inicio Aqui");
+				textHoraF = new JFormattedTextField(formttDEntrada);
+				textHoraF.setToolTipText("Coloque a Hora de Fim Aqui");
 				textHoraF.setBounds(905, 430, 100, 22);
-				textHoraA.setBorder(new LineBorder(new Color(30, 32, 37), 1));
-				textHoraA.setColumns(10);
-				contentPane.add(textHoraA);
+				textHoraF.setBorder(new LineBorder(new Color(30, 32, 37), 1));
+				textHoraF.setColumns(10);
+				contentPane.add(textHoraF);
 			} catch(Exception e) {
 				e.printStackTrace();
 				}
@@ -208,17 +207,23 @@ public class TelaLimpezaEspacos extends JFrame {
 				  
 				}
 		
-				limpEspaco.setTipoManutencao(txtDescricaoLimp.getText());
-				limpEspaco.setDescricao(txtDescricaoLimp.getText());
+				limpEspaco.setTipoManutencao(txtTipoLimp.getText());
+				limpEspaco.setDescricao(txtTipoLimp.getText());
 				limpEspaco.setTipoManutencao(((EspacoHotel) comboBoxEspaco.getSelectedItem()).getNome());
 				
 				LimpezaDAO limpDAO = LimpezaDAO.getInstancia();
 				int espacoId = limpDAO.inserirLimpeza(limpEspaco);
 				
 				if(espacoId >0 ) {
-					JOptionPane.showMessageDialog(null, "cadastro realizado com sucesso");
+					TelaPopUpSucessoFuncionario frame = new TelaPopUpSucessoFuncionario();
+					//TelaPopUpCadastroFuncionario frame = new TelaPopUpCadastroFuncionario();
+					frame.setLocationRelativeTo(null);
+					frame.setVisible(true);
 				}else {
-					JOptionPane.showMessageDialog(null, "erro");
+					TelaPopUpErroFuncionario frame = new TelaPopUpErroFuncionario();
+					//TelaPopUpCadastroFuncionario frame = new TelaPopUpCadastroFuncionario();
+					frame.setLocationRelativeTo(null);
+					frame.setVisible(true);
 				}
 				
 				
