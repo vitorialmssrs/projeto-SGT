@@ -158,9 +158,11 @@ public class RemoverVerificarFuncionario extends JFrame {
 					
 					if (retorno == 0) {
 						TelaPopUpErroFuncionario frame = new TelaPopUpErroFuncionario();
+						frame.setLocationRelativeTo(null);
 			        	frame.setVisible(true);//JOptionPane.showMessageDialog(null, "Erro ao EXCLUIR!"); 
 						
 					} else {TelaPopUpSucessoFuncionario frame = new TelaPopUpSucessoFuncionario();
+					frame.setLocationRelativeTo(null);
 		        	frame.setVisible(true);//JOptionPane.showMessageDialog(null, "EXCLUIDO com sucesso!");
 		        	
 					

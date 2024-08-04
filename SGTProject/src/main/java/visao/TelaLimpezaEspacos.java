@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 
 public class TelaLimpezaEspacos extends JFrame {
 
@@ -46,14 +47,14 @@ public class TelaLimpezaEspacos extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1920, 1080);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(247, 246, 243));
+		contentPane.setBackground(new Color(255, 255, 245));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblTitulo = new JLabel("Preencha as informações para solicitar limpeza");
-		lblTitulo.setBounds(362, 65, 1312, 49);
+		lblTitulo.setBounds(404, 134, 1312, 49);
 		lblTitulo.setForeground(new Color(1, 50, 1));
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 40));
 		contentPane.add(lblTitulo);
@@ -61,7 +62,7 @@ public class TelaLimpezaEspacos extends JFrame {
 		JLabel lblNewLabel = new JLabel("Selecione o espaço!");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblNewLabel.setForeground(new Color(1, 50, 1));
-		lblNewLabel.setBounds(510, 257, 189, 27);
+		lblNewLabel.setBounds(415, 258, 189, 27);
 		contentPane.add(lblNewLabel);
 		
 		JComboBox<EspacoHotel> comboBoxEspaco = new JComboBox<EspacoHotel>();
@@ -74,7 +75,7 @@ public class TelaLimpezaEspacos extends JFrame {
 		
 				
 	
-		comboBoxEspaco.setBounds(510, 301, 189, 32);
+		comboBoxEspaco.setBounds(415, 302, 189, 32);
 		contentPane.add(comboBoxEspaco);
 		
 		textDiaA = new JTextField();
@@ -84,7 +85,7 @@ public class TelaLimpezaEspacos extends JFrame {
 		textDiaA.setColumns(10);
 		
 		textHoraA = new JTextField();
-		textHoraA.setBounds(510, 430, 100, 22);
+		textHoraA.setBounds(415, 431, 100, 22);
 		textHoraA.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(textHoraA);
 		textHoraA.setColumns(10);
@@ -104,7 +105,7 @@ public class TelaLimpezaEspacos extends JFrame {
 		JLabel lblNewLabel_4 = new JLabel("Hora Inicio da Limpeza");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblNewLabel_4.setForeground(new Color(1, 50, 1));
-		lblNewLabel_4.setBounds(510, 377, 203, 27);
+		lblNewLabel_4.setBounds(415, 378, 203, 27);
 		contentPane.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("Hora prevista para o termino da limpeza");
@@ -122,7 +123,7 @@ public class TelaLimpezaEspacos extends JFrame {
 		JLabel lblNewLabel_8 = new JLabel("Escreva o que precisa ser limpado");
 		lblNewLabel_8.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblNewLabel_8.setForeground(new Color(1, 50, 1));
-		lblNewLabel_8.setBounds(758, 504, 346, 27);
+		lblNewLabel_8.setBounds(414, 504, 346, 27);
 		contentPane.add(lblNewLabel_8);
 		
 		JButton btnCadastrar = new JButton("Cadastrar limpeza");
@@ -199,5 +200,10 @@ public class TelaLimpezaEspacos extends JFrame {
 		btnSair_1.setBackground(new Color(1, 50, 1));
 		btnSair_1.setBounds(1139, 709, 176, 39);
 		contentPane.add(btnSair_1);
+		
+		JLabel lblLogo = new JLabel("");
+		lblLogo.setIcon(new ImageIcon(TelaLimpezaEspacos.class.getResource("/imagens/Châteu_Imperial-removebg-preview 4.png")));
+		lblLogo.setBounds(185, 65, 220, 210);
+		contentPane.add(lblLogo);
 	}
 	}

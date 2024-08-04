@@ -267,6 +267,7 @@ public void actionPerformed(ActionEvent e) {
 			|| login.isEmpty() || senha.isEmpty()){
 		
 		TelaPopUpErroFuncionarioCamposNaoPreenchidos frame = new TelaPopUpErroFuncionarioCamposNaoPreenchidos();
+		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);	/*exibir uma mensagem de erro preencha todos os campos*/
 	 }else {
 		
