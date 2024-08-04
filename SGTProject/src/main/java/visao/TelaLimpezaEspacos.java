@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.text.MaskFormatter;
 
 import controle.EspacosDAO;
 import controle.LimpezaDAO;
@@ -25,6 +26,7 @@ import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 
@@ -36,6 +38,7 @@ public class TelaLimpezaEspacos extends JFrame {
 	private JTextField textHoraA;
 	private JTextField textHoraF;
 	private JTextField txtDescricaoLimp;
+	private JTextField txtTipoLimp;
 
 	/**
 	 * Launch the application.*/
@@ -78,23 +81,63 @@ public class TelaLimpezaEspacos extends JFrame {
 		comboBoxEspaco.setBounds(415, 302, 189, 32);
 		contentPane.add(comboBoxEspaco);
 		
+		try {
+			MaskFormatter formttDEntrada = new MaskFormatter("##/##/####");
+			formttDEntrada.setPlaceholder("");
+			textDiaA = new JFormattedTextField(formttDEntrada);
+			textDiaA.setToolTipText("Coloque o Dia de Conserto Aqui");
+			textDiaA.setBounds(905, 306, 100, 22);
+			textDiaA.setBorder(new LineBorder(new Color(30, 32, 37), 1));
+			textDiaA.setColumns(10);
+			contentPane.add(textDiaA);
+		} catch(Exception e) {
+			e.printStackTrace();
+			}
+		/*
 		textDiaA = new JTextField();
 		textDiaA.setBounds(905, 306, 100, 22);
 		textDiaA.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(textDiaA);
-		textDiaA.setColumns(10);
+		textDiaA.setColumns(10);*/
 		
+		
+		 try {
+			MaskFormatter formttDEntrada = new MaskFormatter("##:##");
+			formttDEntrada.setPlaceholder("");
+			textHoraA = new JFormattedTextField(formttDEntrada);
+			textHoraA.setToolTipText("Coloque a Hora de Inicio Aqui");
+			textHoraA.setBounds(415, 431, 100, 22);
+			textHoraA.setBorder(new LineBorder(new Color(30, 32, 37), 1));
+			textHoraA.setColumns(10);
+			contentPane.add(textHoraA);
+		} catch(Exception e) {
+			e.printStackTrace();
+			}
+		/*	
 		textHoraA = new JTextField();
 		textHoraA.setBounds(415, 431, 100, 22);
 		textHoraA.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(textHoraA);
-		textHoraA.setColumns(10);
+		textHoraA.setColumns(10);*/
 		
+		 try {
+				MaskFormatter formttDEntrada = new MaskFormatter("##:##");
+				formttDEntrada.setPlaceholder("");
+				textHoraA = new JFormattedTextField(formttDEntrada);
+				textHoraA.setToolTipText("Coloque a Hora de Inicio Aqui");
+				textHoraF.setBounds(905, 430, 100, 22);
+				textHoraA.setBorder(new LineBorder(new Color(30, 32, 37), 1));
+				textHoraA.setColumns(10);
+				contentPane.add(textHoraA);
+			} catch(Exception e) {
+				e.printStackTrace();
+				}
+		 /*
 		textHoraF = new JTextField();
 		textHoraF.setBounds(905, 430, 100, 22);
 		textHoraF.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(textHoraF);
-		textHoraF.setColumns(10);
+		textHoraF.setColumns(10);*/
 		
 		JLabel lblNewLabel_2 = new JLabel("Dia para reservar o espaço para a limpeza\r\n");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 16));
@@ -115,7 +158,7 @@ public class TelaLimpezaEspacos extends JFrame {
 		contentPane.add(lblNewLabel_5);
 		
 		txtTipoLimp = new JTextField();
-		txtTipoLimp.setBounds(758, 557, 326, 83);
+		txtTipoLimp.setBounds(415, 558, 326, 83);
 		txtTipoLimp.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(txtTipoLimp);
 		txtTipoLimp.setColumns(10);
@@ -205,5 +248,7 @@ public class TelaLimpezaEspacos extends JFrame {
 		lblLogo.setIcon(new ImageIcon(TelaLimpezaEspacos.class.getResource("/imagens/Châteu_Imperial-removebg-preview 4.png")));
 		lblLogo.setBounds(185, 65, 220, 210);
 		contentPane.add(lblLogo);
+		
+		
 	}
 	}

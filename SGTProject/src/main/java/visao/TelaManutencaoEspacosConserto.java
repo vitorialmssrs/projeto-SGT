@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.text.MaskFormatter;
 
 import controle.EspacosDAO;
 import controle.ManutencaoEspacosDAO;
@@ -13,7 +14,6 @@ import modelo.ManutencaoEspacos;
 
 import java.awt.Color;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import javax.swing.JButton;
@@ -24,6 +24,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 
@@ -77,24 +78,61 @@ public class TelaManutencaoEspacosConserto extends JFrame {
 	
 		comboBoxEspaco.setBounds(460, 355, 189, 32);
 		contentPane.add(comboBoxEspaco);
+	
 		
-		textDiaA = new JTextField();
+		 try {
+			MaskFormatter formttDEntrada = new MaskFormatter("##/##/####");
+			formttDEntrada.setPlaceholder("");
+			textDiaA = new JFormattedTextField(formttDEntrada);
+			textDiaA.setToolTipText("Coloque o Dia de Conserto Aqui");
+			textDiaA.setBounds(846, 358, 100, 22);
+			textDiaA.setBorder(new LineBorder(new Color(30, 32, 37), 1));
+			textDiaA.setColumns(10);
+			contentPane.add(textDiaA);
+		} catch(Exception e) {
+			e.printStackTrace();
+			}
+		/*textDiaA = new JTextField();
 		textDiaA.setBounds(846, 358, 100, 22);
 		textDiaA.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(textDiaA);
-		textDiaA.setColumns(10);
+		textDiaA.setColumns(10);*/
 		
-		textHoraA = new JTextField();
+		try {
+			MaskFormatter formttDEntrada = new MaskFormatter("##:##");
+			formttDEntrada.setPlaceholder("");
+			textHoraA = new JFormattedTextField(formttDEntrada);
+			textHoraA.setToolTipText("Coloque a Hora de Inicio Aqui");
+			textHoraA.setBounds(460, 468, 100, 22);
+			textHoraA.setBorder(new LineBorder(new Color(30, 32, 37), 1));
+			textHoraA.setColumns(10);
+			contentPane.add(textHoraA);
+		} catch(Exception e) {
+			e.printStackTrace();
+			}
+		/*textHoraA = new JTextField();
 		textHoraA.setBounds(460, 468, 100, 22);
 		textHoraA.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(textHoraA);
-		textHoraA.setColumns(10);
+		textHoraA.setColumns(10);*/
 		
-		textHoraF = new JTextField();
+		try {
+			MaskFormatter formttDEntrada = new MaskFormatter("##:##");
+			formttDEntrada.setPlaceholder("");
+			textHoraF = new JFormattedTextField(formttDEntrada);
+			textHoraF.setToolTipText("Coloque a Hora de Fim Aqui");
+			textHoraF.setBounds(846, 466, 100, 22);
+			textHoraF.setBorder(new LineBorder(new Color(30, 32, 37), 1));
+			textHoraF.setColumns(10);
+			contentPane.add(textHoraF);
+		} catch(Exception e) {
+			e.printStackTrace();
+			}
+		/*textHoraF = new JTextField();
 		textHoraF.setBounds(846, 466, 100, 22);
 		textHoraF.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(textHoraF);
-		textHoraF.setColumns(10);
+		textHoraF.setColumns(10);*/
 		
 		JLabel lblNewLabel_2 = new JLabel("Dia para reservar o espaço para o conserto");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 16));
