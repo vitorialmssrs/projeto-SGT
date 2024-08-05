@@ -158,6 +158,7 @@ public class LoginFuncionario extends JFrame {
 
 				if (login.isEmpty() || senha.isEmpty()) {
 					TelaErroLogin telaErroLogin = new TelaErroLogin();
+					telaErroLogin.setUndecorated(true);
 					telaErroLogin.setLocationRelativeTo(null);
 					telaErroLogin.setVisible(true);
 				} else {
@@ -166,10 +167,12 @@ public class LoginFuncionario extends JFrame {
 					if (fun == null) {
 						TelaErroLogin telaErroLogin = new TelaErroLogin();
 						telaErroLogin.setLocationRelativeTo(null);
+						telaErroLogin.setUndecorated(true);
 						telaErroLogin.setVisible(true);
 					} else {
 						dispose();
 						FuncionalidadeFuncionario funcionalidadefuncionario = new FuncionalidadeFuncionario(fun);
+						funcionalidadefuncionario.setUndecorated(true);
 						funcionalidadefuncionario.setExtendedState(JFrame.MAXIMIZED_BOTH);
 						funcionalidadefuncionario.setVisible(true);
 						funcionalidadefuncionario.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
