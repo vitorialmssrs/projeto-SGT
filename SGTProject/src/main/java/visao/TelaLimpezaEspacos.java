@@ -241,6 +241,7 @@ public class TelaLimpezaEspacos extends JFrame {
 				dispose();
 		FuncionalidadeFuncionario funcionalidade = new FuncionalidadeFuncionario(funcionario);
 		funcionalidade.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		funcionalidade.setUndecorated(true);
 		funcionalidade.setVisible(true);
 		
 			}

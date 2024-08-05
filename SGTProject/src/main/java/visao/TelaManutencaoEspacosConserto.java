@@ -27,6 +27,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
+import java.awt.Toolkit;
 
 public class TelaManutencaoEspacosConserto extends JFrame {
 
@@ -44,6 +45,7 @@ public class TelaManutencaoEspacosConserto extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaManutencaoEspacosConserto(Funcionario funcionario) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(TelaManutencaoEspacosConserto.class.getResource("/imagens/LogoPI.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1920, 1080);
 		contentPane = new JPanel();
@@ -235,6 +237,7 @@ public class TelaManutencaoEspacosConserto extends JFrame {
 				dispose();
 				FuncionalidadeFuncionario funcionalidade = new FuncionalidadeFuncionario(funcionario);
 				funcionalidade.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				funcionalidade.setUndecorated(true);
 				funcionalidade.setVisible(true);
 				
 			}
