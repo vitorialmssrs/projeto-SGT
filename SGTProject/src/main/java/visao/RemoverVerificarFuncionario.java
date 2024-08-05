@@ -103,7 +103,7 @@ public class RemoverVerificarFuncionario extends JFrame {
 		
 		JLabel lblLoginSenha = new JLabel("Informações de Login/Senha");
 		lblLoginSenha.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblLoginSenha.setBounds(561, 464, 250, 26);
+		lblLoginSenha.setBounds(561, 464, 270, 26);
 		contentPane.add(lblLoginSenha);
 		
 		JLabel lblLogin = new JLabel("Login: ");

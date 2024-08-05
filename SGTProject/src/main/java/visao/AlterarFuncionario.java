@@ -276,8 +276,11 @@ public class AlterarFuncionario extends JFrame {
 		JButton btnSair = new JButton("<- | Sair");
 		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//setUndecorated(true);
-				setVisible(false);
+				FuncionalidadeFuncionario frame = new FuncionalidadeFuncionario(funcionarioLogado);
+				frame.setLocationRelativeTo(null);
+				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				frame.setUndecorated(true);
+				frame.setVisible(true);
 			}
 		});
 		btnSair.setForeground(new Color(252, 251, 244));
