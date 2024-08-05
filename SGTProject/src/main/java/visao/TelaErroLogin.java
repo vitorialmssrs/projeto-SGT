@@ -28,6 +28,7 @@ public class TelaErroLogin extends JFrame {
 			public void run() {
 				try {
 					TelaErroLogin frame = new TelaErroLogin();
+					frame.setUndecorated(true);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
