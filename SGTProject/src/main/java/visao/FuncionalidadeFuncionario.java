@@ -109,7 +109,7 @@ public class FuncionalidadeFuncionario extends JFrame {
 		JButton btnPerfil = new JButton("Excluir Perfil");
 		btnPerfil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RemoverVerificarFuncionario remover = new RemoverVerificarFuncionario();
+				RemoverVerificarFuncionario remover = new RemoverVerificarFuncionario(fun);
 				remover.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				remover.setVisible(true);
 				remover.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);	

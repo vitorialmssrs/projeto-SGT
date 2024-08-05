@@ -268,6 +268,7 @@ public void actionPerformed(ActionEvent e) {
 		
 		TelaPopUpErroFuncionarioCamposNaoPreenchidos frame = new TelaPopUpErroFuncionarioCamposNaoPreenchidos();
 		frame.setLocationRelativeTo(null);
+		frame.setUndecorated(true);
 		frame.setVisible(true);	/*exibir uma mensagem de erro preencha todos os campos*/
 	 }else {
 		
@@ -301,10 +302,12 @@ public void actionPerformed(ActionEvent e) {
 	if (valida == 1) {
 		TelaPopUpCadastroFuncionario frame = new TelaPopUpCadastroFuncionario();
 		frame.setLocationRelativeTo(null);
+		frame.setUndecorated(true);
 		frame.setVisible(true);
 	} else {
 		TelaPopUpErroFuncionario frame = new TelaPopUpErroFuncionario();
 		frame.setLocationRelativeTo(null);
+		frame.setUndecorated(true);
 		frame.setVisible(true);	/*exibir uma mensagem de erro ao cadastrar*/
 	}
 		
