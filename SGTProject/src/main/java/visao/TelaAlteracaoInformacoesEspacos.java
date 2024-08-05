@@ -201,6 +201,8 @@ public class TelaAlteracaoInformacoesEspacos extends JFrame {
         // Verifica se tem alguma coisa
         if (diaAbertura.isEmpty() || diafechamento.isEmpty() || horaAB.isEmpty() || horaF.isEmpty() || capacidade.isEmpty()) {
             TelaPopUpErroFuncionarioCamposNaoPreenchidos frame = new TelaPopUpErroFuncionarioCamposNaoPreenchidos();
+            frame.setLocationRelativeTo(null);
+            frame.setUndecorated(true);
             frame.setVisible(true);  // Exibir uma mensagem de erro preencha todos os campos
         } else {
             try {
@@ -227,20 +229,28 @@ public class TelaAlteracaoInformacoesEspacos extends JFrame {
                 boolean sucesso = altDAO.atualizarAlteracao(altEspaco);
                 if (sucesso) {
                 	TelaPopUpSucessoFuncionario frame = new TelaPopUpSucessoFuncionario();
+                	frame.setLocationRelativeTo(null);
+                	frame.setUndecorated(true);
                 	frame.setVisible(true);
                 	//JOptionPane.showMessageDialog(null, "Espaço atualizado com sucesso!");
                 } else {
                 	TelaPopUpErroFuncionario frame = new TelaPopUpErroFuncionario();
+                	frame.setLocationRelativeTo(null);
+                	frame.setUndecorated(true);
                 	frame.setVisible(true);
                 	//JOptionPane.showMessageDialog(null, "Ocorreu um erro ao atualizar o espaço.");
                 }
             } catch (DateTimeParseException ex) {
             	TelaPopUpErroFuncionario frame = new TelaPopUpErroFuncionario();
+            	frame.setLocationRelativeTo(null);
+            	frame.setUndecorated(true);
             	frame.setVisible(true);
                 //JOptionPane.showMessageDialog(null, "Formato de data ou hora inválido. Use o formato dd/MM/yyyy para datas e HH:mm para horas.");
                 //ex.printStackTrace();
             } catch (NumberFormatException ex) {
             	TelaPopUpErroFuncionario frame = new TelaPopUpErroFuncionario();
+            	frame.setLocationRelativeTo(null);
+            	frame.setUndecorated(true);
             	frame.setVisible(true);
                 //JOptionPane.showMessageDialog(null, "Capacidade deve ser um número válido.");
                 //ex.printStackTrace();
@@ -259,6 +269,7 @@ public class TelaAlteracaoInformacoesEspacos extends JFrame {
 		btnSair_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {		
 				FuncionalidadeFuncionario funcionalidade = new FuncionalidadeFuncionario(funcionario);
+				funcionalidade.setUndecorated(true);
 				funcionalidade.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				funcionalidade.setVisible(true);
 			}

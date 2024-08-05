@@ -56,7 +56,7 @@ public class CadastroFuncionario extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public CadastroFuncionario() {
+	public CadastroFuncionario(Funcionario fun) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1920, 1080);
 		contentPane = new JPanel();
@@ -268,6 +268,7 @@ public void actionPerformed(ActionEvent e) {
 		
 		TelaPopUpErroFuncionarioCamposNaoPreenchidos frame = new TelaPopUpErroFuncionarioCamposNaoPreenchidos();
 		frame.setLocationRelativeTo(null);
+		frame.setUndecorated(true);
 		frame.setVisible(true);	/*exibir uma mensagem de erro preencha todos os campos*/
 	 }else {
 		
@@ -301,10 +302,12 @@ public void actionPerformed(ActionEvent e) {
 	if (valida == 1) {
 		TelaPopUpCadastroFuncionario frame = new TelaPopUpCadastroFuncionario();
 		frame.setLocationRelativeTo(null);
+		frame.setUndecorated(true);
 		frame.setVisible(true);
 	} else {
 		TelaPopUpErroFuncionario frame = new TelaPopUpErroFuncionario();
 		frame.setLocationRelativeTo(null);
+		frame.setUndecorated(true);
 		frame.setVisible(true);	/*exibir uma mensagem de erro ao cadastrar*/
 	}
 		
@@ -324,7 +327,11 @@ contentPane.add(btnCadastrar);
 		JButton btnSair = new JButton("<- | Sair");
 		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
+				FuncionalidadeFuncionario frame = new FuncionalidadeFuncionario(fun);
+				frame.setLocationRelativeTo(null);
+				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				frame.setUndecorated(true);
+				frame.setVisible(true);
 			}
 		});
 		btnSair.setForeground(new Color(252, 251, 244));

@@ -43,7 +43,7 @@ public class TelaPopUpCadastroFuncionario extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(TelaPopUpCadastroFuncionario.class.getResource("/imagens/LogoPI.png")));
 		setBackground(new Color(255, 255, 245));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 691, 390);
+		setBounds(100, 100, 500, 330);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 245));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

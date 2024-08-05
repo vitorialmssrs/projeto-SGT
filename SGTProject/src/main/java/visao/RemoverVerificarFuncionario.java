@@ -9,6 +9,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.text.MaskFormatter;
 
 import controle.FuncionarioDAO;
+import modelo.Funcionario;
 
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -35,7 +36,7 @@ public class RemoverVerificarFuncionario extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -46,12 +47,12 @@ public class RemoverVerificarFuncionario extends JFrame {
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the frame.
 	 */
-	public RemoverVerificarFuncionario() {
+	public RemoverVerificarFuncionario(Funcionario fun) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1920, 1080);
 		contentPane = new JPanel();
@@ -102,7 +103,7 @@ public class RemoverVerificarFuncionario extends JFrame {
 		
 		JLabel lblLoginSenha = new JLabel("Informações de Login/Senha");
 		lblLoginSenha.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblLoginSenha.setBounds(561, 464, 250, 26);
+		lblLoginSenha.setBounds(561, 464, 270, 26);
 		contentPane.add(lblLoginSenha);
 		
 		JLabel lblLogin = new JLabel("Login: ");
@@ -158,10 +159,12 @@ public class RemoverVerificarFuncionario extends JFrame {
 					
 					if (retorno == 0) {
 						TelaPopUpErroFuncionario frame = new TelaPopUpErroFuncionario();
+						frame.setUndecorated(true);
 						frame.setLocationRelativeTo(null);
 			        	frame.setVisible(true);//JOptionPane.showMessageDialog(null, "Erro ao EXCLUIR!"); 
 						
 					} else {TelaPopUpSucessoFuncionario frame = new TelaPopUpSucessoFuncionario();
+					frame.setUndecorated(true);
 					frame.setLocationRelativeTo(null);
 		        	frame.setVisible(true);//JOptionPane.showMessageDialog(null, "EXCLUIDO com sucesso!");
 		        	
@@ -183,7 +186,13 @@ public class RemoverVerificarFuncionario extends JFrame {
 		JButton btnNewButton_2 = new JButton("Sair");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
+				
+				FuncionalidadeFuncionario frame = new FuncionalidadeFuncionario(fun);
+				frame.setLocationRelativeTo(null);
+				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				frame.setUndecorated(true);
+				frame.setVisible(true);
+				//setVisible(false);
 			}
 		});
 		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 17));

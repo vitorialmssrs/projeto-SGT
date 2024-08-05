@@ -264,6 +264,8 @@ public class TelaCheckIn extends JFrame {
 				if(nome.isEmpty()||sobrenome.isEmpty()||numidentificacao.isEmpty()||
 dataNascimento.isEmpty()||dataEntrada.isEmpty()||horaEntrada.isEmpty()||telefone.isEmpty()||email.isEmpty()||senha.isEmpty()) {
 					TelaPopUpErroCliente frame = new TelaPopUpErroCliente();
+					frame.setLocationRelativeTo(null);
+		        	//frame.setUndecorated(true);
 					frame.setVisible(true);
 				}
 				

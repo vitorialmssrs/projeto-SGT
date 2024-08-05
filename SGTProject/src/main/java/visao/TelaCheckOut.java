@@ -13,7 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+//import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -329,7 +329,11 @@ public class TelaCheckOut extends JFrame {
 				// Validações de data e hora
                 String dataSaida = textDataSaida.getText().trim();
                 if (dataSaida.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Campo Data de Saída obrigatório!");
+                	TelaPopUpErroCliente  frame = new TelaPopUpErroCliente();
+                	frame.setLocationRelativeTo(null);
+		        	frame.setUndecorated(true);
+					frame.setVisible(true);
+                    //JOptionPane.showMessageDialog(null, "Campo Data de Saída obrigatório!");
                     return;
                 }
 
@@ -338,14 +342,22 @@ public class TelaCheckOut extends JFrame {
                 try {
                     dSaida = LocalDate.parse(dataSaida, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
                 } catch (DateTimeParseException ex) {
-                    JOptionPane.showMessageDialog(null, "Data de saída inválida!");
+                	TelaPopUpErroCliente  frame = new TelaPopUpErroCliente();
+                	frame.setLocationRelativeTo(null);
+		        	frame.setUndecorated(true);
+					frame.setVisible(true);
+                    //JOptionPane.showMessageDialog(null, "Data de saída inválida!");
                     return;
                 }
                 
                 
                 String horaSaida = textHoraSaida.getText().trim(); 
                 if (horaSaida.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Campo Hora de Saída obrigatório!");
+                	TelaPopUpErroCliente  frame = new TelaPopUpErroCliente();
+                	frame.setLocationRelativeTo(null);
+		        	frame.setUndecorated(true);
+					frame.setVisible(true);
+                    //JOptionPane.showMessageDialog(null, "Campo Hora de Saída obrigatório!");
                     return;
                 }
 
@@ -353,13 +365,21 @@ public class TelaCheckOut extends JFrame {
                 try {
                     hSaida = LocalTime.parse(horaSaida, DateTimeFormatter.ofPattern("HH:mm"));
                 } catch (DateTimeParseException ex) {
-                    JOptionPane.showMessageDialog(null, "Horário de saída inválido! O formato deve ser HH:mm");
+                	TelaPopUpErroCliente  frame = new TelaPopUpErroCliente();
+                	frame.setLocationRelativeTo(null);
+		        	frame.setUndecorated(true);
+					frame.setVisible(true);
+                    //JOptionPane.showMessageDialog(null, "Horário de saída inválido! O formato deve ser HH:mm");
                     return;
                 }
                 
                 String dataEntrada = textDataSaida.getText().trim();
                 if (dataEntrada.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Campo Data de Entrada obrigatório!");
+                	TelaPopUpErroCliente  frame = new TelaPopUpErroCliente();
+                	frame.setLocationRelativeTo(null);
+		        	frame.setUndecorated(true);
+					frame.setVisible(true);
+                    //JOptionPane.showMessageDialog(null, "Campo Data de Entrada obrigatório!");
                     return;
                 }
 
@@ -368,20 +388,32 @@ public class TelaCheckOut extends JFrame {
                 try {
                 	dEntrada = LocalDate.parse(dataEntrada, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
                 } catch (DateTimeParseException ex) {
-                    JOptionPane.showMessageDialog(null, "Data de entrada inválida!");
+                	TelaPopUpErroCliente  frame = new TelaPopUpErroCliente();
+                	frame.setLocationRelativeTo(null);
+		        	frame.setUndecorated(true);
+					frame.setVisible(true);
+                    //JOptionPane.showMessageDialog(null, "Data de entrada inválida!");
                     return;
                 }
                 
                 String horaEntrada = textHoraSaida.getText().trim(); 
                 if (horaEntrada.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Campo Hora de entrada obrigatório!");
+                	TelaPopUpErroCliente  frame = new TelaPopUpErroCliente();
+                	frame.setLocationRelativeTo(null);
+		        	frame.setUndecorated(true);
+					frame.setVisible(true);
+                    //JOptionPane.showMessageDialog(null, "Campo Hora de entrada obrigatório!");
                     return;
                 }
                 LocalTime hEntrada;
                 try {
                 	hEntrada = LocalTime.parse(horaEntrada, DateTimeFormatter.ofPattern("HH:mm"));
                 } catch (DateTimeParseException ex) {
-                    JOptionPane.showMessageDialog(null, "Horário de entrada inválido! O formato deve ser HH:mm");
+                	TelaPopUpErroCliente  frame = new TelaPopUpErroCliente();
+                	frame.setLocationRelativeTo(null);
+		        	frame.setUndecorated(true);
+					frame.setVisible(true);
+                    //JOptionPane.showMessageDialog(null, "Horário de entrada inválido! O formato deve ser HH:mm");
                     return;
                 }
 
