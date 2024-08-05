@@ -228,6 +228,7 @@ public class TelaEspacosHotelCliente extends JFrame {
 				dispose();
 				FuncionalidadeCliente frame = new FuncionalidadeCliente();
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				frame.setUndecorated(true);
 				frame.setVisible(true);
 			}
 		});

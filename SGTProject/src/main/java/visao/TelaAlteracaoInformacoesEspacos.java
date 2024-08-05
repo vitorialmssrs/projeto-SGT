@@ -271,6 +271,7 @@ public class TelaAlteracaoInformacoesEspacos extends JFrame {
 				FuncionalidadeFuncionario funcionalidade = new FuncionalidadeFuncionario(funcionario);
 				funcionalidade.setUndecorated(true);
 				funcionalidade.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				funcionalidade.setUndecorated(true);
 				funcionalidade.setVisible(true);
 			}
 		});
