@@ -67,6 +67,7 @@ public class FuncionalidadeFuncionario extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				TelaManutencaoEspacosConserto manutencaoespacos = new TelaManutencaoEspacosConserto(fun);
+				manutencaoespacos.setUndecorated(true);
 				manutencaoespacos.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				manutencaoespacos.setVisible(true);
 				//manutencaoespacos.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);	
@@ -78,6 +79,7 @@ public class FuncionalidadeFuncionario extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				TelaAlteracaoInformacoesEspacos alterarespacos = new TelaAlteracaoInformacoesEspacos(fun);
+				alterarespacos.setUndecorated(true);
 				alterarespacos.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				alterarespacos.setVisible(true);
 			}
@@ -88,6 +90,7 @@ public class FuncionalidadeFuncionario extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				TelaLimpezaEspacos limpezaEspaco = new TelaLimpezaEspacos(fun);
+				limpezaEspaco.setUndecorated(true);
 				limpezaEspaco.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				limpezaEspaco.setVisible(true);
 			}
@@ -110,6 +113,7 @@ public class FuncionalidadeFuncionario extends JFrame {
 		btnPerfil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				RemoverVerificarFuncionario remover = new RemoverVerificarFuncionario(fun);
+				remover.setUndecorated(true);
 				remover.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				remover.setVisible(true);
 				remover.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);	
@@ -120,7 +124,8 @@ public class FuncionalidadeFuncionario extends JFrame {
 		btnNewButton_1.setBackground(new Color(102, 187, 113));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CadastroFuncionario cadastro = new CadastroFuncionario();
+				CadastroFuncionario cadastro = new CadastroFuncionario(fun);
+				cadastro.setUndecorated(true);
 				cadastro.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				cadastro.setVisible(true);
 				cadastro.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);	
@@ -135,6 +140,7 @@ public class FuncionalidadeFuncionario extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AlterarFuncionario alterar = new AlterarFuncionario(funcionarioLogado);
+				alterar.setUndecorated(true);
 				alterar.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				alterar.setVisible(true);
 				alterar.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -155,6 +161,7 @@ public class FuncionalidadeFuncionario extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				TelaInicial telaInicial = new TelaInicial();
+				telaInicial.setUndecorated(true);
 				telaInicial.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				telaInicial.setVisible(true);
 			}
