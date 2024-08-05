@@ -26,6 +26,7 @@ public class TelaInicial extends JFrame {
 			public void run() {
 				try {
 					TelaInicial frame = new TelaInicial();
+					frame.setUndecorated(true);
 					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -71,6 +72,7 @@ public class TelaInicial extends JFrame {
 			public void actionPerformed(ActionEvent evento) {
 				dispose();
 				FuncionalidadeCliente funcionalidadeCliente = new FuncionalidadeCliente();
+				funcionalidadeCliente.setUndecorated(true);
 				funcionalidadeCliente.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				funcionalidadeCliente.setVisible(true);
 				funcionalidadeCliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -88,6 +90,7 @@ public class TelaInicial extends JFrame {
 			public void actionPerformed(ActionEvent event) {
 				dispose();
 				LoginFuncionario loginfuncionario = new LoginFuncionario();
+				loginfuncionario.setUndecorated(true);
 				loginfuncionario.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				loginfuncionario.setVisible(true);
 				loginfuncionario.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

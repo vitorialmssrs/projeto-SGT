@@ -79,6 +79,7 @@ public class FuncionalidadeCliente extends JFrame {
 				dispose();
 				TelaCheckIn cadastrocliente = new TelaCheckIn();
 				cadastrocliente.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				cadastrocliente.setUndecorated(true);
 				cadastrocliente.setVisible(true);
 				cadastrocliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}
@@ -94,6 +95,7 @@ public class FuncionalidadeCliente extends JFrame {
 					dispose();
 					TelaCheckOut checkoutcliente = new TelaCheckOut();
 					checkoutcliente.setExtendedState(JFrame.MAXIMIZED_BOTH);
+					checkoutcliente.setUndecorated(true);
 					checkoutcliente.setVisible(true);
 					checkoutcliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);				
 			}
@@ -109,6 +111,7 @@ public class FuncionalidadeCliente extends JFrame {
 				dispose();
 				TelaEspacosHotelCliente espacoshotel = new TelaEspacosHotelCliente();
 				espacoshotel.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				espacoshotel.setUndecorated(true);
 				espacoshotel.setVisible(true);
 				espacoshotel.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);	
 			}
@@ -124,6 +127,7 @@ public class FuncionalidadeCliente extends JFrame {
 				dispose();
 				TelaInicial telaInicial = new TelaInicial();
 				telaInicial.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telaInicial.setUndecorated(true);
 				telaInicial.setVisible(true);
 			}
 		});
@@ -135,6 +139,7 @@ public class FuncionalidadeCliente extends JFrame {
 				dispose();
 				TelaAlterarCadastroCliente AlterarCadastroCliente = new TelaAlterarCadastroCliente();
 				AlterarCadastroCliente.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				AlterarCadastroCliente.setUndecorated(true);
 				AlterarCadastroCliente.setVisible(true);
 			}
 		});
