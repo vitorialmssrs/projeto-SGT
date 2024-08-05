@@ -180,32 +180,34 @@ public class TelaLimpezaEspacos extends JFrame {
 				
 				limpEspaco.setFuncionario(funcionario);
 				
-	
-				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-				try {
-				    LocalDate date = LocalDate.parse(textDiaA.getText(), formatter);
-				    limpEspaco.setDia(date);
-				} catch (DateTimeParseException e1) {
-				    JOptionPane.showMessageDialog(null, "Formato de data inválido. Use o formato dd/MM/yyyy.");
-				   
-				}
+				String dA = textDiaA.getText();
+				String hA = textHoraA.getText();
+				String hF = textHoraF.getText();
+				String d = txtTipoLimp.getText();
+					
+				
+					if (dA.isEmpty() || hA.isEmpty() || hF.isEmpty() || d.isEmpty()) {
+						
+						TelaPopUpErroFuncionario frame = new TelaPopUpErroFuncionario();
+						frame.setLocationRelativeTo(null);
+						frame.setVisible(true);
+						
+					}else {
+						DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+						LocalDate date = LocalDate.parse(dA, formatter);
+					    limpEspaco.setDia(date);
 
-				DateTimeFormatter formatterH = DateTimeFormatter.ofPattern("HH:mm");
-				try {
-				    LocalTime timeI = LocalTime.parse(textHoraA.getText(), formatterH);
-				    limpEspaco.setHoraInicio(timeI);
-				} catch (DateTimeParseException e2) {
-				    JOptionPane.showMessageDialog(null, "Formato de hora de início inválido. Use o formato HH:mm.");
-				    
-				}
+						DateTimeFormatter formatterH = DateTimeFormatter.ofPattern("HH:mm");
+						LocalTime timeI = LocalTime.parse(hA, formatterH);
+					    limpEspaco.setHoraInicio(timeI);
 
-				try {
-				    LocalTime timeF = LocalTime.parse(textHoraF.getText(), formatterH);
-				    limpEspaco.setHoraFinal(timeF);
-				} catch (DateTimeParseException e3) {
-				    JOptionPane.showMessageDialog(null, "Formato de hora final inválido. Use o formato HH:mm.");
-				  
-				}
+						LocalTime timeF = LocalTime.parse(hF, formatterH);
+						limpEspaco.setHoraFinal(timeF);
+						
+						limpEspaco.setDescricao(d);
+						
+					}
+				
 		
 				limpEspaco.setTipoManutencao(txtTipoLimp.getText());
 				limpEspaco.setDescricao(txtTipoLimp.getText());
@@ -214,16 +216,16 @@ public class TelaLimpezaEspacos extends JFrame {
 				LimpezaDAO limpDAO = LimpezaDAO.getInstancia();
 				int espacoId = limpDAO.inserirLimpeza(limpEspaco);
 				
-				if(espacoId >0 ) {
-					TelaPopUpSucessoFuncionario frame = new TelaPopUpSucessoFuncionario();
+				if (espacoId > 0 ) {
+					TelaPopUpSucessoFuncionario frame2 = new TelaPopUpSucessoFuncionario();
 					//TelaPopUpCadastroFuncionario frame = new TelaPopUpCadastroFuncionario();
-					frame.setLocationRelativeTo(null);
-					frame.setVisible(true);
+					frame2.setLocationRelativeTo(null);
+					frame2.setVisible(true);
 				}else {
-					TelaPopUpErroFuncionario frame = new TelaPopUpErroFuncionario();
+					TelaPopUpErroFuncionario frame3 = new TelaPopUpErroFuncionario();
 					//TelaPopUpCadastroFuncionario frame = new TelaPopUpCadastroFuncionario();
-					frame.setLocationRelativeTo(null);
-					frame.setVisible(true);
+					frame3.setLocationRelativeTo(null);
+					frame3.setVisible(true);
 				}
 				
 				
