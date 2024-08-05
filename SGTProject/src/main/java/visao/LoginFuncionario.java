@@ -193,6 +193,7 @@ public class LoginFuncionario extends JFrame {
 				dispose();
 				TelaInicial telaInicial = new TelaInicial();
 				telaInicial.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telaInicial.setUndecorated(true);
 				telaInicial.setVisible(true);
 			}
 		});
