@@ -64,61 +64,61 @@ public class RemoverVerificarFuncionario extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblTituloGrande = new JLabel("Caro funcionário,");
-		lblTituloGrande.setBounds(548, 88, 449, 63);
+		lblTituloGrande.setBounds(745, 186, 449, 63);
 		lblTituloGrande.setForeground(new Color(1, 50, 1));
 		lblTituloGrande.setFont(new Font("Tahoma", Font.BOLD, 52));
 		contentPane.add(lblTituloGrande);
 		
 		JLabel lblSubtitulo = new JLabel("Informe os dados para realizar a exclusão do cadastro");
-		lblSubtitulo.setBounds(548, 171, 743, 33);
+		lblSubtitulo.setBounds(745, 269, 743, 33);
 		lblSubtitulo.setForeground(new Color(1, 50, 1));
 		lblSubtitulo.setFont(new Font("Tahoma", Font.PLAIN, 27));
 		contentPane.add(lblSubtitulo);
 		
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setIcon(new ImageIcon(RemoverVerificarFuncionario.class.getResource("/imagens/Châteu_Imperial-removebg-preview 1.png")));
-		lblLogo.setBounds(39, 217, 500, 458);
+		lblLogo.setBounds(104, 220, 500, 458);
 		contentPane.add(lblLogo);
 		
 		JLabel lblInformacoes = new JLabel("Informações do Funcionário");
 		lblInformacoes.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblInformacoes.setBounds(561, 310, 364, 33);
+		lblInformacoes.setBounds(758, 408, 364, 33);
 		contentPane.add(lblInformacoes);
 		
 		textNome = new JTextField();
-		textNome.setBounds(708, 364, 662, 26);
+		textNome.setBounds(905, 462, 662, 26);
 		textNome.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(textNome);
 		textNome.setColumns(10);
 		
 		JLabel lblNome = new JLabel("Nome Completo: ");
 		lblNome.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNome.setBounds(561, 360, 137, 26);
+		lblNome.setBounds(758, 458, 137, 26);
 		contentPane.add(lblNome);
 		
 		JLabel lblIdentificacao = new JLabel("Numero de Identificação:");
 		lblIdentificacao.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblIdentificacao.setBounds(561, 406, 190, 19);
+		lblIdentificacao.setBounds(758, 504, 190, 19);
 		contentPane.add(lblIdentificacao);
 		
 		JLabel lblLoginSenha = new JLabel("Informações de Login/Senha");
 		lblLoginSenha.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblLoginSenha.setBounds(561, 464, 270, 26);
+		lblLoginSenha.setBounds(758, 562, 270, 26);
 		contentPane.add(lblLoginSenha);
 		
 		JLabel lblLogin = new JLabel("Login: ");
 		lblLogin.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblLogin.setBounds(561, 518, 51, 19);
+		lblLogin.setBounds(758, 616, 51, 19);
 		contentPane.add(lblLogin);
 		
 		JLabel lblSenha = new JLabel("Senha: ");
 		lblSenha.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblSenha.setBounds(561, 561, 83, 19);
+		lblSenha.setBounds(758, 659, 83, 19);
 		contentPane.add(lblSenha);
 		
 		textSenha = new JTextField();
 		textSenha.setColumns(10);
-		textSenha.setBounds(622, 561, 303, 26);
+		textSenha.setBounds(819, 659, 303, 26);
 		textSenha.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(textSenha);
 		
@@ -128,7 +128,7 @@ public class RemoverVerificarFuncionario extends JFrame {
 			textIdentificacao = new JFormattedTextField(formttDEntrada);
 			textIdentificacao.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 			textIdentificacao.setToolTipText("Coloque o CPF Aqui");
-			textIdentificacao.setBounds(761, 406, 303, 26);
+			textIdentificacao.setBounds(958, 504, 303, 26);
 			textIdentificacao.setColumns(10);
 			contentPane.add(textIdentificacao);
 		} catch(Exception e) {
@@ -142,7 +142,7 @@ public class RemoverVerificarFuncionario extends JFrame {
 		
 		textLogin = new JTextField();
 		textLogin.setColumns(10);
-		textLogin.setBounds(622, 518, 303, 26);
+		textLogin.setBounds(819, 616, 303, 26);
 		textLogin.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(textLogin);
 		
@@ -180,7 +180,7 @@ public class RemoverVerificarFuncionario extends JFrame {
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnNewButton.setForeground(new Color(252, 251, 244));
 		btnNewButton.setBackground(new Color(172, 23, 44));
-		btnNewButton.setBounds(925, 706, 157, 44);
+		btnNewButton.setBounds(1122, 804, 157, 44);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_2 = new JButton("Sair");
@@ -198,7 +198,7 @@ public class RemoverVerificarFuncionario extends JFrame {
 		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnNewButton_2.setForeground(new Color(252, 251, 244));
 		btnNewButton_2.setBackground(new Color(1, 50, 1));
-		btnNewButton_2.setBounds(1312, 706, 115, 44);
+		btnNewButton_2.setBounds(1509, 804, 115, 44);
 		contentPane.add(btnNewButton_2);
 	}
 }
