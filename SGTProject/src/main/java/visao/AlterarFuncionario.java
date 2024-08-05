@@ -276,7 +276,11 @@ public class AlterarFuncionario extends JFrame {
 		JButton btnSair = new JButton("<- | Sair");
 		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
+				FuncionalidadeFuncionario frame = new FuncionalidadeFuncionario(funcionarioLogado);
+				frame.setLocationRelativeTo(null);
+				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				frame.setUndecorated(true);
+				frame.setVisible(true);
 			}
 		});
 		btnSair.setForeground(new Color(252, 251, 244));
@@ -337,6 +341,8 @@ public class AlterarFuncionario extends JFrame {
 				if(nomeCompleto.isEmpty() || numIdentificacao.isEmpty() || dataNascismento.isEmpty() || telefone.isEmpty() || cep.isEmpty() || numCasa.isEmpty()
 						|| login.isEmpty() || senha.isEmpty()){
 					TelaPopUpErroFuncionarioCamposNaoPreenchidos frame = new TelaPopUpErroFuncionarioCamposNaoPreenchidos();
+					frame.setLocationRelativeTo(null);
+		        	frame.setUndecorated(true);
 					frame.setVisible(true);	/*exibir uma mensagem de erro preencha todos os campos*/
 					
 				}else {
@@ -373,13 +379,17 @@ public class AlterarFuncionario extends JFrame {
 			        if (sucesso) {
 			        	TelaPopUpSucessoFuncionario frame = new TelaPopUpSucessoFuncionario();
 			        	frame.setLocationRelativeTo(null);
+			        	frame.setUndecorated(true);
 			        	frame.setVisible(true); //JOptionPane.showMessageDialog(null, "Funcionário atualizado com sucesso!");
+			        	
 			        	
 			            
 			        } else {
 			        	TelaPopUpErroFuncionario frame = new TelaPopUpErroFuncionario();
 			        	frame.setLocationRelativeTo(null);
+			        	frame.setUndecorated(true);
 			        	frame.setVisible(true);// JOptionPane.showMessageDialog(null, "Ocorreu um erro ao atualizar o funcionário.");
+			        	
 			           
 			        }
 				}	
