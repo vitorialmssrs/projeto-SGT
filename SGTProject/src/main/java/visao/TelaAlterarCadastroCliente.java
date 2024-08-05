@@ -192,7 +192,6 @@ public class TelaAlterarCadastroCliente extends JFrame {
 		textCPF.setColumns(10);*/
 		
 		textPrimeiroNome = new JTextField();
-		textPrimeiroNome.setEnabled(false);
 		textPrimeiroNome.setForeground(new Color(1, 50, 1));
 		textPrimeiroNome.setBackground(new Color(252, 251, 244));
 		textPrimeiroNome.setBounds(355, 401, 404, 29);
@@ -287,6 +286,7 @@ public class TelaAlterarCadastroCliente extends JFrame {
 				if(confirm == 0) {
 					//Alterar mensagens para tela de erro/sucesso
 					TelaPopUpErroCliente frame = new TelaPopUpErroCliente();
+					frame.setUndecorated(true);
 					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 					//AvisoCheckInHospede frame = new AvisoCheckInHospede();
@@ -297,10 +297,12 @@ public class TelaAlterarCadastroCliente extends JFrame {
 					dispose();
 					
 					FuncionalidadeCliente frame2 = new FuncionalidadeCliente();
+					frame2.setUndecorated(true);
 					frame2.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					frame2.setVisible(true);
 					
 					TelaPopUpSucessoCliente frame = new TelaPopUpSucessoCliente();
+					frame.setUndecorated(true);
 					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 							}
@@ -319,6 +321,7 @@ public class TelaAlterarCadastroCliente extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				FuncionalidadeCliente frame = new FuncionalidadeCliente();
+				frame.setUndecorated(true);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
 				

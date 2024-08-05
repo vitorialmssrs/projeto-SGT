@@ -179,7 +179,6 @@ public class HospedeDAO implements IHospedeDao{
 	}
 	
 
-	@Override
 	public Hospede buscarHospedePorCpf(long cpf) {
 		Conexao con = Conexao.getInstancia();
 		Connection conBD = con.conectar();
