@@ -80,7 +80,7 @@ public class TelaCheckOut extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[270][25px,grow][50][179.00px][268.00px,grow][159.00,grow][50][176px]", "[60][61px][11px][56px][21px][33px][35][33px][21px][35][12px][33px][21px][35][39px][17.00][50.00][39px][][][][][][]"));
+		contentPane.setLayout(new MigLayout("", "[285][25px,grow][50][179.00px][268.00px,grow][159.00,grow][50][176px]", "[60][61px][11px][56px][21px][33px][35][33px][21px][35][12px][33px][21px][35][39px][17.00][50.00][39px][][][][][][]"));
 		
 		JLabel lblIcone = new JLabel("");
 		lblIcone.setIcon(new ImageIcon(TelaCheckOut.class.getResource("/imagens/LogoPI.png")));
@@ -434,10 +434,12 @@ public class TelaCheckOut extends JFrame {
                 dispose();//manter para fechar a tela cadastro
 				
 				FuncionalidadeCliente frame2 = new FuncionalidadeCliente();
+				frame2.setUndecorated(true);
 				frame2.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame2.setVisible(true);
 				
 				TelaPopUpSucessoCliente frame = new TelaPopUpSucessoCliente();
+				frame.setUndecorated(true);
 				frame.setLocationRelativeTo(null);
 				frame.setVisible(true);
 				
@@ -455,6 +457,7 @@ public class TelaCheckOut extends JFrame {
 				
 				dispose();
 				FuncionalidadeCliente frame = new FuncionalidadeCliente();
+				frame.setUndecorated(true);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
 			}

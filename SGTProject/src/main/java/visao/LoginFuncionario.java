@@ -65,7 +65,7 @@ public class LoginFuncionario extends JFrame {
 		lblLogo.setHorizontalAlignment(SwingConstants.LEFT);
 		lblLogo.setIcon(
 				new ImageIcon(LoginFuncionario.class.getResource("/imagens/Châteu_Imperial-removebg-preview 4.png")));
-		lblLogo.setBounds(276, 420, 218, 169);
+		lblLogo.setBounds(338, 420, 218, 169);
 		panelVerde.add(lblLogo);
 
 		JLabel lblSejaBemVindo = new JLabel("Seja bem-vindo!");
