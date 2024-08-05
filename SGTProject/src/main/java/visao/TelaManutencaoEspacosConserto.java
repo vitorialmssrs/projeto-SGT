@@ -170,26 +170,43 @@ public class TelaManutencaoEspacosConserto extends JFrame {
 		btnCadastrar.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+			
+				String diaA = textDiaA.getText();
+				String hA = textHoraA.getText();
+				String hF = textHoraF.getText();
+				String d = txtDescricao.getText();
 				
 				ManutencaoEspacos manuEspaco = new ManutencaoEspacos();
 				manuEspaco.setEspacos((EspacoHotel) comboBoxEspaco.getSelectedItem());
 				
+				if(diaA.isEmpty() || hA.isEmpty() || hF.isEmpty() || d.isEmpty() ) {
+					
+					TelaPopUpErroFuncionario frame = new TelaPopUpErroFuncionario();
+					frame.setLocationRelativeTo(null);
+					frame.setVisible(true);
+				
+				}else{
+
 				manuEspaco.setFuncionario(funcionario);
 				
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-				LocalDate date = LocalDate.parse( textDiaA.getText(), formatter);
+				LocalDate date = LocalDate.parse( diaA, formatter);
 				manuEspaco.setDiaManutencao(date);
 				
 				DateTimeFormatter formatterH = DateTimeFormatter.ofPattern("HH:mm");
-				LocalTime timeI = LocalTime.parse(textHoraA.getText(), formatterH);
+				LocalTime timeI = LocalTime.parse(hA, formatterH);
 				manuEspaco.setHoraInicio(timeI);
 				
 				//DateTimeFormatter formatterI = DateTimeFormatter.ofPattern("HH:mm");
-				LocalTime timeF = LocalTime.parse(textHoraF.getText(), formatterH);
+				LocalTime timeF = LocalTime.parse(hF, formatterH);
 				manuEspaco.setHoraFinal(timeF);
+				manuEspaco.setDescricao(d);
 		
 				manuEspaco.setDescricao(txtDescricao.getText());
 				manuEspaco.setTipoManutencao(((EspacoHotel) comboBoxEspaco.getSelectedItem()).getNome());
+				
+				
+				}
 				
 				ManutencaoEspacosDAO manutDAO = ManutencaoEspacosDAO.getInstancia();
 				int espacoId = manutDAO.inserirManutencao(manuEspaco);
