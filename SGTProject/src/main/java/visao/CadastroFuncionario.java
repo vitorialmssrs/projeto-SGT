@@ -67,7 +67,7 @@ public class CadastroFuncionario extends JFrame {
 		contentPane.setLayout(null);
 
 		JLabel lblCaroFuncionario = new JLabel("Caro funcionário,");
-		lblCaroFuncionario.setBounds(553, 44, 466, 61);
+		lblCaroFuncionario.setBounds(778, 169, 466, 61);
 		lblCaroFuncionario.setForeground(new Color(1, 50, 1));
 		lblCaroFuncionario.setBackground(new Color(1, 50, 1));
 		lblCaroFuncionario.setFont(new Font("Tahoma", Font.BOLD, 52));
@@ -77,35 +77,35 @@ public class CadastroFuncionario extends JFrame {
 		lbl_Insira_Informacoes_Cadastro.setForeground(new Color(1, 50, 1));
 		lbl_Insira_Informacoes_Cadastro.setBackground(new Color(1, 50, 1));
 		lbl_Insira_Informacoes_Cadastro.setFont(new Font("Tahoma", Font.PLAIN, 27));
-		lbl_Insira_Informacoes_Cadastro.setBounds(553, 115, 474, 31);
+		lbl_Insira_Informacoes_Cadastro.setBounds(778, 240, 474, 31);
 		contentPane.add(lbl_Insira_Informacoes_Cadastro);
 
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setIcon(new ImageIcon(
 				CadastroFuncionario.class.getResource("/imagens/Châteu_Imperial-removebg-preview 1.png")));
 		lblLogo.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblLogo.setBounds(33, 185, 486, 451);
+		lblLogo.setBounds(153, 318, 486, 451);
 		contentPane.add(lblLogo);
 
 		JLabel lblInformacoes_Funcionario = new JLabel("Informações do Funcionário");
 		lblInformacoes_Funcionario.setForeground(new Color(1, 50, 1));
 		lblInformacoes_Funcionario.setBackground(new Color(1, 50, 1));
 		lblInformacoes_Funcionario.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblInformacoes_Funcionario.setBounds(553, 245, 466, 31);
+		lblInformacoes_Funcionario.setBounds(778, 370, 466, 31);
 		contentPane.add(lblInformacoes_Funcionario);
 
 		JLabel lblNomeFuncionario = new JLabel("Nome Completo:");
 		lblNomeFuncionario.setBackground(new Color(1, 50, 1));
 		lblNomeFuncionario.setForeground(new Color(1, 50, 1));
 		lblNomeFuncionario.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNomeFuncionario.setBounds(553, 286, 143, 21);
+		lblNomeFuncionario.setBounds(778, 411, 143, 21);
 		contentPane.add(lblNomeFuncionario);
 
 		textNomeFuncionario = new JTextField();
 		textNomeFuncionario.setToolTipText("Coloque seu Nome Completo Aqui");
 		textNomeFuncionario.setForeground(new Color(1, 50, 1));
 		textNomeFuncionario.setBackground(new Color(252, 251, 244));
-		textNomeFuncionario.setBounds(688, 286, 644, 21);
+		textNomeFuncionario.setBounds(913, 411, 644, 21);
 		textNomeFuncionario.setBorder(new LineBorder(new Color(1, 50, 1)));
 		contentPane.add(textNomeFuncionario);
 		textNomeFuncionario.setColumns(10);
@@ -114,7 +114,7 @@ public class CadastroFuncionario extends JFrame {
 		lblNumeroIndentificacao.setBackground(new Color(1, 50, 1));
 		lblNumeroIndentificacao.setForeground(new Color(1, 50, 1));
 		lblNumeroIndentificacao.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNumeroIndentificacao.setBounds(553, 327, 200, 21);
+		lblNumeroIndentificacao.setBounds(778, 452, 200, 21);
 		contentPane.add(lblNumeroIndentificacao);
 
 		try {
@@ -124,7 +124,7 @@ public class CadastroFuncionario extends JFrame {
 			textNumeroIndentificacao.setToolTipText("Coloque o CPF Aqui");
 			textNumeroIndentificacao.setForeground(new Color(1, 50, 1));
 			textNumeroIndentificacao.setBackground(new Color(252, 251, 244));
-			textNumeroIndentificacao.setBounds(763, 330, 602, 21);
+			textNumeroIndentificacao.setBounds(988, 455, 602, 21);
 			textNumeroIndentificacao.setBorder(new LineBorder(new Color(1, 50, 1)));
 			textNumeroIndentificacao.setColumns(10);
 			contentPane.add(textNumeroIndentificacao);
@@ -137,14 +137,14 @@ public class CadastroFuncionario extends JFrame {
 		lblEndereco.setBackground(new Color(1, 50, 1));
 		lblEndereco.setForeground(new Color(1, 50, 1));
 		lblEndereco.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblEndereco.setBounds(553, 462, 87, 21);
+		lblEndereco.setBounds(778, 587, 87, 21);
 		contentPane.add(lblEndereco);
 
 		JLabel lblCepFuncionario = new JLabel("Cep:");
 		lblCepFuncionario.setForeground(new Color(1, 50, 1));
 		lblCepFuncionario.setBackground(new Color(1, 50, 1));
 		lblCepFuncionario.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblCepFuncionario.setBounds(553, 493, 45, 21);
+		lblCepFuncionario.setBounds(778, 618, 45, 21);
 		contentPane.add(lblCepFuncionario);
 
 		try {
@@ -154,7 +154,7 @@ public class CadastroFuncionario extends JFrame {
 			textCepFuncionario.setToolTipText("Coloque o Cep de sua Residencia Aqui");
 			textCepFuncionario.setForeground(new Color(1, 50, 1));
 			textCepFuncionario.setBackground(new Color(252, 251, 244));
-			textCepFuncionario.setBounds(600, 493, 129, 21);
+			textCepFuncionario.setBounds(825, 618, 129, 21);
 			textCepFuncionario.setBorder(new LineBorder(new Color(1, 50, 1)));
 			textCepFuncionario.setColumns(10);
 			contentPane.add(textCepFuncionario);
@@ -167,7 +167,7 @@ public class CadastroFuncionario extends JFrame {
 		lblDataFuncionario.setBackground(new Color(1, 50, 1));
 		lblDataFuncionario.setForeground(new Color(1, 50, 1));
 		lblDataFuncionario.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblDataFuncionario.setBounds(553, 370, 176, 21);
+		lblDataFuncionario.setBounds(778, 495, 176, 21);
 		contentPane.add(lblDataFuncionario);
 
 		try {
@@ -177,7 +177,7 @@ public class CadastroFuncionario extends JFrame {
 			textDataFuncionario.setToolTipText("Coloque sua Data de Nascimento Aqui");
 			textDataFuncionario.setForeground(new Color(1, 50, 1));
 			textDataFuncionario.setBackground(new Color(252, 251, 244));
-			textDataFuncionario.setBounds(719, 373, 143, 21);
+			textDataFuncionario.setBounds(944, 498, 143, 21);
 			textDataFuncionario.setBorder(new LineBorder(new Color(1, 50, 1)));
 			textDataFuncionario.setColumns(10);
 			contentPane.add(textDataFuncionario);
@@ -190,14 +190,14 @@ public class CadastroFuncionario extends JFrame {
 		lblNumeroFuncionario.setForeground(new Color(1, 50, 1));
 		lblNumeroFuncionario.setBackground(new Color(1, 50, 1));
 		lblNumeroFuncionario.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNumeroFuncionario.setBounds(553, 533, 72, 17);
+		lblNumeroFuncionario.setBounds(778, 658, 72, 17);
 		contentPane.add(lblNumeroFuncionario);
 
 		textNumeroCasaFuncionario = new JTextField();
 		textNumeroCasaFuncionario.setToolTipText("Coloque o Número da sua Casa Aqui");
 		textNumeroCasaFuncionario.setForeground(new Color(1, 50, 1));
 		textNumeroCasaFuncionario.setBackground(new Color(252, 251, 244));
-		textNumeroCasaFuncionario.setBounds(632, 535, 97, 19);
+		textNumeroCasaFuncionario.setBounds(857, 660, 97, 19);
 		contentPane.add(textNumeroCasaFuncionario);
 		textNumeroCasaFuncionario.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textNumeroCasaFuncionario.setColumns(10);
@@ -206,7 +206,7 @@ public class CadastroFuncionario extends JFrame {
 		lblTelefoneFuncionario.setForeground(new Color(1, 50, 1));
 		lblTelefoneFuncionario.setBackground(new Color(1, 50, 1));
 		lblTelefoneFuncionario.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblTelefoneFuncionario.setBounds(553, 414, 97, 21);
+		lblTelefoneFuncionario.setBounds(778, 539, 97, 21);
 		contentPane.add(lblTelefoneFuncionario);
 
 		try {
@@ -216,7 +216,7 @@ public class CadastroFuncionario extends JFrame {
 			textTelefone.setToolTipText("Coloque o Número de Telefone Aqui");
 			textTelefone.setForeground(new Color(1, 50, 1));
 			textTelefone.setBackground(new Color(252, 251, 244));
-			textTelefone.setBounds(633, 417, 168, 21);
+			textTelefone.setBounds(858, 542, 168, 21);
 			textTelefone.setBorder(new LineBorder(new Color(1, 50, 1)));
 			textTelefone.setColumns(10);
 			contentPane.add(textTelefone);
@@ -244,7 +244,7 @@ public class CadastroFuncionario extends JFrame {
 		btnLimpar.setForeground(new Color(252, 251, 244));
 		btnLimpar.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnLimpar.setBackground(new Color(109, 164, 109));
-		btnLimpar.setBounds(553, 714, 176, 39);
+		btnLimpar.setBounds(778, 839, 176, 39);
 		contentPane.add(btnLimpar);
 
 		JButton btnCadastrar = new JButton("Cadastrar");
@@ -321,7 +321,7 @@ contentPane.add(btnCadastrar);
 		btnCadastrar.setBackground(new Color(66, 142, 66));
 		btnCadastrar.setForeground(new Color(252, 251, 244));
 		btnCadastrar.setFont(new Font("Tahoma", Font.BOLD, 17));
-		btnCadastrar.setBounds(788, 714, 176, 39);
+		btnCadastrar.setBounds(1013, 839, 176, 39);
 		contentPane.add(btnCadastrar);
 
 		JButton btnSair = new JButton("<- | Sair");
@@ -337,28 +337,28 @@ contentPane.add(btnCadastrar);
 		btnSair.setForeground(new Color(252, 251, 244));
 		btnSair.setBackground(new Color(1, 50, 1));
 		btnSair.setFont(new Font("Tahoma", Font.BOLD, 17));
-		btnSair.setBounds(1266, 714, 176, 39);
+		btnSair.setBounds(1491, 839, 176, 39);
 		contentPane.add(btnSair);
 		
 		JLabel lblInformacoes_Login_Senha = new JLabel("Informações de Login/Senha");
 		lblInformacoes_Login_Senha.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblInformacoes_Login_Senha.setBounds(553, 582, 301, 21);
+		lblInformacoes_Login_Senha.setBounds(778, 707, 301, 21);
 		contentPane.add(lblInformacoes_Login_Senha);
 		
 		JLabel lblLogin = new JLabel("Login: ");
 		lblLogin.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblLogin.setBounds(553, 623, 60, 21);
+		lblLogin.setBounds(778, 748, 60, 21);
 		contentPane.add(lblLogin);
 		
 		JLabel lblSenha = new JLabel("Senha: ");
 		lblSenha.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblSenha.setBounds(553, 660, 72, 21);
+		lblSenha.setBounds(778, 785, 72, 21);
 		contentPane.add(lblSenha);
 		
 		textLogin = new JTextField();
 		textLogin.setToolTipText("Crie seu Login Aqui");
 		textLogin.setBackground(new Color(255, 255, 245));
-		textLogin.setBounds(612, 627, 644, 19);
+		textLogin.setBounds(837, 752, 644, 19);
 		contentPane.add(textLogin);
 		textLogin.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textLogin.setColumns(10);
@@ -366,7 +366,7 @@ contentPane.add(btnCadastrar);
 		textSenha = new JTextField();
 		textSenha.setToolTipText("Crie sua Senha Aqui");
 		textSenha.setBackground(new Color(255, 255, 245));
-		textSenha.setBounds(612, 664, 289, 19);
+		textSenha.setBounds(837, 789, 289, 19);
 		contentPane.add(textSenha);
 		textSenha.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textSenha.setColumns(10);

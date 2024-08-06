@@ -53,7 +53,7 @@ public class AlterarFuncionario extends JFrame {
 		contentPane.setLayout(null);
 
 		JLabel lblCaroFuncionario = new JLabel("Caro funcionário,");
-		lblCaroFuncionario.setBounds(553, 44, 466, 61);
+		lblCaroFuncionario.setBounds(753, 144, 466, 61);
 		lblCaroFuncionario.setForeground(new Color(1, 50, 1));
 		lblCaroFuncionario.setBackground(new Color(1, 50, 1));
 		lblCaroFuncionario.setFont(new Font("Tahoma", Font.BOLD, 52));
@@ -63,34 +63,34 @@ public class AlterarFuncionario extends JFrame {
 		lbl_Insira_Informacoes_Cadastro.setForeground(new Color(1, 50, 1));
 		lbl_Insira_Informacoes_Cadastro.setBackground(new Color(1, 50, 1));
 		lbl_Insira_Informacoes_Cadastro.setFont(new Font("Tahoma", Font.PLAIN, 27));
-		lbl_Insira_Informacoes_Cadastro.setBounds(553, 115, 875, 31);
+		lbl_Insira_Informacoes_Cadastro.setBounds(753, 215, 875, 31);
 		contentPane.add(lbl_Insira_Informacoes_Cadastro);
 
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setIcon(new ImageIcon(
 				AlterarFuncionario.class.getResource("/imagens/Châteu_Imperial-removebg-preview 1.png")));
 		lblLogo.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblLogo.setBounds(33, 185, 486, 451);
+		lblLogo.setBounds(139, 285, 486, 451);
 		contentPane.add(lblLogo);
 
 		JLabel lblInformacoes_Funcionario = new JLabel("Informações do Funcionário");
 		lblInformacoes_Funcionario.setForeground(new Color(1, 50, 1));
 		lblInformacoes_Funcionario.setBackground(new Color(1, 50, 1));
 		lblInformacoes_Funcionario.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblInformacoes_Funcionario.setBounds(553, 245, 466, 31);
+		lblInformacoes_Funcionario.setBounds(753, 345, 466, 31);
 		contentPane.add(lblInformacoes_Funcionario);
 
 		JLabel lblNomeFuncionario = new JLabel("Nome Completo:");
 		lblNomeFuncionario.setBackground(new Color(1, 50, 1));
 		lblNomeFuncionario.setForeground(new Color(1, 50, 1));
 		lblNomeFuncionario.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNomeFuncionario.setBounds(553, 286, 143, 21);
+		lblNomeFuncionario.setBounds(753, 386, 143, 21);
 		contentPane.add(lblNomeFuncionario);
 
 		textNomeFuncionario = new JTextField();
 		textNomeFuncionario.setForeground(new Color(1, 50, 1));
 		textNomeFuncionario.setBackground(new Color(252, 251, 244));
-		textNomeFuncionario.setBounds(688, 286, 644, 21);
+		textNomeFuncionario.setBounds(888, 386, 644, 21);
 		textNomeFuncionario.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		textNomeFuncionario.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		textNomeFuncionario.setText(funcionarioLogado.getNomeCompleto());
@@ -101,7 +101,7 @@ public class AlterarFuncionario extends JFrame {
 		lblNumeroIndentificacao.setBackground(new Color(1, 50, 1));
 		lblNumeroIndentificacao.setForeground(new Color(1, 50, 1));
 		lblNumeroIndentificacao.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNumeroIndentificacao.setBounds(553, 327, 200, 21);
+		lblNumeroIndentificacao.setBounds(753, 427, 200, 21);
 		contentPane.add(lblNumeroIndentificacao);
 
 		try {
@@ -111,7 +111,7 @@ public class AlterarFuncionario extends JFrame {
 			textNumeroIndentificacao.setToolTipText("Coloque o CPF Aqui");
 			textNumeroIndentificacao.setForeground(new Color(1, 50, 1));
 			textNumeroIndentificacao.setBackground(new Color(252, 251, 244));
-			textNumeroIndentificacao.setBounds(763, 330, 602, 21);
+			textNumeroIndentificacao.setBounds(963, 430, 602, 21);
 			textNumeroIndentificacao.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 			textNumeroIndentificacao.setText(String.valueOf(funcionarioLogado.getNumIndentificacao()));
 			textNumeroIndentificacao.setBorder(new LineBorder(new Color(1, 50, 1)));
@@ -133,14 +133,14 @@ public class AlterarFuncionario extends JFrame {
 		lblEndereco.setBackground(new Color(1, 50, 1));
 		lblEndereco.setForeground(new Color(1, 50, 1));
 		lblEndereco.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblEndereco.setBounds(553, 462, 87, 21);
+		lblEndereco.setBounds(753, 562, 87, 21);
 		contentPane.add(lblEndereco);
 
 		JLabel lblCepFuncionario = new JLabel("Cep:");
 		lblCepFuncionario.setForeground(new Color(1, 50, 1));
 		lblCepFuncionario.setBackground(new Color(1, 50, 1));
 		lblCepFuncionario.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblCepFuncionario.setBounds(553, 493, 45, 21);
+		lblCepFuncionario.setBounds(753, 593, 45, 21);
 		contentPane.add(lblCepFuncionario);
 
 		try {
@@ -150,7 +150,7 @@ public class AlterarFuncionario extends JFrame {
 			textCepFuncionario.setToolTipText("Coloque o CEP da sua Residencia Aqui");
 			textCepFuncionario.setForeground(new Color(1, 50, 1));
 			textCepFuncionario.setBackground(new Color(252, 251, 244));
-			textCepFuncionario.setBounds(600, 493, 129, 21);
+			textCepFuncionario.setBounds(800, 593, 129, 21);
 			textCepFuncionario.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 			textCepFuncionario.setText(String.valueOf(funcionarioLogado.getCep()));
 			textCepFuncionario.setBorder(new LineBorder(new Color(1, 50, 1)));
@@ -173,7 +173,7 @@ public class AlterarFuncionario extends JFrame {
 		lblDataFuncionario.setBackground(new Color(1, 50, 1));
 		lblDataFuncionario.setForeground(new Color(1, 50, 1));
 		lblDataFuncionario.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblDataFuncionario.setBounds(553, 370, 176, 21);
+		lblDataFuncionario.setBounds(753, 470, 176, 21);
 		contentPane.add(lblDataFuncionario);
 
 		/*try {
@@ -194,7 +194,7 @@ public class AlterarFuncionario extends JFrame {
 		textDataFuncionario = new JTextField();
 		textDataFuncionario.setForeground(new Color(1, 50, 1));
 		textDataFuncionario.setBackground(new Color(252, 251, 244));
-		textDataFuncionario.setBounds(719, 373, 143, 21);
+		textDataFuncionario.setBounds(919, 473, 143, 21);
 		textDataFuncionario.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		textDataFuncionario.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		textDataFuncionario.setText(String.valueOf(funcionarioLogado.getDataNascismento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))));
@@ -205,13 +205,13 @@ public class AlterarFuncionario extends JFrame {
 		lblNumeroFuncionario.setForeground(new Color(1, 50, 1));
 		lblNumeroFuncionario.setBackground(new Color(1, 50, 1));
 		lblNumeroFuncionario.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNumeroFuncionario.setBounds(553, 533, 72, 17);
+		lblNumeroFuncionario.setBounds(753, 633, 72, 17);
 		contentPane.add(lblNumeroFuncionario);
 
 		textNumeroCasaFuncionario = new JTextField();
 		textNumeroCasaFuncionario.setForeground(new Color(1, 50, 1));
 		textNumeroCasaFuncionario.setBackground(new Color(252, 251, 244));
-		textNumeroCasaFuncionario.setBounds(632, 535, 97, 19);
+		textNumeroCasaFuncionario.setBounds(832, 635, 97, 19);
 		textNumeroCasaFuncionario.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		textNumeroCasaFuncionario.setText(String.valueOf(funcionarioLogado.getNumCasa()));
 		contentPane.add(textNumeroCasaFuncionario);
@@ -222,7 +222,7 @@ public class AlterarFuncionario extends JFrame {
 		lblTelefoneFuncionario.setForeground(new Color(1, 50, 1));
 		lblTelefoneFuncionario.setBackground(new Color(1, 50, 1));
 		lblTelefoneFuncionario.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblTelefoneFuncionario.setBounds(553, 414, 97, 21);
+		lblTelefoneFuncionario.setBounds(753, 514, 97, 21);
 		contentPane.add(lblTelefoneFuncionario);
 
 		/*textTelefone = new JTextField();
@@ -241,7 +241,7 @@ public class AlterarFuncionario extends JFrame {
 			textTelefone.setToolTipText("Coloque o seu Telefone Aqui");
 			textTelefone.setForeground(new Color(1, 50, 1));
 			textTelefone.setBackground(new Color(252, 251, 244));
-			textTelefone.setBounds(633, 417, 168, 21);
+			textTelefone.setBounds(833, 517, 168, 21);
 			textTelefone.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 			textTelefone.setText(String.valueOf(funcionarioLogado.getTelefone()));
 			textTelefone.setBorder(new LineBorder(new Color(1, 50, 1)));
@@ -270,7 +270,7 @@ public class AlterarFuncionario extends JFrame {
 		btnLimpar.setForeground(new Color(252, 251, 244));
 		btnLimpar.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnLimpar.setBackground(new Color(109, 164, 109));
-		btnLimpar.setBounds(725, 714, 176, 39);
+		btnLimpar.setBounds(925, 814, 176, 39);
 		contentPane.add(btnLimpar);
 
 		JButton btnSair = new JButton("<- | Sair");
@@ -286,27 +286,27 @@ public class AlterarFuncionario extends JFrame {
 		btnSair.setForeground(new Color(252, 251, 244));
 		btnSair.setBackground(new Color(1, 50, 1));
 		btnSair.setFont(new Font("Tahoma", Font.BOLD, 17));
-		btnSair.setBounds(1266, 714, 176, 39);
+		btnSair.setBounds(1466, 814, 176, 39);
 		contentPane.add(btnSair);
 		
 		JLabel lblInformacoes_Login_Senha = new JLabel("Informações de Login/Senha");
 		lblInformacoes_Login_Senha.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblInformacoes_Login_Senha.setBounds(553, 582, 301, 21);
+		lblInformacoes_Login_Senha.setBounds(753, 682, 301, 21);
 		contentPane.add(lblInformacoes_Login_Senha);
 		
 		JLabel lblLogin = new JLabel("Login: ");
 		lblLogin.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblLogin.setBounds(553, 623, 60, 21);
+		lblLogin.setBounds(753, 723, 60, 21);
 		contentPane.add(lblLogin);
 		
 		JLabel lblSenha = new JLabel("Senha: ");
 		lblSenha.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblSenha.setBounds(553, 660, 72, 21);
+		lblSenha.setBounds(753, 760, 72, 21);
 		contentPane.add(lblSenha);
 		
 		textLogin = new JTextField();
 		textLogin.setBackground(new Color(255, 255, 245));
-		textLogin.setBounds(612, 627, 644, 19);
+		textLogin.setBounds(812, 727, 644, 19);
 		textLogin.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(textLogin);
 		textLogin.setBorder(new LineBorder(new Color(1, 50, 1)));
@@ -314,7 +314,7 @@ public class AlterarFuncionario extends JFrame {
 		
 		textSenha = new JTextField();
 		textSenha.setBackground(new Color(255, 255, 245));
-		textSenha.setBounds(612, 664, 289, 19);
+		textSenha.setBounds(812, 764, 289, 19);
 		textSenha.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 		contentPane.add(textSenha);
 		textSenha.setBorder(new LineBorder(new Color(1, 50, 1)));
@@ -399,7 +399,7 @@ public class AlterarFuncionario extends JFrame {
 		btnNewButton.setBackground(new Color(61, 115, 84));
 		btnNewButton.setForeground(new Color(252, 251, 244));
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 17));
-		btnNewButton.setBounds(960, 717, 176, 39);
+		btnNewButton.setBounds(1160, 817, 176, 39);
 		contentPane.add(btnNewButton);
 	}
 }
