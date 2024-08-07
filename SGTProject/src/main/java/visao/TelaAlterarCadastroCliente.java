@@ -141,7 +141,6 @@ public class TelaAlterarCadastroCliente extends JFrame {
 			formttNIden.setPlaceholder("");
 			textCPF = new JFormattedTextField(formttNIden);
 			textCPF.addFocusListener(new FocusAdapter() {
-				@Override
 				public void focusLost(FocusEvent e) {
 					HospedeDAO dao = HospedeDAO.getInstancia();  
 					String numIdentificacao =  textCPF.getText().trim(); 
@@ -158,6 +157,7 @@ public class TelaAlterarCadastroCliente extends JFrame {
 						textSobrenome.setEnabled(true);
 						textEmail.setEnabled(true);
 						txtSenha.setEnabled(true);
+						
 						
 						textPrimeiroNome.setText(hosp.getPrimeironome());  
 						textSobrenome.setText(hosp.getSobrenome());
@@ -236,6 +236,8 @@ public class TelaAlterarCadastroCliente extends JFrame {
 				textCPF.setText("");
 				textDataNascimento.setText("");
 				txtSenha.setText("");	
+				textEmail.setText("");
+				textTelefone.setText("");
 
 			}
 		});

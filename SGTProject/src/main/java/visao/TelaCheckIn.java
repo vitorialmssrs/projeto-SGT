@@ -154,7 +154,7 @@ public class TelaCheckIn extends JFrame {
 			textCPF.setBackground(new Color(252, 251, 244));
 			textCPF.setBounds(360, 455, 404, 29);
 			textCPF.setBorder(new LineBorder(new Color(1, 50, 1)));
-			textCPF.setColumns(11);
+			textCPF.setColumns(10);
 			contentPane.add(textCPF);
 			
 		} catch(Exception e) {
