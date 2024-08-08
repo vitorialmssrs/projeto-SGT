@@ -91,9 +91,6 @@ public class HospedagemDAO {
 		return hospedagem;
 	}
 
-	
-	
-	
 
 	public Hospedagem buscarHospedagemPorHospede(Hospede h) {
 		Hospedagem hospedagem = null;
@@ -108,7 +105,7 @@ public class HospedagemDAO {
 
 			ResultSet rs = ps.executeQuery();
 			
-			System.out.println(ps);
+			//System.out.println(ps);
 			while (rs.next()) {
 
 				hospedagem = new Hospedagem();

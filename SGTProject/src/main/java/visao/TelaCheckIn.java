@@ -43,6 +43,7 @@ public class TelaCheckIn extends JFrame {
 	private JTextField textTelefone;
 	private JTextField textEmail;
 
+
 	/**
 	 * Launch the application.
 //Removendo o metodo main para poder só rodar pela tela inicial
@@ -78,24 +79,24 @@ public class TelaCheckIn extends JFrame {
 		
 		
 		JLabel lblCaroFuncionario = new JLabel("Caro cliente,");
-		lblCaroFuncionario.setBounds(743, 109, 466, 61);
+		lblCaroFuncionario.setBounds(742, 143, 466, 61);
 		lblCaroFuncionario.setForeground(new Color(1, 50, 1));
 		lblCaroFuncionario.setBackground(new Color(1, 50, 1));
-		lblCaroFuncionario.setFont(new Font("Tahoma", Font.BOLD, 52));
+		lblCaroFuncionario.setFont(new Font("Tahoma", Font.BOLD, 60));
 		contentPane.add(lblCaroFuncionario);
 		
 		JLabel lbl_Insira_Informacoes_Cadastro = new JLabel("Insira as informações para cadastro: ");
 		lbl_Insira_Informacoes_Cadastro.setForeground(new Color(1, 50, 1));
 		lbl_Insira_Informacoes_Cadastro.setBackground(new Color(1, 50, 1));
-		lbl_Insira_Informacoes_Cadastro.setFont(new Font("Tahoma", Font.PLAIN, 27));
-		lbl_Insira_Informacoes_Cadastro.setBounds(743, 184, 474, 31);
+		lbl_Insira_Informacoes_Cadastro.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		lbl_Insira_Informacoes_Cadastro.setBounds(742, 218, 604, 31);
 		contentPane.add(lbl_Insira_Informacoes_Cadastro);
 		
 		JLabel lblNome_Cliente = new JLabel("* Primeiro nome:");
 		lblNome_Cliente.setBackground(new Color(1, 50, 1));
 		lblNome_Cliente.setForeground(new Color(1, 50, 1));
 		lblNome_Cliente.setFont(new Font("Tahoma", Font.BOLD, 19));
-		lblNome_Cliente.setBounds(360, 301, 202, 21);
+		lblNome_Cliente.setBounds(360, 368, 202, 21);
 		contentPane.add(lblNome_Cliente);
 		
 		try {
@@ -105,7 +106,7 @@ public class TelaCheckIn extends JFrame {
 			textDataEntrada.setToolTipText("Coloque a Data de Entrada do Checkin Aqui");
 			textDataEntrada.setForeground(new Color(1, 50, 1));
 			textDataEntrada.setBackground(new Color(252, 251, 244));
-			textDataEntrada.setBounds(1114, 389, 165, 29);
+			textDataEntrada.setBounds(1114, 466, 165, 29);
 			textDataEntrada.setBorder(new LineBorder(new Color(1, 50, 1)));
 			textDataEntrada.setColumns(10);
 			contentPane.add(textDataEntrada);
@@ -119,7 +120,7 @@ public class TelaCheckIn extends JFrame {
 		lblSobrenomeCliente.setBackground(new Color(1, 50, 1));
 		lblSobrenomeCliente.setForeground(new Color(1, 50, 1));
 		lblSobrenomeCliente.setFont(new Font("Tahoma", Font.BOLD, 19));
-		lblSobrenomeCliente.setBounds(360, 363, 165, 22);
+		lblSobrenomeCliente.setBounds(360, 430, 165, 22);
 		contentPane.add(lblSobrenomeCliente);
 		
 		try {
@@ -129,7 +130,7 @@ public class TelaCheckIn extends JFrame {
 			textDataNascimento.setToolTipText("Coloque sua Data de Nascimento Aqui");
 			textDataNascimento.setForeground(new Color(1, 50, 1));
 			textDataNascimento.setBackground(new Color(252, 251, 244));
-			textDataNascimento.setBounds(360, 522, 404, 29);
+			textDataNascimento.setBounds(360, 589, 404, 29);
 			textDataNascimento.setBorder(new LineBorder(new Color(1, 50, 1)));
 			textDataNascimento.setColumns(10);
 			contentPane.add(textDataNascimento);
@@ -142,7 +143,7 @@ public class TelaCheckIn extends JFrame {
 		lblTelefone.setBackground(new Color(1, 50, 1));
 		lblTelefone.setForeground(new Color(1, 50, 1));
 		lblTelefone.setFont(new Font("Tahoma", Font.BOLD, 19));
-		lblTelefone.setBounds(360, 562, 236, 21);
+		lblTelefone.setBounds(360, 629, 236, 21);
 		contentPane.add(lblTelefone);
 		
 		try {
@@ -152,7 +153,7 @@ public class TelaCheckIn extends JFrame {
 			textCPF.setToolTipText("Coloque o CPF Aqui");
 			textCPF.setForeground(new Color(1, 50, 1));
 			textCPF.setBackground(new Color(252, 251, 244));
-			textCPF.setBounds(360, 455, 404, 29);
+			textCPF.setBounds(360, 522, 404, 29);
 			textCPF.setBorder(new LineBorder(new Color(1, 50, 1)));
 			textCPF.setColumns(10);
 			contentPane.add(textCPF);
@@ -166,14 +167,14 @@ public class TelaCheckIn extends JFrame {
 		lblDataEntrada.setForeground(new Color(1, 50, 1));
 		lblDataEntrada.setBackground(new Color(1, 50, 1));
 		lblDataEntrada.setFont(new Font("Tahoma", Font.BOLD, 19));
-		lblDataEntrada.setBounds(1114, 361, 255, 21);
+		lblDataEntrada.setBounds(1114, 438, 255, 21);
 		contentPane.add(lblDataEntrada);
 		
 		textPrimeiroNome = new JTextField();
 		textPrimeiroNome.setToolTipText("Coloque Seu Primeiro Nome Aqui");
 		textPrimeiroNome.setForeground(new Color(1, 50, 1));
 		textPrimeiroNome.setBackground(new Color(252, 251, 244));
-		textPrimeiroNome.setBounds(360, 329, 404, 29);
+		textPrimeiroNome.setBounds(360, 396, 404, 29);
 		contentPane.add(textPrimeiroNome);
 		textPrimeiroNome.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textPrimeiroNome.setColumns(10);
@@ -185,7 +186,7 @@ public class TelaCheckIn extends JFrame {
 			textHoraEntrada.setToolTipText("Coloque a Hora de Entrada Aqui");
 			textHoraEntrada.setForeground(new Color(1, 50, 1));
 			textHoraEntrada.setBackground(new Color(252, 251, 244));
-			textHoraEntrada.setBounds(1289, 389, 165, 29);
+			textHoraEntrada.setBounds(1289, 466, 165, 29);
 			textHoraEntrada.setBorder(new LineBorder(new Color(1, 50, 1)));
 			textHoraEntrada.setColumns(10);
 			contentPane.add(textHoraEntrada);
@@ -198,21 +199,21 @@ public class TelaCheckIn extends JFrame {
 		lblSenhaCad.setBackground(new Color(1, 50, 1));
 		lblSenhaCad.setForeground(new Color(1, 50, 1));
 		lblSenhaCad.setFont(new Font("Tahoma", Font.BOLD, 19));
-		lblSenhaCad.setBounds(1114, 501, 340, 21);
+		lblSenhaCad.setBounds(1114, 578, 340, 21);
 		contentPane.add(lblSenhaCad);
 		
 		JLabel lblCPFCliente = new JLabel("* CPF / CRNM / RNN / RNE:");
 		lblCPFCliente.setForeground(new Color(1, 50, 1));
 		lblCPFCliente.setBackground(new Color(1, 50, 1));
 		lblCPFCliente.setFont(new Font("Tahoma", Font.BOLD, 19));
-		lblCPFCliente.setBounds(360, 425, 300, 18);
+		lblCPFCliente.setBounds(360, 492, 300, 18);
 		contentPane.add(lblCPFCliente);
 		
 		textSobrenome = new JTextField();
 		textSobrenome.setToolTipText("Coloque Seu Sobrenome Aqui");
 		textSobrenome.setForeground(new Color(1, 50, 1));
 		textSobrenome.setBackground(new Color(252, 251, 244));
-		textSobrenome.setBounds(360, 389, 404, 29);
+		textSobrenome.setBounds(360, 456, 404, 29);
 		textSobrenome.setBorder(new LineBorder(new Color(1, 50, 1)));
 		contentPane.add(textSobrenome);
 		textSobrenome.setColumns(10);
@@ -242,7 +243,7 @@ public class TelaCheckIn extends JFrame {
 		btnLimpar_info_cliente.setForeground(new Color(252, 251, 244));
 		btnLimpar_info_cliente.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnLimpar_info_cliente.setBackground(new Color(109, 164, 109));
-		btnLimpar_info_cliente.setBounds(588, 676, 176, 39);
+		btnLimpar_info_cliente.setBounds(360, 836, 176, 39);
 		contentPane.add(btnLimpar_info_cliente);
 		
 		JButton btnCadastro_Cliente = new JButton("Cadastrar");
@@ -318,12 +319,16 @@ dataNascimento.isEmpty()||dataEntrada.isEmpty()||horaEntrada.isEmpty()||telefone
 				frame.setLocationRelativeTo(null);
 				frame.setVisible(true);
 				
+				/*HospedagemDAO hospedagemDao = new HospedagemDAO();
+				Hospedagem hospedagem2 = hospedagemDao.buscaNumQuarto(hosp);
+				txtNumQuarto.setText(hospedagem2.getNumQuarto().toString());*/
+				
 			}
 		});
 		btnCadastro_Cliente.setBackground(new Color(66, 142, 66));
 		btnCadastro_Cliente.setForeground(new Color(252, 251, 244));
 		btnCadastro_Cliente.setFont(new Font("Tahoma", Font.BOLD, 17));
-		btnCadastro_Cliente.setBounds(1114, 676, 176, 39);
+		btnCadastro_Cliente.setBounds(877, 836, 176, 39);
 		contentPane.add(btnCadastro_Cliente);
 		
 		JButton btnSair_tela_cad_Cliente = new JButton("<- | Sair");
@@ -340,12 +345,12 @@ dataNascimento.isEmpty()||dataEntrada.isEmpty()||horaEntrada.isEmpty()||telefone
 		btnSair_tela_cad_Cliente.setForeground(new Color(252, 251, 244));
 		btnSair_tela_cad_Cliente.setBackground(new Color(1, 50, 1));
 		btnSair_tela_cad_Cliente.setFont(new Font("Tahoma", Font.BOLD, 17));
-		btnSair_tela_cad_Cliente.setBounds(1549, 901, 176, 39);
+		btnSair_tela_cad_Cliente.setBounds(1342, 836, 176, 39);
 		contentPane.add(btnSair_tela_cad_Cliente);
 		
 		JLabel lblInformacaoSenha = new JLabel("Apenas números, com no Máximo 8 caracteres e Sem caracteres especiais.");
 		lblInformacaoSenha.setForeground(new Color(255, 0, 0));
-		lblInformacaoSenha.setBounds(1114, 524, 458, 13);
+		lblInformacaoSenha.setBounds(1114, 601, 458, 13);
 		contentPane.add(lblInformacaoSenha);
 		
 		try {
@@ -355,7 +360,7 @@ dataNascimento.isEmpty()||dataEntrada.isEmpty()||horaEntrada.isEmpty()||telefone
 			txtSenha.setToolTipText("Crie sua Senha Aqui");
 			txtSenha.setForeground(new Color(1, 50, 1));
 			txtSenha.setBackground(new Color(252, 251, 244));
-			txtSenha.setBounds(1114, 544, 404, 29);
+			txtSenha.setBounds(1114, 621, 404, 29);
 			txtSenha.setBorder(new LineBorder(new Color(30, 32, 37), 1));
 			txtSenha.setColumns(10);
 			contentPane.add(txtSenha);
@@ -374,14 +379,14 @@ dataNascimento.isEmpty()||dataEntrada.isEmpty()||horaEntrada.isEmpty()||telefone
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(TelaCheckIn.class.getResource("/imagens/LogoPI.png")));
-		lblNewLabel.setBounds(588, 100, 145, 128);
+		lblNewLabel.setBounds(587, 134, 145, 128);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblDataNascimento_1 = new JLabel("* Data de nascimento:");
 		lblDataNascimento_1.setForeground(new Color(1, 50, 1));
 		lblDataNascimento_1.setFont(new Font("Tahoma", Font.BOLD, 19));
 		lblDataNascimento_1.setBackground(new Color(1, 50, 1));
-		lblDataNascimento_1.setBounds(360, 490, 236, 21);
+		lblDataNascimento_1.setBounds(360, 557, 236, 21);
 		contentPane.add(lblDataNascimento_1);
 		
 		try {
@@ -393,7 +398,7 @@ dataNascimento.isEmpty()||dataEntrada.isEmpty()||horaEntrada.isEmpty()||telefone
 			textTelefone.setColumns(15);
 			textTelefone.setBorder(new LineBorder(new Color(1, 50, 1)));
 			textTelefone.setBackground(new Color(252, 251, 244));
-			textTelefone.setBounds(360, 594, 404, 29);
+			textTelefone.setBounds(360, 661, 404, 29);
 			contentPane.add(textTelefone);
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -404,7 +409,7 @@ dataNascimento.isEmpty()||dataEntrada.isEmpty()||horaEntrada.isEmpty()||telefone
 		lblEmail.setForeground(new Color(1, 50, 1));
 		lblEmail.setFont(new Font("Tahoma", Font.BOLD, 19));
 		lblEmail.setBackground(new Color(1, 50, 1));
-		lblEmail.setBounds(1114, 429, 340, 21);
+		lblEmail.setBounds(1114, 506, 340, 21);
 		contentPane.add(lblEmail);
 		
 		textEmail = new JTextField();
@@ -413,18 +418,8 @@ dataNascimento.isEmpty()||dataEntrada.isEmpty()||horaEntrada.isEmpty()||telefone
 		textEmail.setColumns(10);
 		textEmail.setBorder(new LineBorder(new Color(1, 50, 1)));
 		textEmail.setBackground(new Color(252, 251, 244));
-		textEmail.setBounds(1114, 461, 404, 29);
+		textEmail.setBounds(1114, 538, 404, 29);
 		contentPane.add(textEmail);
-		
-		/*textPrimeiroNome.setText("Otavio");
-		textSobrenome.setText("Silva");
-		textCPF.setText("12345678945");
-		textDataNascimento.setText("20/01/2024");
-		textDataEntrada.setText("25/04/2024");
-		textHoraEntrada.setText("15:00");
-		txtSenha.setText("12345656");	
-		textTelefone.setText("(47) 98456-1425");
-		textEmail.setText("jvdjhfdj@gmail.com");*/
 		
 		/*JButton btnExcluirCadastro = new JButton("Excluir");
 		btnExcluirCadastro.addActionListener(new ActionListener() {
@@ -458,5 +453,4 @@ dataNascimento.isEmpty()||dataEntrada.isEmpty()||horaEntrada.isEmpty()||telefone
 		btnExcluirCadastro.setBounds(1079, 638, 176, 39);
 		contentPane.add(btnExcluirCadastro);*/
 	}
-
 }
