@@ -50,22 +50,25 @@ public class TelaReservaEspacoCliente extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1920, 1080);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(247, 246, 243));
+		contentPane.setBackground(new Color(255, 255, 245));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(255, 255, 245));
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBackground(new Color(255, 255, 245));
 		lblNewLabel.setIcon(new ImageIcon(TelaReservaEspacoCliente.class.getResource("/imagens/Hotel 2.png")));
 		lblNewLabel.setBounds(0, 0, 947, 1031);
 		panel.add(lblNewLabel);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(255, 255, 245));
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -142,7 +145,7 @@ public class TelaReservaEspacoCliente extends JFrame {
 		btnConfirmar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");	
+				/*DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");	
 				String dia = textData.getText();
 				String hora = textHorario.getText();
 				LocalDateTime diadate = LocalDateTime.parse(dia+" "+hora, formatter);
@@ -155,7 +158,7 @@ public class TelaReservaEspacoCliente extends JFrame {
 				ReservaEspacoDAO reserva = ReservaEspacoDAO.getInstancia();
 				int id = reserva.inserirReservaEspaco(hospede);
 				hospede.setCliente(id);
-				
+			
 				int resdao = reserva.inserirReservaEspaco(res);
 				
 				
@@ -167,7 +170,22 @@ public class TelaReservaEspacoCliente extends JFrame {
 				}else {
 					TelaPopUpErroCliente errcli = new TelaPopUpErroCliente();
 					errcli.setVisible(true);
-				}
+				}*/
+					
+					
+					dispose();//manter para fechar a tela cadastro
+					
+					FuncionalidadeCliente frame2 = new FuncionalidadeCliente();
+					frame2.setUndecorated(true);
+					frame2.setExtendedState(JFrame.MAXIMIZED_BOTH);
+					frame2.setVisible(true);
+					
+					TelaPopUpSucessoCliente frame = new TelaPopUpSucessoCliente();
+					frame.setUndecorated(true);
+					frame.setLocationRelativeTo(null);
+					frame.setVisible(true);
+					
+					
 				} catch(Exception ex) {
 					ex.printStackTrace();
 					/*TelaPopUpErroCliente errcli = new TelaPopUpErroCliente();

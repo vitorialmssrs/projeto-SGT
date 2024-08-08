@@ -174,7 +174,7 @@ public class TelaAlterarCadastroCliente extends JFrame {
 			textCPF.setBackground(new Color(252, 251, 244));
 			textCPF.setBounds(434, 404, 404, 29);
 			textCPF.setBorder(new LineBorder(new Color(1, 50, 1)));
-			textCPF.setColumns(10);
+			textCPF.setColumns(11);
 			contentPane.add(textCPF);
 			
 		} catch(Exception e) {
@@ -192,6 +192,7 @@ public class TelaAlterarCadastroCliente extends JFrame {
 		textCPF.setColumns(10);*/
 		
 		textPrimeiroNome = new JTextField();
+		textPrimeiroNome.setEditable(false);
 		textPrimeiroNome.setForeground(new Color(1, 50, 1));
 		textPrimeiroNome.setBackground(new Color(252, 251, 244));
 		textPrimeiroNome.setBounds(434, 466, 404, 29);

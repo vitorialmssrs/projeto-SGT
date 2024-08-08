@@ -73,12 +73,13 @@ public class TelaEspacosHotelCliente extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				TelaReservaEspacoCliente frame = new TelaReservaEspacoCliente();
+				frame.setUndecorated(true);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
 			}
 		});
-		btnAcademia.setBackground(new Color(247, 246, 243));
-		btnAcademia.setForeground(new Color(1, 50, 1));
+		btnAcademia.setBackground(new Color(66, 142, 66));
+		btnAcademia.setForeground(new Color(252, 251, 244));
 		btnAcademia.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnAcademia.setBounds(420, 371, 181, 50);
 		contentPane.add(btnAcademia);
@@ -88,13 +89,14 @@ public class TelaEspacosHotelCliente extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				TelaReservaEspacoCliente frame = new TelaReservaEspacoCliente();
+				frame.setUndecorated(true);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
 			}
 		});
 		btnBrinquedoteca.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnBrinquedoteca.setBackground(new Color(247, 246, 243));
-		btnBrinquedoteca.setForeground(new Color(1, 50, 1));
+		btnBrinquedoteca.setBackground(new Color(66, 142, 66));
+		btnBrinquedoteca.setForeground(new Color(252, 251, 244));
 		btnBrinquedoteca.setBounds(420, 519, 181, 50);
 		contentPane.add(btnBrinquedoteca);
 		
@@ -103,12 +105,13 @@ public class TelaEspacosHotelCliente extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				TelaReservaEspacoCliente frame = new TelaReservaEspacoCliente();
+				frame.setUndecorated(true);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
 			}
 		});
-		btnPiscina.setBackground(new Color(247, 246, 243));
-		btnPiscina.setForeground(new Color(1, 50, 1));
+		btnPiscina.setBackground(new Color(66, 142, 66));
+		btnPiscina.setForeground(new Color(252, 251, 244));
 		btnPiscina.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnPiscina.setBounds(420, 661, 181, 50);
 		contentPane.add(btnPiscina);
@@ -118,13 +121,14 @@ public class TelaEspacosHotelCliente extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				TelaReservaEspacoCliente frame = new TelaReservaEspacoCliente();
+				frame.setUndecorated(true);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
 			}
 		});
-		btnQuiosque.setForeground(new Color(1, 50, 1));
+		btnQuiosque.setForeground(new Color(252, 251, 244));
 		btnQuiosque.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnQuiosque.setBackground(new Color(247, 246, 243));
+		btnQuiosque.setBackground(new Color(66, 142, 66));
 		btnQuiosque.setBounds(875, 371, 181, 50);
 		contentPane.add(btnQuiosque);
 		
@@ -133,13 +137,14 @@ public class TelaEspacosHotelCliente extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				TelaReservaEspacoCliente frame = new TelaReservaEspacoCliente();
+				frame.setUndecorated(true);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
 			}
 		});
-		btnQuadraFut.setForeground(new Color(1, 50, 1));
+		btnQuadraFut.setForeground(new Color(252, 251, 244));
 		btnQuadraFut.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnQuadraFut.setBackground(new Color(247, 246, 243));
+		btnQuadraFut.setBackground(new Color(66, 142, 66));
 		btnQuadraFut.setBounds(875, 519, 181, 50);
 		contentPane.add(btnQuadraFut);
 		
@@ -148,13 +153,14 @@ public class TelaEspacosHotelCliente extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				TelaReservaEspacoCliente frame = new TelaReservaEspacoCliente();
+				frame.setUndecorated(true);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
 			}
 		});
-		btnQuadraVolei.setForeground(new Color(1, 50, 1));
+		btnQuadraVolei.setForeground(new Color(252, 251, 244));
 		btnQuadraVolei.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnQuadraVolei.setBackground(new Color(247, 246, 243));
+		btnQuadraVolei.setBackground(new Color(66, 142, 66));
 		btnQuadraVolei.setBounds(875, 661, 181, 50);
 		contentPane.add(btnQuadraVolei);
 		
@@ -163,13 +169,14 @@ public class TelaEspacosHotelCliente extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				TelaReservaEspacoCliente frame = new TelaReservaEspacoCliente();
+				frame.setUndecorated(true);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
 			}
 		});
-		btnSalaoFesta.setForeground(new Color(1, 50, 1));
+		btnSalaoFesta.setForeground(new Color(252, 251, 244));
 		btnSalaoFesta.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnSalaoFesta.setBackground(new Color(247, 246, 243));
+		btnSalaoFesta.setBackground(new Color(66, 142, 66));
 		btnSalaoFesta.setBounds(1378, 371, 181, 50);
 		contentPane.add(btnSalaoFesta);
 		
@@ -178,13 +185,14 @@ public class TelaEspacosHotelCliente extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				TelaReservaEspacoCliente frame = new TelaReservaEspacoCliente();
+				frame.setUndecorated(true);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
 			}
 		});
-		btnSalaJogos.setForeground(new Color(1, 50, 1));
+		btnSalaJogos.setForeground(new Color(252, 251, 244));
 		btnSalaJogos.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnSalaJogos.setBackground(new Color(247, 246, 243));
+		btnSalaJogos.setBackground(new Color(66, 142, 66));
 		btnSalaJogos.setBounds(1378, 519, 181, 50);
 		contentPane.add(btnSalaJogos);
 		
@@ -193,13 +201,14 @@ public class TelaEspacosHotelCliente extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				TelaReservaEspacoCliente frame = new TelaReservaEspacoCliente();
+				frame.setUndecorated(true);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
 			}
 		});
-		btnSPA.setForeground(new Color(1, 50, 1));
+		btnSPA.setForeground(new Color(252, 251, 244));
 		btnSPA.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnSPA.setBackground(new Color(247, 246, 243));
+		btnSPA.setBackground(new Color(66, 142, 66));
 		btnSPA.setBounds(1378, 661, 181, 50);
 		contentPane.add(btnSPA);
 		
@@ -232,9 +241,9 @@ public class TelaEspacosHotelCliente extends JFrame {
 				frame.setVisible(true);
 			}
 		});
-		btnSair.setBackground(new Color(227, 236, 229));
+		btnSair.setBackground(new Color(1, 50, 1));
 		btnSair.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnSair.setForeground(new Color(1, 50, 1));
+		btnSair.setForeground(new Color(252, 251, 244));
 		btnSair.setBounds(1587, 899, 126, 49);
 		contentPane.add(btnSair);
 	}

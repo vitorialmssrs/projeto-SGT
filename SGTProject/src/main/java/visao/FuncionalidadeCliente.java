@@ -89,22 +89,6 @@ public class FuncionalidadeCliente extends JFrame {
 		btnCheckin.setFont(new Font("Tahoma", Font.BOLD, 60));
 		panelOpcoes.add(btnCheckin, "cell 1 2,grow");
 
-		JButton btnCheckout = new JButton("Check-out");
-		btnCheckout.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-					dispose();
-					TelaCheckOut checkoutcliente = new TelaCheckOut();
-					checkoutcliente.setExtendedState(JFrame.MAXIMIZED_BOTH);
-					checkoutcliente.setUndecorated(true);
-					checkoutcliente.setVisible(true);
-					checkoutcliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);				
-			}
-		});
-		btnCheckout.setForeground(new Color(255, 255, 255));
-		btnCheckout.setBackground(new Color(66, 142, 66));
-		btnCheckout.setFont(new Font("Tahoma", Font.BOLD, 60));
-		panelOpcoes.add(btnCheckout, "cell 1 3,grow");
-
 		JButton btnReservasEspacos = new JButton("Reservas Espaços");
 		btnReservasEspacos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -114,21 +98,6 @@ public class FuncionalidadeCliente extends JFrame {
 				espacoshotel.setUndecorated(true);
 				espacoshotel.setVisible(true);
 				espacoshotel.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);	
-			}
-		});
-		btnReservasEspacos.setForeground(new Color(255, 255, 255));
-		btnReservasEspacos.setBackground(new Color(109, 164, 109));
-		btnReservasEspacos.setFont(new Font("Tahoma", Font.BOLD, 60));
-		panelOpcoes.add(btnReservasEspacos, "cell 1 4,grow");
-
-		JButton btnNewButton_3 = new JButton("Sair");
-		btnNewButton_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				TelaInicial telaInicial = new TelaInicial();
-				telaInicial.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				telaInicial.setUndecorated(true);
-				telaInicial.setVisible(true);
 			}
 		});
 		
@@ -145,7 +114,38 @@ public class FuncionalidadeCliente extends JFrame {
 		});
 		btnAlterarCadastro.setForeground(new Color(255, 255, 255));
 		btnAlterarCadastro.setFont(new Font("Tahoma", Font.BOLD, 50));
-		panelOpcoes.add(btnAlterarCadastro, "cell 1 5,grow");
+		panelOpcoes.add(btnAlterarCadastro, "cell 1 3,grow");
+		btnReservasEspacos.setForeground(new Color(255, 255, 255));
+		btnReservasEspacos.setBackground(new Color(109, 164, 109));
+		btnReservasEspacos.setFont(new Font("Tahoma", Font.BOLD, 60));
+		panelOpcoes.add(btnReservasEspacos, "cell 1 4,grow");
+
+		JButton btnNewButton_3 = new JButton("Sair");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaInicial telaInicial = new TelaInicial();
+				telaInicial.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telaInicial.setUndecorated(true);
+				telaInicial.setVisible(true);
+			}
+		});
+		
+				JButton btnCheckout = new JButton("Check-out");
+				btnCheckout.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+							dispose();
+							TelaCheckOut checkoutcliente = new TelaCheckOut();
+							checkoutcliente.setExtendedState(JFrame.MAXIMIZED_BOTH);
+							checkoutcliente.setUndecorated(true);
+							checkoutcliente.setVisible(true);
+							checkoutcliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);				
+					}
+				});
+				btnCheckout.setForeground(new Color(255, 255, 255));
+				btnCheckout.setBackground(new Color(66, 142, 66));
+				btnCheckout.setFont(new Font("Tahoma", Font.BOLD, 60));
+				panelOpcoes.add(btnCheckout, "cell 1 5,grow");
 		btnNewButton_3.setBackground(new Color(227, 236, 226));
 		btnNewButton_3.setIcon(new ImageIcon(FuncionalidadeCliente.class.getResource("/imagens/Vector sair.png")));
 		btnNewButton_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
