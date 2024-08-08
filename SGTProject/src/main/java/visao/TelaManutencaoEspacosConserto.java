@@ -215,11 +215,13 @@ public class TelaManutencaoEspacosConserto extends JFrame {
 				
 				if(espacoId >0 ) {
 					TelaPopUpSucessoFuncionario frame = new TelaPopUpSucessoFuncionario();
+					frame.setUndecorated(true);
 		        	frame.setLocationRelativeTo(null);
 		        	frame.setVisible(true);
 					//JOptionPane.showMessageDialog(null, "cadastro realizado com sucesso");
 				}else {
 					TelaPopUpErroFuncionario frame = new TelaPopUpErroFuncionario();
+					frame.setUndecorated(true);
 		        	frame.setLocationRelativeTo(null);
 		        	frame.setVisible(true);
 					//JOptionPane.showMessageDialog(null, "erro");

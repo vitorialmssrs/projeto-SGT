@@ -103,7 +103,7 @@ public class FuncionalidadeFuncionario extends JFrame {
 		btnAlteracaoEspaco.setFont(new Font("Tahoma", Font.BOLD, 50));
 		btnAlteracaoEspaco.setBackground(new Color(109, 164, 109));
 		panelOpcoes.add(btnAlteracaoEspaco, "cell 1 5,grow");
-		btnAtualizarEspaco.setFont(new Font("Tahoma", Font.BOLD, 45));
+		btnAtualizarEspaco.setFont(new Font("Tahoma", Font.BOLD, 50));
 		btnAtualizarEspaco.setBackground(new Color(109, 164, 109));
 		btnAtualizarEspaco.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\projeto-SGT\\SGTProject\\src\\main\\resources\\img\\Icons atualizacao espaco.png"));
 		btnAtualizarEspaco.setForeground(new Color(255, 255, 255));

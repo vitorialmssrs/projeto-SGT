@@ -261,7 +261,8 @@ public class TelaAlteracaoInformacoesEspacos extends JFrame {
 		
 		JButton btnSair_1 = new JButton("<- | Sair");
 		btnSair_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {		
+			public void actionPerformed(ActionEvent e) {	
+				dispose();
 				FuncionalidadeFuncionario funcionalidade = new FuncionalidadeFuncionario(funcionario);
 				funcionalidade.setUndecorated(true);
 				funcionalidade.setExtendedState(JFrame.MAXIMIZED_BOTH);

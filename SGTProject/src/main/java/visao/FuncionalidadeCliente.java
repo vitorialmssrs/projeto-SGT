@@ -65,11 +65,11 @@ public class FuncionalidadeCliente extends JFrame {
 
 		JLabel lblTexto1 = new JLabel("Caro Cliente");
 		lblTexto1.setForeground(new Color(1, 50, 1));
-		lblTexto1.setFont(new Font("Tahoma", Font.BOLD, 40));
+		lblTexto1.setFont(new Font("Tahoma", Font.BOLD, 50));
 		panelOpcoes.add(lblTexto1, "cell 1 0,alignx center");
 
 		JLabel lblTexto2 = new JLabel("Escolhe uma Opção de Atendimento");
-		lblTexto2.setFont(new Font("Tahoma", Font.BOLD, 30));
+		lblTexto2.setFont(new Font("Tahoma", Font.BOLD, 40));
 		lblTexto2.setForeground(new Color(1, 50, 1));
 		panelOpcoes.add(lblTexto2, "cell 1 1,alignx center");
 
@@ -86,7 +86,7 @@ public class FuncionalidadeCliente extends JFrame {
 		});
 		btnCheckin.setForeground(new Color(255, 255, 255));
 		btnCheckin.setBackground(new Color(81, 108, 81));
-		btnCheckin.setFont(new Font("Tahoma", Font.BOLD, 60));
+		btnCheckin.setFont(new Font("Tahoma", Font.BOLD, 65));
 		panelOpcoes.add(btnCheckin, "cell 1 2,grow");
 
 		JButton btnReservasEspacos = new JButton("Reservas Espaços");
@@ -101,7 +101,7 @@ public class FuncionalidadeCliente extends JFrame {
 			}
 		});
 		
-		JButton btnAlterarCadastro = new JButton("Alterar Checkin");
+		JButton btnAlterarCadastro = new JButton("Alterar Check-in");
 		btnAlterarCadastro.setBackground(new Color(126, 191, 131));
 		btnAlterarCadastro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -113,11 +113,11 @@ public class FuncionalidadeCliente extends JFrame {
 			}
 		});
 		btnAlterarCadastro.setForeground(new Color(255, 255, 255));
-		btnAlterarCadastro.setFont(new Font("Tahoma", Font.BOLD, 50));
+		btnAlterarCadastro.setFont(new Font("Tahoma", Font.BOLD, 60));
 		panelOpcoes.add(btnAlterarCadastro, "cell 1 3,grow");
 		btnReservasEspacos.setForeground(new Color(255, 255, 255));
 		btnReservasEspacos.setBackground(new Color(109, 164, 109));
-		btnReservasEspacos.setFont(new Font("Tahoma", Font.BOLD, 60));
+		btnReservasEspacos.setFont(new Font("Tahoma", Font.BOLD, 65));
 		panelOpcoes.add(btnReservasEspacos, "cell 1 4,grow");
 
 		JButton btnNewButton_3 = new JButton("Sair");
@@ -144,7 +144,7 @@ public class FuncionalidadeCliente extends JFrame {
 				});
 				btnCheckout.setForeground(new Color(255, 255, 255));
 				btnCheckout.setBackground(new Color(66, 142, 66));
-				btnCheckout.setFont(new Font("Tahoma", Font.BOLD, 60));
+				btnCheckout.setFont(new Font("Tahoma", Font.BOLD, 65));
 				panelOpcoes.add(btnCheckout, "cell 1 5,grow");
 		btnNewButton_3.setBackground(new Color(227, 236, 226));
 		btnNewButton_3.setIcon(new ImageIcon(FuncionalidadeCliente.class.getResource("/imagens/Vector sair.png")));

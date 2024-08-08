@@ -1803,9 +1803,9 @@ insert into
 values
   (
     52867785212,
-    'te',
-    '123',
-    'Funcionario Teste',
+    'Livia',
+    'Liv123',
+    'Livia Antines',
     '2002-07-12',
     '(52) 69169-40001',
     '02479135',
