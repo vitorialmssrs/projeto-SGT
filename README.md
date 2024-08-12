@@ -17,7 +17,7 @@ Visto que em decorrência de diversos eventos que ocorrem na cidade de Blumenau 
 A tela inicial oferece ao usuário duas opções, sendo a primeira específica para os clientes, na qual direciona para tela de menu do cliente, com aplicações diretas para os hóspedes. Já a segunda opção é exclusiva para os funcionários, na qual será levada a tela de login do funcionário.
 
 ### Tela de menu do cliente<br>
-![Tela ](https://github.com/vitorialmssrs/projeto-SGT/blob/master/Tela%20Menu%20Cliente.png)<br>
+![Tela ](https://github.com/vitorialmssrs/projeto-SGT/blob/master/SGTProject/titulo%20clientes2.png)<br>
 
 A tela de menu do cliente oferece quatro opções: “Check-in”, “Check-out”, “Reservas Espaços” e “Alterar Cadastro”. Estas opções permitem que o usuário realize várias ações relacionadas à sua estadia no hotel. Abaixo das opções, há um botão para sair.
 
