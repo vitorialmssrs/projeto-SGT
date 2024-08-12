@@ -20,6 +20,27 @@ Visto que em decorrência de diversos eventos que ocorrem na cidade de Blumenau 
 ### Tela de menu do funcionário<br>
 ![Tela ](https://github.com/vitorialmssrs/projeto-SGT/blob/master/Tela%20Menu%20Funcionario.png)<br>
 
+<h1 align="center">
+    <a>
+        Participantes
+    </a>
+</h1>
+<br><br>
+<a align="Left" href="https://br.linkedin.com/in/otavio-venero">
+    Otávio Miguel Goulart Venero;
+</a>
+<br><br>
+<p align="Left">
+    Vitória de Jesus Onofre;
+</a>
+<br><br>
+<p align="Left">
+    Vitória Lemos Soares;
+</a>
+<br><br>
+
+
+
 
 
 
