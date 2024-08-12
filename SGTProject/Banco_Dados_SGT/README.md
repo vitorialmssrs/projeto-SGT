@@ -10,7 +10,6 @@ O banco de dados SGT- Sistema de Gerenciamento de Totens, serve para o armazenam
 
 > **PARTICIPANTES**
 
-    Maria Eduarda Mendes
     Otávio Goulart Venero
     Vitória de Jesus Onofre
     Vitória Lemos Soares
