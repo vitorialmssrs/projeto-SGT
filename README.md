@@ -5,6 +5,23 @@ Visto que em decorrência de diversos eventos que ocorrem na cidade de Blumenau 
  Além desta celebração na qual os turistas se deslumbram, a cidade também é palco da Osterdorf, a vila de páscoa, Sommerfest, e os lindos desfiles de natal na qual a cidade oferece ao público.
  Com isso o grande número de visitantes causa uma sobrecarga nos hotéis próximos ao evento. Por isso, nosso sistema surgiu na região para oferecer um autoatendimento rápido para os clientes,  no qual facilite a estadia do mesmo e um maior aproveitamento dos momentos dele na visita.  
 
- ### Objetivos do Projeto
+ ## **Objetivos do Projeto**
+ 
+ O objetivo geral do sistema é proporcionar o autoatendimento para o funcionário e o cliente de maneira que o cliente possa realizar tarefas que iriam ocupar muito do seu tempo, e trazer a praticidade para o funcionário trabalhar.
+
+ ## **Telas**
+
+ ### Tela inicial<br>
+
+### Tela de menu do cliente<br>
+
+### Tela de login de funcionário<br>
+
+### Tela de menu do funcionário<br>
+
+
+
+
+
 
 
