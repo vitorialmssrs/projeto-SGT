@@ -1,5 +1,5 @@
 # **Sistema de Gerenciamento de Totem**
-## **INTRODUÇÃO**
+## **Introdução**
 
 Visto que em decorrência de diversos eventos que ocorrem na cidade de Blumenau e região, como por exemplo a Oktoberfest que de acordo com o site oficial da cidade de Blumenau é o maior evento anual na cidade movendo sozinha cerca de 500 mil pessoas.
  Além desta celebração na qual os turistas se deslumbram, a cidade também é palco da Osterdorf, a vila de páscoa, Sommerfest, e os lindos desfiles de natal na qual a cidade oferece ao público.
