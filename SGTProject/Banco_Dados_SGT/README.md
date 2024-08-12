@@ -6,7 +6,7 @@ O banco de dados SGT- Sistema de Gerenciamento de Totens, serve para o armazenam
 
 > **DIAGRAMA**
 
-   ![diagrama](https://github.com/duddaamendes/Banco_Dados_SGT/blob/7b019a6470b891866c88226627d1c550f0dd7423/SGT_Banco.png)
+   ![diagrama](https://github.com/vitorialmssrs/projeto-SGT/blob/master/SGTProject/Banco_Dados_SGT/Diagrama%20SQL.png)
 
 > **PARTICIPANTES**
 
