@@ -12,12 +12,13 @@ Visto que em decorrência de diversos eventos que ocorrem na cidade de Blumenau 
  ## **Telas**
 
  ### Tela inicial<br>
-
+![Tela ](https://github.com/vitorialmssrs/projeto-SGT/blob/master/Tela%20Inicial.png)<br>
 ### Tela de menu do cliente<br>
-
+![Tela ](https://github.com/vitorialmssrs/projeto-SGT/blob/master/Tela%20Menu%20Cliente.png)<br>
 ### Tela de login de funcionário<br>
-
+![Tela ](https://github.com/vitorialmssrs/projeto-SGT/blob/master/Tela%20Login%20Funcionario.png)<br>
 ### Tela de menu do funcionário<br>
+![Tela ](https://github.com/vitorialmssrs/projeto-SGT/blob/master/Tela%20Menu%20Funcionario.png)<br>
 
 
 
