@@ -1,4 +1,4 @@
-# **Sistema de Gerenciamento de Totem**
+# **Sistema de Gerenciamento do Hotel po Totem**
 ## **Introdução**
 
 Visto que em decorrência de diversos eventos que ocorrem na cidade de Blumenau e região, como por exemplo a Oktoberfest que de acordo com o site oficial da cidade de Blumenau é o maior evento anual na cidade movendo sozinha cerca de 500 mil pessoas.
